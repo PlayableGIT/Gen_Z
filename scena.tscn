@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://5yt73vng2pnx"]
+
+[ext_resource type="Texture2D" uid="uid://cna5roxfnc6w" path="res://road4.png" id="1_1aiif"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="2_ato1a"]
+[ext_resource type="Texture2D" uid="uid://cotd8j6i6lebh" path="res://zombie_01.png" id="3_078rx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64rre"]
+size = Vector2(1330, 154)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64wkc"]
+size = Vector2(189, 291)
+
+[node name="Scena" type="Node2D"]
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(1000, -135)
+scale = Vector2(3.76531, 3.76531)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Road4" type="Sprite2D" parent="Node2D"]
+position = Vector2(82.75, 81)
+scale = Vector2(10.4062, 9.6875)
+texture = ExtResource("1_1aiif")
+
+[node name="Road5" type="Sprite2D" parent="Node2D"]
+position = Vector2(82.75, 81)
+scale = Vector2(10.4062, 9.6875)
+texture = ExtResource("1_1aiif")
+offset = Vector2(16, 0)
+
+[node name="Road6" type="Sprite2D" parent="Node2D"]
+position = Vector2(82.75, 81)
+scale = Vector2(10.4062, 9.6875)
+texture = ExtResource("1_1aiif")
+offset = Vector2(32, 0)
+
+[node name="Road7" type="Sprite2D" parent="Node2D"]
+position = Vector2(82.75, 81)
+scale = Vector2(10.4062, 9.6875)
+texture = ExtResource("1_1aiif")
+offset = Vector2(48, 0)
+
+[node name="Road8" type="Sprite2D" parent="Node2D"]
+position = Vector2(747.75, 81)
+scale = Vector2(10.4062, 9.6875)
+texture = ExtResource("1_1aiif")
+
+[node name="Road9" type="Sprite2D" parent="Node2D"]
+position = Vector2(747.75, 81)
+scale = Vector2(10.4062, 9.6875)
+texture = ExtResource("1_1aiif")
+offset = Vector2(16, 0)
+
+[node name="Road10" type="Sprite2D" parent="Node2D"]
+position = Vector2(747.75, 81)
+scale = Vector2(10.4062, 9.6875)
+texture = ExtResource("1_1aiif")
+offset = Vector2(32, 0)
+
+[node name="Road11" type="Sprite2D" parent="Node2D"]
+position = Vector2(747.75, 81)
+scale = Vector2(10.4062, 9.6875)
+texture = ExtResource("1_1aiif")
+offset = Vector2(48, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+position = Vector2(667, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+shape = SubResource("RectangleShape2D_64rre")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+up_direction = Vector2(0, 1)
+script = ExtResource("2_ato1a")
+
+[node name="Zombie01" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(103, -135)
+scale = Vector2(3.76531, 3.76531)
+texture = ExtResource("3_078rx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(103.5, -135.5)
+shape = SubResource("RectangleShape2D_64wkc")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(100, -100)
+zoom = Vector2(0.86, 0.86)
