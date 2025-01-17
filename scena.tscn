@@ -74,7 +74,7 @@ shape = SubResource("RectangleShape2D_64rre")
 up_direction = Vector2(0, 1)
 script = ExtResource("2_ato1a")
 
-[node name="Zombie01" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Zombiak01" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(103, -135)
 scale = Vector2(3.76531, 3.76531)
 texture = ExtResource("3_078rx")
