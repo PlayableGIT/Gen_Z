@@ -10,7 +10,7 @@ size = Vector2(1330, 154)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64wkc"]
 size = Vector2(189, 291)
 
-[node name="Scena" type="Node2D"]
+[node name="Main" type="Node2D"]
 
 [node name="Node2D2" type="Node2D" parent="."]
 position = Vector2(1000, -135)
