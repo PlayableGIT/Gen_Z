@@ -4,7 +4,7 @@ extends RigidBody2D
 @export var destination: NodePath
 
 # Prędkość ruchu obiektu
-@export var speed: float = 200.0
+@export var speed: float = 100.0
 
 func _physics_process(delta: float):
 	if destination:
@@ -16,3 +16,11 @@ func _physics_process(delta: float):
 
 		# Ustaw nową pozycję poprzez transformację
 		global_position = new_position
+		_odleglosc()
+		#print(new_position.x)
+func _odleglosc():
+	var target_position = get_node(destination).global_position
+	var dystans = target_position-global_position
+	if (dystans<=Vector2(150,0)):
+		global_position =- Vector2(-780,100)
+	
