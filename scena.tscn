@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://5yt73vng2pnx"]
+[gd_scene load_steps=12 format=3 uid="uid://5yt73vng2pnx"]
 
 [ext_resource type="Texture2D" uid="uid://cna5roxfnc6w" path="res://road4.png" id="1_1aiif"]
-[ext_resource type="Script" path="res://rigid_body_2d.gd" id="2_2vb6w"]
 [ext_resource type="Texture2D" uid="uid://biwb7oa63p6ou" path="res://survivor_01.png" id="2_ds81f"]
+[ext_resource type="Script" path="res://survivor.gd" id="2_fl4q8"]
 [ext_resource type="Texture2D" uid="uid://c842urika2888" path="res://zombie_03.png" id="2_qe40k"]
 [ext_resource type="Script" path="res://area_2d.gd" id="3_s4jll"]
+[ext_resource type="Script" path="res://zombie.gd" id="4_5bjgi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64rre"]
 size = Vector2(1330, 154)
@@ -17,6 +18,9 @@ size = Vector2(264, 220)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_reue0"]
 size = Vector2(139, 210)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgub"]
+size = Vector2(246, 212)
 
 [node name="Main" type="Node2D"]
 
@@ -78,12 +82,9 @@ position = Vector2(667, 80)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
 shape = SubResource("RectangleShape2D_64rre")
 
-[node name="Survivor" type="RigidBody2D" parent="."]
-position = Vector2(1000, -110)
-mass = 80.0
-
-[node name="Destination" type="Node2D" parent="Survivor"]
-scale = Vector2(3.76531, 3.76531)
+[node name="Survivor" type="CharacterBody2D" parent="."]
+position = Vector2(1171, -131)
+script = ExtResource("2_fl4q8")
 
 [node name="Survivor01" type="Sprite2D" parent="Survivor"]
 scale = Vector2(2.5625, 2.5625)
@@ -101,17 +102,33 @@ position = Vector2(-6, -1)
 shape = SubResource("RectangleShape2D_4eiqg")
 debug_color = Color(0.949477, 1.2514e-06, 0.573295, 0.42)
 
-[node name="Zombie" type="RigidBody2D" parent="."]
-position = Vector2(115, -144)
-script = ExtResource("2_2vb6w")
-destination = NodePath("../Survivor/Destination")
+[node name="attack_cooldown" type="Timer" parent="Survivor"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Zombie"]
-position = Vector2(-0.5, -1)
-shape = SubResource("RectangleShape2D_reue0")
+[node name="Zombie" type="CharacterBody2D" parent="."]
+position = Vector2(163, -165)
+script = ExtResource("4_5bjgi")
 
 [node name="Zombie03" type="Sprite2D" parent="Zombie"]
 position = Vector2(0, -2)
 texture = ExtResource("2_qe40k")
 
-[connection signal="body_entered" from="Survivor/Area2D" to="Survivor/Area2D" method="_on_body_entered"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Zombie"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_reue0")
+
+[node name="Area2D" type="Area2D" parent="Zombie"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zombie/Area2D"]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_xlgub")
+debug_color = Color(0.996896, 0, 0.318943, 0.42)
+
+[node name="attack_cooldown" type="Timer" parent="Zombie"]
+wait_time = 1.509
+
+[connection signal="body_entered" from="Survivor/Area2D" to="Survivor" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Survivor/Area2D" to="Survivor" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Survivor/attack_cooldown" to="Survivor" method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="Zombie/Area2D" to="Zombie" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Zombie/Area2D" to="Zombie" method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Zombie/attack_cooldown" to="Zombie" method="_on_attack_cooldown_timeout"]
