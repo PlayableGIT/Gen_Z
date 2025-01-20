@@ -16,10 +16,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#grawitacja
-	print(velocity)
 	if not is_on_floor():
 		velocity += get_gravity() * 10 * delta
 		velocity.x = 0.0
+		move_and_slide()
 		
 	var player = get_parent().find_child("Survivor")
 	if player == null:

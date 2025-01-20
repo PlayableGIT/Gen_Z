@@ -17,12 +17,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 	move_and_slide()
 	zombie_attack()
-	
 	if health <= 0:
 		survivor_alive = false
 		health = 0
 		print("Survivor has been killed!")
 		self.queue_free()
+	
 
 func survivor():
 	pass
@@ -35,8 +35,8 @@ func zombie_attack():
 		zombie_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
+		$Survivor01.animation = "hurt"
 		print("Survivor took ", rng_damage, " damage! Health: ", health)
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
@@ -46,6 +46,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = false
+		$Survivor01.animation = "default"
 
 
 func _on_attack_cooldown_timeout() -> void:

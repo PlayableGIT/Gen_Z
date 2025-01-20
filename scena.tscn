@@ -71,10 +71,8 @@ position = Vector2(667, 80)
 shape = SubResource("RectangleShape2D_64rre")
 
 [node name="Survivor" parent="." instance=ExtResource("2_4ly84")]
+z_index = 1
 position = Vector2(1184, -124)
 
 [node name="Zombie" parent="." instance=ExtResource("3_twq8y")]
-position = Vector2(286, -171)
-
-[node name="Zombie2" parent="." instance=ExtResource("3_twq8y")]
-position = Vector2(117, -311)
+position = Vector2(123, -120)
