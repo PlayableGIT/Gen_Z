@@ -34,6 +34,7 @@ size = Vector2(151, 219.875)
 size = Vector2(226, 220)
 
 [node name="Survivor" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_jshkn")
 
 [node name="Survivor01" type="AnimatedSprite2D" parent="."]

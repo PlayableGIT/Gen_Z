@@ -65,6 +65,7 @@ size = Vector2(139, 210)
 size = Vector2(207, 212)
 
 [node name="Zombie" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nufbr")
 
 [node name="Zombie03" type="AnimatedSprite2D" parent="."]
