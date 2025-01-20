@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsb00t0lfytl"]
+
+[ext_resource type="Script" path="res://Screens/main_menu.gd" id="1_13ad3"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_13ad3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.407885, 0.0676971, 0.0172719, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 0.498
+anchor_right = 0.498
+anchor_bottom = 0.498
+offset_left = -76.696
+offset_top = -151.704
+offset_right = 82.304
+offset_bottom = 7.29599
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.0823529, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.202111, 0.574406, 0.251311, 1)
+theme_override_font_sizes/font_size = 60
+text = "GenZ"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Exit" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
