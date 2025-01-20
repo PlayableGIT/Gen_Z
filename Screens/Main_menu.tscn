@@ -27,12 +27,13 @@ anchor_left = 0.498
 anchor_top = 0.498
 anchor_right = 0.498
 anchor_bottom = 0.498
-offset_left = -76.696
-offset_top = -151.704
-offset_right = 82.304
-offset_bottom = 7.29599
+offset_left = -181.696
+offset_top = -198.704
+offset_right = -22.696
+offset_bottom = -39.704
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2.24101, 2.24101)
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2

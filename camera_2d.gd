@@ -7,7 +7,7 @@ var up_limit = Vector2(0, -800.0)
 var down_limit = Vector2(0, -270.0)
 
 func _process(delta):
-	print($".".position)
+	#print($".".position)
 	if Input.is_action_pressed("ui_left") and $".".position >= left_limit:
 		global_position += Vector2.LEFT * delta * MOVE_SPEED
 	else:

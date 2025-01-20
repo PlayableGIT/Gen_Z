@@ -70,12 +70,12 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nufbr")
 
 [node name="Zombie03" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(1.33333, -2)
 sprite_frames = SubResource("SpriteFrames_il1rs")
 animation = &"walk"
 autoplay = "walk"
-frame = 2
-frame_progress = 0.0133344
+frame = 4
+frame_progress = 0.240179
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -1)
