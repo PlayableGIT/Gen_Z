@@ -7,7 +7,7 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 var survivor_in_range = false
 var survivor_attack_cooldown = true
-var health = 25
+var health = 15
 var zombie_alive = true
 
 
