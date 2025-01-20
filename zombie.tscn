@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://dlnfoe38vgqp"]
+
+[ext_resource type="Script" path="res://zombie.gd" id="1_nufbr"]
+[ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
+[ext_resource type="Texture2D" uid="uid://cqk37qyu6nmpi" path="res://zombie1_anim/zombie1_anim2.png" id="3_5mong"]
+[ext_resource type="Texture2D" uid="uid://c00ttn4dcf4q7" path="res://zombie1_anim/zombie1_anim3.png" id="4_dnhn5"]
+[ext_resource type="Texture2D" uid="uid://dtr0i7duttcpx" path="res://zombie1_anim/zombie1_anim4.png" id="5_m6qqn"]
+[ext_resource type="Texture2D" uid="uid://jyqhpmhwhsj7" path="res://zombie1_anim/zombie1_anim5.png" id="6_y01m2"]
+[ext_resource type="Texture2D" uid="uid://bry3usdvkvc4p" path="res://zombie1_anim/zombie1_anim6.png" id="7_ypa4v"]
+[ext_resource type="Texture2D" uid="uid://dj1rb0nphoskk" path="res://zombie1_anim/zombie1_anim7.png" id="8_qkqcm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_il1rs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5mong")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rrkpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dnhn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5mong")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rrkpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5mong")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dnhn5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m6qqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y01m2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ypa4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qkqcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y01m2")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyf3b"]
+radius = 66.5
+height = 211.333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgub"]
+size = Vector2(207, 212)
+
+[node name="Zombie" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_nufbr")
+
+[node name="Zombie03" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_il1rs")
+animation = &"walk"
+autoplay = "walk"
+frame = 2
+frame_progress = 0.0133344
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("CapsuleShape2D_kyf3b")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_xlgub")
+debug_color = Color(0.996896, 0, 0.318943, 0.42)
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
