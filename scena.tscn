@@ -11,6 +11,7 @@ size = Vector2(1330, 154)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_sian6")
 zombie = ExtResource("3_twq8y")
+survivor = ExtResource("2_4ly84")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(668.075, -214.965)
@@ -72,7 +73,7 @@ shape = SubResource("RectangleShape2D_64rre")
 
 [node name="Survivor" parent="." instance=ExtResource("2_4ly84")]
 z_index = 1
-position = Vector2(1184, -124)
+position = Vector2(1195, -191)
 
 [node name="Zombie" parent="." instance=ExtResource("3_twq8y")]
 position = Vector2(123, -120)
