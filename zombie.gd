@@ -17,7 +17,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#grawitacja
 	if not is_on_floor():
-		velocity += get_gravity() * 10 * delta
+		velocity += get_gravity() * 50 * delta
 		velocity.x = 0.0
 		move_and_slide()
 		

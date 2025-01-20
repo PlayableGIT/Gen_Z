@@ -23,7 +23,7 @@ func _process(delta):
 	else:
 		pass
 	
-	if Input.is_action_pressed("ui_down") and $".".position <= Vector2(0, 270.0):
+	if Input.is_action_pressed("ui_down"):
 		global_position += Vector2.DOWN * delta * MOVE_SPEED
 	else:
 		pass
