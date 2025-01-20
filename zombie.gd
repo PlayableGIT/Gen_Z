@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 # Prędkość ruchu obiektu
-@export var speed = 350.0
+@export var speed = 150.0
 
 var direction = Vector2.ZERO
 var survivor_in_range = false
@@ -10,15 +10,20 @@ var survivor_attack_cooldown = true
 var health = 15
 var zombie_alive = true
 
+func _ready() -> void:
+	var total_dice_sides = 7
+	$Zombie03.frame = randi() % total_dice_sides
 
 func _physics_process(delta: float) -> void:
 	#grawitacja
+	print(velocity)
 	if not is_on_floor():
 		velocity += get_gravity() * 10 * delta
 		velocity.x = 0.0
 		
 	var player = get_parent().find_child("Survivor")
 	if player == null:
+		$Zombie03.animation = "idle"
 		pass
 	else:
 		move_and_slide()
