@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://e2tuks0xkssw"]
+
+[ext_resource type="Script" path="res://door.gd" id="1_rrbvt"]
+[ext_resource type="Texture2D" uid="uid://bs023x0541q8b" path="res://textures/door_01.png" id="2_wum7f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5eosj"]
+size = Vector2(40, 385)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s3tw"]
+size = Vector2(138, 385)
+
+[node name="Door" type="StaticBody2D"]
+script = ExtResource("1_rrbvt")
+
+[node name="Door01" type="Sprite2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(10.9688, 6.01562)
+texture = ExtResource("2_wum7f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_5eosj")
+debug_color = Color(0.854773, 0.000779911, 0.888543, 0.42)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_2s3tw")
+debug_color = Color(0.551525, 0.561655, 0.113792, 0.42)
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_timer_timeout"]
