@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biwb7oa63p6ou"
-path="res://.godot/imported/survivor_01.png-a197d0ee154ffb21b472421ec9a81d30.ctex"
+uid="uid://bgr5bx5rpubye"
+path="res://.godot/imported/wall_back_01.png-18ad207a749c22413d5cb97f101c2816.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://survivor_01.png"
-dest_files=["res://.godot/imported/survivor_01.png-a197d0ee154ffb21b472421ec9a81d30.ctex"]
+source_file="res://textures/wall_back_01.png"
+dest_files=["res://.godot/imported/wall_back_01.png-18ad207a749c22413d5cb97f101c2816.ctex"]
 
 [params]
 

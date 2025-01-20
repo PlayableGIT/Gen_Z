@@ -1,13 +1,16 @@
 extends CharacterBody2D
 
 
-# Prędkość ruchu obiektu
-@export var speed = 150.0
-
+# Zmienne ruchu obiektu
 var direction = Vector2.ZERO
+# Zmienne walki z survivorem
 var survivor_in_range = false
 var survivor_attack_cooldown = true
-var health = 15
+# Zmienne drzwi
+var door_in_range = false
+# Statystyki zombie
+@export var speed = 150.0
+@export var health = 15
 var zombie_alive = true
 
 func _ready() -> void:
@@ -47,7 +50,9 @@ func moveCharacter():
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
-	
+	if direction.normalized() <= Vector2(0, -0.2):
+		$Zombie03.set_flip_h(true)
+	#print(direction.normalized())
 
 func zombie():
 	pass

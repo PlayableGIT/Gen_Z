@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nlv0xu716042"
-path="res://.godot/imported/road5.png-2c2dfdbbf53944c0f56c658d083e05c9.ctex"
+uid="uid://c842urika2888"
+path="res://.godot/imported/zombie_03.png-6846f7f5f4e87b447959794cfb3ef3a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://road5.png"
-dest_files=["res://.godot/imported/road5.png-2c2dfdbbf53944c0f56c658d083e05c9.ctex"]
+source_file="res://textures/zombie_03.png"
+dest_files=["res://.godot/imported/zombie_03.png-6846f7f5f4e87b447959794cfb3ef3a2.ctex"]
 
 [params]
 

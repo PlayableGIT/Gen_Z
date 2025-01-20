@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c842urika2888"
-path="res://.godot/imported/zombie_03.png-837c3f9bafcdfeb1dc7a6d4b5e60cc3d.ctex"
+uid="uid://biwb7oa63p6ou"
+path="res://.godot/imported/survivor_01.png-0f3e72b2bd142b6476b2a45b14f40df0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://zombie_03.png"
-dest_files=["res://.godot/imported/zombie_03.png-837c3f9bafcdfeb1dc7a6d4b5e60cc3d.ctex"]
+source_file="res://textures/survivor_01.png"
+dest_files=["res://.godot/imported/survivor_01.png-0f3e72b2bd142b6476b2a45b14f40df0.ctex"]
 
 [params]
 

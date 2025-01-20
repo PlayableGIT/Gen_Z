@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://thddcickjmod"
-path="res://.godot/imported/survivor_02.png-77ea8693eaa3bd5f2b2690ca0efe1f8a.ctex"
+uid="uid://p0n2stdv8oky"
+path="res://.godot/imported/wall_01.png-609d5cb11d1a926fb0d2bcfc11e0dc67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://survivor_02.png"
-dest_files=["res://.godot/imported/survivor_02.png-77ea8693eaa3bd5f2b2690ca0efe1f8a.ctex"]
+source_file="res://textures/wall_01.png"
+dest_files=["res://.godot/imported/wall_01.png-609d5cb11d1a926fb0d2bcfc11e0dc67.ctex"]
 
 [params]
 
