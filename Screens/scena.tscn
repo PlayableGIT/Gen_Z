@@ -1,18 +1,18 @@
 [gd_scene load_steps=22 format=4 uid="uid://5yt73vng2pnx"]
 
-[ext_resource type="Script" path="res://Scripts/scena.gd" id="1_sian6"]
-[ext_resource type="PackedScene" uid="uid://bn8vnivdwoql7" path="res://survivor.tscn" id="2_4ly84"]
-[ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://zombie.tscn" id="3_twq8y"]
-[ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="4_bfj44"]
-[ext_resource type="Texture2D" uid="uid://nlv0xu716042" path="res://textures/road5.png" id="4_pf128"]
-[ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="5_bw3qv"]
-[ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="7_8r88r"]
-[ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_85qqj"]
-[ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="9_ej63k"]
-[ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://door.tscn" id="10_pvw2d"]
+[ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
+[ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://zombie.tscn" id="2_8hn1c"]
+[ext_resource type="PackedScene" uid="uid://bn8vnivdwoql7" path="res://survivor.tscn" id="3_c5g0i"]
+[ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="4_6t67p"]
+[ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="5_gk281"]
+[ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="6_e1ieo"]
+[ext_resource type="Texture2D" uid="uid://nlv0xu716042" path="res://textures/road5.png" id="7_ue6nq"]
+[ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="8_emttp"]
+[ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_yn6ji"]
+[ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://door.tscn" id="10_32u3u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tb2m"]
-texture = ExtResource("7_8r88r")
+texture = ExtResource("6_e1ieo")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -115,7 +115,7 @@ texture = ExtResource("7_8r88r")
 9:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27cgp"]
-texture = ExtResource("4_pf128")
+texture = ExtResource("7_ue6nq")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -218,7 +218,7 @@ texture = ExtResource("4_pf128")
 9:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gpa3p"]
-texture = ExtResource("9_ej63k")
+texture = ExtResource("8_emttp")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -321,7 +321,7 @@ texture = ExtResource("9_ej63k")
 9:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dfpv1"]
-texture = ExtResource("9_85qqj")
+texture = ExtResource("9_yn6ji")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -454,16 +454,16 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.341085, 0.0568295), 0.0, 0.0, 
 point_count = 4
 
 [node name="Main" type="Node2D"]
-position = Vector2(1, 0)
-script = ExtResource("1_sian6")
-zombie = ExtResource("3_twq8y")
-survivor = ExtResource("2_4ly84")
+position = Vector2(1, -1)
+script = ExtResource("1_j5aen")
+zombie = ExtResource("2_8hn1c")
+survivor = ExtResource("3_c5g0i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1000, -300)
 scale = Vector2(1.5, 1.5)
 zoom = Vector2(0.645, 0.645)
-script = ExtResource("4_bfj44")
+script = ExtResource("4_6t67p")
 MOVE_SPEED = 2000
 
 [node name="Ground" type="Node2D" parent="."]
@@ -473,7 +473,7 @@ scale = Vector2(1.5, 1.5)
 z_index = -2
 position = Vector2(1874, -419)
 scale = Vector2(1.92578, 1.92578)
-texture = ExtResource("5_bw3qv")
+texture = ExtResource("5_gk281")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Ground"]
 position = Vector2(2, 0.666667)
@@ -507,14 +507,14 @@ rotation = -1.83259
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D2"]
 shape = SubResource("SegmentShape2D_jmau4")
 
-[node name="Survivor" parent="." instance=ExtResource("2_4ly84")]
+[node name="Survivor" parent="." instance=ExtResource("3_c5g0i")]
 z_index = 1
 position = Vector2(3131, -497)
 
-[node name="Zombie" parent="." instance=ExtResource("3_twq8y")]
+[node name="Zombie" parent="." instance=ExtResource("2_8hn1c")]
 position = Vector2(187, -200)
 
-[node name="Door" parent="." instance=ExtResource("10_pvw2d")]
+[node name="Door" parent="." instance=ExtResource("10_32u3u")]
 position = Vector2(2304, -527)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Door"]
@@ -553,7 +553,7 @@ color = Color(0.294922, 0.140318, 0.0138245, 1)
 hue_variation_min = -0.09
 hue_variation_max = 0.03
 
-[node name="Door2" parent="." instance=ExtResource("10_pvw2d")]
+[node name="Door2" parent="." instance=ExtResource("10_32u3u")]
 position = Vector2(4017, -527)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Door2"]
