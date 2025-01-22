@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://5yt73vng2pnx"]
+[gd_scene load_steps=26 format=4 uid="uid://5yt73vng2pnx"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://zombie.tscn" id="2_8hn1c"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="8_emttp"]
 [ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_yn6ji"]
 [ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://door.tscn" id="10_32u3u"]
+[ext_resource type="PackedScene" uid="uid://ds6rqlj7kkbbm" path="res://survivor_gun.tscn" id="14_y5qxa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tb2m"]
 texture = ExtResource("6_e1ieo")
@@ -515,7 +516,7 @@ shape = SubResource("SegmentShape2D_jmau4")
 
 [node name="Survivor" parent="." instance=ExtResource("3_c5g0i")]
 z_index = 1
-position = Vector2(3131, -497)
+position = Vector2(2936, -508)
 
 [node name="Zombie" parent="." instance=ExtResource("2_8hn1c")]
 position = Vector2(187, -200)
@@ -597,5 +598,8 @@ scale_amount_curve = SubResource("Curve_0chw0")
 color = Color(0.294922, 0.140318, 0.0138245, 1)
 hue_variation_min = -0.09
 hue_variation_max = 0.03
+
+[node name="survivor_gun" parent="." instance=ExtResource("14_y5qxa")]
+position = Vector2(3469, -550)
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

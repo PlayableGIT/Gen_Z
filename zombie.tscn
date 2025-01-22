@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlnfoe38vgqp"]
+[gd_scene load_steps=13 format=3 uid="uid://dlnfoe38vgqp"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
 [ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
@@ -65,6 +65,8 @@ height = 211.333
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgub"]
 size = Vector2(207, 212)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_825q3"]
+
 [node name="Zombie" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nufbr")
@@ -91,6 +93,14 @@ debug_color = Color(0.996896, 0, 0.318943, 0.42)
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 1.5
 
+[node name="Gun_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun_Area"]
+scale = Vector2(29.135, 10.625)
+shape = SubResource("RectangleShape2D_825q3")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="Gun_Area" to="." method="_on_gun_area_body_entered"]
+[connection signal="body_exited" from="Gun_Area" to="." method="_on_gun_area_body_exited"]

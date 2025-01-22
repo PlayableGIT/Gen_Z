@@ -5,6 +5,7 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 # Zmienne walki z survivorem
 var survivor_in_range = false
+var survivor_in_gun_range = false
 var survivor_attack_cooldown = true
 # Zmienne drzwi
 var door_in_range = false
@@ -74,7 +75,26 @@ func survivor_attack():
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
+		
+	if survivor_in_gun_range and survivor_attack_cooldown:
+			#rng
+		var rng = RandomNumberGenerator.new()
+		var rng_damage = rng.randi_range(5, 15)	
+		survivor_attack_cooldown = false
+		$attack_cooldown.start()
+		health = health - rng_damage
+		print("Zombie took ", rng_damage, " damage! Health: ", health)
 
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
+
+
+func _on_gun_area_body_entered(body: Node2D) -> void:
+	if body.has_method("survivor_gun"):
+		survivor_in_gun_range = true
+
+
+func _on_gun_area_body_exited(body: Node2D) -> void:
+	if body.has_method("survivor_gun"):
+		survivor_in_gun_range = false
