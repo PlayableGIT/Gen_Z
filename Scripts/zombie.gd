@@ -16,7 +16,12 @@ var zombie_alive = true
 func _ready() -> void:
 	var total_dice_sides = 7
 	$Zombie03.frame = randi() % total_dice_sides
-
+	set_Health_bar()
+	$HealthBar.max_value = health
+	
+func set_Health_bar() -> void:
+	$HealthBar.value = health
+	
 func _physics_process(delta: float) -> void:
 	#grawitacja
 	if not is_on_floor():
@@ -74,7 +79,7 @@ func survivor_attack():
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
-
+	set_Health_bar()
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
