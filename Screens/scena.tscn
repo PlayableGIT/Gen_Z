@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://5yt73vng2pnx"]
+[gd_scene load_steps=24 format=4 uid="uid://5yt73vng2pnx"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://zombie.tscn" id="2_8hn1c"]
@@ -443,6 +443,11 @@ b = Vector2(-140.003, 112.946)
 a = Vector2(159.485, -136.715)
 b = Vector2(-151.412, 137.497)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gju6f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je3aq"]
+bg_color = Color(0.65098, 0, 0.0352941, 1)
+
 [sub_resource type="Curve" id="Curve_ufqy1"]
 min_value = -360.0
 max_value = 360.0
@@ -510,6 +515,17 @@ shape = SubResource("SegmentShape2D_jmau4")
 [node name="Survivor" parent="." instance=ExtResource("3_c5g0i")]
 z_index = 1
 position = Vector2(3131, -497)
+
+[node name="HealthBar" type="ProgressBar" parent="Survivor"]
+offset_left = -82.0
+offset_top = -150.0
+offset_right = 67.0
+offset_bottom = -123.0
+theme_override_styles/background = SubResource("StyleBoxFlat_gju6f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_je3aq")
+max_value = 25.0
+step = 1.0
+show_percentage = false
 
 [node name="Zombie" parent="." instance=ExtResource("2_8hn1c")]
 position = Vector2(187, -200)
