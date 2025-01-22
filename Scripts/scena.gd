@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var destroyed_door: PackedScene
+@export var dead_survivor: PackedScene
+@export var dead_zombie: PackedScene
 @export var zombie: PackedScene
 @export var survivor: PackedScene
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,3 +15,24 @@ func _process(_delta):
 		var new_survivor = survivor.instantiate()
 		add_child(new_survivor)
 		new_survivor.position = get_global_mouse_position()
+
+
+
+
+
+
+func _on_child_exiting_tree(node: Node) -> void:
+	if node.has_method("zombie"):
+		var death_zombie = dead_zombie.instantiate()
+		add_child.call_deferred(death_zombie)
+		death_zombie.position = node.position
+		
+	if node.has_method("survivor"):
+		var death_survivor = dead_survivor.instantiate()
+		add_child.call_deferred(death_survivor)
+		death_survivor.position = node.position
+		
+	if node.has_method("door"):
+		var destroy_door = destroyed_door.instantiate()
+		add_child.call_deferred(destroy_door)
+		destroy_door.position = node.position

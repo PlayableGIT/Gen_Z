@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://dlnfoe38vgqp"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
-[ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
-[ext_resource type="Texture2D" uid="uid://cqk37qyu6nmpi" path="res://zombie1_anim/zombie1_anim2.png" id="3_5mong"]
-[ext_resource type="Texture2D" uid="uid://c00ttn4dcf4q7" path="res://zombie1_anim/zombie1_anim3.png" id="4_dnhn5"]
-[ext_resource type="Texture2D" uid="uid://dtr0i7duttcpx" path="res://zombie1_anim/zombie1_anim4.png" id="5_m6qqn"]
-[ext_resource type="Texture2D" uid="uid://jyqhpmhwhsj7" path="res://zombie1_anim/zombie1_anim5.png" id="6_y01m2"]
-[ext_resource type="Texture2D" uid="uid://bry3usdvkvc4p" path="res://zombie1_anim/zombie1_anim6.png" id="7_ypa4v"]
-[ext_resource type="Texture2D" uid="uid://dj1rb0nphoskk" path="res://zombie1_anim/zombie1_anim7.png" id="8_qkqcm"]
+[ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
+[ext_resource type="Texture2D" uid="uid://cqk37qyu6nmpi" path="res://animations/zombie1_anim/zombie1_anim2.png" id="3_5mong"]
+[ext_resource type="Texture2D" uid="uid://c00ttn4dcf4q7" path="res://animations/zombie1_anim/zombie1_anim3.png" id="4_dnhn5"]
+[ext_resource type="Texture2D" uid="uid://dtr0i7duttcpx" path="res://animations/zombie1_anim/zombie1_anim4.png" id="5_m6qqn"]
+[ext_resource type="Texture2D" uid="uid://jyqhpmhwhsj7" path="res://animations/zombie1_anim/zombie1_anim5.png" id="6_y01m2"]
+[ext_resource type="Texture2D" uid="uid://bry3usdvkvc4p" path="res://animations/zombie1_anim/zombie1_anim6.png" id="7_ypa4v"]
+[ext_resource type="Texture2D" uid="uid://dj1rb0nphoskk" path="res://animations/zombie1_anim/zombie1_anim7.png" id="8_qkqcm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_il1rs"]
 animations = [{

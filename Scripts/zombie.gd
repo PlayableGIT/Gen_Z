@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+@export var dead_zombie: PackedScene
 # Zmienne ruchu obiektu
 var direction = Vector2.ZERO
 # Zmienne walki z survivorem
