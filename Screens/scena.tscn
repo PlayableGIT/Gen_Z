@@ -516,7 +516,7 @@ shape = SubResource("SegmentShape2D_jmau4")
 z_index = 1
 position = Vector2(3131, -497)
 
-[node name="HealthBar" type="ProgressBar" parent="Survivor"]
+[node name="HealthBar2" type="ProgressBar" parent="Survivor"]
 offset_left = -82.0
 offset_top = -150.0
 offset_right = 67.0

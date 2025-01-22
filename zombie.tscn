@@ -66,7 +66,6 @@ height = 211.333
 size = Vector2(207, 212)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elihh"]
-bg_color = Color(0.387562, 0.322976, 0.39425, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vf0fc"]
 bg_color = Color(0.651516, 0, 0.0362684, 1)
