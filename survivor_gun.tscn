@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds6rqlj7kkbbm"]
+[gd_scene load_steps=11 format=3 uid="uid://ds6rqlj7kkbbm"]
 
 [ext_resource type="Texture2D" uid="uid://dxp26fqql4dc3" path="res://animations/survivor_gun_anim/survivor2_anim1.png" id="1_aa6p6"]
 [ext_resource type="Script" path="res://survivor_gun.gd" id="1_cylxf"]
+[ext_resource type="PackedScene" uid="uid://dvtw1i0vkuc6x" path="res://bullet.tscn" id="2_gf5xa"]
 [ext_resource type="Texture2D" uid="uid://c4u04qgokm5yf" path="res://animations/survivor_gun_anim/survivor2_anim2.png" id="2_sjecj"]
 [ext_resource type="Texture2D" uid="uid://dcq21vts8bnuy" path="res://animations/survivor_gun_anim/survivor2_anim3.png" id="3_501rr"]
 [ext_resource type="Texture2D" uid="uid://k1biiu80vmev" path="res://animations/survivor_gun_anim/survivor2_anim4.png" id="4_42ack"]
@@ -18,9 +19,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_aa6p6")
-}, {
-"duration": 1.0,
 "texture": ExtResource("2_sjecj")
 }, {
 "duration": 1.0,
@@ -28,6 +26,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_42ack")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_aa6p6")
 }],
 "loop": true,
 "name": &"shoot",
@@ -44,12 +45,13 @@ height = 348.0
 
 [node name="survivor_gun" type="CharacterBody2D"]
 script = ExtResource("1_cylxf")
+Bullet = ExtResource("2_gf5xa")
 
 [node name="survivor_gun" type="AnimatedSprite2D" parent="."]
 position = Vector2(42.935, 0)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ovgc7")
-animation = &"idle"
+animation = &"shoot"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -71,6 +73,12 @@ scale = Vector2(45, 17.395)
 shape = SubResource("RectangleShape2D_wdjkc")
 debug_color = Color(0.7, 0.352734, 0, 0.42)
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(149.745, -5.995)
+gizmo_extents = 90.0
+
+[connection signal="animation_changed" from="survivor_gun" to="." method="_on_survivor_gun_animation_changed"]
+[connection signal="animation_looped" from="survivor_gun" to="." method="_on_survivor_gun_animation_looped"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

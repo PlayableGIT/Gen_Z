@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+
+@export var Bullet : PackedScene
 var zombie_in_range = false
 var zombie_attack_cooldown = true
 var health = 30
@@ -23,6 +25,10 @@ func _physics_process(delta: float) -> void:
 		print("Survivor has been killed!")
 		self.queue_free()
 	
+func shoot():
+	var b = Bullet.instantiate()
+	add_child(b)
+	b.transform = $Marker2D.transform
 
 func survivor_gun():
 	pass
@@ -54,7 +60,6 @@ func _on_attack_cooldown_timeout() -> void:
 func _on_gun_range_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = true
-		print("strzal")
 		$survivor_gun.animation = "shoot"
 
 
@@ -62,3 +67,18 @@ func _on_gun_range_body_exited(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = false
 		$survivor_gun.animation = "idle"
+
+
+
+func _on_survivor_gun_animation_looped() -> void:
+	if $survivor_gun.animation == "idle":
+		pass
+	else:
+		shoot()
+
+
+func _on_survivor_gun_animation_changed() -> void:
+	if $survivor_gun.animation == "idle":
+		pass
+	else:
+		shoot()
