@@ -48,7 +48,6 @@ func moveCharacter():
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
-	print(direction.normalized())
 	if direction.normalized() <= Vector2(0, 0):
 		$Zombie03.set_flip_h(true)
 	elif direction.normalized() >= Vector2(0, 0):
