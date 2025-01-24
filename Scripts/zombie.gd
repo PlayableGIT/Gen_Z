@@ -21,13 +21,15 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#grawitacja
 	var survivor = get_tree().get_nodes_in_group("survivor")
-	var survivor_search = survivor[0]
-	var survivor_position = survivor_search.position
-	var surv_vect = Vector2(survivor_search.position.x, survivor_search.position.y)
-	var surv_dist = position.distance_to(surv_vect)
-	print(surv_dist)
-	print(survivor.size())
-	print(survivor_search)
+	#var survivor_search = survivor[0]
+	#var survivor_position = survivor_search.position
+	#var surv_vect = Vector2(survivor_search.position.x, survivor_search.position.y)
+	#var surv_dist = position.distance_to(surv_vect)
+	
+	print(get_closest_player_or_null())
+	#print(surv_dist)
+	#print(survivor.size())
+	#print(survivor_search)
 	
 	if not is_on_floor():
 		velocity += get_gravity() * 50 * delta
@@ -49,16 +51,30 @@ func _physics_process(delta: float) -> void:
 		print("Zombie has been killed!")
 		self.queue_free()
 	
-	
-
-
 func moveCharacter():
 	#powolanie survivora
-	var survivor = get_tree().get_nodes_in_group("survivor")
-	var survivor_search = survivor[0]
+	#var survivor = get_tree().get_nodes_in_group("survivor")
+	#var survivor_search = survivor[0]
+	#var survivor_position = survivor_search.position
+	
+	#var surv_vect = Vector2(survivor_search.position.x, survivor_search.position.y)
+	#var surv_dist = position.distance_to(surv_vect)
+	#print(surv_dist)
+	#print(survivor.size())
+	#print(survivor_search)
+	
+	#for x in survivor.size():
+		#survivor_search = survivor[x]
+		#survivor_position = survivor_search.position
+		#var surv_vect = Vector2(survivor_search.position.x, survivor_search.position.y)
+		#var surv_dist = position.distance_to(surv_vect)
+		#var matrix = [surv_dist]
+		#print(surv_dist)
+	var closest = get_closest_player_or_null()
+	
 	#var player = get_parent().find_child("Survivor")
 	#kierunek
-	direction = global_position.direction_to(survivor_search.global_position)
+	direction = global_position.direction_to(closest.global_position)
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
@@ -97,6 +113,8 @@ func survivor_attack():
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
 
+func _closest_survivor() -> void:
+	pass
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
@@ -106,6 +124,18 @@ func _on_gun_area_body_entered(body: Node2D) -> void:
 	if body.has_method("survivor_gun"):
 		survivor_in_gun_range = true
 
+func get_closest_player_or_null():
+	var all_players = get_tree().get_nodes_in_group("survivor")
+	var closest_player = null
+	
+	if(all_players.size()>0):
+		closest_player = all_players[0]
+		for player in all_players:
+			var distance_to_this_player = global_position.distance_squared_to(player.global_position)
+			var distance_to_closest_player = global_position.distance_squared_to(closest_player.global_position)
+			if (distance_to_this_player < distance_to_closest_player):
+				closest_player = player
+	return closest_player
 
 func _on_gun_area_body_exited(body: Node2D) -> void:
 	if body.has_method("survivor_gun"):

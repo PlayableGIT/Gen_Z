@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://zombie.tscn" id="2_8hn1c"]
 [ext_resource type="PackedScene" uid="uid://begstf8t0rriu" path="res://dead_zombie.tscn" id="2_qgrfr"]
-[ext_resource type="PackedScene" path="res://door_destroyed.tscn" id="2_s5m4q"]
-[ext_resource type="PackedScene" path="res://dead_survivor.tscn" id="2_v3heq"]
+[ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://door_destroyed.tscn" id="2_s5m4q"]
+[ext_resource type="PackedScene" uid="uid://ctw0l4niaqlaf" path="res://dead_survivor.tscn" id="2_v3heq"]
 [ext_resource type="PackedScene" uid="uid://bn8vnivdwoql7" path="res://survivor.tscn" id="3_c5g0i"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="4_6t67p"]
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="5_gk281"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="8_emttp"]
 [ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_yn6ji"]
 [ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://door.tscn" id="10_32u3u"]
-[ext_resource type="PackedScene" path="res://survivor_gun.tscn" id="14_y5qxa"]
+[ext_resource type="PackedScene" uid="uid://ds6rqlj7kkbbm" path="res://survivor_gun.tscn" id="14_y5qxa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tb2m"]
 texture = ExtResource("6_e1ieo")
