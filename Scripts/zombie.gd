@@ -18,6 +18,9 @@ func _ready() -> void:
 	var total_dice_sides = 7
 	$Zombie03.frame = randi() % total_dice_sides
 
+func set_Health_bar() -> void:
+	$HealthBar.value = health
+
 func _physics_process(delta: float) -> void:
 	#grawitacja
 	var survivor = get_tree().get_nodes_in_group("survivor")
@@ -74,7 +77,8 @@ func survivor_attack():
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
-		
+	set_Health_bar()
+	
 	if survivor_in_gun_range and survivor_attack_cooldown:
 		#rng
 		var rng = RandomNumberGenerator.new()
@@ -83,6 +87,7 @@ func survivor_attack():
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
+	set_Health_bar()
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
