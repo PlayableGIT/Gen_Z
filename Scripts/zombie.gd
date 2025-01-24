@@ -20,13 +20,22 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	#grawitacja
+	var survivor = get_tree().get_nodes_in_group("survivor")
+	var survivor_search = survivor[0]
+	var survivor_position = survivor_search.position
+	var surv_vect = Vector2(survivor_search.position.x, survivor_search.position.y)
+	var surv_dist = position.distance_to(surv_vect)
+	print(surv_dist)
+	print(survivor.size())
+	print(survivor_search)
+	
 	if not is_on_floor():
 		velocity += get_gravity() * 50 * delta
 		velocity.x = 0.0
 		move_and_slide()
 		
-	var player = get_parent().find_child("Survivor")
-	if player == null:
+	#var player = get_parent().find_child("Survivor")
+	if survivor.size() == 0:
 		$Zombie03.animation = "idle"
 		pass
 	else:
@@ -45,9 +54,11 @@ func _physics_process(delta: float) -> void:
 
 func moveCharacter():
 	#powolanie survivora
-	var player = get_parent().find_child("Survivor")
+	var survivor = get_tree().get_nodes_in_group("survivor")
+	var survivor_search = survivor[0]
+	#var player = get_parent().find_child("Survivor")
 	#kierunek
-	direction = global_position.direction_to(player.global_position)
+	direction = global_position.direction_to(survivor_search.global_position)
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
@@ -57,7 +68,8 @@ func moveCharacter():
 
 func zombie():
 	pass
-	
+		
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = true

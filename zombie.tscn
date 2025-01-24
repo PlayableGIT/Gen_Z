@@ -67,9 +67,10 @@ size = Vector2(207, 212)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_825q3"]
 
-[node name="Zombie" type="CharacterBody2D"]
+[node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nufbr")
+speed = 200.0
 
 [node name="Zombie03" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.33333, -2)

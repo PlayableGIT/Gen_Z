@@ -9,11 +9,13 @@ var survivor_alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	add_to_group("survivor")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	
+	
 	if not is_on_floor():
 		velocity += get_gravity() * 10 * delta
 		velocity.x = 0.0
@@ -27,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	
 func shoot():
 	var b = Bullet.instantiate()
-	add_child(b)
+	call_deferred("add_child", b)
 	b.transform = $Marker2D.transform
 
 func survivor_gun():
@@ -75,7 +77,6 @@ func _on_survivor_gun_animation_looped() -> void:
 		pass
 	else:
 		shoot()
-
 
 func _on_survivor_gun_animation_changed() -> void:
 	if $survivor_gun.animation == "idle":

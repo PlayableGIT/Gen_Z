@@ -1,10 +1,10 @@
-[gd_scene load_steps=26 format=4 uid="uid://5yt73vng2pnx"]
+[gd_scene load_steps=26 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://zombie.tscn" id="2_8hn1c"]
 [ext_resource type="PackedScene" uid="uid://begstf8t0rriu" path="res://dead_zombie.tscn" id="2_qgrfr"]
-[ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://door_destroyed.tscn" id="2_s5m4q"]
-[ext_resource type="PackedScene" uid="uid://ctw0l4niaqlaf" path="res://dead_survivor.tscn" id="2_v3heq"]
+[ext_resource type="PackedScene" path="res://door_destroyed.tscn" id="2_s5m4q"]
+[ext_resource type="PackedScene" path="res://dead_survivor.tscn" id="2_v3heq"]
 [ext_resource type="PackedScene" uid="uid://bn8vnivdwoql7" path="res://survivor.tscn" id="3_c5g0i"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="4_6t67p"]
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="5_gk281"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="8_emttp"]
 [ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_yn6ji"]
 [ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://door.tscn" id="10_32u3u"]
-[ext_resource type="PackedScene" uid="uid://ds6rqlj7kkbbm" path="res://survivor_gun.tscn" id="14_y5qxa"]
+[ext_resource type="PackedScene" path="res://survivor_gun.tscn" id="14_y5qxa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tb2m"]
 texture = ExtResource("6_e1ieo")
@@ -458,7 +458,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.341085, 0.0568295), 0.0, 0.0, 
 point_count = 4
 
 [node name="Main" type="Node2D"]
-position = Vector2(1, -1)
+position = Vector2(0, -1)
 script = ExtResource("1_j5aen")
 destroyed_door = ExtResource("2_s5m4q")
 dead_survivor = ExtResource("2_v3heq")
@@ -514,7 +514,7 @@ rotation = -1.83259
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D2"]
 shape = SubResource("SegmentShape2D_jmau4")
 
-[node name="Survivor" parent="." instance=ExtResource("3_c5g0i")]
+[node name="Survivor" parent="." groups=["survivor"] instance=ExtResource("3_c5g0i")]
 z_index = 1
 position = Vector2(2936, -508)
 
@@ -599,7 +599,7 @@ color = Color(0.294922, 0.140318, 0.0138245, 1)
 hue_variation_min = -0.09
 hue_variation_max = 0.03
 
-[node name="survivor_gun" parent="." instance=ExtResource("14_y5qxa")]
-position = Vector2(3473, -528)
+[node name="survivor_gun" parent="." groups=["survivor"] instance=ExtResource("14_y5qxa")]
+position = Vector2(4611, -168)
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
