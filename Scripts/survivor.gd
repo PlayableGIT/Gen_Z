@@ -9,7 +9,6 @@ var survivor_alive = true
 func _ready() -> void:
 	add_to_group("survivor")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

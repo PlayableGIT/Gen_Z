@@ -67,7 +67,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		
 func survivor_attack():
 	if survivor_in_range and survivor_attack_cooldown:
-			#rng
+		#rng
 		var rng = RandomNumberGenerator.new()
 		var rng_damage = rng.randi_range(1, 10)	
 		survivor_attack_cooldown = false
@@ -76,16 +76,13 @@ func survivor_attack():
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
 		
 	if survivor_in_gun_range and survivor_attack_cooldown:
-			#rng
+		#rng
 		var rng = RandomNumberGenerator.new()
 		var rng_damage = rng.randi_range(5, 15)	
 		survivor_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
-
-func _closest_survivor() -> void:
-	pass
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
