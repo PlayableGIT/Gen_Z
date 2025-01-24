@@ -21,22 +21,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#grawitacja
 	var survivor = get_tree().get_nodes_in_group("survivor")
-	#var survivor_search = survivor[0]
-	#var survivor_position = survivor_search.position
-	#var surv_vect = Vector2(survivor_search.position.x, survivor_search.position.y)
-	#var surv_dist = position.distance_to(surv_vect)
-	
-	print(get_closest_player_or_null())
-	#print(surv_dist)
-	#print(survivor.size())
-	#print(survivor_search)
 	
 	if not is_on_floor():
 		velocity += get_gravity() * 50 * delta
 		velocity.x = 0.0
 		move_and_slide()
 		
-	#var player = get_parent().find_child("Survivor")
 	if survivor.size() == 0:
 		$Zombie03.animation = "idle"
 		pass
@@ -52,35 +42,17 @@ func _physics_process(delta: float) -> void:
 		self.queue_free()
 	
 func moveCharacter():
-	#powolanie survivora
-	#var survivor = get_tree().get_nodes_in_group("survivor")
-	#var survivor_search = survivor[0]
-	#var survivor_position = survivor_search.position
-	
-	#var surv_vect = Vector2(survivor_search.position.x, survivor_search.position.y)
-	#var surv_dist = position.distance_to(surv_vect)
-	#print(surv_dist)
-	#print(survivor.size())
-	#print(survivor_search)
-	
-	#for x in survivor.size():
-		#survivor_search = survivor[x]
-		#survivor_position = survivor_search.position
-		#var surv_vect = Vector2(survivor_search.position.x, survivor_search.position.y)
-		#var surv_dist = position.distance_to(surv_vect)
-		#var matrix = [surv_dist]
-		#print(surv_dist)
 	var closest = get_closest_player_or_null()
-	
-	#var player = get_parent().find_child("Survivor")
 	#kierunek
 	direction = global_position.direction_to(closest.global_position)
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
-	if direction.normalized() <= Vector2(0, -0.2):
+	print(direction.normalized())
+	if direction.normalized() <= Vector2(0, 0):
 		$Zombie03.set_flip_h(true)
-	#print(direction.normalized())
+	elif direction.normalized() >= Vector2(0, 0):
+		$Zombie03.set_flip_h(false)
 
 func zombie():
 	pass
