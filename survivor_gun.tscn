@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://ds6rqlj7kkbbm"]
+
+[ext_resource type="Texture2D" uid="uid://dxp26fqql4dc3" path="res://animations/survivor_gun_anim/survivor2_anim1.png" id="1_aa6p6"]
+[ext_resource type="Script" path="res://survivor_gun.gd" id="1_cylxf"]
+[ext_resource type="PackedScene" uid="uid://dvtw1i0vkuc6x" path="res://bullet.tscn" id="2_gf5xa"]
+[ext_resource type="Texture2D" uid="uid://c4u04qgokm5yf" path="res://animations/survivor_gun_anim/survivor2_anim2.png" id="2_sjecj"]
+[ext_resource type="Texture2D" uid="uid://dcq21vts8bnuy" path="res://animations/survivor_gun_anim/survivor2_anim3.png" id="3_501rr"]
+[ext_resource type="Texture2D" uid="uid://k1biiu80vmev" path="res://animations/survivor_gun_anim/survivor2_anim4.png" id="4_42ack"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ovgc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aa6p6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sjecj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_501rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_42ack")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_aa6p6")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5avge"]
+radius = 42.0
+height = 348.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gmeh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdjkc"]
+
+[node name="survivor_gun" type="CharacterBody2D"]
+script = ExtResource("1_cylxf")
+Bullet = ExtResource("2_gf5xa")
+
+[node name="survivor_gun" type="AnimatedSprite2D" parent="."]
+position = Vector2(42.935, 0)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_ovgc7")
+animation = &"shoot"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5avge")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(15, 17.295)
+shape = SubResource("RectangleShape2D_2gmeh")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="gun_range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gun_range"]
+scale = Vector2(45, 17.395)
+shape = SubResource("RectangleShape2D_wdjkc")
+debug_color = Color(0.7, 0.352734, 0, 0.42)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(149.745, -5.995)
+gizmo_extents = 90.0
+
+[connection signal="animation_changed" from="survivor_gun" to="." method="_on_survivor_gun_animation_changed"]
+[connection signal="animation_looped" from="survivor_gun" to="." method="_on_survivor_gun_animation_looped"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="gun_range" to="." method="_on_gun_range_body_entered"]
+[connection signal="body_exited" from="gun_range" to="." method="_on_gun_range_body_exited"]

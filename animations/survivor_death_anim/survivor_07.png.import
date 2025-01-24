@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj1rb0nphoskk"
-path="res://.godot/imported/zombie1_anim7.png-d62bfdef77b6bf0b3829dce4e86d6816.ctex"
+uid="uid://ddew04dpooqt"
+path="res://.godot/imported/survivor_07.png-899d7ad1ca11b9d5245e1c6f3be3783f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://zombie1_anim/zombie1_anim7.png"
-dest_files=["res://.godot/imported/zombie1_anim7.png-d62bfdef77b6bf0b3829dce4e86d6816.ctex"]
+source_file="res://animations/survivor_death_anim/survivor_07.png"
+dest_files=["res://.godot/imported/survivor_07.png-899d7ad1ca11b9d5245e1c6f3be3783f.ctex"]
 
 [params]
 

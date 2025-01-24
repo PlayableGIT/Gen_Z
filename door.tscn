@@ -29,9 +29,9 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2s3tw")
 debug_color = Color(0.551525, 0.561655, 0.113792, 0.42)
 
-[node name="attack_cooldown" type="Timer" parent="."]
+[node name="door_attack_cooldown" type="Timer" parent="."]
 wait_time = 1.5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="attack_cooldown" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="door_attack_cooldown" to="." method="_on_timer_timeout"]
