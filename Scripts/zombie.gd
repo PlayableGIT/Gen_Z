@@ -74,6 +74,14 @@ func survivor_attack():
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
+	if survivor_in_gun_range and survivor_attack_cooldown:
+		#rng
+		var rng = RandomNumberGenerator.new()
+		var rng_damage = rng.randi_range(1, 10)	
+		survivor_attack_cooldown = false
+		$attack_cooldown.start()
+		health = health - rng_damage
+		print("Zombie took ", rng_damage, " damage! Health: ", health)
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
