@@ -29,7 +29,7 @@ func zombie_attack():
 		var rng = RandomNumberGenerator.new()
 		var rng_damage = rng.randi_range(1, 10)	
 		zombie_attack_cooldown = false
-		$attack_cooldown.start()
+		$door_attack_cooldown.start()
 		health = health - rng_damage
 		$CPUParticles2D.visible = true
 		print("Door took ", rng_damage, " damage! Health: ", health)

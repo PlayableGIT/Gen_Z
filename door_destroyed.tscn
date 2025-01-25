@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://udplfsjxf5tr"]
+
+[ext_resource type="Texture2D" uid="uid://bgdtyusmc0juo" path="res://animations/door_destroy_anim/door_01.png" id="1_s5hr6"]
+[ext_resource type="Texture2D" uid="uid://heec4085cj8u" path="res://animations/door_destroy_anim/door_02.png" id="2_h3ocl"]
+[ext_resource type="Texture2D" uid="uid://c0dynl5oja6pf" path="res://animations/door_destroy_anim/door_03.png" id="3_bfw2q"]
+[ext_resource type="Texture2D" uid="uid://dpqy0n0tlq3b0" path="res://animations/door_destroy_anim/door_04.png" id="4_yt8qd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0vgg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s5hr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h3ocl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bfw2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yt8qd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="door_destroyed" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(10.969, 6.016)
+sprite_frames = SubResource("SpriteFrames_d0vgg")
+autoplay = "default"
+frame_progress = 0.476681
