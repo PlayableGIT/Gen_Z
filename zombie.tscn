@@ -1,16 +1,41 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlnfoe38vgqp"]
+[gd_scene load_steps=18 format=3 uid="uid://dlnfoe38vgqp"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
 [ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
 [ext_resource type="Texture2D" uid="uid://cqk37qyu6nmpi" path="res://animations/zombie1_anim/zombie1_anim2.png" id="3_5mong"]
 [ext_resource type="Texture2D" uid="uid://c00ttn4dcf4q7" path="res://animations/zombie1_anim/zombie1_anim3.png" id="4_dnhn5"]
 [ext_resource type="Texture2D" uid="uid://dtr0i7duttcpx" path="res://animations/zombie1_anim/zombie1_anim4.png" id="5_m6qqn"]
+[ext_resource type="Texture2D" uid="uid://cn4q366721di" path="res://animations/zombie1_attack/zombie_attack4.png" id="5_tgf1r"]
+[ext_resource type="Texture2D" uid="uid://p5u6t0t3l6hj" path="res://animations/zombie1_attack/zombie_attack5.png" id="6_gn0ud"]
 [ext_resource type="Texture2D" uid="uid://jyqhpmhwhsj7" path="res://animations/zombie1_anim/zombie1_anim5.png" id="6_y01m2"]
+[ext_resource type="Texture2D" uid="uid://b4ti8wiuowku7" path="res://animations/zombie1_attack/zombie_attack6.png" id="7_c5mho"]
 [ext_resource type="Texture2D" uid="uid://bry3usdvkvc4p" path="res://animations/zombie1_anim/zombie1_anim6.png" id="7_ypa4v"]
+[ext_resource type="Texture2D" uid="uid://cy446at4m57xd" path="res://animations/zombie1_attack/zombie_attack7.png" id="8_8nddg"]
 [ext_resource type="Texture2D" uid="uid://dj1rb0nphoskk" path="res://animations/zombie1_anim/zombie1_anim7.png" id="8_qkqcm"]
+[ext_resource type="Texture2D" uid="uid://cloeilsxd0225" path="res://animations/zombie1_attack/zombie_attack8.png" id="9_5awjk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_il1rs"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tgf1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gn0ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c5mho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8nddg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5awjk")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_5mong")
@@ -75,10 +100,8 @@ speed = 200.0
 [node name="Zombie03" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.33333, -2)
 sprite_frames = SubResource("SpriteFrames_il1rs")
-animation = &"walk"
+animation = &"attack"
 autoplay = "walk"
-frame = 4
-frame_progress = 0.240179
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -1)

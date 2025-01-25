@@ -72,6 +72,7 @@ func survivor_attack():
 		#var rng_damage = rng.randi_range(1, 10)
 		var rng_damage = StatsAutoload.survivor_damage
 		survivor_attack_cooldown = false
+		$Zombie03.animation = "attack"
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
@@ -82,6 +83,8 @@ func survivor_attack():
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
+	if survivor_in_range == false:
+		$Zombie03.animation = "walk"
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
