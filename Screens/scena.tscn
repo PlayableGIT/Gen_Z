@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://cg63ncynab7lq"]
+[gd_scene load_steps=27 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://zombie.tscn" id="2_8hn1c"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_yn6ji"]
 [ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://door.tscn" id="10_32u3u"]
 [ext_resource type="PackedScene" uid="uid://ds6rqlj7kkbbm" path="res://survivor_gun.tscn" id="14_y5qxa"]
+[ext_resource type="Script" path="res://Scripts/stats_autoload.gd" id="15_mpmtg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tb2m"]
 texture = ExtResource("6_e1ieo")
@@ -601,5 +602,8 @@ hue_variation_max = 0.03
 
 [node name="survivor_gun" parent="." groups=["survivor"] instance=ExtResource("14_y5qxa")]
 position = Vector2(4611, -168)
+
+[node name="STATS_AUTOLOAD" type="Node" parent="."]
+script = ExtResource("15_mpmtg")
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
