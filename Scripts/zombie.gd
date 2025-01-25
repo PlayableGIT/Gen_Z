@@ -80,6 +80,7 @@ func survivor_attack():
 		#rng
 		var rng_damage = StatsAutoload.survivor_gun_damage
 		survivor_attack_cooldown = false
+		$Zombie03.animation = "attack"
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
@@ -110,3 +111,10 @@ func get_closest_player_or_null():
 func _on_gun_area_body_exited(body: Node2D) -> void:
 	if body.has_method("survivor_gun"):
 		survivor_in_gun_range = false
+
+
+
+func _on_bullet_zone_area_entered(area: Area2D) -> void:
+	if area.has_method("bullet"):
+		health -= StatsAutoload.survivor_gun_damage
+		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)

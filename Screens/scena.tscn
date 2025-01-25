@@ -435,7 +435,7 @@ sources/3 = SubResource("TileSetAtlasSource_gpa3p")
 sources/4 = SubResource("TileSetAtlasSource_dfpv1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64rre"]
-size = Vector2(3834, 154)
+size = Vector2(5330.67, 154)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dc61"]
 size = Vector2(1185.34, 229.333)
@@ -468,7 +468,7 @@ zombie = ExtResource("2_8hn1c")
 survivor = ExtResource("3_c5g0i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1000, -300)
+position = Vector2(898, -289)
 scale = Vector2(1.5, 1.5)
 zoom = Vector2(0.645, 0.645)
 script = ExtResource("4_6t67p")
@@ -492,7 +492,7 @@ tile_set = SubResource("TileSet_mhnbb")
 position = Vector2(667, 80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Ground"]
-position = Vector2(1252, 0)
+position = Vector2(2000.33, 0)
 shape = SubResource("RectangleShape2D_64rre")
 
 [node name="Platform" type="StaticBody2D" parent="Ground"]
@@ -601,7 +601,7 @@ hue_variation_min = -0.09
 hue_variation_max = 0.03
 
 [node name="survivor_gun" parent="." groups=["survivor"] instance=ExtResource("14_y5qxa")]
-position = Vector2(4611, -168)
+position = Vector2(4650, -179)
 
 [node name="STATS_AUTOLOAD" type="Node" parent="."]
 script = ExtResource("15_mpmtg")

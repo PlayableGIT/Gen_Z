@@ -90,7 +90,8 @@ height = 211.333
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgub"]
 size = Vector2(207, 212)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_825q3"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xa0h1"]
+size = Vector2(57.3333, 210.667)
 
 [node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
 scale = Vector2(1.5, 1.5)
@@ -117,14 +118,14 @@ debug_color = Color(0.996896, 0, 0.318943, 0.42)
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 1.5
 
-[node name="Gun_Area" type="Area2D" parent="."]
+[node name="BulletZone" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun_Area"]
-scale = Vector2(29.135, 10.625)
-shape = SubResource("RectangleShape2D_825q3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletZone"]
+position = Vector2(-0.666668, -0.666667)
+scale = Vector2(2.4, 1)
+shape = SubResource("RectangleShape2D_xa0h1")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
-[connection signal="body_entered" from="Gun_Area" to="." method="_on_gun_area_body_entered"]
-[connection signal="body_exited" from="Gun_Area" to="." method="_on_gun_area_body_exited"]
+[connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]

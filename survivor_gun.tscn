@@ -67,6 +67,7 @@ shape = SubResource("RectangleShape2D_2gmeh")
 wait_time = 1.5
 
 [node name="gun_range" type="Area2D" parent="."]
+scale = Vector2(2.38, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gun_range"]
 scale = Vector2(45, 17.395)
