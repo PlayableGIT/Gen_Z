@@ -79,8 +79,7 @@ func survivor_attack():
 		
 	if survivor_in_gun_range and survivor_attack_cooldown:
 		#rng
-		var rng = RandomNumberGenerator.new()
-		var rng_damage = rng.randi_range(5, 15)	
+		var rng_damage = StatsAutoload.survivor_gun_damage
 		survivor_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
