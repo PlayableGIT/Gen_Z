@@ -18,7 +18,6 @@ func _ready() -> void:
 	var total_dice_sides = 7
 	$Zombie03.frame = randi() % total_dice_sides
 	
-
 func _physics_process(delta: float) -> void:
 	#grawitacja
 	var survivor = get_tree().get_nodes_in_group("survivor")
@@ -76,7 +75,6 @@ func survivor_attack():
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
-		
 	if survivor_in_gun_range and survivor_attack_cooldown:
 		#rng
 		var rng_damage = StatsAutoload.survivor_gun_damage
