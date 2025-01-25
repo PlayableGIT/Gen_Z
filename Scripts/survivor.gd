@@ -7,8 +7,7 @@ var survivor_alive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_to_group("survivor")
-
+    pass # Replace with function body
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -36,7 +35,6 @@ func zombie_attack():
 		health = health - rng_damage
 		$Survivor01.animation = "hurt"
 		print("Survivor took ", rng_damage, " damage! Health: ", health)
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = true
