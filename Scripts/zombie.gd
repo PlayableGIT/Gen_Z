@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@export var dead_zombie: PackedScene
 # Zmienne ruchu obiektu
 var direction = Vector2.ZERO
 # Zmienne walki z survivorem
@@ -13,6 +12,7 @@ var door_in_range = false
 @export var speed = 150.0
 @export var health = 15
 var zombie_alive = true
+var zombie_damage: int = 5
 
 func _ready() -> void:
 	var total_dice_sides = 7
@@ -68,16 +68,16 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func survivor_attack():
 	if survivor_in_range and survivor_attack_cooldown:
 		#rng
-		var rng = RandomNumberGenerator.new()
-		var rng_damage = rng.randi_range(1, 10)	
+		#var rng = RandomNumberGenerator.new()
+		#var rng_damage = rng.randi_range(1, 10)
+		var rng_damage = StatsAutoload.survivor_damage
 		survivor_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
 		print("Zombie took ", rng_damage, " damage! Health: ", health)
 	if survivor_in_gun_range and survivor_attack_cooldown:
 		#rng
-		var rng = RandomNumberGenerator.new()
-		var rng_damage = rng.randi_range(1, 10)	
+		var rng_damage = StatsAutoload.survivor_gun_damage
 		survivor_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage

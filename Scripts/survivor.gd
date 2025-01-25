@@ -28,13 +28,12 @@ func survivor():
 func zombie_attack():
 	if zombie_in_range and zombie_attack_cooldown:
 			#rng
-		var rng = RandomNumberGenerator.new()
-		var rng_damage = rng.randi_range(1, 10)	
+		var rng_damage = StatsAutoload.zombie_damage
 		zombie_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
 		$Survivor01.animation = "hurt"
-		print("Survivor took ", rng_damage, " damage! Health: ", health)
+		print("Survivor took ", StatsAutoload.zombie_damage, " damage! Health: ", health)
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = true

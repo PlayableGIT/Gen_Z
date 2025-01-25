@@ -38,8 +38,7 @@ func survivor_gun():
 func zombie_attack():
 	if zombie_in_range and zombie_attack_cooldown:
 			#rng
-		var rng = RandomNumberGenerator.new()
-		var rng_damage = rng.randi_range(1, 10)	
+		var rng_damage = StatsAutoload.zombie_damage
 		zombie_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
@@ -61,13 +60,13 @@ func _on_attack_cooldown_timeout() -> void:
 
 func _on_gun_range_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
-		zombie_in_range = true
+		#zombie_in_range = true
 		$survivor_gun.animation = "shoot"
 
 
 func _on_gun_range_body_exited(body: Node2D) -> void:
 	if body.has_method("zombie"):
-		zombie_in_range = false
+		#zombie_in_range = false
 		$survivor_gun.animation = "idle"
 
 

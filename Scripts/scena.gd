@@ -1,5 +1,7 @@
 extends Node2D
 
+var zombieDamageAmount: int
+
 @export var destroyed_door: PackedScene
 @export var dead_survivor: PackedScene
 @export var dead_zombie: PackedScene
