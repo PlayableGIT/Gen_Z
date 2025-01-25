@@ -27,3 +27,4 @@ func _process(delta):
 		global_position += Vector2.DOWN * delta * MOVE_SPEED
 	else:
 		pass
+	print($".".position)
