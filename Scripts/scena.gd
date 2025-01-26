@@ -5,6 +5,7 @@ var zombieDamageAmount: int
 @export var destroyed_door: PackedScene
 @export var dead_survivor: PackedScene
 @export var dead_zombie: PackedScene
+@export var dead_gun_survivor: PackedScene
 @export var zombie: PackedScene
 @export var survivor: PackedScene
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,3 +39,8 @@ func _on_child_exiting_tree(node: Node) -> void:
 		var destroy_door = destroyed_door.instantiate()
 		add_child.call_deferred(destroy_door)
 		destroy_door.position = node.position
+	
+	if node.has_method("survivor_gun"):
+		var destroy_survivor_gun = dead_gun_survivor.instantiate()
+		add_child.call_deferred(destroy_survivor_gun)
+		destroy_survivor_gun.position = node.position

@@ -1,0 +1,47 @@
+[gd_scene load_steps=10 format=3 uid="uid://b08q3j65fuwlo"]
+
+[ext_resource type="Texture2D" uid="uid://dsmcg7ase816b" path="res://animations/survivor_gun_death_anim/survivor2_death_anim1.png" id="1_gso4g"]
+[ext_resource type="Texture2D" uid="uid://cv082mbjoepct" path="res://animations/survivor_gun_death_anim/survivor2_death_anim2.png" id="2_p1ldi"]
+[ext_resource type="Texture2D" uid="uid://ds04st6xo03mk" path="res://animations/survivor_gun_death_anim/survivor2_death_anim3.png" id="3_oxsmm"]
+[ext_resource type="Texture2D" uid="uid://14ebfi5l1mx0" path="res://animations/survivor_gun_death_anim/survivor2_death_anim4.png" id="4_nxsj4"]
+[ext_resource type="Texture2D" uid="uid://ddbrn64c453tb" path="res://animations/survivor_gun_death_anim/survivor2_death_anim5.png" id="5_2ta5g"]
+[ext_resource type="Texture2D" uid="uid://dllh8dc543ncn" path="res://animations/survivor_gun_death_anim/survivor2_death_anim6.png" id="6_2bvsk"]
+[ext_resource type="Texture2D" uid="uid://c6lswgmml275t" path="res://animations/survivor_gun_death_anim/survivor2_death_anim7.png" id="7_pajbl"]
+[ext_resource type="Texture2D" uid="uid://cth5brnj3gsn" path="res://animations/survivor_gun_death_anim/survivor2_death_anim8.png" id="8_bub6j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yhdwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gso4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p1ldi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oxsmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nxsj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2ta5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2bvsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pajbl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_bub6j")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="dead_gun_survivor" type="AnimatedSprite2D"]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_yhdwr")
+autoplay = "default"

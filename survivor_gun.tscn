@@ -53,7 +53,7 @@ Bullet_left = ExtResource("3_njmxk")
 position = Vector2(42.935, 0)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_ovgc7")
-animation = &"shoot"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

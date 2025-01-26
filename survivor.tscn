@@ -42,8 +42,6 @@ scale = Vector2(2.5625, 2.5625)
 sprite_frames = SubResource("SpriteFrames_knfcb")
 animation = &"hurt"
 autoplay = "default"
-frame = 1
-frame_progress = 0.802323
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5.5, -0.9375)

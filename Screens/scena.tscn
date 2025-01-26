@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cg63ncynab7lq"]
+[gd_scene load_steps=28 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://zombie.tscn" id="2_8hn1c"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ctw0l4niaqlaf" path="res://dead_survivor.tscn" id="2_v3heq"]
 [ext_resource type="PackedScene" uid="uid://bn8vnivdwoql7" path="res://survivor.tscn" id="3_c5g0i"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="4_6t67p"]
+[ext_resource type="PackedScene" uid="uid://b08q3j65fuwlo" path="res://dead_gun_survivor.tscn" id="5_c0dvl"]
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="5_gk281"]
 [ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="6_e1ieo"]
 [ext_resource type="Texture2D" uid="uid://nlv0xu716042" path="res://textures/road5.png" id="7_ue6nq"]
@@ -463,6 +464,7 @@ script = ExtResource("1_j5aen")
 destroyed_door = ExtResource("2_s5m4q")
 dead_survivor = ExtResource("2_v3heq")
 dead_zombie = ExtResource("2_qgrfr")
+dead_gun_survivor = ExtResource("5_c0dvl")
 zombie = ExtResource("2_8hn1c")
 survivor = ExtResource("3_c5g0i")
 
