@@ -15,6 +15,7 @@ var zombie_alive = true
 var zombie_damage: int = 5
 
 func _ready() -> void:
+	add_to_group("zombie")
 	var total_dice_sides = 7
 	$Zombie03.frame = randi() % total_dice_sides
 	

@@ -459,7 +459,6 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.341085, 0.0568295), 0.0, 0.0, 
 point_count = 4
 
 [node name="Main" type="Node2D"]
-position = Vector2(0, -1)
 script = ExtResource("1_j5aen")
 destroyed_door = ExtResource("2_s5m4q")
 dead_survivor = ExtResource("2_v3heq")
@@ -519,13 +518,11 @@ shape = SubResource("SegmentShape2D_jmau4")
 z_index = 1
 position = Vector2(2936, -508)
 
-[node name="Zombie" parent="." instance=ExtResource("2_8hn1c")]
-position = Vector2(187, -200)
-
 [node name="Door" parent="." instance=ExtResource("10_32u3u")]
 position = Vector2(2304, -527)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Door"]
+visible = false
 position = Vector2(-46, -160)
 amount = 10
 lifetime = 0.35
@@ -565,6 +562,7 @@ hue_variation_max = 0.03
 position = Vector2(4017, -527)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Door2"]
+visible = false
 position = Vector2(-45, -163)
 amount = 10
 lifetime = 0.35
@@ -601,7 +599,7 @@ hue_variation_min = -0.09
 hue_variation_max = 0.03
 
 [node name="survivor_gun" parent="." groups=["survivor"] instance=ExtResource("14_y5qxa")]
-position = Vector2(4650, -179)
+position = Vector2(5211, -174)
 
 [node name="STATS_AUTOLOAD" type="Node" parent="."]
 script = ExtResource("15_mpmtg")
