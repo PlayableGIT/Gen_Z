@@ -599,7 +599,7 @@ hue_variation_min = -0.09
 hue_variation_max = 0.03
 
 [node name="survivor_gun" parent="." groups=["survivor"] instance=ExtResource("14_y5qxa")]
-position = Vector2(5051, -185)
+position = Vector2(3313, -527)
 
 [node name="STATS_AUTOLOAD" type="Node" parent="."]
 script = ExtResource("15_mpmtg")
