@@ -16,10 +16,25 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	
+	var close_zomb = get_closest_player_or_null()
+	get_closest_player_or_null()
 	if bodies_inside.size()==0:
 		$survivor_gun.animation = "idle"
 	
+	if bodies_inside_melee.size() == 0 and bodies_inside.size() > 0:
+		var kierunek = close_zomb.position - $".".position
+		if kierunek >= Vector2(0,0):
+			print("prawo")
+			$survivor_gun.set_flip_h(false)
+			$Marker2D.position = Vector2(150,0)
+			$survivor_gun.animation = "shoot"
+		elif kierunek <=Vector2(0,0):
+			$survivor_gun.set_flip_h(true)
+			$Marker2D.position = Vector2(-150,0)
+			$survivor_gun.animation = "shoot"
+	else:
+		pass
+		
 	get_closest_player_or_null()
 	
 	if not is_on_floor():
@@ -70,15 +85,15 @@ func get_closest_player_or_null():
 	return closest_player
 
 var bodies_inside: = []
+var bodies_inside_melee: = []
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = true
-		bodies_inside.append(body)
-	if body.has_method("zombie") and bodies_inside.size() >= 0:
+		bodies_inside_melee.append(body)
+	if body.has_method("zombie") and bodies_inside_melee.size() >= 0:
 		#zombie_in_range = true
 		var kierunek = body.position - $".".position
-		bodies_inside.append(body)
 		if kierunek >= Vector2(0,0):
 			print("prawo")
 			$survivor_gun.set_flip_h(false)
@@ -90,18 +105,18 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			$survivor_gun.animation = "shoot"
 	else:
 		pass
-	if body.has_method("zombie") and bodies_inside.size() == 0:
+	if body.has_method("zombie") and bodies_inside_melee.size() == 0:
 		$survivor_gun.animation = "idle"
-	print(bodies_inside.size())
+	print("Melee: ", bodies_inside_melee.size())
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = false
-		bodies_inside.erase(body)
-	if body.has_method("zombie") and bodies_inside.size() <= 0:
+		bodies_inside_melee.erase(body)
+	if body.has_method("zombie") and bodies_inside_melee.size() <= 0:
 		$survivor_gun.animation = "idle"
-	print(bodies_inside.size())
+	print("Melee: ", bodies_inside_melee.size())
 
 
 func _on_attack_cooldown_timeout() -> void:
