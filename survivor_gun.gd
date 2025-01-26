@@ -4,6 +4,7 @@ var direction = Vector2.ZERO
 @export var Bullet : PackedScene
 @export var Bullet_left: PackedScene
 var zombie_in_range = false
+var zombie_in_gun_range = false
 var zombie_attack_cooldown = true
 var health = 30
 var survivor_alive = true
@@ -15,6 +16,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	
+	if bodies_inside.size()==0:
+		$survivor_gun.animation = "idle"
 	
 	get_closest_player_or_null()
 	
@@ -65,23 +69,12 @@ func get_closest_player_or_null():
 				#print(closest_player)
 	return closest_player
 
+var bodies_inside: = []
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = true
-
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.has_method("zombie"):
-		zombie_in_range = false
-
-
-func _on_attack_cooldown_timeout() -> void:
-	zombie_attack_cooldown = true
-
-
-var bodies_inside: = []
-
-func _on_gun_range_body_entered(body: Node2D) -> void:
+		bodies_inside.append(body)
 	if body.has_method("zombie") and bodies_inside.size() >= 0:
 		#zombie_in_range = true
 		var kierunek = body.position - $".".position
@@ -90,25 +83,64 @@ func _on_gun_range_body_entered(body: Node2D) -> void:
 			print("prawo")
 			$survivor_gun.set_flip_h(false)
 			$Marker2D.position = Vector2(150,0)
+			$survivor_gun.animation = "shoot"
 		elif kierunek <=Vector2(0,0):
 			$survivor_gun.set_flip_h(true)
 			$Marker2D.position = Vector2(-150,0)
-		$survivor_gun.animation = "shoot"
+			$survivor_gun.animation = "shoot"
+	else:
+		pass
+	if body.has_method("zombie") and bodies_inside.size() == 0:
+		$survivor_gun.animation = "idle"
+	print(bodies_inside.size())
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.has_method("zombie"):
+		zombie_in_range = false
+		bodies_inside.erase(body)
+	if body.has_method("zombie") and bodies_inside.size() <= 0:
+		$survivor_gun.animation = "idle"
+	print(bodies_inside.size())
+
+
+func _on_attack_cooldown_timeout() -> void:
+	zombie_attack_cooldown = true
+
+
+
+func _on_gun_range_body_entered(body: Node2D) -> void:
+	if body.has_method("zombie"):
+		bodies_inside.append(body)
+	if body.has_method("zombie") and bodies_inside.size() >= 0:
+		zombie_in_gun_range = true
+		var kierunek = body.position - $".".position
+		if kierunek >= Vector2(0,0):
+			print("prawo")
+			$survivor_gun.set_flip_h(false)
+			$Marker2D.position = Vector2(150,0)
+			$survivor_gun.animation = "shoot"
+		elif kierunek <=Vector2(0,0):
+			$survivor_gun.set_flip_h(true)
+			$Marker2D.position = Vector2(-150,0)
+			$survivor_gun.animation = "shoot"
+		#$survivor_gun.animation = "shoot"
 		print(bodies_inside.size())
 		print(kierunek.normalized())
 	else:
 		pass
-
+	print(bodies_inside.size())
 
 func _on_gun_range_body_exited(body: Node2D) -> void:
-	bodies_inside.erase(body)
+	#bodies_inside.erase(body)
+	if body.has_method("zombie"):
+		bodies_inside.erase(body)
 	if body.has_method("zombie") and bodies_inside.size() == 0:
-		#bodies_inside.erase(body)
-		#zombie_in_range = false
+		zombie_in_gun_range = false
 		$survivor_gun.animation = "idle"
-		print(bodies_inside.size())
 	elif body.has_method("zombie") and bodies_inside.size() > 0:
 		pass
+	print(bodies_inside.size())
 
 
 
