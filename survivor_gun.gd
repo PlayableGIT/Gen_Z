@@ -8,23 +8,45 @@ var zombie_in_gun_range = false
 var zombie_attack_cooldown = true
 var health = 30
 var survivor_alive = true
+var uwaga_drzwi = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("survivor")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var close_zomb = get_closest_player_or_null()
 	get_closest_player_or_null()
+	$RayCast2D.enabled = true
+	if close_zomb != null:
+		var angle_to: float = global_position.direction_to(close_zomb.global_position).angle()
+		$RayCast2D.global_rotation = angle_to
+		#print(angle_to)
+	
+	
+	if $RayCast2D.is_colliding() == null:
+		pass
+	if $RayCast2D.is_colliding() == true:
+		var first_hit = $RayCast2D.get_collider()
+		#print(first_hit)
+		if first_hit != null:
+			#print("1")
+			if first_hit.has_method("door"):
+				#print("2")
+				uwaga_drzwi = true 
+			else:
+				#print("3")
+				uwaga_drzwi = false 
+	#print(uwaga_drzwi)
+
+	
 	if bodies_inside.size()==0:
 		$survivor_gun.animation = "idle"
 	
-	if bodies_inside_melee.size() == 0 and bodies_inside.size() > 0:
+	if bodies_inside_melee.size() == 0 and bodies_inside.size() > 0 and uwaga_drzwi == false:
 		var kierunek = close_zomb.position - $".".position
 		if kierunek >= Vector2(0,0):
-			print("prawo")
 			$survivor_gun.set_flip_h(false)
 			$Marker2D.position = Vector2(150,0)
 			$survivor_gun.animation = "shoot"
@@ -91,11 +113,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = true
 		bodies_inside_melee.append(body)
-	if body.has_method("zombie") and bodies_inside_melee.size() >= 0:
+	if body.has_method("zombie") and bodies_inside_melee.size() >= 0 and uwaga_drzwi == false:
 		#zombie_in_range = true
 		var kierunek = body.position - $".".position
 		if kierunek >= Vector2(0,0):
-			print("prawo")
 			$survivor_gun.set_flip_h(false)
 			$Marker2D.position = Vector2(150,0)
 			$survivor_gun.animation = "shoot"
@@ -107,7 +128,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		pass
 	if body.has_method("zombie") and bodies_inside_melee.size() == 0:
 		$survivor_gun.animation = "idle"
-	print("Melee: ", bodies_inside_melee.size())
+	#print("Melee: ", bodies_inside_melee.size())
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -116,7 +137,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		bodies_inside_melee.erase(body)
 	if body.has_method("zombie") and bodies_inside_melee.size() <= 0:
 		$survivor_gun.animation = "idle"
-	print("Melee: ", bodies_inside_melee.size())
+	#print("Melee: ", bodies_inside_melee.size())
 
 
 func _on_attack_cooldown_timeout() -> void:
@@ -127,7 +148,7 @@ func _on_attack_cooldown_timeout() -> void:
 func _on_gun_range_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		bodies_inside.append(body)
-	if body.has_method("zombie") and bodies_inside.size() >= 0:
+	if body.has_method("zombie") and bodies_inside.size() >= 0 and uwaga_drzwi == false:
 		zombie_in_gun_range = true
 		var kierunek = body.position - $".".position
 		if kierunek >= Vector2(0,0):
@@ -140,11 +161,11 @@ func _on_gun_range_body_entered(body: Node2D) -> void:
 			$Marker2D.position = Vector2(-150,0)
 			$survivor_gun.animation = "shoot"
 		#$survivor_gun.animation = "shoot"
-		print(bodies_inside.size())
-		print(kierunek.normalized())
+		#print(bodies_inside.size())
+		#print(kierunek.normalized())
 	else:
 		pass
-	print(bodies_inside.size())
+	#print(bodies_inside.size())
 
 func _on_gun_range_body_exited(body: Node2D) -> void:
 	#bodies_inside.erase(body)
@@ -155,7 +176,7 @@ func _on_gun_range_body_exited(body: Node2D) -> void:
 		$survivor_gun.animation = "idle"
 	elif body.has_method("zombie") and bodies_inside.size() > 0:
 		pass
-	print(bodies_inside.size())
+	#print(bodies_inside.size())
 
 
 
