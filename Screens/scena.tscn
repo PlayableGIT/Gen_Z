@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cg63ncynab7lq"]
+[gd_scene load_steps=29 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://zombie.tscn" id="2_8hn1c"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="8_emttp"]
 [ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_yn6ji"]
 [ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://door.tscn" id="10_32u3u"]
+[ext_resource type="Script" path="res://Screens/platform.gd" id="14_su7un"]
 [ext_resource type="PackedScene" uid="uid://ds6rqlj7kkbbm" path="res://survivor_gun.tscn" id="14_y5qxa"]
 [ext_resource type="Script" path="res://Scripts/stats_autoload.gd" id="15_mpmtg"]
 
@@ -497,6 +498,7 @@ position = Vector2(2000.33, 0)
 shape = SubResource("RectangleShape2D_64rre")
 
 [node name="Platform" type="StaticBody2D" parent="Ground"]
+script = ExtResource("14_su7un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Platform"]
 position = Vector2(2112, -108)

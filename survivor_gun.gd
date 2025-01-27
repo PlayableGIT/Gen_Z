@@ -35,6 +35,8 @@ func _physics_process(delta: float) -> void:
 			if first_hit.has_method("door"):
 				#print("2")
 				uwaga_drzwi = true 
+			elif first_hit.has_method("ground"):
+				uwaga_drzwi = true
 			else:
 				#print("3")
 				uwaga_drzwi = false 
@@ -48,11 +50,12 @@ func _physics_process(delta: float) -> void:
 		var kierunek = close_zomb.position - $".".position
 		if kierunek >= Vector2(0,0):
 			$survivor_gun.set_flip_h(false)
-			$Marker2D.position = Vector2(150,0)
+			$RayCast2D.position = Vector2(130,0)
 			$survivor_gun.animation = "shoot"
 		elif kierunek <=Vector2(0,0):
 			$survivor_gun.set_flip_h(true)
-			$Marker2D.position = Vector2(-150,0)
+			$survivor_gun.position = Vector2(-40,0)
+			$RayCast2D.position = Vector2(-130,0)
 			$survivor_gun.animation = "shoot"
 	else:
 		pass
@@ -73,12 +76,12 @@ func _physics_process(delta: float) -> void:
 func shoot():
 	var b = Bullet.instantiate()
 	call_deferred("add_child", b)
-	b.transform = $Marker2D.transform
+	b.transform = $RayCast2D.transform
 	
 func shoot_left():
-	var b = Bullet_left.instantiate()
+	var b = Bullet.instantiate()
 	call_deferred("add_child", b)
-	b.transform = $Marker2D.transform
+	b.transform = $RayCast2D.transform
 
 func survivor_gun():
 	pass
@@ -118,11 +121,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		var kierunek = body.position - $".".position
 		if kierunek >= Vector2(0,0):
 			$survivor_gun.set_flip_h(false)
-			$Marker2D.position = Vector2(150,0)
+			$RayCast2D.position = Vector2(130,0)
 			$survivor_gun.animation = "shoot"
 		elif kierunek <=Vector2(0,0):
 			$survivor_gun.set_flip_h(true)
-			$Marker2D.position = Vector2(-150,0)
+			$survivor_gun.position = Vector2(-40,0)
+			$RayCast2D.position = Vector2(-130,0)
 			$survivor_gun.animation = "shoot"
 	else:
 		pass
@@ -154,11 +158,12 @@ func _on_gun_range_body_entered(body: Node2D) -> void:
 		if kierunek >= Vector2(0,0):
 			print("prawo")
 			$survivor_gun.set_flip_h(false)
-			$Marker2D.position = Vector2(150,0)
+			$RayCast2D.position = Vector2(130,0)
 			$survivor_gun.animation = "shoot"
 		elif kierunek <=Vector2(0,0):
 			$survivor_gun.set_flip_h(true)
-			$Marker2D.position = Vector2(-150,0)
+			$survivor_gun.position = Vector2(-40,0)
+			$RayCast2D.position = Vector2(-130,0)
 			$survivor_gun.animation = "shoot"
 		#$survivor_gun.animation = "shoot"
 		#print(bodies_inside.size())

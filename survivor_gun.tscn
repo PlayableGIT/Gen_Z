@@ -37,7 +37,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5avge"]
-radius = 87.035
+radius = 23.035
 height = 348.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gmeh"]
