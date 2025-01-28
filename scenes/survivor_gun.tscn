@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://ds6rqlj7kkbbm"]
 
 [ext_resource type="Texture2D" uid="uid://dxp26fqql4dc3" path="res://animations/survivor_gun_anim/survivor2_anim1.png" id="1_aa6p6"]
-[ext_resource type="Script" path="res://survivor_gun.gd" id="1_cylxf"]
-[ext_resource type="PackedScene" uid="uid://dvtw1i0vkuc6x" path="res://bullet.tscn" id="2_gf5xa"]
+[ext_resource type="Script" path="res://Scripts/survivor_gun.gd" id="1_cylxf"]
+[ext_resource type="PackedScene" uid="uid://dvtw1i0vkuc6x" path="res://scenes/bullet.tscn" id="2_gf5xa"]
 [ext_resource type="Texture2D" uid="uid://c4u04qgokm5yf" path="res://animations/survivor_gun_anim/survivor2_anim2.png" id="2_sjecj"]
 [ext_resource type="Texture2D" uid="uid://dcq21vts8bnuy" path="res://animations/survivor_gun_anim/survivor2_anim3.png" id="3_501rr"]
-[ext_resource type="PackedScene" uid="uid://d02m7y78a4dvc" path="res://bullet_left.tscn" id="3_njmxk"]
+[ext_resource type="PackedScene" uid="uid://d02m7y78a4dvc" path="res://scenes/bullet_left.tscn" id="3_njmxk"]
 [ext_resource type="Texture2D" uid="uid://k1biiu80vmev" path="res://animations/survivor_gun_anim/survivor2_anim4.png" id="4_42ack"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovgc7"]
