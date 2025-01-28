@@ -36,17 +36,21 @@ func zombie_attack():
 		$Survivor01.animation = "hurt"
 		print("Survivor took ", StatsAutoload.zombie_damage, " damage! Health: ", health)
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if x >= 2:
+		x=-1
 	if body.has_method("zombie"):
 		zombie_in_range = true
+		$Label.text = teksty[x]
 		$Label.visible = true
-
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = false
 		$Survivor01.animation = "default"
 
-
+var teksty: = ["EAT SHIT!!!", "DIE! DIE! DIE!", "MOTHERFU-"]
+var x = 0
 func _on_attack_cooldown_timeout() -> void:
 	zombie_attack_cooldown = true
+	x += 1
 	$Label.visible = false

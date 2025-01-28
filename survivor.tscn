@@ -33,14 +33,14 @@ size = Vector2(151, 219.875)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eiqg"]
 size = Vector2(226, 220)
 
-[sub_resource type="SystemFont" id="SystemFont_ifegc"]
+[sub_resource type="SystemFont" id="SystemFont_ks8wu"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
 oversampling = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_47npf"]
 line_spacing = 1.0
-font = SubResource("SystemFont_ifegc")
-font_size = 71
+font = SubResource("SystemFont_ks8wu")
+font_size = 46
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 26
@@ -73,10 +73,10 @@ debug_color = Color(0.949477, 1.2514e-06, 0.573295, 0.42)
 wait_time = 1.5
 
 [node name="Label" type="Label" parent="."]
-offset_left = -170.0
-offset_top = -198.0
-offset_right = 140.0
-offset_bottom = -122.0
+offset_left = -136.667
+offset_top = -185.333
+offset_right = 173.333
+offset_bottom = -109.333
 text = "EAT SHIT!!!"
 label_settings = SubResource("LabelSettings_47npf")
 
