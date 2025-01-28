@@ -444,7 +444,7 @@ size = Vector2(1185.34, 229.333)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o8jeh"]
 a = Vector2(154, -136)
-b = Vector2(-140.003, 112.946)
+b = Vector2(-153.337, 100.667)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jmau4"]
 a = Vector2(159.485, -136.715)

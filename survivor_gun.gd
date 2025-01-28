@@ -128,8 +128,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			$survivor_gun.position = Vector2(-40,0)
 			$RayCast2D.position = Vector2(-130,0)
 			$survivor_gun.animation = "shoot"
-	else:
-		pass
 	if body.has_method("zombie") and bodies_inside_melee.size() == 0:
 		$survivor_gun.animation = "idle"
 	#print("Melee: ", bodies_inside_melee.size())
@@ -141,11 +139,12 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		bodies_inside_melee.erase(body)
 	if body.has_method("zombie") and bodies_inside_melee.size() <= 0:
 		$survivor_gun.animation = "idle"
-	#print("Melee: ", bodies_inside_melee.size())
+	print("Melee: ", bodies_inside_melee.size())
 
 
 func _on_attack_cooldown_timeout() -> void:
 	zombie_attack_cooldown = true
+
 
 
 

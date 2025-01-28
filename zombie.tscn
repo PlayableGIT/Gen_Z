@@ -84,7 +84,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyf3b"]
-radius = 66.5
+radius = 71.1667
 height = 211.333
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgub"]
@@ -101,7 +101,7 @@ speed = 200.0
 [node name="Zombie03" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.33333, -2)
 sprite_frames = SubResource("SpriteFrames_il1rs")
-animation = &"attack"
+animation = &"walk"
 autoplay = "walk"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -109,7 +109,7 @@ position = Vector2(-0.5, -1)
 shape = SubResource("CapsuleShape2D_kyf3b")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(0.805, 1)
+scale = Vector2(0.705, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1.5, -1)
