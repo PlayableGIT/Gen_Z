@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn8vnivdwoql7"]
+[gd_scene load_steps=10 format=3 uid="uid://bn8vnivdwoql7"]
 
 [ext_resource type="Script" path="res://Scripts/survivor.gd" id="1_jshkn"]
 [ext_resource type="Texture2D" uid="uid://biwb7oa63p6ou" path="res://textures/survivor_01.png" id="2_vs3rb"]
@@ -33,6 +33,19 @@ size = Vector2(151, 219.875)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eiqg"]
 size = Vector2(226, 220)
 
+[sub_resource type="SystemFont" id="SystemFont_ks8wu"]
+font_names = PackedStringArray("8-bit Limit (BRK)")
+oversampling = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_47npf"]
+line_spacing = 1.0
+font = SubResource("SystemFont_ks8wu")
+font_size = 46
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 26
+shadow_color = Color(0, 0, 0, 0.207843)
+
 [node name="Survivor" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_jshkn")
@@ -42,8 +55,6 @@ scale = Vector2(2.5625, 2.5625)
 sprite_frames = SubResource("SpriteFrames_knfcb")
 animation = &"hurt"
 autoplay = "default"
-frame = 1
-frame_progress = 0.802323
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5.5, -0.9375)
@@ -54,11 +65,20 @@ script = ExtResource("3_coa13")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-6, -1)
+scale = Vector2(0.71, 1)
 shape = SubResource("RectangleShape2D_4eiqg")
 debug_color = Color(0.949477, 1.2514e-06, 0.573295, 0.42)
 
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="Label" type="Label" parent="."]
+offset_left = -136.667
+offset_top = -185.333
+offset_right = 173.333
+offset_bottom = -109.333
+text = "EAT SHIT!!!"
+label_settings = SubResource("LabelSettings_47npf")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
