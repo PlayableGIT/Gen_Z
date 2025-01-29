@@ -33,19 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.407885, 0.0676971, 0.0172719, 1)
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ColorRect"]
-z_index = 1
-layout_mode = 2
-offset_top = -8.0
-offset_right = 640.0
-offset_bottom = 360.0
-scale = Vector2(1.80539, 1.80539)
-size_flags_stretch_ratio = 4.0
-stream = ExtResource("4_qgdlf")
-autoplay = true
-loop = true
+color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 z_index = 2
@@ -90,6 +78,24 @@ autoplay = true
 [node name="Button_Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_a6ibg")
 volume_db = -10.0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.9
+stretch_mode = 3
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+z_index = 1
+layout_mode = 2
+stream = ExtResource("4_qgdlf")
+autoplay = true
+expand = true
+loop = true
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
