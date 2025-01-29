@@ -15,6 +15,7 @@ signal level_complete
 var zombie_respawn = true
 var level_accomp = false
 var level_fade = false
+var mouse_lock = false
 
 var rng = RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,7 +40,7 @@ func _process(delta):
 		level_complete.emit()
 		level_accomp = true
 	
-	if Input.is_action_just_released("left_mouse") and zombie_respawn == true:
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false:
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = zombie.instantiate()
@@ -116,3 +117,11 @@ func _on_ambient_finished() -> void:
 
 func _on_zombie_respawn_timeout() -> void:
 	zombie_respawn = true
+
+
+func _on_spawn_restriction_mouse_entered() -> void:
+	mouse_lock = true
+
+
+func _on_spawn_restriction_mouse_exited() -> void:
+	mouse_lock = false

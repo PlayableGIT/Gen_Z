@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cg63ncynab7lq"]
+[gd_scene load_steps=40 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://scenes/zombie.tscn" id="2_8hn1c"]
@@ -480,6 +480,12 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.341085, 0.0568295), 0.0, 0.0, 0, 0, Vector2(0.53876, 0.948903), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7db7d"]
+size = Vector2(5812.5, 1800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ieeba"]
+size = Vector2(2690, 895)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_j5aen")
 destroyed_door = ExtResource("2_s5m4q")
@@ -497,6 +503,7 @@ script = ExtResource("4_6t67p")
 MOVE_SPEED = 2000
 
 [node name="level_complete" type="Label" parent="Camera2D"]
+visible = false
 z_index = 10
 offset_left = -441.333
 offset_top = -76.0
@@ -679,7 +686,42 @@ stream = ExtResource("23_uhybk")
 volume_db = -0.727
 
 [node name="zombie_respawn" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="spawn_restriction" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_restriction"]
+position = Vector2(2888.75, -1788)
+scale = Vector2(1, 0.995)
+shape = SubResource("RectangleShape2D_7db7d")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="spawn_restriction"]
+position = Vector2(2888.75, 894)
+shape = SubResource("RectangleShape2D_7db7d")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="spawn_restriction"]
+position = Vector2(-947, -368)
+rotation = 1.5708
+scale = Vector2(0.74, 1.03)
+shape = SubResource("RectangleShape2D_7db7d")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="spawn_restriction"]
+position = Vector2(6700, -368)
+rotation = 1.5708
+scale = Vector2(0.74, 1.03)
+shape = SubResource("RectangleShape2D_7db7d")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="spawn_restriction"]
+position = Vector2(3168, -447.5)
+shape = SubResource("RectangleShape2D_ieeba")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="finished" from="Ambient" to="." method="_on_ambient_finished"]
 [connection signal="timeout" from="zombie_respawn" to="." method="_on_zombie_respawn_timeout"]
+[connection signal="mouse_entered" from="spawn_restriction" to="." method="_on_spawn_restriction_mouse_entered"]
+[connection signal="mouse_exited" from="spawn_restriction" to="." method="_on_spawn_restriction_mouse_exited"]
