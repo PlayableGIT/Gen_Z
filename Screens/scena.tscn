@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cg63ncynab7lq"]
+[gd_scene load_steps=34 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://scenes/zombie.tscn" id="2_8hn1c"]
@@ -17,6 +17,11 @@
 [ext_resource type="Script" path="res://Screens/platform.gd" id="14_su7un"]
 [ext_resource type="PackedScene" uid="uid://ds6rqlj7kkbbm" path="res://scenes/survivor_gun.tscn" id="14_y5qxa"]
 [ext_resource type="Script" path="res://Scripts/stats_autoload.gd" id="15_mpmtg"]
+[ext_resource type="AudioStream" uid="uid://cyys1j7d2e5sq" path="res://audio/ambient/Root of Evil.mp3" id="18_vtq6x"]
+[ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="19_g42x1"]
+[ext_resource type="AudioStream" uid="uid://54twt8b6t20e" path="res://audio/door_destroyed.wav" id="20_328je"]
+[ext_resource type="AudioStream" uid="uid://b1jobl4j1sgk7" path="res://audio/zombie/zombie_spawn.mp3" id="21_ht3br"]
+[ext_resource type="AudioStream" uid="uid://cacjrsuqnmjf0" path="res://audio/zombie/zombie_death.mp3" id="22_x64vo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tb2m"]
 texture = ExtResource("6_e1ieo")
@@ -616,5 +621,23 @@ position = Vector2(3473, -591)
 
 [node name="STATS_AUTOLOAD" type="Node" parent="."]
 script = ExtResource("15_mpmtg")
+
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_vtq6x")
+volume_db = -15.0
+
+[node name="Zombie_Spawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_g42x1")
+volume_db = -10.0
+
+[node name="Door_Destro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_328je")
+volume_db = -10.0
+
+[node name="Zombie_Spawn2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_ht3br")
+
+[node name="Zombie_Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("22_x64vo")
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

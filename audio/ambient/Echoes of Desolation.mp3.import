@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bpwxuhd54dhwe"
+path="res://.godot/imported/Echoes of Desolation.mp3-917b55b3777f32abc3a8ff1d70daa76d.mp3str"
+
+[deps]
+
+source_file="res://audio/ambient/Echoes of Desolation.mp3"
+dest_files=["res://.godot/imported/Echoes of Desolation.mp3-917b55b3777f32abc3a8ff1d70daa76d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

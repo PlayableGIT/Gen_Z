@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlnfoe38vgqp"]
+[gd_scene load_steps=21 format=3 uid="uid://dlnfoe38vgqp"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
 [ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cy446at4m57xd" path="res://animations/zombie1_attack/zombie_attack7.png" id="8_8nddg"]
 [ext_resource type="Texture2D" uid="uid://dj1rb0nphoskk" path="res://animations/zombie1_anim/zombie1_anim7.png" id="8_qkqcm"]
 [ext_resource type="Texture2D" uid="uid://cloeilsxd0225" path="res://animations/zombie1_attack/zombie_attack8.png" id="9_5awjk"]
+[ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="14_q3xsd"]
+[ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="15_tijjp"]
+[ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="16_v51ls"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_il1rs"]
 animations = [{
@@ -126,7 +129,18 @@ position = Vector2(-0.666668, -0.666667)
 scale = Vector2(2.4, 1)
 shape = SubResource("RectangleShape2D_xa0h1")
 
+[node name="zombie_walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_q3xsd")
+max_distance = 800.0
+
+[node name="zombie_hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_tijjp")
+
+[node name="zombie_attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_v51ls")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]
+[connection signal="finished" from="zombie_walk" to="." method="_on_zombie_walk_finished"]

@@ -23,6 +23,8 @@ func _process(_delta):
 func door():
 	pass
 
+
+
 func zombie_attack():
 	if zombie_in_range and zombie_attack_cooldown:
 			#rng
@@ -32,6 +34,7 @@ func zombie_attack():
 		$door_attack_cooldown.start()
 		health = health - rng_damage
 		$CPUParticles2D.visible = true
+		$door_hit.play()
 		print("Door took ", rng_damage, " damage! Health: ", health)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://e2tuks0xkssw"]
+[gd_scene load_steps=6 format=3 uid="uid://e2tuks0xkssw"]
 
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_rrbvt"]
 [ext_resource type="Texture2D" uid="uid://bs023x0541q8b" path="res://textures/door_01.png" id="2_wum7f"]
+[ext_resource type="AudioStream" uid="uid://nhf77sxtmqbl" path="res://audio/door_hit.wav" id="3_trho4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5eosj"]
 size = Vector2(40, 385)
@@ -31,6 +32,10 @@ debug_color = Color(0.551525, 0.561655, 0.113792, 0.42)
 
 [node name="door_attack_cooldown" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="door_hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_trho4")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
