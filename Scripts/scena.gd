@@ -12,6 +12,7 @@ signal level_complete
 @export var dead_gun_survivor: PackedScene
 @export var zombie: PackedScene
 @export var survivor: PackedScene
+var zombie_respawn = true
 var level_accomp = false
 var level_fade = false
 
@@ -38,7 +39,9 @@ func _process(delta):
 		level_complete.emit()
 		level_accomp = true
 	
-	if Input.is_action_just_released("left_mouse"):
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true:
+		zombie_respawn = false
+		$zombie_respawn.start()
 		var new_zombie = zombie.instantiate()
 		add_child(new_zombie)
 		new_zombie.position = get_global_mouse_position()
@@ -109,3 +112,7 @@ func level_comp():
 
 func _on_ambient_finished() -> void:
 	$Ambient.play()
+
+
+func _on_zombie_respawn_timeout() -> void:
+	zombie_respawn = true
