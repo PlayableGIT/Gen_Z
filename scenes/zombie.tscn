@@ -132,12 +132,16 @@ shape = SubResource("RectangleShape2D_xa0h1")
 [node name="zombie_walk" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_q3xsd")
 max_distance = 800.0
+bus = &"Environment"
 
 [node name="zombie_hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_tijjp")
+volume_db = -10.182
+bus = &"Environment"
 
 [node name="zombie_attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_v51ls")
+bus = &"Environment"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

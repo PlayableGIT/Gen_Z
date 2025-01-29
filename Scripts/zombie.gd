@@ -77,6 +77,7 @@ func survivor_attack():
 		$Zombie03.animation = "attack"
 		$attack_cooldown.start()
 		health = health - damage
+		$zombie_hurt.stop()
 		$zombie_hurt.play()
 		print("Zombie took ", damage, " damage! Health: ", health)
 	if survivor_in_range == false:
@@ -101,6 +102,7 @@ func get_closest_player_or_null():
 func _on_bullet_zone_area_entered(area: Area2D) -> void:
 	if area.has_method("bullet"):
 		health -= StatsAutoload.survivor_gun_damage
+		$zombie_hurt.stop()
 		$zombie_hurt.play()
 		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)
 

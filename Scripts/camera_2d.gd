@@ -7,6 +7,9 @@ extends Camera2D
 @export var up_limit = -900.0
 @export var down_limit = 270.0
 
+var otoczenie = AudioServer.get_bus_index("Environment")
+
+
 func _process(delta):
 	# Wydrukuj bieżącą pozycję
 	#print(global_position)

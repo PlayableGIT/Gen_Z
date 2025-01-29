@@ -625,6 +625,7 @@ script = ExtResource("15_mpmtg")
 [node name="Ambient" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_vtq6x")
 volume_db = -15.0
+bus = &"Ambient"
 
 [node name="Zombie_Spawn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_g42x1")
@@ -633,11 +634,16 @@ volume_db = -10.0
 [node name="Door_Destro" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_328je")
 volume_db = -10.0
+bus = &"Environment"
 
 [node name="Zombie_Spawn2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_ht3br")
+bus = &"Environment"
 
 [node name="Zombie_Death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_x64vo")
+volume_db = -10.0
+bus = &"Environment"
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="finished" from="Ambient" to="." method="_on_ambient_finished"]

@@ -14,6 +14,7 @@ signal zombie_death(a: Vector2)
 var rng = RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
+	
 	$Ambient.play()
 	door_boom.connect(door_destro)
 	zombie_spawn.connect(zombie_spawn_sound)
@@ -71,3 +72,7 @@ func _on_child_exiting_tree(node: Node) -> void:
 		var destroy_survivor_gun = dead_gun_survivor.instantiate()
 		add_child.call_deferred(destroy_survivor_gun)
 		destroy_survivor_gun.position = node.position
+
+
+func _on_ambient_finished() -> void:
+	$Ambient.play()
