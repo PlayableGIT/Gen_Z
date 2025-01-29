@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://cg63ncynab7lq"]
+[gd_scene load_steps=38 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://scenes/zombie.tscn" id="2_8hn1c"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="6_e1ieo"]
 [ext_resource type="Texture2D" uid="uid://nlv0xu716042" path="res://textures/road5.png" id="7_ue6nq"]
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="8_emttp"]
+[ext_resource type="AudioStream" uid="uid://dlu85kmrkc657" path="res://audio/UI/level_complete.mp3" id="9_okoj3"]
 [ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_yn6ji"]
 [ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://scenes/door.tscn" id="10_32u3u"]
 [ext_resource type="Script" path="res://Screens/platform.gd" id="14_su7un"]
@@ -22,6 +23,20 @@
 [ext_resource type="AudioStream" uid="uid://54twt8b6t20e" path="res://audio/door_destroyed.wav" id="20_328je"]
 [ext_resource type="AudioStream" uid="uid://b1jobl4j1sgk7" path="res://audio/zombie/zombie_spawn.mp3" id="21_ht3br"]
 [ext_resource type="AudioStream" uid="uid://cacjrsuqnmjf0" path="res://audio/zombie/zombie_death.mp3" id="22_x64vo"]
+[ext_resource type="AudioStream" uid="uid://ctjlj4fku2efq" path="res://audio/survivor/survivor_death.mp3" id="23_uhybk"]
+
+[sub_resource type="SystemFont" id="SystemFont_plpnl"]
+font_names = PackedStringArray("8-bit Limit (BRK)")
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4mfe"]
+line_spacing = 1.0
+font = SubResource("SystemFont_plpnl")
+font_size = 126
+font_color = Color(1, 0, 0, 1)
+outline_size = 35
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 56
+shadow_color = Color(0, 0, 0, 0.156863)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tb2m"]
 texture = ExtResource("6_e1ieo")
@@ -481,6 +496,20 @@ zoom = Vector2(0.645, 0.645)
 script = ExtResource("4_6t67p")
 MOVE_SPEED = 2000
 
+[node name="level_complete" type="Label" parent="Camera2D"]
+z_index = 10
+offset_left = -441.333
+offset_top = -76.0
+offset_right = 456.667
+offset_bottom = 59.0
+text = "LEVEL COMPLETE!"
+label_settings = SubResource("LabelSettings_n4mfe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_complete_sound" type="AudioStreamPlayer" parent="Camera2D"]
+stream = ExtResource("9_okoj3")
+
 [node name="Ground" type="Node2D" parent="."]
 scale = Vector2(1.5, 1.5)
 
@@ -644,6 +673,10 @@ bus = &"Environment"
 stream = ExtResource("22_x64vo")
 volume_db = -10.0
 bus = &"Environment"
+
+[node name="Survivor_Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_uhybk")
+volume_db = -0.727
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="finished" from="Ambient" to="." method="_on_ambient_finished"]

@@ -65,11 +65,13 @@ func shoot():
 	var b = Bullet.instantiate()
 	call_deferred("add_child", b)
 	b.transform = $RayCast2D.transform
+	$gunshot.play()
 	
 func shoot_left():
 	var b = Bullet.instantiate()
 	call_deferred("add_child", b)
 	b.transform = $RayCast2D.transform
+	$gunshot.play()
 
 func survivor_gun():
 	pass

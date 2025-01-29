@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Screens/main_menu.gd" id="1_13ad3"]
 [ext_resource type="AudioStream" uid="uid://bpwxuhd54dhwe" path="res://audio/ambient/Echoes of Desolation.mp3" id="2_d5k2u"]
-[ext_resource type="AudioStream" uid="uid://dslu3bcl2y3ux" path="res://audio/button_click.wav" id="3_a6ibg"]
+[ext_resource type="AudioStream" uid="uid://dslu3bcl2y3ux" path="res://audio/UI/button_click.wav" id="3_a6ibg"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

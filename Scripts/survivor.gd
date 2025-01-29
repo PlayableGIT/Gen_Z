@@ -4,7 +4,7 @@ var zombie_in_range = false
 var zombie_attack_cooldown = true
 var health = 25
 var survivor_alive = true
-
+var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("survivor")
@@ -31,6 +31,7 @@ func zombie_attack():
 			#rng
 		var rng_damage = StatsAutoload.zombie_damage
 		zombie_attack_cooldown = false
+		$survivor_attack.play()
 		$attack_cooldown.start()
 		health = health - rng_damage
 		$Survivor01.animation = "hurt"
@@ -41,6 +42,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = true
 		$Label.text = teksty[x]
+		var rng_pitch_number = rng.randf_range(0.5, 1.3)
+		$text_popup.pitch_scale = rng_pitch_number
+		$text_popup.play()
 		$Label.visible = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:

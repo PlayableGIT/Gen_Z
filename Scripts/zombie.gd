@@ -4,13 +4,12 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 # Zmienne walki z survivorem
 var survivor_in_range = false
-var survivor_in_gun_range = false
 var survivor_attack_cooldown = true
 # Zmienne drzwi
 var door_in_range = false
 # Statystyki zombie
 @export var speed = 150.0
-@export var health = 15
+@export var health = 25
 var zombie_alive = true
 var zombie_damage: int = 5
 
@@ -66,8 +65,12 @@ func zombie():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = true
+	if body.has_method("survivor_gun"):
+		survivor_in_range = true
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("survivor"):
+		survivor_in_range = false
+	if body.has_method("survivor_gun"):
 		survivor_in_range = false
 		
 func survivor_attack():
@@ -75,6 +78,7 @@ func survivor_attack():
 		var damage = StatsAutoload.survivor_damage
 		survivor_attack_cooldown = false
 		$Zombie03.animation = "attack"
+		$zombie_attack.play()
 		$attack_cooldown.start()
 		health = health - damage
 		$zombie_hurt.stop()

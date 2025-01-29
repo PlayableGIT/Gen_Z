@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn8vnivdwoql7"]
+[gd_scene load_steps=12 format=3 uid="uid://bn8vnivdwoql7"]
 
 [ext_resource type="Script" path="res://Scripts/survivor.gd" id="1_jshkn"]
 [ext_resource type="Texture2D" uid="uid://biwb7oa63p6ou" path="res://textures/survivor_01.png" id="2_vs3rb"]
 [ext_resource type="Script" path="res://Scripts/area_2d.gd" id="3_coa13"]
 [ext_resource type="Texture2D" uid="uid://thddcickjmod" path="res://textures/survivor_02.png" id="3_mk1rh"]
+[ext_resource type="AudioStream" uid="uid://dsfte6ug5n7nq" path="res://audio/survivor/text_popup1.wav" id="5_k6ot2"]
+[ext_resource type="AudioStream" uid="uid://dalc2amnjtw3j" path="res://audio/survivor/surv_attack.wav" id="6_xms6q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_knfcb"]
 animations = [{
@@ -79,6 +81,14 @@ offset_right = 173.333
 offset_bottom = -109.333
 text = "EAT SHIT!!!"
 label_settings = SubResource("LabelSettings_47npf")
+
+[node name="text_popup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_k6ot2")
+volume_db = -11.636
+
+[node name="survivor_attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_xms6q")
+volume_db = -4.43
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
