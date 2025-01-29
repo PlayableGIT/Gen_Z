@@ -5,7 +5,7 @@ extends Camera2D
 @export var left_limit = 915.0
 @export var right_limit = 4738.0
 @export var up_limit = -900.0
-@export var down_limit = 270.0
+@export var down_limit = -250.0
 @export var level_done = false
 
 var otoczenie = AudioServer.get_bus_index("Environment")
@@ -40,7 +40,7 @@ func _process(delta):
 	else:
 		pass
 		
-	if Input.is_action_just_released("scroll_down") and $".".zoom.x > 0.7:
+	if Input.is_action_just_released("scroll_down") and $".".zoom.x > 0.5:
 		$".".zoom.x -= delta*SCROLL_SPEED
 		$".".zoom.y -= delta*SCROLL_SPEED
 	else:
