@@ -84,6 +84,7 @@ debug_color = Color(0.7, 0, 0, 0.42)
 position = Vector2(150.44, -7.015)
 stream = ExtResource("8_x7cab")
 volume_db = -10.182
+max_distance = 3500.0
 
 [connection signal="animation_changed" from="survivor_gun" to="." method="_on_survivor_gun_animation_changed"]
 [connection signal="animation_looped" from="survivor_gun" to="." method="_on_survivor_gun_animation_looped"]
