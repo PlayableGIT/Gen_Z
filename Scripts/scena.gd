@@ -163,31 +163,33 @@ func zomb_death(a):
 	$Zombie_Death.play()
 
 func _on_child_exiting_tree(node: Node) -> void:
+	var rng_x = rng.randf_range(-50.0, 50.0)
+	var rng_dead_spawn = Vector2(rng_x, 0)
 	if node.has_method("zombie"):
 		zombie_count -=1
 		print(zombie_count)
 		var death_zombie = dead_zombie.instantiate()
 		add_child.call_deferred(death_zombie)
-		death_zombie.position = node.position
+		death_zombie.position = node.position + rng_dead_spawn
 		zombie_death.emit(node.global_position)
 		print("usunieto zombie")
 	
 	if node.has_method("survivor"):
 		var death_survivor = dead_survivor.instantiate()
 		add_child.call_deferred(death_survivor)
-		death_survivor.position = node.position
+		death_survivor.position = node.position + rng_dead_spawn
 		survivor_death.emit(node.global_position)
 		
 	if node.has_method("door"):
 		var destroy_door = destroyed_door.instantiate()
 		add_child.call_deferred(destroy_door)
-		destroy_door.position = node.position
+		destroy_door.position = node.position + rng_dead_spawn
 		door_boom.emit(node.global_position)
 	
 	if node.has_method("survivor_gun"):
 		var destroy_survivor_gun = dead_gun_survivor.instantiate()
 		add_child.call_deferred(destroy_survivor_gun)
-		destroy_survivor_gun.position = node.position
+		destroy_survivor_gun.position = node.position + rng_dead_spawn
 		survivor_death.emit(node.global_position)
 
 
