@@ -170,21 +170,23 @@ scale_amount_min = 4.0
 scale_amount_max = 10.0
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2(-10, 103.333)
-amount = 181
+amount = 300
 lifetime = 0.15
 speed_scale = 0.5
 randomness = 1.0
 lifetime_randomness = 1.0
 emission_shape = 3
-emission_rect_extents = Vector2(58.68, 1)
+emission_rect_extents = Vector2(58.68, 13.7)
 direction = Vector2(13.415, 0)
 spread = 165.45
 gravity = Vector2(0, -980)
-initial_velocity_max = 94.89
+initial_velocity_max = 120.28
 radial_accel_min = -1.25
 radial_accel_max = 21.15
-scale_amount_max = 6.0
+tangential_accel_max = 100.0
+scale_amount_max = 4.0
 
 [node name="blood_splatter" type="CPUParticles2D" parent="."]
 position = Vector2(5.33333, -29.3333)
