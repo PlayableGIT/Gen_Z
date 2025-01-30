@@ -54,7 +54,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		zombie_in_range = false
 		$Survivor01.animation = "default"
 
-var teksty: = ["EAT SHIT!!!", "DIE! DIE! DIE!", "MOTHERFU-"]
+var teksty: = ["EAT SHIT!!!","", "DIE! DIE! DIE!","","", "MOTHERFU-"]
 var x = 0
 func _on_attack_cooldown_timeout() -> void:
 	zombie_attack_cooldown = true

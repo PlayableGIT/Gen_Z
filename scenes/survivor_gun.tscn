@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds6rqlj7kkbbm"]
+[gd_scene load_steps=15 format=3 uid="uid://ds6rqlj7kkbbm"]
 
 [ext_resource type="Texture2D" uid="uid://dxp26fqql4dc3" path="res://animations/survivor_gun_anim/survivor2_anim1.png" id="1_aa6p6"]
 [ext_resource type="Script" path="res://Scripts/survivor_gun.gd" id="1_cylxf"]
@@ -47,6 +47,19 @@ height = 348.0
 min_value = -1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="SystemFont" id="SystemFont_ks8wu"]
+font_names = PackedStringArray("8-bit Limit (BRK)")
+oversampling = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_xlg3k"]
+line_spacing = 1.0
+font = SubResource("SystemFont_ks8wu")
+font_size = 46
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 26
+shadow_color = Color(0, 0, 0, 0.207843)
 
 [node name="survivor_gun" type="CharacterBody2D"]
 script = ExtResource("1_cylxf")
@@ -112,6 +125,15 @@ color = Color(0.902344, 0, 0, 1)
 hue_variation_min = -0.05
 hue_variation_max = 0.05
 hue_variation_curve = SubResource("Curve_2gofq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -262.0
+offset_top = -232.0
+offset_right = 48.0
+offset_bottom = -156.0
+scale = Vector2(1.65033, 1.65033)
+text = "EAT SHIT!!!"
+label_settings = SubResource("LabelSettings_xlg3k")
 
 [connection signal="animation_changed" from="survivor_gun" to="." method="_on_survivor_gun_animation_changed"]
 [connection signal="animation_looped" from="survivor_gun" to="." method="_on_survivor_gun_animation_looped"]
