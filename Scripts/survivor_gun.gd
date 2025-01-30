@@ -9,6 +9,7 @@ var zombie_attack_cooldown = true
 var health = 30
 var survivor_alive = true
 var uwaga_drzwi = null
+var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	add_to_group("survivor")
@@ -73,6 +74,15 @@ func shoot_left():
 	b.transform = $RayCast2D.transform
 	$gunshot.play()
 
+func blood_splatter():
+	var splat_x = rng.randf_range(-50.0, 50.0)
+	var splat_y = rng.randf_range(-50.0, 50.0)
+	var splatter_position = Vector2(splat_x, splat_y)
+	$blood_splatter.position = splatter_position
+	$blood_splatter.visible = true
+	$blood_splatter.one_shot = true
+	$blood_splatter.emitting = true
+
 func survivor_gun():
 	pass
 
@@ -82,9 +92,7 @@ func zombie_attack():
 		zombie_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
-		$CPUParticles2D.visible = true
-		$CPUParticles2D.one_shot = true
-		$CPUParticles2D.emitting = true
+		blood_splatter()
 		print("Survivor took ", rng_damage, " damage! Health: ", health)
 
 func get_closest_player_or_null():

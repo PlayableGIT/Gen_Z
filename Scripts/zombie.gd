@@ -31,7 +31,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#grawitacja
 	var survivor = get_tree().get_nodes_in_group("survivor")
-	
 	if not is_on_floor():
 		velocity += get_gravity() * 50 * delta
 		velocity.x = 0.0
@@ -68,6 +67,15 @@ func moveCharacter():
 	elif direction.normalized() >= Vector2(0, 0):
 		$Zombie03.set_flip_h(false)
 
+func blood_splatter():
+	var splat_x = rng.randf_range(-50.0, 50.0)
+	var splat_y = rng.randf_range(-50.0, 50.0)
+	var splatter_position = Vector2(splat_x, splat_y)
+	$blood_splatter.position = splatter_position
+	$blood_splatter.visible = true
+	$blood_splatter.one_shot = true
+	$blood_splatter.emitting = true
+
 func zombie():
 	pass
 
@@ -92,6 +100,7 @@ func survivor_attack():
 		health = health - damage
 		$zombie_hurt.stop()
 		$zombie_hurt.play()
+		blood_splatter()
 		print("Zombie took ", damage, " damage! Health: ", health)
 	if survivor_in_range == false:
 		$Zombie03.animation = "walk"
@@ -117,6 +126,7 @@ func _on_bullet_zone_area_entered(area: Area2D) -> void:
 		health -= StatsAutoload.survivor_gun_damage
 		$zombie_hurt.stop()
 		$zombie_hurt.play()
+		blood_splatter()
 		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)
 
 

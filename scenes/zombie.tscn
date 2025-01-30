@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dlnfoe38vgqp"]
+[gd_scene load_steps=22 format=3 uid="uid://dlnfoe38vgqp"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
 [ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
@@ -96,6 +96,11 @@ size = Vector2(207, 212)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa0h1"]
 size = Vector2(57.3333, 210.667)
 
+[sub_resource type="Curve" id="Curve_pm5k0"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nufbr")
@@ -180,6 +185,28 @@ initial_velocity_max = 94.89
 radial_accel_min = -1.25
 radial_accel_max = 21.15
 scale_amount_max = 6.0
+
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(5.33333, -29.3333)
+emitting = false
+amount = 100
+lifetime = 0.3
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.75
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.183655, 0.691406, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_pm5k0")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
