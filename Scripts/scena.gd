@@ -12,6 +12,8 @@ signal level_complete
 @export var dead_gun_survivor: PackedScene
 @export var zombie: PackedScene
 @export var survivor: PackedScene
+var nekro_stat = StatsAutoload.nekroplazma
+var zombie_count = 0
 var zombie_respawn = true
 var level_accomp = false
 var level_fade = false
@@ -20,6 +22,8 @@ var mouse_lock = false
 var rng = RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
+	var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+	$Camera2D/stats.text = string
 	$Camera2D/level_complete.modulate.a = 0
 	$Ambient.play()
 	door_boom.connect(door_destro)
@@ -28,7 +32,8 @@ func _ready() -> void:
 	survivor_death.connect(surv_death)
 	level_complete.connect(level_comp)
 func _process(delta):
-	
+	var string1 = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+	$Camera2D/stats.text = string1
 	if level_fade == true:
 		$Camera2D/level_complete.modulate.a += 1 * delta
 		if $Camera2D/level_complete.modulate.a == 1:
@@ -40,7 +45,11 @@ func _process(delta):
 		level_complete.emit()
 		level_accomp = true
 	
-	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false:
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1:
+		zombie_count += 1
+		nekro_stat -= 2
+		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		$Camera2D/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = zombie.instantiate()
@@ -81,10 +90,13 @@ func zomb_death(a):
 
 func _on_child_exiting_tree(node: Node) -> void:
 	if node.has_method("zombie"):
+		zombie_count -=1
+		print(zombie_count)
 		var death_zombie = dead_zombie.instantiate()
 		add_child.call_deferred(death_zombie)
 		death_zombie.position = node.position
 		zombie_death.emit(node.global_position)
+		print("usunieto zombie")
 	
 	if node.has_method("survivor"):
 		var death_survivor = dead_survivor.instantiate()

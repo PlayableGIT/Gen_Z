@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cg63ncynab7lq"]
+[gd_scene load_steps=41 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://scenes/zombie.tscn" id="2_8hn1c"]
@@ -37,6 +37,11 @@ outline_size = 35
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 56
 shadow_color = Color(0, 0, 0, 0.156863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dd43e"]
+font_size = 36
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tb2m"]
 texture = ExtResource("6_e1ieo")
@@ -516,6 +521,19 @@ vertical_alignment = 1
 
 [node name="level_complete_sound" type="AudioStreamPlayer" parent="Camera2D"]
 stream = ExtResource("9_okoj3")
+
+[node name="stats" type="Label" parent="Camera2D"]
+z_index = 60
+offset_left = -543.333
+offset_top = -362.0
+offset_right = -291.333
+offset_bottom = -312.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+text = "Nekroplazma: "
+label_settings = SubResource("LabelSettings_dd43e")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Ground" type="Node2D" parent="."]
 scale = Vector2(1.5, 1.5)
