@@ -73,6 +73,10 @@ scroll_down={
 ]
 }
 
+[physics]
+
+common/physics_ticks_per_second=120
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.225052, 0.669922, 0.633429, 1)

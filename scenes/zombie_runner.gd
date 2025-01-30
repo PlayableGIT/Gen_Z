@@ -23,7 +23,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var survivor = get_tree().get_nodes_in_group("survivor")
 	if not is_on_floor():
 		velocity += get_gravity() * 50 * delta
