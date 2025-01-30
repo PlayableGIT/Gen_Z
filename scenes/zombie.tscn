@@ -210,13 +210,6 @@ hue_variation_min = -0.05
 hue_variation_max = 0.05
 hue_variation_curve = SubResource("Curve_pm5k0")
 
-[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
-position = Vector2(0, 114.667)
-amount = 153
-emission_shape = 3
-emission_rect_extents = Vector2(300, 1)
-scale_amount_max = 30.2
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

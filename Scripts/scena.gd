@@ -11,6 +11,7 @@ signal level_complete
 @export var dead_zombie: PackedScene
 @export var dead_gun_survivor: PackedScene
 @export var zombie: PackedScene
+@export var cheerleader_zombie: PackedScene
 @export var survivor: PackedScene
 var nekro_stat = StatsAutoload.nekroplazma
 var zombie_count = 0
@@ -18,6 +19,10 @@ var zombie_respawn = true
 var level_accomp = false
 var level_fade = false
 var mouse_lock = false
+var zombie_1 = false
+var zombie_2 = false
+var zombie_3 = false
+var zombie_4 = false
 
 var rng = RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,11 +46,36 @@ func _process(delta):
 	var survivors = get_tree().get_nodes_in_group("survivor")
 	var gun_survivors = get_tree().get_nodes_in_group("survivor_gun")
 	
+	if Input.is_action_just_released("1"):
+		print("zombie1")
+		zombie_1 = true
+		zombie_2 = false
+		zombie_3 = false
+		zombie_4 = false
+	if Input.is_action_just_released("2"):
+		print("zombie2")
+		zombie_1 = false
+		zombie_2 = true
+		zombie_3 = false
+		zombie_4 = false
+	if Input.is_action_just_released("3"):
+		print("zombie3")
+		zombie_1 = false
+		zombie_2 = false
+		zombie_3 = true
+		zombie_4 = false
+	if Input.is_action_just_released("4"):
+		print("zombie4")
+		zombie_1 = false
+		zombie_2 = false
+		zombie_3 = false
+		zombie_4 = true
+	
 	if survivors.size() == 0 and gun_survivors.size() == 0 and level_accomp == false:
 		level_complete.emit()
 		level_accomp = true
 	
-	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1:
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1 and zombie_1 == true:
 		zombie_count += 1
 		nekro_stat -= 2
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
@@ -53,6 +83,18 @@ func _process(delta):
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = zombie.instantiate()
+		add_child(new_zombie)
+		new_zombie.position = get_global_mouse_position()
+		zombie_spawn.emit(new_zombie.global_position)
+		$Zombie_Spawn.play()
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1 and zombie_2 == true:
+		zombie_count += 1
+		nekro_stat -= 4
+		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		$Camera2D/stats.text = string
+		zombie_respawn = false
+		$zombie_respawn.start()
+		var new_zombie = cheerleader_zombie.instantiate()
 		add_child(new_zombie)
 		new_zombie.position = get_global_mouse_position()
 		zombie_spawn.emit(new_zombie.global_position)

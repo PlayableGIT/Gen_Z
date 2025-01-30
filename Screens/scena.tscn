@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://cg63ncynab7lq"]
+[gd_scene load_steps=42 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://scenes/zombie.tscn" id="2_8hn1c"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b08q3j65fuwlo" path="res://scenes/dead_gun_survivor.tscn" id="5_c0dvl"]
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="5_gk281"]
 [ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="6_e1ieo"]
+[ext_resource type="PackedScene" uid="uid://bmp706pm7hqqk" path="res://scenes/zombie_cheerleader.tscn" id="7_alvts"]
 [ext_resource type="Texture2D" uid="uid://nlv0xu716042" path="res://textures/road5.png" id="7_ue6nq"]
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="8_emttp"]
 [ext_resource type="AudioStream" uid="uid://dlu85kmrkc657" path="res://audio/UI/level_complete.mp3" id="9_okoj3"]
@@ -498,6 +499,7 @@ dead_survivor = ExtResource("2_v3heq")
 dead_zombie = ExtResource("2_qgrfr")
 dead_gun_survivor = ExtResource("5_c0dvl")
 zombie = ExtResource("2_8hn1c")
+cheerleader_zombie = ExtResource("7_alvts")
 survivor = ExtResource("3_c5g0i")
 
 [node name="Camera2D" type="Camera2D" parent="."]
