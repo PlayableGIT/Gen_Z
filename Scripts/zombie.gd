@@ -4,20 +4,25 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 # Zmienne walki z survivorem
 var survivor_in_range = false
-var survivor_in_gun_range = false
 var survivor_attack_cooldown = true
 # Zmienne drzwi
 var door_in_range = false
 # Statystyki zombie
 @export var speed = 150.0
-@export var health = 15
+@export var health = 25
 var zombie_alive = true
 var zombie_damage: int = 5
+
+var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	add_to_group("zombie")
 	var total_dice_sides = 7
 	$Zombie03.frame = randi() % total_dice_sides
+	var rng_play = rng.randf_range(0.0, 20.0)
+	var rng_pitch_number = rng.randf_range(0.8, 1.1)
+	$zombie_walk.pitch_scale = rng_pitch_number
+	$zombie_walk.play(rng_play)
 	
 func _physics_process(delta: float) -> void:
 	#grawitacja
@@ -61,42 +66,29 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = true
 	if body.has_method("survivor_gun"):
-		survivor_in_gun_range = true
+		survivor_in_range = true
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = false
 	if body.has_method("survivor_gun"):
-		survivor_in_gun_range = false
+		survivor_in_range = false
 		
 func survivor_attack():
 	if survivor_in_range and survivor_attack_cooldown:
-		#rng
-		#var rng = RandomNumberGenerator.new()
-		#var rng_damage = rng.randi_range(1, 10)
-		var rng_damage = StatsAutoload.survivor_damage
+		var damage = StatsAutoload.survivor_damage
 		survivor_attack_cooldown = false
 		$Zombie03.animation = "attack"
+		$zombie_attack.play()
 		$attack_cooldown.start()
-		health = health - rng_damage
-		print("Zombie took ", rng_damage, " damage! Health: ", health)
-	if survivor_in_gun_range and survivor_attack_cooldown:
-		#rng
-		#var rng_damage = StatsAutoload.survivor_gun_damage
-		survivor_attack_cooldown = false
-		$Zombie03.animation = "attack"
-		$attack_cooldown.start()
-		#health = health - rng_damage
-		#print("Zombie took ", rng_damage, " damage! Health: ", health)
-	if survivor_in_gun_range == false and survivor_in_range == false:
+		health = health - damage
+		$zombie_hurt.stop()
+		$zombie_hurt.play()
+		print("Zombie took ", damage, " damage! Health: ", health)
+	if survivor_in_range == false:
 		$Zombie03.animation = "walk"
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
-
-
-func _on_gun_area_body_entered(body: Node2D) -> void:
-	if body.has_method("survivor_gun"):
-		survivor_in_gun_range = true
 
 func get_closest_player_or_null():
 	var all_players = get_tree().get_nodes_in_group("survivor")
@@ -111,13 +103,13 @@ func get_closest_player_or_null():
 				closest_player = player
 	return closest_player
 
-func _on_gun_area_body_exited(body: Node2D) -> void:
-	if body.has_method("survivor_gun"):
-		survivor_in_gun_range = false
-
-
-
 func _on_bullet_zone_area_entered(area: Area2D) -> void:
 	if area.has_method("bullet"):
 		health -= StatsAutoload.survivor_gun_damage
+		$zombie_hurt.stop()
+		$zombie_hurt.play()
 		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)
+
+
+func _on_zombie_walk_finished() -> void:
+	$zombie_walk.play()

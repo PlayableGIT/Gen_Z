@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsb00t0lfytl"]
+[gd_scene load_steps=7 format=3 uid="uid://dsb00t0lfytl"]
 
 [ext_resource type="Script" path="res://Screens/main_menu.gd" id="1_13ad3"]
+[ext_resource type="AudioStream" uid="uid://bpwxuhd54dhwe" path="res://audio/ambient/Echoes of Desolation.mp3" id="2_d5k2u"]
+[ext_resource type="AudioStream" uid="uid://dslu3bcl2y3ux" path="res://audio/UI/button_click.wav" id="3_a6ibg"]
+[ext_resource type="VideoStream" path="res://audio/genz_menu.ogv" id="4_qgdlf"]
+
+[sub_resource type="SystemFont" id="SystemFont_mpw5p"]
+font_names = PackedStringArray("RBNo3.1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_laqm4"]
+font = SubResource("SystemFont_mpw5p")
+font_size = 71
+font_color = Color(0.855469, 0, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 31
+shadow_color = Color(0.12252, 0.591797, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,46 +26,69 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_13ad3")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+top_level = true
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -168.0
+offset_right = -29.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.24101, 2.24101)
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.0823529, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.202111, 0.574406, 0.251311, 1)
+theme_override_font_sizes/font_size = 60
+text = "Gen-Z"
+label_settings = SubResource("LabelSettings_laqm4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+visibility_layer = 5
+layout_mode = 2
+text = "Exit"
+
+[node name="Menu_Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d5k2u")
+volume_db = -15.0
+autoplay = true
+
+[node name="Button_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_a6ibg")
+volume_db = -10.0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.407885, 0.0676971, 0.0172719, 1)
+ratio = 1.9
+stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.498
-anchor_top = 0.498
-anchor_right = 0.498
-anchor_bottom = 0.498
-offset_left = -181.696
-offset_top = -198.704
-offset_right = -22.696
-offset_bottom = -39.704
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2.24101, 2.24101)
-
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+z_index = 1
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.0823529, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.202111, 0.574406, 0.251311, 1)
-theme_override_font_sizes/font_size = 60
-text = "GenZ"
-horizontal_alignment = 1
+stream = ExtResource("4_qgdlf")
+autoplay = true
+expand = true
+loop = true
 
-[node name="Play" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-text = "Play"
-
-[node name="Exit" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-text = "Exit"
-
-[connection signal="pressed" from="ColorRect/VBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

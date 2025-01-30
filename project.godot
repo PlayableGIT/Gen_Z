@@ -18,6 +18,13 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 
 StatsAutoload="*res://Scripts/stats_autoload.gd"
 
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [global_group]
 
 survivor=""
