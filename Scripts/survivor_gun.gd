@@ -82,6 +82,9 @@ func zombie_attack():
 		zombie_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
+		$CPUParticles2D.visible = true
+		$CPUParticles2D.one_shot = true
+		$CPUParticles2D.emitting = true
 		print("Survivor took ", rng_damage, " damage! Health: ", health)
 
 func get_closest_player_or_null():

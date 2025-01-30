@@ -58,3 +58,17 @@ func _on_attack_cooldown_timeout() -> void:
 	zombie_attack_cooldown = true
 	x += 1
 	$Label.visible = false
+
+
+func _on_survivor_01_animation_looped() -> void:
+	if $Survivor01.animation == "hurt":
+		$CPUParticles2D.visible = true
+		$CPUParticles2D.one_shot = true
+		$CPUParticles2D.emitting = true
+
+
+func _on_survivor_01_animation_changed() -> void:
+	if $Survivor01.animation == "hurt":
+		$CPUParticles2D.visible = true
+		$CPUParticles2D.one_shot = true
+		$CPUParticles2D.emitting = true
