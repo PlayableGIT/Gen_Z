@@ -28,7 +28,7 @@ min_value = -1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="ZombieCheerleader" type="CharacterBody2D"]
+[node name="ZombieCheerleader" type="CharacterBody2D" groups=["zombie"]]
 script = ExtResource("1_6h8yu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -108,3 +108,5 @@ radial_accel_min = -1.25
 radial_accel_max = 21.15
 tangential_accel_max = 100.0
 scale_amount_max = 4.0
+
+[connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]

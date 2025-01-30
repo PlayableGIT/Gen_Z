@@ -38,6 +38,11 @@ func _physics_process(delta: float) -> void:
 		moveCharacter()
 		survivor_attack()
 
+	if health <= 0:
+		zombie_alive = false
+		health = 0
+		print("Zombie has been killed!")
+		self.queue_free()
 
 func moveCharacter():
 	var closest = get_closest_player_or_null()
@@ -82,3 +87,12 @@ func get_closest_player_or_null():
 			if (distance_to_this_player < distance_to_closest_player):
 				closest_player = player
 	return closest_player
+
+
+func _on_bullet_zone_area_entered(area: Area2D) -> void:
+	if area.has_method("bullet"):
+		health -= StatsAutoload.survivor_gun_damage
+		$zombie_hurt.stop()
+		$zombie_hurt.play()
+		#blood_splatter()
+		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)

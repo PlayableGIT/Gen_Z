@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c60yxpyucdsfe"]
+[gd_scene load_steps=9 format=3 uid="uid://c60yxpyucdsfe"]
 
 [ext_resource type="Script" path="res://scenes/zombie_tank.gd" id="1_02cu4"]
 [ext_resource type="Texture2D" uid="uid://cvs7bc0xc7fku" path="res://textures/zombie_tank.png" id="1_nsyt4"]
+[ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="3_ei022"]
+[ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="4_evyn1"]
+[ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="5_xs4bb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjd6o"]
 radius = 209.0
@@ -13,15 +16,15 @@ size = Vector2(207, 212)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ana77"]
 size = Vector2(57.3333, 210.667)
 
-[node name="ZombieTank" type="CharacterBody2D"]
+[node name="ZombieTank" type="CharacterBody2D" groups=["zombie"]]
 script = ExtResource("1_02cu4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_bjd6o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_nsyt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bjd6o")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.705, 1)
@@ -61,3 +64,20 @@ radial_accel_min = -1.25
 radial_accel_max = 21.15
 tangential_accel_max = 100.0
 scale_amount_max = 4.0
+
+[node name="zombie_walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ei022")
+volume_db = -5.845
+max_distance = 800.0
+bus = &"Environment"
+
+[node name="zombie_hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_evyn1")
+volume_db = -10.182
+bus = &"Environment"
+
+[node name="zombie_attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xs4bb")
+bus = &"Environment"
+
+[connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]

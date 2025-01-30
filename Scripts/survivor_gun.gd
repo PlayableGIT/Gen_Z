@@ -141,7 +141,7 @@ func rayCastException() -> void:
 		$RayCast2D.add_exception(i)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if x >= 3:
+	if x >= 1:
 		x=-1
 	if body.has_method("zombie"):
 		zombie_in_range = true

@@ -123,6 +123,7 @@ func get_closest_player_or_null():
 
 func _on_bullet_zone_area_entered(area: Area2D) -> void:
 	if area.has_method("bullet"):
+		print("bang")
 		health -= StatsAutoload.survivor_gun_damage
 		$zombie_hurt.stop()
 		$zombie_hurt.play()

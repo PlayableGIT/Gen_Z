@@ -16,6 +16,7 @@ signal level_complete
 @export var runner_zombie: PackedScene
 @export var survivor: PackedScene
 var nekro_stat = StatsAutoload.nekroplazma
+var nekro_cost = 0
 var zombie_count = 0
 var zombie_respawn = true
 var level_accomp = false
@@ -47,27 +48,30 @@ func _process(delta):
 			level_fade = false
 	var survivors = get_tree().get_nodes_in_group("survivor")
 	var gun_survivors = get_tree().get_nodes_in_group("survivor_gun")
-	
 	if Input.is_action_just_released("1"):
-		print("zombie1")
+		print("Casual Zombie, Necroplasm Cost: 2")
+		nekro_cost = 2
 		zombie_1 = true
 		zombie_2 = false
 		zombie_3 = false
 		zombie_4 = false
 	if Input.is_action_just_released("2"):
-		print("zombie2")
+		print("Cheerleader Zombie, Necroplasm Cost: 4")
+		nekro_cost = 4
 		zombie_1 = false
 		zombie_2 = true
 		zombie_3 = false
 		zombie_4 = false
 	if Input.is_action_just_released("3"):
-		print("zombie3")
+		print("Runner Zombie, Necroplasm Cost: 4")
+		nekro_cost = 4
 		zombie_1 = false
 		zombie_2 = false
 		zombie_3 = true
 		zombie_4 = false
 	if Input.is_action_just_released("4"):
-		print("zombie4")
+		print("Tank Zombie, Necroplasm Cost: 8")
+		nekro_cost = 8
 		zombie_1 = false
 		zombie_2 = false
 		zombie_3 = false
@@ -77,7 +81,7 @@ func _process(delta):
 		level_complete.emit()
 		level_accomp = true
 	
-	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1 and zombie_1 == true:
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_1 == true:
 		zombie_count += 1
 		nekro_stat -= 2
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
@@ -89,7 +93,7 @@ func _process(delta):
 		new_zombie.position = get_global_mouse_position()
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
-	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1 and zombie_2 == true:
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_2 == true:
 		zombie_count += 1
 		nekro_stat -= 4
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
@@ -101,7 +105,7 @@ func _process(delta):
 		new_zombie.position = get_global_mouse_position()
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
-	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1 and zombie_3 == true:
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_3 == true:
 		zombie_count += 1
 		nekro_stat -= 4
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
@@ -113,7 +117,7 @@ func _process(delta):
 		new_zombie.position = get_global_mouse_position()
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
-	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1 and zombie_4 == true:
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_4 == true:
 		zombie_count += 1
 		nekro_stat -= 8
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
@@ -125,6 +129,8 @@ func _process(delta):
 		new_zombie.position = get_global_mouse_position()
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat < nekro_cost and (zombie_1 == true or zombie_2 == true or zombie_3 == true or zombie_4 == true):
+		print("Insufficient Necroplasm!")
 	if Input.is_action_just_released("right_mouse"):
 		var new_survivor = survivor.instantiate()
 		add_child(new_survivor)
