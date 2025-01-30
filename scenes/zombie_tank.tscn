@@ -80,4 +80,26 @@ bus = &"Environment"
 stream = ExtResource("5_xs4bb")
 bus = &"Environment"
 
+[node name="ground_hit" type="CPUParticles2D" parent="."]
+position = Vector2(0, 251.798)
+emitting = false
+amount = 1000
+lifetime = 0.5
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.78
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(200, 1)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+initial_velocity_max = 18.59
+angular_velocity_max = 42.04
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+scale_amount_min = 4.0
+scale_amount_max = 10.0
+
 [connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]

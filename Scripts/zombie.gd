@@ -36,9 +36,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0.0
 		move_and_slide()
 	elif ground_hit == true:
-		$CPUParticles2D.visible = true
-		$CPUParticles2D.one_shot = true
-		$CPUParticles2D.emitting = true
+		$ground_hit.visible = true
+		$ground_hit.one_shot = true
+		$ground_hit.emitting = true
 		ground_hit = false
 		
 	if survivor.size() == 0:

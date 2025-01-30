@@ -29,7 +29,11 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * 50 * delta
 		velocity.x = 0.0
 		move_and_slide()
-		
+	elif ground_hit == true:
+		$ground_hit.visible = true
+		$ground_hit.one_shot = true
+		$ground_hit.emitting = true
+		ground_hit = false
 	if survivor.size() == 0:
 		#$Zombie03.animation = "idle"
 		pass

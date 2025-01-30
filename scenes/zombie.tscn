@@ -149,7 +149,7 @@ bus = &"Environment"
 stream = ExtResource("16_v51ls")
 bus = &"Environment"
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="ground_hit" type="CPUParticles2D" parent="."]
 position = Vector2(-10, 103.333)
 emitting = false
 amount = 181
