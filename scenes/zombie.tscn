@@ -144,6 +144,43 @@ bus = &"Environment"
 stream = ExtResource("16_v51ls")
 bus = &"Environment"
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-10, 103.333)
+emitting = false
+amount = 181
+lifetime = 0.3
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.78
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(85.435, 1)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+scale_amount_min = 4.0
+scale_amount_max = 10.0
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(-10, 103.333)
+amount = 181
+lifetime = 0.15
+speed_scale = 0.5
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(58.68, 1)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+initial_velocity_max = 94.89
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+scale_amount_max = 6.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

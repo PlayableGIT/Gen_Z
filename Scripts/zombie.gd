@@ -12,6 +12,7 @@ var door_in_range = false
 @export var health = 25
 var zombie_alive = true
 var zombie_damage: int = 5
+var ground_hit = true
 
 var rng = RandomNumberGenerator.new()
 
@@ -23,6 +24,9 @@ func _ready() -> void:
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
 	$zombie_walk.pitch_scale = rng_pitch_number
 	$zombie_walk.play(rng_play)
+	$CPUParticles2D2.visible = true
+	$CPUParticles2D2.one_shot = true
+	$CPUParticles2D2.emitting = true
 	
 func _physics_process(delta: float) -> void:
 	#grawitacja
@@ -32,6 +36,11 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * 50 * delta
 		velocity.x = 0.0
 		move_and_slide()
+	elif ground_hit == true:
+		$CPUParticles2D.visible = true
+		$CPUParticles2D.one_shot = true
+		$CPUParticles2D.emitting = true
+		ground_hit = false
 		
 	if survivor.size() == 0:
 		$Zombie03.animation = "idle"
