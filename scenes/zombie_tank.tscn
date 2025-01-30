@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://c60yxpyucdsfe"]
+
+[ext_resource type="Script" path="res://scenes/zombie_tank.gd" id="1_02cu4"]
+[ext_resource type="Texture2D" uid="uid://cvs7bc0xc7fku" path="res://textures/zombie_tank.png" id="1_nsyt4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjd6o"]
+radius = 209.0
+height = 514.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ae42q"]
+size = Vector2(207, 212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ana77"]
+size = Vector2(57.3333, 210.667)
+
+[node name="ZombieTank" type="CharacterBody2D"]
+script = ExtResource("1_02cu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bjd6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_nsyt4")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.705, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(-1.5, -1)
+scale = Vector2(3.04, 2.44)
+shape = SubResource("RectangleShape2D_ae42q")
+debug_color = Color(0.996896, 0, 0.318943, 0.42)
+
+[node name="BulletZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletZone"]
+visible = false
+position = Vector2(-0.666668, -0.666667)
+scale = Vector2(7.53, 2.452)
+shape = SubResource("RectangleShape2D_ana77")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(8.73, 243.473)
+amount = 400
+lifetime = 0.15
+speed_scale = 0.5
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(185.105, 13.7)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+initial_velocity_max = 120.28
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+tangential_accel_max = 100.0
+scale_amount_max = 4.0

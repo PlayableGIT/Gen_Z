@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="5_rxv0p"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_708ik"]
-radius = 64.0
+radius = 52.0
 height = 328.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lm4jf"]
@@ -92,7 +92,7 @@ hue_variation_curve = SubResource("Curve_myjxr")
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
 visible = false
-position = Vector2(-10, 114.128)
+position = Vector2(-20.625, 150.953)
 amount = 300
 lifetime = 0.15
 speed_scale = 0.5

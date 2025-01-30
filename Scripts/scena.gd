@@ -12,6 +12,8 @@ signal level_complete
 @export var dead_gun_survivor: PackedScene
 @export var zombie: PackedScene
 @export var cheerleader_zombie: PackedScene
+@export var tank_zombie: PackedScene
+@export var runner_zombie: PackedScene
 @export var survivor: PackedScene
 var nekro_stat = StatsAutoload.nekroplazma
 var zombie_count = 0
@@ -95,6 +97,30 @@ func _process(delta):
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = cheerleader_zombie.instantiate()
+		add_child(new_zombie)
+		new_zombie.position = get_global_mouse_position()
+		zombie_spawn.emit(new_zombie.global_position)
+		$Zombie_Spawn.play()
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1 and zombie_3 == true:
+		zombie_count += 1
+		nekro_stat -= 4
+		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		$Camera2D/stats.text = string
+		zombie_respawn = false
+		$zombie_respawn.start()
+		var new_zombie = runner_zombie.instantiate()
+		add_child(new_zombie)
+		new_zombie.position = get_global_mouse_position()
+		zombie_spawn.emit(new_zombie.global_position)
+		$Zombie_Spawn.play()
+	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat > 1 and zombie_4 == true:
+		zombie_count += 1
+		nekro_stat -= 8
+		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		$Camera2D/stats.text = string
+		zombie_respawn = false
+		$zombie_respawn.start()
+		var new_zombie = tank_zombie.instantiate()
 		add_child(new_zombie)
 		new_zombie.position = get_global_mouse_position()
 		zombie_spawn.emit(new_zombie.global_position)
