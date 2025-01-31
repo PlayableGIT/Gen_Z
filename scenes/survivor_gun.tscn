@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ds6rqlj7kkbbm"]
+[gd_scene load_steps=13 format=3 uid="uid://ds6rqlj7kkbbm"]
 
 [ext_resource type="Texture2D" uid="uid://dxp26fqql4dc3" path="res://animations/survivor_gun_anim/survivor2_anim1.png" id="1_aa6p6"]
 [ext_resource type="Script" path="res://Scripts/survivor_gun.gd" id="1_cylxf"]
@@ -43,6 +43,9 @@ height = 348.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36ao6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5jnp"]
+bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
+
 [node name="survivor_gun" type="CharacterBody2D"]
 script = ExtResource("1_cylxf")
 Bullet = ExtResource("2_gf5xa")
@@ -85,6 +88,16 @@ position = Vector2(150.44, -7.015)
 stream = ExtResource("8_x7cab")
 volume_db = -10.182
 max_distance = 3500.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -68.0
+offset_top = -183.0
+offset_right = 72.0
+offset_bottom = -166.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_c5jnp")
+max_value = 30.0
+step = 1.0
+show_percentage = false
 
 [connection signal="animation_changed" from="survivor_gun" to="." method="_on_survivor_gun_animation_changed"]
 [connection signal="animation_looped" from="survivor_gun" to="." method="_on_survivor_gun_animation_looped"]

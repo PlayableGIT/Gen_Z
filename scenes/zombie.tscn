@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dlnfoe38vgqp"]
+[gd_scene load_steps=22 format=3 uid="uid://dlnfoe38vgqp"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
 [ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
@@ -96,6 +96,9 @@ size = Vector2(207, 212)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa0h1"]
 size = Vector2(57.3333, 210.667)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj756"]
+bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
+
 [node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nufbr")
@@ -143,6 +146,16 @@ bus = &"Environment"
 [node name="zombie_attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_v51ls")
 bus = &"Environment"
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -55.0
+offset_top = -124.0
+offset_right = 55.0
+offset_bottom = -107.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_nj756")
+max_value = 25.0
+step = 1.0
+show_percentage = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn8vnivdwoql7"]
+[gd_scene load_steps=13 format=3 uid="uid://bn8vnivdwoql7"]
 
 [ext_resource type="Script" path="res://Scripts/survivor.gd" id="1_jshkn"]
 [ext_resource type="Texture2D" uid="uid://biwb7oa63p6ou" path="res://textures/survivor_01.png" id="2_vs3rb"]
@@ -37,6 +37,7 @@ size = Vector2(226, 220)
 
 [sub_resource type="SystemFont" id="SystemFont_ks8wu"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
+subpixel_positioning = 0
 oversampling = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_47npf"]
@@ -47,6 +48,9 @@ outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 26
 shadow_color = Color(0, 0, 0, 0.207843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jutq"]
+bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
 [node name="Survivor" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -89,6 +93,16 @@ volume_db = -11.636
 [node name="survivor_attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_xms6q")
 volume_db = -4.43
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -75.3333
+offset_top = -128.667
+offset_right = 44.6667
+offset_bottom = -111.667
+theme_override_styles/fill = SubResource("StyleBoxFlat_4jutq")
+max_value = 25.0
+step = 1.0
+show_percentage = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
