@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		health = 0
 		print("Survivor has been killed!")
 		self.queue_free()
-	
+	set_Health_bar()
 
 func survivor():
 	pass
@@ -58,3 +58,6 @@ func _on_attack_cooldown_timeout() -> void:
 	zombie_attack_cooldown = true
 	x += 1
 	$Label.visible = false
+
+func set_Health_bar() -> void:
+	$HealthBar.value = health
