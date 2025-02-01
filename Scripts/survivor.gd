@@ -82,4 +82,3 @@ func _on_survivor_01_animation_changed() -> void:
 
 func set_Health_bar() -> void:
 	$HealthBar.value = health
-

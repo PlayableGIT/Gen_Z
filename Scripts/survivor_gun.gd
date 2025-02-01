@@ -12,6 +12,7 @@ var uwaga_drzwi = null
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	set_Health_bar()
 	$Label.visible = false
 	add_to_group("survivor")
 
@@ -63,12 +64,6 @@ func _physics_process(delta: float) -> void:
 		print("Survivor has been killed!")
 		self.queue_free()
 
-
-var teksty: = ["NEED BACKUP!", "THIS IS NOTHING LIKE THE SIMULATIONS!","", "ENEMY CLOSE!"]
-var x = 0
-
-	set_Health_bar()
-	
 func shoot():
 	var b = Bullet.instantiate()
 	call_deferred("add_child", b)
@@ -92,6 +87,9 @@ func blood_splatter():
 
 func survivor_gun():
 	pass
+
+var teksty: = ["NEED BACKUP!", "THIS IS NOTHING LIKE THE SIMULATIONS!","", "ENEMY CLOSE!"]
+var x = 0
 
 func zombie_attack():
 	if zombie_in_range and zombie_attack_cooldown:
@@ -153,5 +151,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = false
 		
-func set_Health_bar() -> void:
+func set_Health_bar():
 	$HealthBar.value = health

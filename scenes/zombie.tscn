@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dlnfoe38vgqp"]
+[gd_scene load_steps=23 format=3 uid="uid://dlnfoe38vgqp"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
 [ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
@@ -96,7 +96,6 @@ size = Vector2(207, 212)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa0h1"]
 size = Vector2(57.3333, 210.667)
 
-
 [sub_resource type="Curve" id="Curve_pm5k0"]
 min_value = -1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -152,7 +151,6 @@ bus = &"Environment"
 [node name="zombie_attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_v51ls")
 bus = &"Environment"
-
 
 [node name="ground_hit" type="CPUParticles2D" parent="."]
 position = Vector2(-10, 103.333)
@@ -224,7 +222,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_nj756")
 max_value = 25.0
 step = 1.0
 show_percentage = false
-
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
