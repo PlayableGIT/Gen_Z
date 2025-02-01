@@ -54,6 +54,7 @@ func _physics_process(delta: float) -> void:
 		health = 0
 		print("Zombie has been killed!")
 		self.queue_free()
+	set_Health_bar()
 	
 func moveCharacter():
 	var closest = get_closest_player_or_null()
@@ -133,3 +134,6 @@ func _on_bullet_zone_area_entered(area: Area2D) -> void:
 
 func _on_zombie_walk_finished() -> void:
 	$zombie_walk.play()
+
+func set_Health_bar() -> void:
+	$HealthBar.value = health

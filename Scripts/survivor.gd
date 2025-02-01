@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 		health = 0
 		print("Survivor has been killed!")
 		self.queue_free()
-	
+	set_Health_bar()
 
 func survivor():
 	pass
@@ -61,6 +61,7 @@ func _on_attack_cooldown_timeout() -> void:
 	x += 1
 	$Label.visible = false
 
+
 func blood_splatter():
 	var splat_x = rng.randf_range(-50.0, 50.0)
 	var splat_y = rng.randf_range(-50.0, 50.0)
@@ -78,3 +79,7 @@ func _on_survivor_01_animation_looped() -> void:
 func _on_survivor_01_animation_changed() -> void:
 	if $Survivor01.animation == "hurt":
 		blood_splatter()
+
+func set_Health_bar() -> void:
+	$HealthBar.value = health
+

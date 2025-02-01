@@ -63,9 +63,12 @@ func _physics_process(delta: float) -> void:
 		print("Survivor has been killed!")
 		self.queue_free()
 
+
 var teksty: = ["NEED BACKUP!", "THIS IS NOTHING LIKE THE SIMULATIONS!","", "ENEMY CLOSE!"]
 var x = 0
 
+	set_Health_bar()
+	
 func shoot():
 	var b = Bullet.instantiate()
 	call_deferred("add_child", b)
@@ -149,3 +152,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("zombie"):
 		zombie_in_range = false
+		
+func set_Health_bar() -> void:
+	$HealthBar.value = health
