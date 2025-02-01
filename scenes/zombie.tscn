@@ -96,6 +96,12 @@ size = Vector2(207, 212)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa0h1"]
 size = Vector2(57.3333, 210.667)
 
+
+[sub_resource type="Curve" id="Curve_pm5k0"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj756"]
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
@@ -147,6 +153,68 @@ bus = &"Environment"
 stream = ExtResource("16_v51ls")
 bus = &"Environment"
 
+
+[node name="ground_hit" type="CPUParticles2D" parent="."]
+position = Vector2(-10, 103.333)
+emitting = false
+amount = 181
+lifetime = 0.3
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.78
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(85.435, 1)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+scale_amount_min = 4.0
+scale_amount_max = 10.0
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-10, 103.333)
+amount = 300
+lifetime = 0.15
+speed_scale = 0.5
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(58.68, 13.7)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+initial_velocity_max = 120.28
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+tangential_accel_max = 100.0
+scale_amount_max = 4.0
+
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(5.33333, -29.3333)
+emitting = false
+amount = 100
+lifetime = 0.3
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.75
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.183655, 0.691406, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_pm5k0")
+
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -55.0
 offset_top = -124.0
@@ -156,6 +224,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_nj756")
 max_value = 25.0
 step = 1.0
 show_percentage = false
+
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

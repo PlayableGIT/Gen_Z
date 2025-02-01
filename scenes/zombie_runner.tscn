@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://g330a3qiglye"]
+
+[ext_resource type="Script" path="res://scenes/zombie_runner.gd" id="1_ol277"]
+[ext_resource type="Texture2D" uid="uid://cdt0md1qoh0my" path="res://textures/zombie_runner.png" id="1_wrkf6"]
+[ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="3_ciwji"]
+[ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="4_kmcos"]
+[ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="5_ypyj0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ac36u"]
+radius = 70.0
+height = 202.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is7ln"]
+size = Vector2(207, 212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is4wx"]
+size = Vector2(57.3333, 210.667)
+
+[node name="ZombieRunner" type="CharacterBody2D" groups=["zombie"]]
+script = ExtResource("1_ol277")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_wrkf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.025, 0)
+shape = SubResource("CapsuleShape2D_ac36u")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.705, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, -1)
+scale = Vector2(1.175, 0.943)
+shape = SubResource("RectangleShape2D_is7ln")
+debug_color = Color(0.996896, 0, 0.318943, 0.42)
+
+[node name="BulletZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletZone"]
+position = Vector2(1.158, -0.667)
+scale = Vector2(2.51, 0.959)
+shape = SubResource("RectangleShape2D_is4wx")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(-17, 90.59)
+amount = 200
+lifetime = 0.15
+speed_scale = 0.5
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(62.21, 13.7)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+initial_velocity_max = 120.28
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+tangential_accel_max = 100.0
+scale_amount_max = 4.0
+
+[node name="zombie_walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ciwji")
+volume_db = -5.845
+max_distance = 800.0
+bus = &"Environment"
+
+[node name="zombie_hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kmcos")
+volume_db = -10.182
+bus = &"Environment"
+
+[node name="zombie_attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ypyj0")
+bus = &"Environment"
+
+[node name="ground_hit" type="CPUParticles2D" parent="."]
+position = Vector2(-10, 103.333)
+emitting = false
+amount = 181
+lifetime = 0.3
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.78
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(72.97, 1)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+scale_amount_min = 4.0
+scale_amount_max = 10.0
+
+[connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]

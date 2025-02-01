@@ -36,7 +36,6 @@ func _process(delta):
 	if Input.is_action_just_released("scroll_up") and $".".zoom.x < 1.5:
 		$".".zoom.x += delta*SCROLL_SPEED
 		$".".zoom.y += delta*SCROLL_SPEED
-
 	else:
 		pass
 		

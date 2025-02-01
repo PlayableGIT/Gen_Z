@@ -11,6 +11,7 @@ func _ready() -> void:
 	$Label.visible = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	
 	if not is_on_floor():
 		velocity += get_gravity() * 10 * delta
 		velocity.x = 0.0
@@ -35,6 +36,7 @@ func zombie_attack():
 		$attack_cooldown.start()
 		health = health - rng_damage
 		$Survivor01.animation = "hurt"
+		blood_splatter()
 		print("Survivor took ", StatsAutoload.zombie_damage, " damage! Health: ", health)
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if x >= 2:
@@ -52,12 +54,32 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		zombie_in_range = false
 		$Survivor01.animation = "default"
 
-var teksty: = ["EAT SHIT!!!", "DIE! DIE! DIE!", "MOTHERFU-"]
+var teksty: = ["EAT SHIT!!!","", "DIE! DIE! DIE!","","", "MOTHERFU-"]
 var x = 0
 func _on_attack_cooldown_timeout() -> void:
 	zombie_attack_cooldown = true
 	x += 1
 	$Label.visible = false
 
+
+func blood_splatter():
+	var splat_x = rng.randf_range(-50.0, 50.0)
+	var splat_y = rng.randf_range(-50.0, 50.0)
+	var splatter_position = Vector2(splat_x, splat_y)
+	$blood_splatter.position = splatter_position
+	$blood_splatter.visible = true
+	$blood_splatter.one_shot = true
+	$blood_splatter.emitting = true
+
+func _on_survivor_01_animation_looped() -> void:
+	if $Survivor01.animation == "hurt":
+		blood_splatter()
+
+
+func _on_survivor_01_animation_changed() -> void:
+	if $Survivor01.animation == "hurt":
+		blood_splatter()
+
 func set_Health_bar() -> void:
 	$HealthBar.value = health
+

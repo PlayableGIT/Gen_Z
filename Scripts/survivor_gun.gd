@@ -9,8 +9,10 @@ var zombie_attack_cooldown = true
 var health = 30
 var survivor_alive = true
 var uwaga_drzwi = null
+var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	$Label.visible = false
 	add_to_group("survivor")
 
 func _physics_process(delta: float) -> void:
@@ -60,6 +62,11 @@ func _physics_process(delta: float) -> void:
 		health = 0
 		print("Survivor has been killed!")
 		self.queue_free()
+
+
+var teksty: = ["NEED BACKUP!", "THIS IS NOTHING LIKE THE SIMULATIONS!","", "ENEMY CLOSE!"]
+var x = 0
+
 	set_Health_bar()
 	
 func shoot():
@@ -74,6 +81,15 @@ func shoot_left():
 	b.transform = $RayCast2D.transform
 	$gunshot.play()
 
+func blood_splatter():
+	var splat_x = rng.randf_range(-50.0, 50.0)
+	var splat_y = rng.randf_range(-50.0, 50.0)
+	var splatter_position = Vector2(splat_x, splat_y)
+	$blood_splatter.position = splatter_position
+	$blood_splatter.visible = true
+	$blood_splatter.one_shot = true
+	$blood_splatter.emitting = true
+
 func survivor_gun():
 	pass
 
@@ -83,6 +99,9 @@ func zombie_attack():
 		zombie_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
+		$Label.text = teksty[x]
+		$Label.visible = true
+		blood_splatter()
 		print("Survivor took ", rng_damage, " damage! Health: ", health)
 
 func get_closest_player_or_null():
@@ -100,6 +119,8 @@ func get_closest_player_or_null():
 
 func _on_attack_cooldown_timeout() -> void:
 	zombie_attack_cooldown = true
+	x += 1
+	$Label.visible = false
 
 func _on_survivor_gun_animation_looped() -> void:
 	if $survivor_gun.animation == "idle":
@@ -123,6 +144,8 @@ func rayCastException() -> void:
 		$RayCast2D.add_exception(i)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if x >= 1:
+		x=-1
 	if body.has_method("zombie"):
 		zombie_in_range = true
 

@@ -35,22 +35,29 @@ size = Vector2(151, 219.875)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eiqg"]
 size = Vector2(226, 220)
 
-[sub_resource type="SystemFont" id="SystemFont_ks8wu"]
+[sub_resource type="SystemFont" id="SystemFont_522ec"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
 subpixel_positioning = 0
 oversampling = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_47npf"]
 line_spacing = 1.0
-font = SubResource("SystemFont_ks8wu")
+font = SubResource("SystemFont_522ec")
 font_size = 46
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 26
 shadow_color = Color(0, 0, 0, 0.207843)
 
+
+[sub_resource type="Curve" id="Curve_3a0rg"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jutq"]
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
+
 
 [node name="Survivor" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -59,7 +66,6 @@ script = ExtResource("1_jshkn")
 [node name="Survivor01" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.5625, 2.5625)
 sprite_frames = SubResource("SpriteFrames_knfcb")
-animation = &"hurt"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -93,6 +99,32 @@ volume_db = -11.636
 [node name="survivor_attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_xms6q")
 volume_db = -4.43
+
+
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(-25.3333, 49.3333)
+emitting = false
+amount = 100
+lifetime = 0.3
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 4.0
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.902344, 0, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_3a0rg")
+
+[connection signal="animation_changed" from="Survivor01" to="." method="_on_survivor_01_animation_changed"]
+[connection signal="animation_looped" from="Survivor01" to="." method="_on_survivor_01_animation_looped"]
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -75.3333

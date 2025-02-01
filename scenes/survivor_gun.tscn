@@ -1,4 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://ds6rqlj7kkbbm"]
+
+[gd_scene load_steps=16 format=3 uid="uid://ds6rqlj7kkbbm"]
 
 [ext_resource type="Texture2D" uid="uid://dxp26fqql4dc3" path="res://animations/survivor_gun_anim/survivor2_anim1.png" id="1_aa6p6"]
 [ext_resource type="Script" path="res://Scripts/survivor_gun.gd" id="1_cylxf"]
@@ -43,8 +44,29 @@ height = 348.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36ao6"]
 
+
+[sub_resource type="Curve" id="Curve_2gofq"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="SystemFont" id="SystemFont_ks8wu"]
+font_names = PackedStringArray("8-bit Limit (BRK)")
+subpixel_positioning = 0
+oversampling = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_xlg3k"]
+line_spacing = 1.0
+font = SubResource("SystemFont_ks8wu")
+font_size = 46
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 26
+shadow_color = Color(0, 0, 0, 0.207843)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5jnp"]
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
+
 
 [node name="survivor_gun" type="CharacterBody2D"]
 script = ExtResource("1_cylxf")
@@ -79,7 +101,7 @@ hit_from_inside = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(10.02, 16.58)
+scale = Vector2(6.675, 16.58)
 shape = SubResource("RectangleShape2D_36ao6")
 debug_color = Color(0.7, 0, 0, 0.42)
 
@@ -88,6 +110,38 @@ position = Vector2(150.44, -7.015)
 stream = ExtResource("8_x7cab")
 volume_db = -10.182
 max_distance = 3500.0
+
+
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(8, -23)
+emitting = false
+amount = 100
+lifetime = 0.3
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 4.0
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.902344, 0, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_2gofq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -262.0
+offset_top = -232.0
+offset_right = 48.0
+offset_bottom = -156.0
+scale = Vector2(1.65033, 1.65033)
+text = "EAT SHIT!!!"
+label_settings = SubResource("LabelSettings_xlg3k")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -68.0
