@@ -92,7 +92,7 @@ modulate = Color(1, 0, 0, 1)
 self_modulate = Color(1, 0, 0, 1)
 z_index = 55
 position = Vector2(150, 0)
-target_position = Vector2(1500, 0)
+target_position = Vector2(4000, 0)
 hit_from_inside = true
 
 [node name="Area2D" type="Area2D" parent="."]
