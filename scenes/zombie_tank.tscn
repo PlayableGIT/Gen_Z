@@ -17,6 +17,7 @@ size = Vector2(207, 212)
 size = Vector2(57.3333, 210.667)
 
 [node name="ZombieTank" type="CharacterBody2D" groups=["zombie"]]
+scale = Vector2(0.77, 0.77)
 script = ExtResource("1_02cu4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

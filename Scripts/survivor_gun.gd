@@ -20,12 +20,13 @@ func _physics_process(delta: float) -> void:
 	rayCastException()
 	zombie_attack()
 	var close_zomb = get_closest_player_or_null()
-	print(get_closest_player_or_null())
-	print($RayCast2D.is_colliding())
 	$RayCast2D.enabled = true
 	if close_zomb != null:
 		var angle_to: float = global_position.direction_to(close_zomb.global_position).angle()
+		
 		$RayCast2D.global_rotation = angle_to
+		var kat = rad_to_deg(angle_to)
+		print(kat)
 	
 	if $RayCast2D.is_colliding() == null:
 		pass
@@ -39,14 +40,16 @@ func _physics_process(delta: float) -> void:
 			else:
 				uwaga_drzwi = false 
 	
+	
 	if uwaga_drzwi == false and close_zomb != null and $RayCast2D.is_colliding() == true:
 		var angle_to: float = global_position.direction_to(close_zomb.global_position).angle()
-		if angle_to <= 1.5 and angle_to >= 0:
+		var kat = rad_to_deg(angle_to)
+		if kat <= 180 and kat >= -180:
 			$survivor_gun.set_flip_h(false)
 			$survivor_gun.position = Vector2(50,0)
 			$RayCast2D.position = Vector2(150,0)
 			$survivor_gun.animation = "shoot"
-		elif angle_to >= 1.5 and angle_to <= 3.3:
+		elif angle_to >= -180 and angle_to <= 180.0:
 			$survivor_gun.set_flip_h(true)
 			$survivor_gun.position = Vector2(-50,0)
 			$RayCast2D.position = Vector2(-140,0)
