@@ -20,6 +20,8 @@ func _physics_process(delta: float) -> void:
 	rayCastException()
 	zombie_attack()
 	var close_zomb = get_closest_player_or_null()
+	print(get_closest_player_or_null())
+	print($RayCast2D.is_colliding())
 	$RayCast2D.enabled = true
 	if close_zomb != null:
 		var angle_to: float = global_position.direction_to(close_zomb.global_position).angle()

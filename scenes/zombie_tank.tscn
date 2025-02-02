@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/zombie_tank.gd" id="1_02cu4"]
 [ext_resource type="Texture2D" uid="uid://cvs7bc0xc7fku" path="res://textures/zombie_tank.png" id="1_nsyt4"]
-[ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="3_ei022"]
-[ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="4_evyn1"]
-[ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="5_xs4bb"]
+[ext_resource type="AudioStream" uid="uid://cqoase678jw0n" path="res://audio/zombie_tank/zombie_tank_walk.mp3" id="3_1pl13"]
+[ext_resource type="AudioStream" uid="uid://dsou7ina8jn0g" path="res://audio/zombie_tank/zombie_tank_hurt.mp3" id="4_iofl7"]
+[ext_resource type="AudioStream" uid="uid://dvdr5yaiw25wu" path="res://audio/zombie_tank/zombie_tank_attack1.mp3" id="5_dqbyd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjd6o"]
 radius = 209.0
@@ -30,7 +30,6 @@ shape = SubResource("CapsuleShape2D_bjd6o")
 scale = Vector2(0.705, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(-1.5, -1)
 scale = Vector2(3.04, 2.44)
 shape = SubResource("RectangleShape2D_ae42q")
@@ -39,7 +38,6 @@ debug_color = Color(0.996896, 0, 0.318943, 0.42)
 [node name="BulletZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletZone"]
-visible = false
 position = Vector2(-0.666668, -0.666667)
 scale = Vector2(7.53, 2.452)
 shape = SubResource("RectangleShape2D_ana77")
@@ -66,18 +64,17 @@ tangential_accel_max = 100.0
 scale_amount_max = 4.0
 
 [node name="zombie_walk" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_ei022")
-volume_db = -5.845
+stream = ExtResource("3_1pl13")
 max_distance = 800.0
 bus = &"Environment"
 
 [node name="zombie_hurt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_evyn1")
-volume_db = -10.182
+stream = ExtResource("4_iofl7")
+volume_db = -3.0
 bus = &"Environment"
 
 [node name="zombie_attack" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_xs4bb")
+stream = ExtResource("5_dqbyd")
 bus = &"Environment"
 
 [node name="ground_hit" type="CPUParticles2D" parent="."]
@@ -102,4 +99,8 @@ radial_accel_max = 21.15
 scale_amount_min = 4.0
 scale_amount_max = 10.0
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="finished" from="zombie_walk" to="." method="_on_zombie_walk_finished"]

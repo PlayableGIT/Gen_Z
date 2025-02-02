@@ -17,6 +17,11 @@ var ground_hit = true
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var rng_play = rng.randf_range(0.0, 20.0)
+	var rng_pitch_number = rng.randf_range(0.8, 1.1)
+	$zombie_walk.pitch_scale = rng_pitch_number
+	$zombie_walk.play(rng_play)
+	add_to_group("zombie")
 	$CPUParticles2D2.visible = true
 	$CPUParticles2D2.one_shot = true
 	$CPUParticles2D2.emitting = true
@@ -65,11 +70,11 @@ func survivor_attack():
 		var damage = StatsAutoload.survivor_damage
 		survivor_attack_cooldown = false
 		#$Zombie03.animation = "attack"
-		#$zombie_attack.play()
+		$zombie_attack.play()
 		$attack_cooldown.start()
 		health = health - damage
-		#$zombie_hurt.stop()
-		#$zombie_hurt.play()
+		$zombie_hurt.stop()
+		$zombie_hurt.play()
 		#blood_splatter()
 		print("Zombie took ", damage, " damage! Health: ", health)
 	if survivor_in_range == false:
@@ -100,3 +105,20 @@ func _on_bullet_zone_area_entered(area: Area2D) -> void:
 		$zombie_hurt.play()
 		#blood_splatter()
 		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_method("survivor"):
+		survivor_in_range = true
+	if body.has_method("survivor_gun"):
+		survivor_in_range = true
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.has_method("survivor"):
+		survivor_in_range = false
+	if body.has_method("survivor_gun"):
+		survivor_in_range = false
+
+func _on_zombie_walk_finished() -> void:
+	$zombie_walk.play()
+
+func _on_attack_cooldown_timeout() -> void:
+	survivor_attack_cooldown = true

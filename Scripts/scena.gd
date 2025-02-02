@@ -3,6 +3,8 @@ extends Node2D
 var zombieDamageAmount: int
 signal door_boom(a: Vector2)
 signal zombie_spawn(a: Vector2)
+signal zombie_runner_spawn(a: Vector2)
+signal zombie_tank_spawn(a: Vector2)
 signal zombie_death(a: Vector2)
 signal survivor_death(a: Vector2)
 signal level_complete
@@ -36,6 +38,8 @@ func _ready() -> void:
 	$Ambient.play()
 	door_boom.connect(door_destro)
 	zombie_spawn.connect(zombie_spawn_sound)
+	zombie_runner_spawn.connect(zombie_runner_spawn_sound)
+	zombie_tank_spawn.connect(zombie_tank_spawn_sound)
 	zombie_death.connect(zomb_death)
 	survivor_death.connect(surv_death)
 	level_complete.connect(level_comp)
@@ -115,7 +119,7 @@ func _process(delta):
 		var new_zombie = runner_zombie.instantiate()
 		add_child(new_zombie)
 		new_zombie.position = get_global_mouse_position()
-		zombie_spawn.emit(new_zombie.global_position)
+		zombie_runner_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_4 == true:
 		zombie_count += 1
@@ -127,7 +131,7 @@ func _process(delta):
 		var new_zombie = tank_zombie.instantiate()
 		add_child(new_zombie)
 		new_zombie.position = get_global_mouse_position()
-		zombie_spawn.emit(new_zombie.global_position)
+		zombie_tank_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat < nekro_cost and (zombie_1 == true or zombie_2 == true or zombie_3 == true or zombie_4 == true):
 		print("Insufficient Necroplasm!")
@@ -142,7 +146,21 @@ func zombie_spawn_sound(a):
 	$Zombie_Spawn2.global_position = sound_position
 	$Zombie_Spawn2.pitch_scale = rng_pitch_number
 	$Zombie_Spawn2.play()
-	
+
+func zombie_runner_spawn_sound(a):
+	var rng_pitch_number = rng.randf_range(0.8, 1.1)
+	var sound_position = Vector2(a)
+	$Zombie_Runner_Spawn.global_position = sound_position
+	$Zombie_Runner_Spawn.pitch_scale = rng_pitch_number
+	$Zombie_Runner_Spawn.play()
+
+func zombie_tank_spawn_sound(a):
+	var rng_pitch_number = rng.randf_range(0.8, 1.1)
+	var sound_position = Vector2(a)
+	$Zombie_Tank_Spawn.global_position = sound_position
+	$Zombie_Tank_Spawn.pitch_scale = rng_pitch_number
+	$Zombie_Tank_Spawn.play()
+
 func surv_death(a):
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
 	var sound_position = Vector2(a)
