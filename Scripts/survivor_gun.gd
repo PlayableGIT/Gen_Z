@@ -12,11 +12,11 @@ var uwaga_drzwi = null
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
-	set_Health_bar()
 	$Label.visible = false
 	add_to_group("survivor")
 
 func _physics_process(delta: float) -> void:
+	set_Health_bar()
 	rayCastException()
 	zombie_attack()
 	var close_zomb = get_closest_player_or_null()
@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		
 		$RayCast2D.global_rotation = angle_to
 		var kat = rad_to_deg(angle_to)
-		print(kat)
+		#print(kat)
 	
 	if $RayCast2D.is_colliding() == null:
 		pass
@@ -99,6 +99,7 @@ var x = 0
 func zombie_attack():
 	if zombie_in_range and zombie_attack_cooldown:
 		var rng_damage = StatsAutoload.zombie_damage
+		print("dizala")
 		zombie_attack_cooldown = false
 		$attack_cooldown.start()
 		health = health - rng_damage
