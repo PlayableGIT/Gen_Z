@@ -6,6 +6,7 @@ signal zombie_spawn(a: Vector2)
 signal zombie_runner_spawn(a: Vector2)
 signal zombie_tank_spawn(a: Vector2)
 signal zombie_death(a: Vector2)
+signal zombie_tank_death(a: Vector2)
 signal survivor_death(a: Vector2)
 signal level_complete
 @export var destroyed_door: PackedScene
@@ -41,6 +42,7 @@ func _ready() -> void:
 	zombie_runner_spawn.connect(zombie_runner_spawn_sound)
 	zombie_tank_spawn.connect(zombie_tank_spawn_sound)
 	zombie_death.connect(zomb_death)
+	zombie_tank_death.connect(zomb_tank_death)
 	survivor_death.connect(surv_death)
 	level_complete.connect(level_comp)
 func _process(delta):
@@ -180,18 +182,32 @@ func zomb_death(a):
 	$Zombie_Death.global_position = sound_position
 	$Zombie_Death.play()
 
+func zomb_tank_death(a):
+	var rng_pitch_number = rng.randf_range(0.8, 1.1)
+	var sound_position = Vector2(a)
+	$Zombie_Tank_Death.pitch_scale = rng_pitch_number
+	$Zombie_Tank_Death.global_position = sound_position
+	$Zombie_Tank_Death.play()
 func _on_child_exiting_tree(node: Node) -> void:
 	var rng_x = rng.randf_range(-50.0, 50.0)
 	var rng_dead_spawn = Vector2(rng_x, 0)
 	if node.has_method("zombie"):
-		zombie_count -=1
-		print(zombie_count)
-		var death_zombie = dead_zombie.instantiate()
-		add_child.call_deferred(death_zombie)
-		death_zombie.position = node.position + rng_dead_spawn
-		zombie_death.emit(node.global_position)
-		print("usunieto zombie")
-	
+		if node.has_method("tank"):
+			zombie_count -=1
+			print(zombie_count)
+			var death_zombie = dead_zombie.instantiate()
+			add_child.call_deferred(death_zombie)
+			death_zombie.position = node.position + rng_dead_spawn
+			zombie_tank_death.emit(node.global_position)
+			print("usunieto zombie")
+		else:
+			zombie_count -=1
+			print(zombie_count)
+			var death_zombie = dead_zombie.instantiate()
+			add_child.call_deferred(death_zombie)
+			death_zombie.position = node.position + rng_dead_spawn
+			zombie_death.emit(node.global_position)
+			print("usunieto zombie")
 	if node.has_method("survivor"):
 		var death_survivor = dead_survivor.instantiate()
 		add_child.call_deferred(death_survivor)

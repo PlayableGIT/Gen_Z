@@ -44,12 +44,12 @@ func _physics_process(delta: float) -> void:
 	if uwaga_drzwi == false and close_zomb != null and $RayCast2D.is_colliding() == true:
 		var angle_to: float = global_position.direction_to(close_zomb.global_position).angle()
 		var kat = rad_to_deg(angle_to)
-		if kat <= 180 and kat >= -180:
+		if kat <= 20 and kat >= -7:
 			$survivor_gun.set_flip_h(false)
 			$survivor_gun.position = Vector2(50,0)
 			$RayCast2D.position = Vector2(150,0)
 			$survivor_gun.animation = "shoot"
-		elif angle_to >= -180 and angle_to <= 180.0:
+		elif angle_to >= -178 and angle_to <= 168:
 			$survivor_gun.set_flip_h(true)
 			$survivor_gun.position = Vector2(-50,0)
 			$RayCast2D.position = Vector2(-140,0)

@@ -17,7 +17,7 @@ var ground_hit = true
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var rng_play = rng.randf_range(0.0, 20.0)
+	var rng_play = rng.randf_range(0.0, 10.0)
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
 	$zombie_walk.pitch_scale = rng_pitch_number
 	$zombie_walk.play(rng_play)
@@ -53,6 +53,9 @@ func _physics_process(delta: float) -> void:
 		print("Zombie has been killed!")
 		self.queue_free()
 
+func tank():
+	pass
+
 func moveCharacter():
 	var closest = get_closest_player_or_null()
 	#kierunek
@@ -73,8 +76,8 @@ func survivor_attack():
 		$zombie_attack.play()
 		$attack_cooldown.start()
 		health = health - damage
-		$zombie_hurt.stop()
-		$zombie_hurt.play()
+		#$zombie_hurt.stop()
+		#$zombie_hurt.play()
 		#blood_splatter()
 		print("Zombie took ", damage, " damage! Health: ", health)
 	if survivor_in_range == false:
@@ -101,8 +104,8 @@ func get_closest_player_or_null():
 func _on_bullet_zone_area_entered(area: Area2D) -> void:
 	if area.has_method("bullet"):
 		health -= StatsAutoload.survivor_gun_damage
-		$zombie_hurt.stop()
-		$zombie_hurt.play()
+		#$zombie_hurt.stop()
+		#$zombie_hurt.play()
 		#blood_splatter()
 		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)
 
