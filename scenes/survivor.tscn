@@ -58,6 +58,7 @@ point_count = 2
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
 [node name="Survivor" type="CharacterBody2D"]
+z_index = 2
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_jshkn")
 

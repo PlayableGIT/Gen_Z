@@ -90,6 +90,7 @@ animations = [{
 size = Vector2(116.316, 54.0702)
 
 [node name="dead_survivor" type="AnimatedSprite2D"]
+z_index = 2
 scale = Vector2(3.8, 3.8)
 sprite_frames = SubResource("SpriteFrames_772ai")
 animation = &"collect"

@@ -17,6 +17,7 @@ size = Vector2(207, 212)
 size = Vector2(57.3333, 210.667)
 
 [node name="ZombieTank" type="CharacterBody2D" groups=["zombie"]]
+z_index = 2
 scale = Vector2(0.77, 0.77)
 script = ExtResource("1_02cu4")
 
