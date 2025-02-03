@@ -52,7 +52,7 @@ func _process(delta):
 	var czas = $zombie_respawn2.wait_time - $zombie_respawn2.time_left
 	#if Input.is_action_just_released("left_mouse"):
 		#$zombie_respawn2.start()
-	print(czas)
+	#print(czas)
 	$respawn_bar.value = czas
 	var string1 = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
 	$Camera2D/stats.text = string1
