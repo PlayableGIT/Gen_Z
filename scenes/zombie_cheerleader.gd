@@ -47,7 +47,8 @@ func _physics_process(delta: float) -> void:
 		health = 0
 		print("Zombie has been killed!")
 		self.queue_free()
-
+	set_Health_bar()
+	
 func moveCharacter():
 	var closest = get_closest_player_or_null()
 	#kierunek
@@ -72,6 +73,8 @@ func survivor_attack():
 		#$zombie_hurt.play()
 		#blood_splatter()
 		print("Zombie took ", damage, " damage! Health: ", health)
+		set_Health_bar()
+		
 	if survivor_in_range == false:
 		pass
 		#$Zombie03.animation = "walk"
@@ -100,3 +103,6 @@ func _on_bullet_zone_area_entered(area: Area2D) -> void:
 		$zombie_hurt.play()
 		#blood_splatter()
 		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)
+
+func set_Health_bar() -> void:
+	$HealthBar.value = health

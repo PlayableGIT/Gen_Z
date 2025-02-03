@@ -9,7 +9,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#print($Control/Button.modulate.a)
 	if button_fade == true:
 		$Control/Button.modulate.a += 1 * delta
 	if $Control/Button.modulate.a >= 0.7:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://g330a3qiglye"]
+[gd_scene load_steps=10 format=3 uid="uid://g330a3qiglye"]
 
 [ext_resource type="Script" path="res://scenes/zombie_runner.gd" id="1_ol277"]
 [ext_resource type="Texture2D" uid="uid://cdt0md1qoh0my" path="res://textures/zombie_runner.png" id="1_wrkf6"]
@@ -15,6 +15,9 @@ size = Vector2(207, 212)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_is4wx"]
 size = Vector2(57.3333, 210.667)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrow2"]
+bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
 [node name="ZombieRunner" type="CharacterBody2D" groups=["zombie"]]
 z_index = 2
@@ -99,6 +102,16 @@ radial_accel_min = -1.25
 radial_accel_max = 21.15
 scale_amount_min = 4.0
 scale_amount_max = 10.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -71.0
+offset_top = -119.0
+offset_right = 70.0
+offset_bottom = -102.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_wrow2")
+max_value = 20.0
+step = 1.0
+show_percentage = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

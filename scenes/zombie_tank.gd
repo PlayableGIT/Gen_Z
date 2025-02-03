@@ -9,7 +9,7 @@ var survivor_attack_cooldown = true
 var door_in_range = false
 # Statystyki zombie
 @export var speed = 100.0
-@export var health = 50
+@export var health = 100
 var zombie_alive = true
 var zombie_damage: int = 5
 var ground_hit = true
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		health = 0
 		print("Zombie has been killed!")
 		self.queue_free()
-
+	set_Health_bar()
 func tank():
 	pass
 
@@ -125,3 +125,6 @@ func _on_zombie_walk_finished() -> void:
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
+	
+func set_Health_bar() -> void:
+	$HealthBar.value = health
