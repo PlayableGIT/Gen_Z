@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c6lswgmml275t" path="res://animations/survivor_gun_death_anim/survivor2_death_anim7.png" id="7_pajbl"]
 [ext_resource type="Texture2D" uid="uid://cth5brnj3gsn" path="res://animations/survivor_gun_death_anim/survivor2_death_anim8.png" id="8_bub6j"]
 [ext_resource type="Script" path="res://scenes/dead_gun_survivor.gd" id="9_rb602"]
-[ext_resource type="Texture2D" uid="uid://b2nuqip5n6q5s" path="res://textures/light1.png" id="10_axogr"]
+[ext_resource type="Texture2D" uid="uid://bo7ruxwefacp7" path="res://textures/necro_orb.png" id="10_fuo73"]
 [ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="11_n851o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yhdwr"]
@@ -74,12 +74,12 @@ offset_bottom = 40.0
 [node name="Button" type="Button" parent="Control"]
 modulate = Color(0.0546875, 1, 0, 1)
 layout_mode = 0
-offset_left = -24.2105
-offset_top = -70.2632
-offset_right = 623.789
-offset_bottom = 551.737
-scale = Vector2(0.0759025, 0.0759025)
-icon = ExtResource("10_axogr")
+offset_left = -24.0
+offset_top = -70.0
+offset_right = 95.0
+offset_bottom = 41.0
+scale = Vector2(0.3882, 0.3882)
+icon = ExtResource("10_fuo73")
 flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

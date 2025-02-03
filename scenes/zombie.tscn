@@ -22,12 +22,6 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_tgf1r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_gn0ud")
-}, {
-"duration": 1.0,
 "texture": ExtResource("7_c5mho")
 }, {
 "duration": 1.0,
@@ -35,6 +29,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("9_5awjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tgf1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gn0ud")
 }],
 "loop": true,
 "name": &"attack",
@@ -119,7 +119,7 @@ speed = 200.0
 [node name="Zombie03" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.33333, -2)
 sprite_frames = SubResource("SpriteFrames_il1rs")
-animation = &"walk"
+animation = &"attack"
 autoplay = "walk"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
