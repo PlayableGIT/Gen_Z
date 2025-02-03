@@ -24,7 +24,7 @@ func _on_button_pressed() -> void:
 	if necroplasm_collected == false and can_collect == true:
 		var new_node = preload("res://necroplasm.tscn").instantiate()
 		get_tree().current_scene.add_child(new_node)
-		$".".play("collect")
+		#$".".play("collect")
 		$AudioStreamPlayer.play()
 		necroplasm_collected = true
 		$Control/Button.visible = false

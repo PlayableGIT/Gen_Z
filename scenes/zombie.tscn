@@ -249,6 +249,7 @@ position = Vector2(0, 54.6667)
 rotation = 1.57079
 scale = Vector2(4.74903, 6.81979)
 color = Color(0.0429688, 1, 0, 1)
+energy = 2.0
 range_layer_min = -2
 texture = SubResource("GradientTexture2D_vavqd")
 texture_scale = 0.33

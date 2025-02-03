@@ -50,7 +50,7 @@ func _process(delta):
 	$Camera2D/stats.text = string1
 	if level_fade == true:
 		$Camera2D/level_complete.modulate.a += 1 * delta
-		if $Camera2D/level_complete.modulate.a == 1:
+		if $Camera2D/level_complete.modulate.a >= 1:
 			level_fade = false
 	var survivors = get_tree().get_nodes_in_group("survivor")
 	var gun_survivors = get_tree().get_nodes_in_group("survivor_gun")
@@ -228,9 +228,10 @@ func _on_child_exiting_tree(node: Node) -> void:
 		door_boom.emit(node.global_position)
 	
 	if node.has_method("survivor_gun"):
+		print("labadaba")
 		var destroy_survivor_gun = dead_gun_survivor.instantiate()
 		add_child.call_deferred(destroy_survivor_gun)
-		destroy_survivor_gun.position = node.position + rng_dead_spawn
+		destroy_survivor_gun.position = node.position
 		survivor_death.emit(node.global_position)
 
 

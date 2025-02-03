@@ -5,6 +5,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_plpnl"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_n4mfe"]
 line_spacing = 1.0
@@ -30,6 +31,8 @@ MOVE_SPEED = 2000
 
 [node name="level_complete" type="Label" parent="."]
 visible = false
+light_mask = 16
+visibility_layer = 16
 z_index = 10
 offset_left = -441.333
 offset_top = -76.0

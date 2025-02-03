@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=51 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bkap1hmfbbqlw" path="res://textures/light3.png" id="31_kqha0"]
 [ext_resource type="Texture2D" uid="uid://bn2lth8dob2ud" path="res://textures/bullet.png" id="32_80kg8"]
 [ext_resource type="Script" path="res://Screens/point_light_2d_4.gd" id="33_t7m8t"]
+[ext_resource type="PackedScene" uid="uid://ycpgoo8l5i2h" path="res://fog.tscn" id="34_4p8qo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -499,6 +500,7 @@ runner_zombie = ExtResource("9_6melg")
 survivor = ExtResource("10_ybt86")
 
 [node name="Camera2D" parent="." instance=ExtResource("11_mkyb8")]
+z_index = 75
 position = Vector2(827, -542)
 script = ExtResource("12_yvlgm")
 MOVE_SPEED = 1500
@@ -709,6 +711,38 @@ rotation = 2.06015
 scale = Vector2(4.92539, 11.1778)
 texture = ExtResource("32_80kg8")
 
+[node name="Bullet2" type="Sprite2D" parent="."]
+modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(959, -1032)
+rotation = 1.57079
+scale = Vector2(1.83513, 8.59758)
+texture = ExtResource("32_80kg8")
+
+[node name="Bullet3" type="Sprite2D" parent="."]
+modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(435, -1032)
+rotation = 1.57079
+scale = Vector2(1.83513, 8.59758)
+texture = ExtResource("32_80kg8")
+
+[node name="Bullet4" type="Sprite2D" parent="."]
+modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-86.0001, -1032)
+rotation = 1.57079
+scale = Vector2(1.83513, 8.59758)
+texture = ExtResource("32_80kg8")
+
+[node name="Bullet5" type="Sprite2D" parent="."]
+modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-604, -1032)
+rotation = 1.57079
+scale = Vector2(1.83513, 8.59758)
+texture = ExtResource("32_80kg8")
+
 [node name="Node" type="Node" parent="."]
 
 [node name="PointLight2D5" type="PointLight2D" parent="Node"]
@@ -856,9 +890,9 @@ texture = SubResource("GradientTexture2D_1wi5r")
 texture_scale = 3.01
 
 [node name="PointLight2D" type="PointLight2D" parent="Node"]
-position = Vector2(2663, -455)
+position = Vector2(2663, -368)
 rotation = 3.14159
-scale = Vector2(2.18057, 3.38057)
+scale = Vector2(2.18057, 4.13289)
 energy = 1.67
 shadow_enabled = true
 shadow_filter = 2
@@ -893,8 +927,48 @@ shadow_item_cull_mask = 7
 texture = ExtResource("31_kqha0")
 script = ExtResource("33_t7m8t")
 
+[node name="PointLight2D22" type="PointLight2D" parent="Node"]
+position = Vector2(429, -304)
+rotation = 3.14159
+scale = Vector2(0.75447, 3.52682)
+energy = 1.45
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 7
+texture = ExtResource("31_kqha0")
+
+[node name="PointLight2D23" type="PointLight2D" parent="Node"]
+position = Vector2(-91.9999, -304)
+rotation = 3.14159
+scale = Vector2(0.75447, 3.52682)
+energy = 1.45
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 7
+texture = ExtResource("31_kqha0")
+
+[node name="PointLight2D25" type="PointLight2D" parent="Node"]
+position = Vector2(-605, -304)
+rotation = 3.14159
+scale = Vector2(0.75447, 3.52682)
+energy = 1.45
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 7
+texture = ExtResource("31_kqha0")
+
+[node name="PointLight2D26" type="PointLight2D" parent="Node"]
+position = Vector2(945, -304)
+rotation = 3.14159
+scale = Vector2(0.75447, 3.52682)
+energy = 1.45
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 7
+texture = ExtResource("31_kqha0")
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Node"]
-energy = 0.86
+energy = 0.97
 blend_mode = 1
 
 [node name="LightOccluder" type="StaticBody2D" parent="Node"]
@@ -907,6 +981,15 @@ occluder = SubResource("OccluderPolygon2D_orywe")
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="Node/LightOccluder"]
 occluder = SubResource("OccluderPolygon2D_qgmf0")
+
+[node name="fog" parent="." instance=ExtResource("34_4p8qo")]
+position = Vector2(11, -2958)
+
+[node name="fog2" parent="." instance=ExtResource("34_4p8qo")]
+position = Vector2(4169, -4141)
+
+[node name="fog3" parent="." instance=ExtResource("34_4p8qo")]
+position = Vector2(8326, -3001)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

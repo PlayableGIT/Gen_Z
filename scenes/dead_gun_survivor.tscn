@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b08q3j65fuwlo"]
+[gd_scene load_steps=14 format=3 uid="uid://b08q3j65fuwlo"]
 
 [ext_resource type="Texture2D" uid="uid://dsmcg7ase816b" path="res://animations/survivor_gun_death_anim/survivor2_death_anim1.png" id="1_gso4g"]
 [ext_resource type="Texture2D" uid="uid://cv082mbjoepct" path="res://animations/survivor_gun_death_anim/survivor2_death_anim2.png" id="2_p1ldi"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dllh8dc543ncn" path="res://animations/survivor_gun_death_anim/survivor2_death_anim6.png" id="6_2bvsk"]
 [ext_resource type="Texture2D" uid="uid://c6lswgmml275t" path="res://animations/survivor_gun_death_anim/survivor2_death_anim7.png" id="7_pajbl"]
 [ext_resource type="Texture2D" uid="uid://cth5brnj3gsn" path="res://animations/survivor_gun_death_anim/survivor2_death_anim8.png" id="8_bub6j"]
+[ext_resource type="Script" path="res://scenes/dead_gun_survivor.gd" id="9_rb602"]
+[ext_resource type="Texture2D" uid="uid://b2nuqip5n6q5s" path="res://textures/light1.png" id="10_axogr"]
+[ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="11_n851o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yhdwr"]
 animations = [{
@@ -41,7 +44,46 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhbq6"]
+size = Vector2(116.316, 54.0702)
+
 [node name="dead_gun_survivor" type="AnimatedSprite2D"]
+z_index = 2
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_yhdwr")
 autoplay = "default"
+script = ExtResource("9_rb602")
+
+[node name="necroplasm_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="necroplasm_area"]
+position = Vector2(-0.263158, 16.5088)
+shape = SubResource("RectangleShape2D_xhbq6")
+
+[node name="collection_timer" type="Timer" parent="."]
+wait_time = 2.778
+one_shot = true
+autostart = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+modulate = Color(0.0546875, 1, 0, 1)
+layout_mode = 0
+offset_left = -24.2105
+offset_top = -70.2632
+offset_right = 623.789
+offset_bottom = 551.737
+scale = Vector2(0.0759025, 0.0759025)
+icon = ExtResource("10_axogr")
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_n851o")
+
+[connection signal="timeout" from="collection_timer" to="." method="_on_collection_timer_timeout"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

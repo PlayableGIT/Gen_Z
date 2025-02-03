@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	#grawitacja
 	var survivor = get_tree().get_nodes_in_group("survivor")
 	if not is_on_floor():
-		velocity += get_gravity() * 50 * delta
+		velocity += get_gravity() * 45 * delta
 		velocity.x = 0.0
 		move_and_slide()
 	elif ground_hit == true:
