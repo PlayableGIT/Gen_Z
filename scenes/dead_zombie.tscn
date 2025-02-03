@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://begstf8t0rriu"]
+[gd_scene load_steps=7 format=3 uid="uid://begstf8t0rriu"]
 
 [ext_resource type="Texture2D" uid="uid://s1idcsci0pfh" path="res://animations/zombie_death_anim/zombie1_death_anim2.png" id="1_wslcx"]
 [ext_resource type="Texture2D" uid="uid://bwf6643qtry27" path="res://animations/zombie_death_anim/zombie1_death_anim3.png" id="2_6vr8t"]
@@ -25,8 +25,20 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gdv8"]
+size = Vector2(264.667, 68.6667)
+
 [node name="dead_zombie" type="AnimatedSprite2D"]
+z_index = 2
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_mnxia")
 autoplay = "default"
-frame_progress = 0.707492
+
+[node name="necroplasm_area" type="Area2D" parent="."]
+collision_layer = 15
+collision_mask = 15
+collision_priority = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="necroplasm_area"]
+position = Vector2(-1.66667, 73.6667)
+shape = SubResource("RectangleShape2D_6gdv8")

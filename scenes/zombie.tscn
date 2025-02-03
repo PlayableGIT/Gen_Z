@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dlnfoe38vgqp"]
+[gd_scene load_steps=26 format=3 uid="uid://dlnfoe38vgqp"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
 [ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="14_q3xsd"]
 [ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="15_tijjp"]
 [ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="16_v51ls"]
+[ext_resource type="Texture2D" uid="uid://lpdeovgcmrcl" path="res://textures/light2.png" id="17_l56oj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_il1rs"]
 animations = [{
@@ -104,7 +105,13 @@ point_count = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj756"]
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
+[sub_resource type="Gradient" id="Gradient_aj5bm"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vavqd"]
+gradient = SubResource("Gradient_aj5bm")
+
 [node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
+z_index = 2
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nufbr")
 speed = 200.0
@@ -134,7 +141,7 @@ wait_time = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletZone"]
 position = Vector2(-0.666668, -0.666667)
-scale = Vector2(2.4, 1)
+scale = Vector2(2.69, 1)
 shape = SubResource("RectangleShape2D_xa0h1")
 
 [node name="zombie_walk" type="AudioStreamPlayer2D" parent="."]
@@ -223,8 +230,34 @@ max_value = 25.0
 step = 1.0
 show_percentage = false
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(38.558, -71.82)
+color = Color(0, 1, 0.0273438, 1)
+energy = 1.5
+texture = ExtResource("17_l56oj")
+texture_scale = 0.05
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(60.6667, -72)
+color = Color(0, 1, 0.0273438, 1)
+energy = 1.5
+texture = ExtResource("17_l56oj")
+texture_scale = 0.05
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(0, 54.6667)
+rotation = 1.57079
+scale = Vector2(4.74903, 6.81979)
+color = Color(0.0429688, 1, 0, 1)
+energy = 2.0
+range_layer_min = -2
+texture = SubResource("GradientTexture2D_vavqd")
+texture_scale = 0.33
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="mouse_shape_entered" from="Area2D" to="." method="_on_area_2d_mouse_shape_entered"]
+[connection signal="mouse_shape_exited" from="Area2D" to="." method="_on_area_2d_mouse_shape_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]
 [connection signal="finished" from="zombie_walk" to="." method="_on_zombie_walk_finished"]

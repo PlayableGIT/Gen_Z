@@ -33,6 +33,8 @@ var zombie_4 = false
 var rng = RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
+	$respawn_bar.value = 0
+	$respawn_bar.visible = false
 	var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
 	$Camera2D/stats.text = string
 	$Camera2D/level_complete.modulate.a = 0
@@ -46,11 +48,17 @@ func _ready() -> void:
 	survivor_death.connect(surv_death)
 	level_complete.connect(level_comp)
 func _process(delta):
+	$respawn_bar.global_position = get_global_mouse_position()
+	var czas = $zombie_respawn2.wait_time - $zombie_respawn2.time_left
+	#if Input.is_action_just_released("left_mouse"):
+		#$zombie_respawn2.start()
+	#print(czas)
+	$respawn_bar.value = czas
 	var string1 = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
 	$Camera2D/stats.text = string1
 	if level_fade == true:
 		$Camera2D/level_complete.modulate.a += 1 * delta
-		if $Camera2D/level_complete.modulate.a == 1:
+		if $Camera2D/level_complete.modulate.a >= 1:
 			level_fade = false
 	var survivors = get_tree().get_nodes_in_group("survivor")
 	var gun_survivors = get_tree().get_nodes_in_group("survivor_gun")
@@ -94,6 +102,8 @@ func _process(delta):
 		level_accomp = true
 	
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_1 == true:
+		$zombie_respawn2.start()
+		$respawn_bar.visible = true
 		zombie_count += 1
 		nekro_stat -= 2
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
@@ -197,7 +207,6 @@ func zomb_tank_death(a):
 func _on_child_exiting_tree(node: Node) -> void:
 	var rng_x = rng.randf_range(-50.0, 50.0)
 	var rng_dead_spawn = Vector2(rng_x, 0)
-	print("halo")
 	if node.has_method("zombie"):
 		if node.has_method("tank"):
 			zombie_count -=1
@@ -206,7 +215,7 @@ func _on_child_exiting_tree(node: Node) -> void:
 			add_child.call_deferred(death_zombie)
 			death_zombie.position = node.position + rng_dead_spawn
 			zombie_tank_death.emit(node.global_position)
-			print("usunieto zombie")
+			#print("usunieto zombie")
 		else:
 			zombie_count -=1
 			print(zombie_count)
@@ -225,13 +234,14 @@ func _on_child_exiting_tree(node: Node) -> void:
 		print("halo alo")
 		var destroy_door = destroyed_door.instantiate()
 		add_child.call_deferred(destroy_door)
-		destroy_door.position = node.position + rng_dead_spawn
+		destroy_door.position = node.position
 		door_boom.emit(node.global_position)
 	
 	if node.has_method("survivor_gun"):
+		print("labadaba")
 		var destroy_survivor_gun = dead_gun_survivor.instantiate()
 		add_child.call_deferred(destroy_survivor_gun)
-		destroy_survivor_gun.position = node.position + rng_dead_spawn
+		destroy_survivor_gun.position = node.position
 		survivor_death.emit(node.global_position)
 
 
@@ -259,5 +269,9 @@ func _on_spawn_restriction_mouse_exited() -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node.has_method("necroplasm"):
-		nekro_stat += 2
-		print("2 Necroplasm collected!")
+		nekro_stat += 5
+		print("5 Necroplasm collected!")
+
+
+func _on_zombie_respawn_2_timeout() -> void:
+	$respawn_bar.visible = false

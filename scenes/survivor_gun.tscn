@@ -96,6 +96,7 @@ target_position = Vector2(4000, 0)
 hit_from_inside = true
 
 [node name="Area2D" type="Area2D" parent="."]
+z_index = 2
 scale = Vector2(0.935, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

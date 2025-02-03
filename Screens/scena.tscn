@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://cg63ncynab7lq"]
+[gd_scene load_steps=41 format=4 uid="uid://cg63ncynab7lq"]
 
 [ext_resource type="Script" path="res://Scripts/scena.gd" id="1_j5aen"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://scenes/zombie.tscn" id="2_8hn1c"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_s5m4q"]
 [ext_resource type="PackedScene" uid="uid://ctw0l4niaqlaf" path="res://scenes/dead_survivor.tscn" id="2_v3heq"]
 [ext_resource type="PackedScene" uid="uid://bn8vnivdwoql7" path="res://scenes/survivor.tscn" id="3_c5g0i"]
-[ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="4_6t67p"]
 [ext_resource type="PackedScene" uid="uid://b08q3j65fuwlo" path="res://scenes/dead_gun_survivor.tscn" id="5_c0dvl"]
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="5_gk281"]
 [ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="6_e1ieo"]
@@ -15,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://c60yxpyucdsfe" path="res://scenes/zombie_tank.tscn" id="8_866a6"]
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="8_emttp"]
 [ext_resource type="PackedScene" uid="uid://g330a3qiglye" path="res://scenes/zombie_runner.tscn" id="9_ivaxf"]
-[ext_resource type="AudioStream" uid="uid://dlu85kmrkc657" path="res://audio/UI/level_complete.mp3" id="9_okoj3"]
 [ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_yn6ji"]
 [ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://scenes/door.tscn" id="10_32u3u"]
+[ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://camera_2d.tscn" id="11_5sajr"]
 [ext_resource type="Script" path="res://Screens/platform.gd" id="14_su7un"]
 [ext_resource type="PackedScene" uid="uid://ds6rqlj7kkbbm" path="res://scenes/survivor_gun.tscn" id="14_y5qxa"]
 [ext_resource type="Script" path="res://Scripts/stats_autoload.gd" id="15_mpmtg"]
@@ -31,25 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://cfavlcq2herlt" path="res://audio/zombie_tank/zombie_tank_spawn.mp3" id="27_j7oqy"]
 [ext_resource type="AudioStream" uid="uid://04ja52gelj17" path="res://audio/zombie_tank/zombie_tank_death.mp3" id="29_eu36l"]
 
-[sub_resource type="SystemFont" id="SystemFont_plpnl"]
-font_names = PackedStringArray("8-bit Limit (BRK)")
-
-[sub_resource type="LabelSettings" id="LabelSettings_n4mfe"]
-line_spacing = 1.0
-font = SubResource("SystemFont_plpnl")
-font_size = 126
-font_color = Color(1, 0, 0, 1)
-outline_size = 35
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 56
-shadow_color = Color(0, 0, 0, 0.156863)
-
-[sub_resource type="LabelSettings" id="LabelSettings_dd43e"]
-font_size = 36
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6tb2m"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f1naw"]
 texture = ExtResource("6_e1ieo")
 0:0/0 = 0
 1:0/0 = 0
@@ -152,7 +133,7 @@ texture = ExtResource("6_e1ieo")
 8:9/0 = 0
 9:9/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_27cgp"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omp8p"]
 texture = ExtResource("7_ue6nq")
 0:0/0 = 0
 1:0/0 = 0
@@ -255,7 +236,7 @@ texture = ExtResource("7_ue6nq")
 8:9/0 = 0
 9:9/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gpa3p"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7y4j3"]
 texture = ExtResource("8_emttp")
 0:0/0 = 0
 1:0/0 = 0
@@ -358,7 +339,7 @@ texture = ExtResource("8_emttp")
 8:9/0 = 0
 9:9/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dfpv1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nyw2i"]
 texture = ExtResource("9_yn6ji")
 0:0/0 = 0
 1:0/0 = 0
@@ -462,10 +443,10 @@ texture = ExtResource("9_yn6ji")
 9:9/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_mhnbb"]
-sources/1 = SubResource("TileSetAtlasSource_27cgp")
-sources/0 = SubResource("TileSetAtlasSource_6tb2m")
-sources/3 = SubResource("TileSetAtlasSource_gpa3p")
-sources/4 = SubResource("TileSetAtlasSource_dfpv1")
+sources/1 = SubResource("TileSetAtlasSource_omp8p")
+sources/0 = SubResource("TileSetAtlasSource_f1naw")
+sources/3 = SubResource("TileSetAtlasSource_7y4j3")
+sources/4 = SubResource("TileSetAtlasSource_nyw2i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64rre"]
 size = Vector2(5330.67, 154)
@@ -480,16 +461,6 @@ b = Vector2(-153.337, 100.667)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jmau4"]
 a = Vector2(159.485, -136.715)
 b = Vector2(-151.412, 137.497)
-
-[sub_resource type="Curve" id="Curve_ufqy1"]
-min_value = -360.0
-max_value = 360.0
-_data = [Vector2(0.00387596, -24.7625), 0.0, 0.0, 0, 0, Vector2(1, 54.9492), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_0chw0"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.341085, 0.0568295), 0.0, 0.0, 0, 0, Vector2(0.53876, 0.948903), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7db7d"]
 size = Vector2(5816.29, 1810)
@@ -510,40 +481,7 @@ tank_zombie = ExtResource("8_866a6")
 runner_zombie = ExtResource("9_ivaxf")
 survivor = ExtResource("3_c5g0i")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(898, -289)
-scale = Vector2(1.5, 1.5)
-zoom = Vector2(0.645, 0.645)
-script = ExtResource("4_6t67p")
-MOVE_SPEED = 2000
-
-[node name="level_complete" type="Label" parent="Camera2D"]
-visible = false
-z_index = 10
-offset_left = -441.333
-offset_top = -76.0
-offset_right = 456.667
-offset_bottom = 59.0
-text = "LEVEL COMPLETE!"
-label_settings = SubResource("LabelSettings_n4mfe")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="level_complete_sound" type="AudioStreamPlayer" parent="Camera2D"]
-stream = ExtResource("9_okoj3")
-
-[node name="stats" type="Label" parent="Camera2D"]
-z_index = 60
-offset_left = -543.333
-offset_top = -362.0
-offset_right = -291.333
-offset_bottom = -312.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-text = "Nekroplazma: "
-label_settings = SubResource("LabelSettings_dd43e")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Camera2D" parent="." instance=ExtResource("11_5sajr")]
 
 [node name="Ground" type="Node2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -616,82 +554,8 @@ position = Vector2(2936, -508)
 [node name="Door" parent="." instance=ExtResource("10_32u3u")]
 position = Vector2(2304, -527)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Door"]
-visible = false
-position = Vector2(-46, -160)
-amount = 10
-lifetime = 0.35
-speed_scale = 0.3
-explosiveness = 1.0
-randomness = 1.0
-lifetime_randomness = 0.08
-emission_shape = 4
-emission_points = PackedVector2Array(0, 0, 0, 50, 0, 100)
-emission_colors = PackedColorArray()
-direction = Vector2(1.725, 2.165)
-spread = 14.3
-gravity = Vector2(-1000, 1000)
-initial_velocity_min = 635.39
-initial_velocity_max = 851.99
-angular_velocity_min = 10.39
-angular_velocity_max = 10.4
-angular_velocity_curve = SubResource("Curve_ufqy1")
-linear_accel_min = 100.0
-linear_accel_max = 100.0
-radial_accel_min = 8.3
-radial_accel_max = 100.0
-tangential_accel_min = 7.58
-tangential_accel_max = 17.69
-damping_min = 48.014
-damping_max = 100.0
-angle_min = 38.0
-angle_max = 38.0
-scale_amount_min = 10.0
-scale_amount_max = 30.0
-scale_amount_curve = SubResource("Curve_0chw0")
-color = Color(0.294922, 0.140318, 0.0138245, 1)
-hue_variation_min = -0.09
-hue_variation_max = 0.03
-
 [node name="Door2" parent="." instance=ExtResource("10_32u3u")]
 position = Vector2(4017, -527)
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Door2"]
-visible = false
-position = Vector2(-45, -163)
-amount = 10
-lifetime = 0.35
-speed_scale = 0.3
-explosiveness = 1.0
-randomness = 1.0
-lifetime_randomness = 0.08
-emission_shape = 4
-emission_points = PackedVector2Array(0, 0, 0, 50, 0, 100)
-emission_colors = PackedColorArray()
-direction = Vector2(1.725, 2.165)
-spread = 14.3
-gravity = Vector2(-1000, 1000)
-initial_velocity_min = 635.39
-initial_velocity_max = 851.99
-angular_velocity_min = 10.39
-angular_velocity_max = 10.4
-angular_velocity_curve = SubResource("Curve_ufqy1")
-linear_accel_min = 100.0
-linear_accel_max = 100.0
-radial_accel_min = 8.3
-radial_accel_max = 100.0
-tangential_accel_min = 7.58
-tangential_accel_max = 17.69
-damping_min = 48.014
-damping_max = 100.0
-angle_min = 38.0
-angle_max = 38.0
-scale_amount_min = 10.0
-scale_amount_max = 30.0
-scale_amount_curve = SubResource("Curve_0chw0")
-color = Color(0.294922, 0.140318, 0.0138245, 1)
-hue_variation_min = -0.09
-hue_variation_max = 0.03
 
 [node name="survivor_gun" parent="." groups=["survivor"] instance=ExtResource("14_y5qxa")]
 position = Vector2(3617, -523)

@@ -58,7 +58,9 @@ point_count = 2
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
 [node name="Survivor" type="CharacterBody2D"]
+z_index = 2
 scale = Vector2(1.5, 1.5)
+collision_layer = 7
 script = ExtResource("1_jshkn")
 
 [node name="Survivor01" type="AnimatedSprite2D" parent="."]
@@ -130,8 +132,12 @@ max_value = 25.0
 step = 1.0
 show_percentage = false
 
+[node name="move_timer" type="Timer" parent="."]
+wait_time = 1.847
+
 [connection signal="animation_changed" from="Survivor01" to="." method="_on_survivor_01_animation_changed"]
 [connection signal="animation_looped" from="Survivor01" to="." method="_on_survivor_01_animation_looped"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="move_timer" to="." method="_on_move_timer_timeout"]

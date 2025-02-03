@@ -13,7 +13,8 @@ var door_in_range = false
 var zombie_alive = true
 var zombie_damage: int = 5
 var ground_hit = true
-
+var spawn_ready = false
+var xd = false
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	#grawitacja
 	var survivor = get_tree().get_nodes_in_group("survivor")
 	if not is_on_floor():
-		velocity += get_gravity() * 50 * delta
+		velocity += get_gravity() * 45 * delta
 		velocity.x = 0.0
 		move_and_slide()
 	elif ground_hit == true:
@@ -84,7 +85,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = true
 	if body.has_method("survivor_gun"):
-		survivor_in_range = true
+		survivor_in_range = false
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = false
@@ -137,3 +138,10 @@ func _on_zombie_walk_finished() -> void:
 
 func set_Health_bar() -> void:
 	$HealthBar.value = health
+
+
+func _on_area_2d_mouse_shape_entered(_shape_idx) -> void:
+	$PointLight2D3.visible = true
+
+func _on_area_2d_mouse_shape_exited(_shape_idx) -> void:
+	$PointLight2D3.visible = false
