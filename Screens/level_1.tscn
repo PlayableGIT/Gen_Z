@@ -471,6 +471,11 @@ size = Vector2(6578.71, 1812.58)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdkxy"]
 size = Vector2(4671, 895)
 
+[sub_resource type="Gradient" id="Gradient_y81fl"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1wi5r"]
+gradient = SubResource("Gradient_y81fl")
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pikp6"]
 polygon = PackedVector2Array(2115, -455, 2284, -453, 2282, -1009, 3123, -1006, 3120, -458, 3268, -458, 3268, -1009, 4470, -1003, 4467, -465, 4610, -465, 4614, -1013, 5594, -1008, 5596, -452, 5768, -447, 5758, -1179, 2116, -1171)
 
@@ -479,11 +484,6 @@ polygon = PackedVector2Array(1826, 0, 1826, -23, 1922, -24, 1923, -71, 5761, -57
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qgmf0"]
 polygon = PackedVector2Array(-1918, 2, 11040, 1, 11047, 644, -1925, 644)
-
-[sub_resource type="Gradient" id="Gradient_y81fl"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1wi5r"]
-gradient = SubResource("Gradient_y81fl")
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_yb6vr")
@@ -694,54 +694,6 @@ position = Vector2(3502.5, -447.5)
 shape = SubResource("RectangleShape2D_rdkxy")
 debug_color = Color(0.587891, 0.7, 0, 0.42)
 
-[node name="LightOccluder" type="StaticBody2D" parent="."]
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="LightOccluder"]
-occluder = SubResource("OccluderPolygon2D_pikp6")
-
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="LightOccluder"]
-occluder = SubResource("OccluderPolygon2D_orywe")
-
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="LightOccluder"]
-occluder = SubResource("OccluderPolygon2D_qgmf0")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(2700, -892)
-scale = Vector2(3.38057, 3.38057)
-shadow_enabled = true
-shadow_filter = 2
-texture = ExtResource("30_s3k8c")
-
-[node name="PointLight2D4" type="PointLight2D" parent="."]
-position = Vector2(1730, -371)
-rotation = -2.74258
-scale = Vector2(1.77647, 4.00957)
-energy = 1.45
-shadow_enabled = true
-shadow_filter = 2
-shadow_item_cull_mask = 7
-texture = ExtResource("31_kqha0")
-
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(3884, -746)
-scale = Vector2(3.38057, 3.38057)
-shadow_enabled = true
-shadow_filter = 2
-texture = ExtResource("30_s3k8c")
-
-[node name="PointLight2D3" type="PointLight2D" parent="."]
-z_index = 1
-position = Vector2(5178, -892)
-scale = Vector2(3.38057, 3.38057)
-shadow_enabled = true
-shadow_filter = 2
-shadow_item_cull_mask = 3
-texture = ExtResource("30_s3k8c")
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-energy = 0.86
-blend_mode = 1
-
 [node name="Bullet" type="Sprite2D" parent="."]
 modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
 self_modulate = Color(0, 0, 0, 1)
@@ -895,6 +847,54 @@ scale = Vector2(0.2, 0.875)
 energy = 1.21
 texture = SubResource("GradientTexture2D_1wi5r")
 texture_scale = 3.01
+
+[node name="PointLight2D" type="PointLight2D" parent="Node"]
+position = Vector2(2700, -892)
+scale = Vector2(3.38057, 3.38057)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("30_s3k8c")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Node"]
+position = Vector2(1730, -371)
+rotation = -2.74258
+scale = Vector2(1.77647, 4.00957)
+energy = 1.45
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 7
+texture = ExtResource("31_kqha0")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Node"]
+position = Vector2(3884, -746)
+scale = Vector2(3.38057, 3.38057)
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("30_s3k8c")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Node"]
+z_index = 1
+position = Vector2(5178, -892)
+scale = Vector2(3.38057, 3.38057)
+shadow_enabled = true
+shadow_filter = 2
+shadow_item_cull_mask = 3
+texture = ExtResource("30_s3k8c")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Node"]
+energy = 0.86
+blend_mode = 1
+
+[node name="LightOccluder" type="StaticBody2D" parent="Node"]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node/LightOccluder"]
+occluder = SubResource("OccluderPolygon2D_pikp6")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Node/LightOccluder"]
+occluder = SubResource("OccluderPolygon2D_orywe")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="Node/LightOccluder"]
+occluder = SubResource("OccluderPolygon2D_qgmf0")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

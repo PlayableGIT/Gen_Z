@@ -4,6 +4,7 @@ var zombie_in_range = false
 var zombie_attack_cooldown = true
 var health = 25
 var survivor_alive = true
+var can_move = false
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,10 +12,23 @@ func _ready() -> void:
 	$Label.visible = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	
+	var rng_move_seed = rng.randf_range(0.0, 10.0)
+	#print(rng_move_seed)
 	if not is_on_floor():
 		velocity += get_gravity() * 10 * delta
 		velocity.x = 0.0
+		
+	if rng_move_seed >= 9.5 and rng_move_seed <= 10.0 and can_move==false and zombie_in_range == false:
+		can_move = true
+		$move_timer.start()
+		move_right()
+	elif rng_move_seed >= 0.0 and rng_move_seed <= 0.5 and can_move==false and zombie_in_range == false:
+		can_move = true
+		$move_timer.start()
+		move_left()
+	else:
+		velocity.x = 0
+		
 	move_and_slide()
 	zombie_attack()
 	if health <= 0:
@@ -23,6 +37,14 @@ func _physics_process(delta: float) -> void:
 		print("Survivor has been killed!")
 		self.queue_free()
 	set_Health_bar()
+
+func move_left():
+	velocity.x = 5000
+	$Survivor01.flip_h = true
+
+func move_right():
+	velocity.x = -5000
+	$Survivor01.flip_h = false
 
 func survivor():
 	pass
@@ -82,3 +104,7 @@ func _on_survivor_01_animation_changed() -> void:
 
 func set_Health_bar() -> void:
 	$HealthBar.value = health
+
+
+func _on_move_timer_timeout() -> void:
+	can_move = false

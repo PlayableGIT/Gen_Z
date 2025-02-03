@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctw0l4niaqlaf"]
+[gd_scene load_steps=20 format=3 uid="uid://ctw0l4niaqlaf"]
 
 [ext_resource type="Texture2D" uid="uid://cm406qs6wsvui" path="res://animations/survivor_death_anim/survivor_01.png" id="1_2naib"]
 [ext_resource type="Texture2D" uid="uid://8p017pns5e7x" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm01.png" id="1_d3je1"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://co63dqpldc1nx" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm07.png" id="7_1vil1"]
 [ext_resource type="Texture2D" uid="uid://ddew04dpooqt" path="res://animations/survivor_death_anim/survivor_07.png" id="7_uwma5"]
 [ext_resource type="Script" path="res://scenes/dead_survivor.gd" id="8_7ju65"]
+[ext_resource type="Texture2D" uid="uid://b2nuqip5n6q5s" path="res://textures/light1.png" id="16_j8s37"]
+[ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="17_a2wgx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_772ai"]
 animations = [{
@@ -98,9 +100,6 @@ autoplay = "default"
 script = ExtResource("8_7ju65")
 
 [node name="necroplasm_area" type="Area2D" parent="."]
-collision_layer = 15
-collision_mask = 15
-collision_priority = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="necroplasm_area"]
 position = Vector2(-0.263158, 16.5088)
@@ -111,5 +110,25 @@ wait_time = 2.778
 one_shot = true
 autostart = true
 
-[connection signal="mouse_entered" from="necroplasm_area" to="." method="_on_necroplasm_area_mouse_entered"]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+modulate = Color(0.0546875, 1, 0, 1)
+layout_mode = 0
+offset_left = -24.2105
+offset_top = -70.2632
+offset_right = 623.789
+offset_bottom = 551.737
+scale = Vector2(0.0759025, 0.0759025)
+icon = ExtResource("16_j8s37")
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_a2wgx")
+
 [connection signal="timeout" from="collection_timer" to="." method="_on_collection_timer_timeout"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

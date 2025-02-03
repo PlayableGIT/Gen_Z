@@ -13,7 +13,8 @@ var door_in_range = false
 var zombie_alive = true
 var zombie_damage: int = 5
 var ground_hit = true
-
+var spawn_ready = false
+var xd = false
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
@@ -137,3 +138,10 @@ func _on_zombie_walk_finished() -> void:
 
 func set_Health_bar() -> void:
 	$HealthBar.value = health
+
+
+func _on_area_2d_mouse_shape_entered(_shape_idx) -> void:
+	$PointLight2D3.visible = true
+
+func _on_area_2d_mouse_shape_exited(_shape_idx) -> void:
+	$PointLight2D3.visible = false

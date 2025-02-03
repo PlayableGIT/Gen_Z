@@ -25,8 +25,6 @@ func _physics_process(delta: float) -> void:
 		var angle_to: float = global_position.direction_to(close_zomb.global_position).angle()
 		
 		$RayCast2D.global_rotation = angle_to
-		var kat = rad_to_deg(angle_to)
-		#print(kat)
 	
 	if $RayCast2D.is_colliding() == null:
 		pass
