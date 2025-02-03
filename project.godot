@@ -87,3 +87,4 @@ common/max_physics_steps_per_frame=20
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.225052, 0.669922, 0.633429, 1)
+viewport/hdr_2d=true

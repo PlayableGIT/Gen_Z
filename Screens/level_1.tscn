@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=50 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -29,9 +29,10 @@
 [ext_resource type="AudioStream" uid="uid://cacjrsuqnmjf0" path="res://audio/zombie/zombie_death.mp3" id="26_bynso"]
 [ext_resource type="AudioStream" uid="uid://04ja52gelj17" path="res://audio/zombie_tank/zombie_tank_death.mp3" id="27_41hbd"]
 [ext_resource type="AudioStream" uid="uid://ctjlj4fku2efq" path="res://audio/survivor/survivor_death.mp3" id="28_iujwi"]
-[ext_resource type="Texture2D" uid="uid://b2nuqip5n6q5s" path="res://textures/light1.png" id="30_s3k8c"]
+[ext_resource type="Texture2D" uid="uid://c2o22e8a4w7ts" path="res://textures/light4.png" id="31_8qvkc"]
 [ext_resource type="Texture2D" uid="uid://bkap1hmfbbqlw" path="res://textures/light3.png" id="31_kqha0"]
 [ext_resource type="Texture2D" uid="uid://bn2lth8dob2ud" path="res://textures/bullet.png" id="32_80kg8"]
+[ext_resource type="Script" path="res://Screens/point_light_2d_4.gd" id="33_t7m8t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -508,24 +509,28 @@ right_limit = 8000.0
 scale = Vector2(1.5, 1.5)
 
 [node name="Background1" type="Sprite2D" parent="Ground"]
+modulate = Color(0.254906, 0.279413, 0.505859, 1)
 z_index = -2
 position = Vector2(1874, -419)
 scale = Vector2(1.92578, 1.92578)
 texture = ExtResource("12_iv56h")
 
 [node name="Background2" type="Sprite2D" parent="Ground"]
+modulate = Color(0.254902, 0.278431, 0.505882, 1)
 z_index = -2
 position = Vector2(5628.67, -434.667)
 scale = Vector2(1.92578, 1.92578)
 texture = ExtResource("12_iv56h")
 
 [node name="Background3" type="Sprite2D" parent="Ground"]
+modulate = Color(0.254902, 0.278431, 0.505882, 1)
 z_index = -2
 position = Vector2(-1836.67, -403.333)
 scale = Vector2(1.92578, 1.92578)
 texture = ExtResource("12_iv56h")
 
 [node name="Background4" type="Sprite2D" parent="Ground"]
+modulate = Color(0.254902, 0.278431, 0.505882, 1)
 z_index = -2
 position = Vector2(1907.94, -1390.66)
 rotation = -3.14159
@@ -533,6 +538,7 @@ scale = Vector2(1.92578, 1.92578)
 texture = ExtResource("12_iv56h")
 
 [node name="Background5" type="Sprite2D" parent="Ground"]
+modulate = Color(0.254902, 0.278431, 0.505882, 1)
 z_index = -2
 position = Vector2(5662.61, -1406.33)
 rotation = -3.14159
@@ -540,6 +546,7 @@ scale = Vector2(1.92578, 1.92578)
 texture = ExtResource("12_iv56h")
 
 [node name="Background6" type="Sprite2D" parent="Ground"]
+modulate = Color(0.254902, 0.278431, 0.505882, 1)
 z_index = -2
 position = Vector2(-1802.73, -1374.99)
 rotation = -3.14159
@@ -849,11 +856,31 @@ texture = SubResource("GradientTexture2D_1wi5r")
 texture_scale = 3.01
 
 [node name="PointLight2D" type="PointLight2D" parent="Node"]
-position = Vector2(2700, -892)
-scale = Vector2(3.38057, 3.38057)
+position = Vector2(2663, -455)
+rotation = 3.14159
+scale = Vector2(2.18057, 3.38057)
+energy = 1.67
 shadow_enabled = true
 shadow_filter = 2
-texture = ExtResource("30_s3k8c")
+texture = ExtResource("31_8qvkc")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Node"]
+position = Vector2(5083, -443)
+rotation = 3.14159
+scale = Vector2(2.18057, 3.38057)
+energy = 1.67
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("31_8qvkc")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Node"]
+position = Vector2(3847, -491)
+rotation = 3.14159
+scale = Vector2(3.86057, 3.38057)
+energy = 1.67
+shadow_enabled = true
+shadow_filter = 2
+texture = ExtResource("31_8qvkc")
 
 [node name="PointLight2D4" type="PointLight2D" parent="Node"]
 position = Vector2(1730, -371)
@@ -864,22 +891,7 @@ shadow_enabled = true
 shadow_filter = 2
 shadow_item_cull_mask = 7
 texture = ExtResource("31_kqha0")
-
-[node name="PointLight2D2" type="PointLight2D" parent="Node"]
-position = Vector2(3884, -746)
-scale = Vector2(3.38057, 3.38057)
-shadow_enabled = true
-shadow_filter = 2
-texture = ExtResource("30_s3k8c")
-
-[node name="PointLight2D3" type="PointLight2D" parent="Node"]
-z_index = 1
-position = Vector2(5178, -892)
-scale = Vector2(3.38057, 3.38057)
-shadow_enabled = true
-shadow_filter = 2
-shadow_item_cull_mask = 3
-texture = ExtResource("30_s3k8c")
+script = ExtResource("33_t7m8t")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Node"]
 energy = 0.86
