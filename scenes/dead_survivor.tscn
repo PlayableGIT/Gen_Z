@@ -1,15 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctw0l4niaqlaf"]
+[gd_scene load_steps=18 format=3 uid="uid://ctw0l4niaqlaf"]
 
 [ext_resource type="Texture2D" uid="uid://cm406qs6wsvui" path="res://animations/survivor_death_anim/survivor_01.png" id="1_2naib"]
+[ext_resource type="Texture2D" uid="uid://8p017pns5e7x" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm01.png" id="1_d3je1"]
+[ext_resource type="Texture2D" uid="uid://dqwf3projoujq" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm02.png" id="2_cv6pb"]
 [ext_resource type="Texture2D" uid="uid://delxf5bwullmj" path="res://animations/survivor_death_anim/survivor_02.png" id="2_jvrpl"]
 [ext_resource type="Texture2D" uid="uid://peha6vjdso8d" path="res://animations/survivor_death_anim/survivor_03.png" id="3_2xfid"]
+[ext_resource type="Texture2D" uid="uid://bovigiqocy7ea" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm03.png" id="3_8jjhy"]
 [ext_resource type="Texture2D" uid="uid://ci8neokgu3u2i" path="res://animations/survivor_death_anim/survivor_04.png" id="4_1ftb1"]
+[ext_resource type="Texture2D" uid="uid://ds0pn0dvucpfj" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm04.png" id="4_k1yry"]
+[ext_resource type="Texture2D" uid="uid://bug2gdegnc0ni" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm05.png" id="5_80jhl"]
 [ext_resource type="Texture2D" uid="uid://b287j67066swa" path="res://animations/survivor_death_anim/survivor_05.png" id="5_hu8w3"]
+[ext_resource type="Texture2D" uid="uid://c2r1m63fr3r1" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm06.png" id="6_ccuer"]
 [ext_resource type="Texture2D" uid="uid://cdtomx587pdmw" path="res://animations/survivor_death_anim/survivor_06.png" id="6_pwss7"]
+[ext_resource type="Texture2D" uid="uid://co63dqpldc1nx" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm07.png" id="7_1vil1"]
 [ext_resource type="Texture2D" uid="uid://ddew04dpooqt" path="res://animations/survivor_death_anim/survivor_07.png" id="7_uwma5"]
+[ext_resource type="Script" path="res://scenes/dead_survivor.gd" id="8_7ju65"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_772ai"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d3je1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cv6pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8jjhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k1yry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_80jhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ccuer")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_80jhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k1yry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8jjhy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cv6pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_d3je1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1vil1")
+}],
+"loop": false,
+"name": &"collect",
+"speed": 60.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_2naib")
@@ -37,7 +86,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if6e1"]
+size = Vector2(116.316, 54.0702)
+
 [node name="dead_survivor" type="AnimatedSprite2D"]
 scale = Vector2(3.8, 3.8)
 sprite_frames = SubResource("SpriteFrames_772ai")
+animation = &"collect"
 autoplay = "default"
+script = ExtResource("8_7ju65")
+
+[node name="necroplasm_area" type="Area2D" parent="."]
+collision_layer = 15
+collision_mask = 15
+collision_priority = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="necroplasm_area"]
+position = Vector2(-0.263158, 16.5088)
+shape = SubResource("RectangleShape2D_if6e1")
+
+[node name="collection_timer" type="Timer" parent="."]
+wait_time = 2.778
+one_shot = true
+autostart = true
+
+[connection signal="mouse_entered" from="necroplasm_area" to="." method="_on_necroplasm_area_mouse_entered"]
+[connection signal="timeout" from="collection_timer" to="." method="_on_collection_timer_timeout"]
