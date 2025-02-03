@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://e2tuks0xkssw"]
+[gd_scene load_steps=8 format=3 uid="uid://e2tuks0xkssw"]
 
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_rrbvt"]
 [ext_resource type="Texture2D" uid="uid://bs023x0541q8b" path="res://textures/door_01.png" id="2_wum7f"]
@@ -9,6 +9,16 @@ size = Vector2(40, 385)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2s3tw"]
 size = Vector2(138, 385)
+
+[sub_resource type="Curve" id="Curve_kmx2i"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.00387596, -24.7625), 0.0, 0.0, 0, 0, Vector2(1, 54.9492), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5qkdj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.341085, 0.0568295), 0.0, 0.0, 0, 0, Vector2(0.53876, 0.948903), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_rrbvt")
@@ -37,6 +47,43 @@ wait_time = 1.5
 stream = ExtResource("3_trho4")
 volume_db = -10.0
 bus = &"Environment"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-46, -160)
+amount = 10
+lifetime = 0.35
+speed_scale = 0.3
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.08
+emission_shape = 4
+emission_points = PackedVector2Array(0, 0, 0, 50, 0, 100)
+emission_colors = PackedColorArray()
+direction = Vector2(1.725, 2.165)
+spread = 14.3
+gravity = Vector2(-1000, 1000)
+initial_velocity_min = 635.39
+initial_velocity_max = 851.99
+angular_velocity_min = 10.39
+angular_velocity_max = 10.4
+angular_velocity_curve = SubResource("Curve_kmx2i")
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = 8.3
+radial_accel_max = 100.0
+tangential_accel_min = 7.58
+tangential_accel_max = 17.69
+damping_min = 48.014
+damping_max = 100.0
+angle_min = 38.0
+angle_max = 38.0
+scale_amount_min = 10.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_5qkdj")
+color = Color(0.294922, 0.140318, 0.0138245, 1)
+hue_variation_min = -0.09
+hue_variation_max = 0.03
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -54,6 +54,12 @@ func _process(delta):
 			level_fade = false
 	var survivors = get_tree().get_nodes_in_group("survivor")
 	var gun_survivors = get_tree().get_nodes_in_group("survivor_gun")
+	if Input.is_action_just_released("0"):
+		print("No zombie selected.")
+		zombie_1 = false
+		zombie_2 = false
+		zombie_3 = false
+		zombie_4 = false
 	if Input.is_action_just_released("1"):
 		print("Casual Zombie, Necroplasm Cost: 2")
 		nekro_cost = 2
@@ -191,6 +197,7 @@ func zomb_tank_death(a):
 func _on_child_exiting_tree(node: Node) -> void:
 	var rng_x = rng.randf_range(-50.0, 50.0)
 	var rng_dead_spawn = Vector2(rng_x, 0)
+	print("joł")
 	if node.has_method("zombie"):
 		if node.has_method("tank"):
 			zombie_count -=1
@@ -247,3 +254,9 @@ func _on_spawn_restriction_mouse_entered() -> void:
 
 func _on_spawn_restriction_mouse_exited() -> void:
 	mouse_lock = false
+
+
+func _on_child_entered_tree(node: Node) -> void:
+	if node.has_method("necroplasm"):
+		nekro_stat += 2
+		print("2 Necroplasm collected!")
