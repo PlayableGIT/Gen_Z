@@ -35,14 +35,14 @@ size = Vector2(151, 219.875)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eiqg"]
 size = Vector2(226, 220)
 
-[sub_resource type="SystemFont" id="SystemFont_522ec"]
+[sub_resource type="SystemFont" id="SystemFont_v0mkk"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
 subpixel_positioning = 0
 oversampling = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_47npf"]
 line_spacing = 1.0
-font = SubResource("SystemFont_522ec")
+font = SubResource("SystemFont_v0mkk")
 font_size = 46
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)

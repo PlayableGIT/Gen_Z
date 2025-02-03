@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=53 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" path="res://Screens/point_light_2d_4.gd" id="33_t7m8t"]
 [ext_resource type="PackedScene" uid="uid://ycpgoo8l5i2h" path="res://fog.tscn" id="34_4p8qo"]
 [ext_resource type="Texture2D" uid="uid://cv5bykrx5g8m1" path="res://textures/mouse_prog.png" id="35_xqsi0"]
+[ext_resource type="PackedScene" uid="uid://byhd1tr5ytrow" path="res://scenes/basic_melee_survivor.tscn" id="36_7b64p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -602,24 +603,8 @@ z_index = 2
 position = Vector2(3194, -262.001)
 scale = Vector2(1.005, 1.005)
 
-[node name="Survivor" parent="." instance=ExtResource("10_ybt86")]
-position = Vector2(2473, -253)
-
-[node name="Survivor2" parent="." instance=ExtResource("10_ybt86")]
-position = Vector2(2863, -258)
-
-[node name="Survivor3" parent="." instance=ExtResource("10_ybt86")]
-position = Vector2(1629, -200)
-
-[node name="Survivor4" parent="." instance=ExtResource("10_ybt86")]
-position = Vector2(5429, -236)
-
-[node name="Survivor5" parent="." instance=ExtResource("10_ybt86")]
-z_index = 3
-position = Vector2(4882, -259)
-
-[node name="Survivor6" parent="." instance=ExtResource("10_ybt86")]
-position = Vector2(4040, -250)
+[node name="Basic_Melee_Survivor" parent="." instance=ExtResource("36_7b64p")]
+position = Vector2(1636, -249)
 
 [node name="survivor_gun" parent="." instance=ExtResource("18_blxfq")]
 z_index = 2
@@ -1016,6 +1001,21 @@ value = 0.7
 fill_mode = 4
 texture_progress = ExtResource("35_xqsi0")
 texture_progress_offset = Vector2(-50, -50)
+
+[node name="Basic_Melee_Survivor2" parent="." instance=ExtResource("36_7b64p")]
+position = Vector2(2420, -285)
+
+[node name="Basic_Melee_Survivor3" parent="." instance=ExtResource("36_7b64p")]
+position = Vector2(2830, -296)
+
+[node name="Basic_Melee_Survivor4" parent="." instance=ExtResource("36_7b64p")]
+position = Vector2(4026, -301)
+
+[node name="Basic_Melee_Survivor5" parent="." instance=ExtResource("36_7b64p")]
+position = Vector2(4848, -307)
+
+[node name="Basic_Melee_Survivor6" parent="." instance=ExtResource("36_7b64p")]
+position = Vector2(5270, -301)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

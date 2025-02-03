@@ -1,0 +1,187 @@
+[gd_scene load_steps=21 format=3 uid="uid://byhd1tr5ytrow"]
+
+[ext_resource type="Script" path="res://Scripts/basic_melee_survivor.gd" id="1_ljhvr"]
+[ext_resource type="Texture2D" uid="uid://br1cmqu2v0gia" path="res://animations/survivor_01_attack_anim/surv01_attack_01.png" id="2_bt4l0"]
+[ext_resource type="Texture2D" uid="uid://xy2wc8w7kx0g" path="res://animations/survivor_01_attack_anim/surv01_attack_02.png" id="3_qf17u"]
+[ext_resource type="Texture2D" uid="uid://p1ug5mijl2oy" path="res://animations/survivor_01_attack_anim/surv01_attack_03.png" id="4_fy0i1"]
+[ext_resource type="Texture2D" uid="uid://bu5vrh22ln7wy" path="res://animations/survivor_01_attack_anim/surv01_attack_04.png" id="5_pd6tp"]
+[ext_resource type="Texture2D" uid="uid://2dxs65wmwlvq" path="res://animations/survivor_01_attack_anim/surv01_attack_05.png" id="6_pw3mk"]
+[ext_resource type="Texture2D" uid="uid://rhc1csi3f1q6" path="res://animations/survivor_01_idle_anim/survivor2_anim1.png" id="7_fht5v"]
+[ext_resource type="Texture2D" uid="uid://d2ar85lj108q1" path="res://animations/survivor_01_idle_anim/survivor2_anim2.png" id="8_1w73p"]
+[ext_resource type="Texture2D" uid="uid://b83wkrtaylis8" path="res://animations/survivor_01_hurt_anim/survivor2_hurt1.png" id="9_qanj4"]
+[ext_resource type="Texture2D" uid="uid://udb35hqnqt3u" path="res://animations/survivor_01_hurt_anim/survivor2_hurt2.png" id="10_16irt"]
+[ext_resource type="Script" path="res://Scripts/area_2d.gd" id="12_h6xwl"]
+[ext_resource type="AudioStream" uid="uid://dsfte6ug5n7nq" path="res://audio/survivor/text_popup1.wav" id="13_ifqrm"]
+[ext_resource type="AudioStream" uid="uid://dalc2amnjtw3j" path="res://audio/survivor/surv_attack.wav" id="14_hoh6y"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hhba7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_pw3mk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pd6tp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fy0i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qf17u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bt4l0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qf17u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fy0i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pd6tp")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_fht5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qanj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_16irt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qanj4")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_fht5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1w73p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xk3m3"]
+radius = 51.0
+height = 230.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2f257"]
+size = Vector2(226, 220)
+
+[sub_resource type="SystemFont" id="SystemFont_522ec"]
+font_names = PackedStringArray("8-bit Limit (BRK)")
+subpixel_positioning = 0
+oversampling = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_x5t4y"]
+line_spacing = 1.0
+font = SubResource("SystemFont_522ec")
+font_size = 46
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 26
+shadow_color = Color(0, 0, 0, 0.207843)
+
+[sub_resource type="Curve" id="Curve_eusos"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3cuf"]
+bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
+
+[node name="Basic_Melee_Survivor" type="CharacterBody2D"]
+z_index = 2
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_ljhvr")
+
+[node name="Survivor_Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hhba7")
+animation = &"attack"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xk3m3")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(4.06, 6)
+scale = Vector2(0.675, 1)
+script = ExtResource("12_h6xwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6, -1)
+scale = Vector2(0.71, 1)
+shape = SubResource("RectangleShape2D_2f257")
+debug_color = Color(0.949477, 1.2514e-06, 0.573295, 0.42)
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Label" type="Label" parent="."]
+offset_left = -113.0
+offset_top = -203.0
+offset_right = 197.0
+offset_bottom = -127.0
+text = "EAT SHIT!!!"
+label_settings = SubResource("LabelSettings_x5t4y")
+
+[node name="text_popup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_ifqrm")
+volume_db = -11.636
+
+[node name="survivor_attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_hoh6y")
+volume_db = -4.43
+
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(-25.3333, 49.3333)
+emitting = false
+amount = 100
+lifetime = 0.3
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 4.0
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.902344, 0, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_eusos")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -56.0
+offset_top = -144.0
+offset_right = 64.0
+offset_bottom = -127.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_q3cuf")
+max_value = 25.0
+step = 1.0
+show_percentage = false
+
+[node name="move_timer" type="Timer" parent="."]
+wait_time = 1.847
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="move_timer" to="." method="_on_move_timer_timeout"]

@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	var rng_light = rng.randf_range(0.0, 10.0)
 	
 	if rng_light <= 1:
