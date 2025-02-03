@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=52 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://bn2lth8dob2ud" path="res://textures/bullet.png" id="32_80kg8"]
 [ext_resource type="Script" path="res://Screens/point_light_2d_4.gd" id="33_t7m8t"]
 [ext_resource type="PackedScene" uid="uid://ycpgoo8l5i2h" path="res://fog.tscn" id="34_4p8qo"]
+[ext_resource type="Texture2D" uid="uid://cv5bykrx5g8m1" path="res://textures/mouse_prog.png" id="35_xqsi0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -670,6 +671,10 @@ volume_db = -0.727
 [node name="zombie_respawn" type="Timer" parent="."]
 wait_time = 0.7
 
+[node name="zombie_respawn2" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
 [node name="spawn_restriction" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_restriction"]
@@ -991,8 +996,30 @@ position = Vector2(4169, -4141)
 [node name="fog3" parent="." instance=ExtResource("34_4p8qo")]
 position = Vector2(8326, -3001)
 
+[node name="respawn_bar" type="TextureProgressBar" parent="."]
+z_index = 105
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -178.0
+offset_right = 379.0
+offset_bottom = 322.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.966754, 0.966754)
+max_value = 0.7
+step = 0.01
+value = 0.7
+fill_mode = 4
+texture_progress = ExtResource("35_xqsi0")
+texture_progress_offset = Vector2(-50, -50)
+
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="timeout" from="zombie_respawn" to="." method="_on_zombie_respawn_timeout"]
+[connection signal="timeout" from="zombie_respawn2" to="." method="_on_zombie_respawn_2_timeout"]
 [connection signal="mouse_entered" from="spawn_restriction" to="." method="_on_spawn_restriction_mouse_entered"]
 [connection signal="mouse_exited" from="spawn_restriction" to="." method="_on_spawn_restriction_mouse_exited"]

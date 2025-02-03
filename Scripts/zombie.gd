@@ -85,7 +85,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = true
 	if body.has_method("survivor_gun"):
-		survivor_in_range = true
+		survivor_in_range = false
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = false

@@ -33,6 +33,8 @@ var zombie_4 = false
 var rng = RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
+	$respawn_bar.value = 0
+	$respawn_bar.visible = false
 	var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
 	$Camera2D/stats.text = string
 	$Camera2D/level_complete.modulate.a = 0
@@ -46,6 +48,12 @@ func _ready() -> void:
 	survivor_death.connect(surv_death)
 	level_complete.connect(level_comp)
 func _process(delta):
+	$respawn_bar.global_position = get_global_mouse_position()
+	var czas = $zombie_respawn2.wait_time - $zombie_respawn2.time_left
+	#if Input.is_action_just_released("left_mouse"):
+		#$zombie_respawn2.start()
+	print(czas)
+	$respawn_bar.value = czas
 	var string1 = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
 	$Camera2D/stats.text = string1
 	if level_fade == true:
@@ -94,6 +102,8 @@ func _process(delta):
 		level_accomp = true
 	
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_1 == true:
+		$zombie_respawn2.start()
+		$respawn_bar.visible = true
 		zombie_count += 1
 		nekro_stat -= 2
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
@@ -261,3 +271,7 @@ func _on_child_entered_tree(node: Node) -> void:
 	if node.has_method("necroplasm"):
 		nekro_stat += 5
 		print("5 Necroplasm collected!")
+
+
+func _on_zombie_respawn_2_timeout() -> void:
+	$respawn_bar.visible = false
