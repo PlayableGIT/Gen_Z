@@ -205,7 +205,7 @@ func _on_child_exiting_tree(node: Node) -> void:
 			add_child.call_deferred(death_zombie)
 			death_zombie.position = node.position + rng_dead_spawn
 			zombie_tank_death.emit(node.global_position)
-			print("usunieto zombie")
+			#print("usunieto zombie")
 		else:
 			zombie_count -=1
 			print(zombie_count)
