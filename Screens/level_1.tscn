@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=4 uid="uid://5ob1gavue2c6"]
 
-[ext_resource type="Script" path="res://Scripts/scena.gd" id="1_ma742"]
+[ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
 [ext_resource type="PackedScene" uid="uid://ctw0l4niaqlaf" path="res://scenes/dead_survivor.tscn" id="3_unjmq"]
 [ext_resource type="PackedScene" uid="uid://begstf8t0rriu" path="res://scenes/dead_zombie.tscn" id="4_myh5r"]
@@ -469,7 +469,7 @@ size = Vector2(6578.71, 1810)
 size = Vector2(4671, 895)
 
 [node name="level_1" type="Node2D"]
-script = ExtResource("1_ma742")
+script = ExtResource("1_yb6vr")
 destroyed_door = ExtResource("2_0yjbc")
 dead_survivor = ExtResource("3_unjmq")
 dead_zombie = ExtResource("4_myh5r")
@@ -533,21 +533,21 @@ shape = SubResource("SegmentShape2D_0c1ri")
 position = Vector2(3500.78, -98)
 shape = SubResource("SegmentShape2D_lge6r")
 
-[node name="Door" parent="Ground" instance=ExtResource("17_t2lod")]
-position = Vector2(1434, -174.667)
-scale = Vector2(0.67, 0.67)
+[node name="Door" parent="." instance=ExtResource("17_t2lod")]
+position = Vector2(2151, -262.001)
+scale = Vector2(1.005, 1.005)
 
-[node name="Door2" parent="Ground" instance=ExtResource("17_t2lod")]
-position = Vector2(3813.33, -174.667)
-scale = Vector2(0.67, 0.67)
+[node name="Door2" parent="." instance=ExtResource("17_t2lod")]
+position = Vector2(5720, -262.001)
+scale = Vector2(1.005, 1.005)
 
-[node name="Door3" parent="Ground" instance=ExtResource("17_t2lod")]
-position = Vector2(3025.33, -174.667)
-scale = Vector2(0.67, 0.67)
+[node name="Door3" parent="." instance=ExtResource("17_t2lod")]
+position = Vector2(4538, -262.001)
+scale = Vector2(1.005, 1.005)
 
-[node name="Door4" parent="Ground" instance=ExtResource("17_t2lod")]
-position = Vector2(2129.33, -174.667)
-scale = Vector2(0.67, 0.67)
+[node name="Door4" parent="." instance=ExtResource("17_t2lod")]
+position = Vector2(3194, -262.001)
+scale = Vector2(1.005, 1.005)
 
 [node name="Survivor" parent="." instance=ExtResource("10_ybt86")]
 position = Vector2(2473, -253)

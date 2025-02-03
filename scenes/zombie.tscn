@@ -134,7 +134,7 @@ wait_time = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletZone"]
 position = Vector2(-0.666668, -0.666667)
-scale = Vector2(2.4, 1)
+scale = Vector2(2.69, 1)
 shape = SubResource("RectangleShape2D_xa0h1")
 
 [node name="zombie_walk" type="AudioStreamPlayer2D" parent="."]

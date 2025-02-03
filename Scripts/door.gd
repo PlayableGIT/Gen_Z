@@ -23,8 +23,6 @@ func _process(_delta):
 func door():
 	pass
 
-
-
 func zombie_attack():
 	if zombie_in_range and zombie_attack_cooldown:
 			#rng

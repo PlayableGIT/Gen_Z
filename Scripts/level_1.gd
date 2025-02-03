@@ -197,7 +197,6 @@ func zomb_tank_death(a):
 func _on_child_exiting_tree(node: Node) -> void:
 	var rng_x = rng.randf_range(-50.0, 50.0)
 	var rng_dead_spawn = Vector2(rng_x, 0)
-	print("halo")
 	if node.has_method("zombie"):
 		if node.has_method("tank"):
 			zombie_count -=1
@@ -225,7 +224,7 @@ func _on_child_exiting_tree(node: Node) -> void:
 		print("halo alo")
 		var destroy_door = destroyed_door.instantiate()
 		add_child.call_deferred(destroy_door)
-		destroy_door.position = node.position + rng_dead_spawn
+		destroy_door.position = node.position
 		door_boom.emit(node.global_position)
 	
 	if node.has_method("survivor_gun"):
