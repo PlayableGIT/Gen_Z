@@ -97,7 +97,7 @@ shadow_color = Color(0, 0, 0, 0.207843)
 
 [sub_resource type="Curve" id="Curve_eusos"]
 min_value = -1.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.768627, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3cuf"]
@@ -163,9 +163,7 @@ initial_velocity_min = 29.2
 initial_velocity_max = 138.69
 scale_amount_min = 2.0
 scale_amount_max = 8.3
-color = Color(0.902344, 0, 0, 1)
-hue_variation_min = -0.05
-hue_variation_max = 0.05
+color = Color(0.779297, 0, 0, 1)
 hue_variation_curve = SubResource("Curve_eusos")
 
 [node name="HealthBar" type="ProgressBar" parent="."]

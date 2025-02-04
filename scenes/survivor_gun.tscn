@@ -128,9 +128,7 @@ initial_velocity_min = 29.2
 initial_velocity_max = 138.69
 scale_amount_min = 2.0
 scale_amount_max = 8.3
-color = Color(0.902344, 0, 0, 1)
-hue_variation_min = -0.05
-hue_variation_max = 0.05
+color = Color(0.818359, 0, 0, 1)
 hue_variation_curve = SubResource("Curve_2gofq")
 
 [node name="Label" type="Label" parent="."]

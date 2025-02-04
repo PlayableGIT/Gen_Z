@@ -100,8 +100,6 @@ initial_velocity_max = 138.69
 scale_amount_min = 2.0
 scale_amount_max = 8.3
 color = Color(0.869141, 0, 0, 1)
-hue_variation_min = -0.05
-hue_variation_max = 0.05
 hue_variation_curve = SubResource("Curve_h77jt")
 
 [connection signal="timeout" from="collection_timer" to="." method="_on_collection_timer_timeout"]

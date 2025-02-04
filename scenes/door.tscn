@@ -32,13 +32,11 @@ scale = Vector2(10.9688, 6.01562)
 texture = ExtResource("2_wum7f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1, 0.5)
 shape = SubResource("RectangleShape2D_5eosj")
 debug_color = Color(0.854773, 0.000779911, 0.888543, 0.42)
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 0.5)
@@ -54,6 +52,7 @@ volume_db = -10.0
 bus = &"Environment"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 position = Vector2(-46, -160)
 amount = 10
 lifetime = 0.35
