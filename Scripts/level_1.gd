@@ -38,7 +38,6 @@ func _ready() -> void:
 	var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
 	$Camera2D/stats.text = string
 	$Camera2D/level_complete.modulate.a = 0
-	lightning()
 	$Ambient.play()
 	door_boom.connect(door_destro)
 	zombie_spawn.connect(zombie_spawn_sound)
@@ -48,6 +47,8 @@ func _ready() -> void:
 	zombie_tank_death.connect(zomb_tank_death)
 	survivor_death.connect(surv_death)
 	level_complete.connect(level_comp)
+	await get_tree().create_timer(2.0).timeout
+	lightning()
 func _process(delta):
 	$respawn_bar.global_position = get_global_mouse_position()
 	var czas = $zombie_respawn2.wait_time - $zombie_respawn2.time_left
@@ -112,8 +113,8 @@ func _process(delta):
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = zombie.instantiate()
-		add_child(new_zombie)
 		new_zombie.position = get_global_mouse_position()
+		add_child(new_zombie)
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_2 == true:
@@ -124,8 +125,8 @@ func _process(delta):
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = cheerleader_zombie.instantiate()
-		add_child(new_zombie)
 		new_zombie.position = get_global_mouse_position()
+		add_child(new_zombie)
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_3 == true:
@@ -136,8 +137,8 @@ func _process(delta):
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = runner_zombie.instantiate()
-		add_child(new_zombie)
 		new_zombie.position = get_global_mouse_position()
+		add_child(new_zombie)
 		zombie_runner_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_4 == true:
@@ -148,16 +149,16 @@ func _process(delta):
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = tank_zombie.instantiate()
-		add_child(new_zombie)
 		new_zombie.position = get_global_mouse_position()
+		add_child(new_zombie)
 		zombie_tank_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat < nekro_cost and (zombie_1 == true or zombie_2 == true or zombie_3 == true or zombie_4 == true):
 		print("Insufficient Necroplasm!")
 	if Input.is_action_just_released("right_mouse"):
 		var new_survivor = survivor.instantiate()
-		add_child(new_survivor)
 		new_survivor.position = get_global_mouse_position()
+		add_child(new_survivor)
 
 func zombie_spawn_sound(a):
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)

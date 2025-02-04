@@ -66,6 +66,7 @@ shadow_color = Color(0, 0, 0, 0.207843)
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
 [node name="survivor_gun" type="CharacterBody2D"]
+z_index = 3
 script = ExtResource("1_cylxf")
 Bullet = ExtResource("2_gf5xa")
 Bullet_left = ExtResource("3_njmxk")

@@ -111,7 +111,7 @@ bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 gradient = SubResource("Gradient_aj5bm")
 
 [node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
-z_index = 2
+z_index = 3
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nufbr")
 speed = 200.0

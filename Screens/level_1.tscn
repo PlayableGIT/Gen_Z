@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=59 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://b3fckuhu35yu0" path="res://textures/tree1.png" id="39_jxeot"]
 [ext_resource type="AudioStream" uid="uid://cnmlbhwxxhvdw" path="res://audio/10 Minutes of Rain and Thunderstorm Sounds For Focus, Relaxing and Sleep  Epidemic ASMR.mp3" id="40_xtq4f"]
 [ext_resource type="AudioStream" uid="uid://tp7ow7ww8j8i" path="res://audio/thunder.mp3" id="41_4o0ni"]
+[ext_resource type="Texture2D" uid="uid://xm6vjjrsioh0" path="res://textures/map.png" id="42_8gijt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -612,7 +613,6 @@ scale = Vector2(1.005, 1.005)
 position = Vector2(1636, -249)
 
 [node name="survivor_gun" parent="." instance=ExtResource("18_blxfq")]
-z_index = 2
 position = Vector2(3611, -285)
 
 [node name="STATS_AUTOLOAD" type="Node" parent="."]
@@ -668,21 +668,14 @@ one_shot = true
 [node name="spawn_restriction" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_restriction"]
-position = Vector2(3139.5, -1800)
-scale = Vector2(1.25, 0.995)
+position = Vector2(2585, -1800)
+scale = Vector2(1.415, 0.995)
 shape = SubResource("RectangleShape2D_piy5k")
 debug_color = Color(0.587891, 0.7, 0, 0.42)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="spawn_restriction"]
-position = Vector2(3187.17, 877)
-scale = Vector2(1.25, 1)
-shape = SubResource("RectangleShape2D_piy5k")
-debug_color = Color(0.587891, 0.7, 0, 0.42)
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="spawn_restriction"]
-position = Vector2(-1411, -368)
-rotation = 1.5708
-scale = Vector2(0.74, 0.575)
+position = Vector2(2632.67, 877)
+scale = Vector2(1.415, 1)
 shape = SubResource("RectangleShape2D_piy5k")
 debug_color = Color(0.587891, 0.7, 0, 0.42)
 
@@ -1099,6 +1092,13 @@ volume_db = -9.772
 
 [node name="lightning_timer" type="Timer" parent="."]
 wait_time = 2.045
+
+[node name="Map" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(3827, -500)
+rotation = -0.0472381
+scale = Vector2(0.730606, 0.730606)
+texture = ExtResource("42_8gijt")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
