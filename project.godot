@@ -30,6 +30,8 @@ window/stretch/aspect="expand"
 survivor=""
 zombie=""
 necroplasm=""
+left=""
+right=""
 
 [input]
 

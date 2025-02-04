@@ -13,6 +13,15 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var rng_move_seed = rng.randf_range(0.0, 10.0)
+	
+	if $Survivor_Sprite.flip_h == true:
+		add_to_group("left")
+		remove_from_group("right")
+	if $Survivor_Sprite.flip_h == false:
+		add_to_group("right")
+		remove_from_group("left")
+	
+	
 	#print(rng_move_seed)
 	if not is_on_floor():
 		velocity += get_gravity() * 10 * delta

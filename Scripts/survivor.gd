@@ -8,6 +8,8 @@ var can_move = false
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var rng_walk = rng.randi_range(0, 1)
+	$Survivor01.frame = rng_walk
 	add_to_group("survivor")
 	$Label.visible = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.

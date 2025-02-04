@@ -32,6 +32,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#grawitacja
 	var survivor = get_tree().get_nodes_in_group("survivor")
+	
+	if $Zombie03.flip_h == true:
+		add_to_group("left")
+		remove_from_group("right")
+	if $Zombie03.flip_h == false:
+		add_to_group("right")
+		remove_from_group("left")
+	
 	if not is_on_floor():
 		velocity += get_gravity() * 45 * delta
 		velocity.x = 0.0

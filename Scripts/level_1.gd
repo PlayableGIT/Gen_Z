@@ -217,19 +217,35 @@ func _on_child_exiting_tree(node: Node) -> void:
 			zombie_tank_death.emit(node.global_position)
 			#print("usunieto zombie")
 		else:
-			zombie_count -=1
-			print(zombie_count)
-			var death_zombie = dead_zombie.instantiate()
-			add_child.call_deferred(death_zombie)
-			death_zombie.position = node.position + rng_dead_spawn
-			zombie_death.emit(node.global_position)
-			print("usunieto zombie")
+			if node.is_in_group("left"):
+				zombie_count -=1
+				print(zombie_count)
+				var death_zombie = dead_zombie.instantiate()
+				add_child.call_deferred(death_zombie)
+				death_zombie.position = node.position + rng_dead_spawn
+				death_zombie.flip_h = true
+				zombie_death.emit(node.global_position)
+			elif node.is_in_group("right"):
+				zombie_count -=1
+				print(zombie_count)
+				var death_zombie = dead_zombie.instantiate()
+				add_child.call_deferred(death_zombie)
+				death_zombie.position = node.position + rng_dead_spawn
+				death_zombie.flip_h = false
+				zombie_death.emit(node.global_position)
 	if node.has_method("survivor"):
-		var death_survivor = dead_survivor.instantiate()
-		add_child.call_deferred(death_survivor)
-		death_survivor.position = node.position + rng_dead_spawn
-		survivor_death.emit(node.global_position)
-		
+		if node.is_in_group("left"):
+			var death_survivor = dead_survivor.instantiate()
+			add_child.call_deferred(death_survivor)
+			death_survivor.position = node.position + rng_dead_spawn
+			death_survivor.flip_h = true
+			survivor_death.emit(node.global_position)
+		elif node.is_in_group("right"):
+			var death_survivor = dead_survivor.instantiate()
+			add_child.call_deferred(death_survivor)
+			death_survivor.position = node.position + rng_dead_spawn
+			death_survivor.flip_h = false
+			survivor_death.emit(node.global_position)
 	if node.has_method("door"):
 		print("halo alo")
 		var destroy_door = destroyed_door.instantiate()

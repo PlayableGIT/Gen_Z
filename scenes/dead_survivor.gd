@@ -5,13 +5,14 @@ var button_fade = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Control/Button.modulate.a = 0
-
-
+	$blood_splatter.visible = true
+	$blood_splatter.one_shot = true
+	$blood_splatter.emitting = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if button_fade == true:
 		$Control/Button.modulate.a += 1 * delta
-	if $Control/Button.modulate.a >= 0.7:
+	if $Control/Button.modulate.a >= 0.98:
 		button_fade = false
 
 func _on_collection_timer_timeout() -> void:

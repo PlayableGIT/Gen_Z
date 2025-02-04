@@ -245,6 +245,7 @@ texture = ExtResource("17_l56oj")
 texture_scale = 0.05
 
 [node name="PointLight2D3" type="PointLight2D" parent="."]
+z_index = 1
 position = Vector2(0, 54.6667)
 rotation = 1.57079
 scale = Vector2(4.74903, 6.81979)

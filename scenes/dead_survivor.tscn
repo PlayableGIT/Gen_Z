@@ -1,20 +1,19 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctw0l4niaqlaf"]
+[gd_scene load_steps=19 format=3 uid="uid://ctw0l4niaqlaf"]
 
-[ext_resource type="Texture2D" uid="uid://cm406qs6wsvui" path="res://animations/survivor_death_anim/survivor_01.png" id="1_2naib"]
-[ext_resource type="Texture2D" uid="uid://8p017pns5e7x" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm01.png" id="1_d3je1"]
-[ext_resource type="Texture2D" uid="uid://dqwf3projoujq" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm02.png" id="2_cv6pb"]
-[ext_resource type="Texture2D" uid="uid://delxf5bwullmj" path="res://animations/survivor_death_anim/survivor_02.png" id="2_jvrpl"]
-[ext_resource type="Texture2D" uid="uid://peha6vjdso8d" path="res://animations/survivor_death_anim/survivor_03.png" id="3_2xfid"]
-[ext_resource type="Texture2D" uid="uid://bovigiqocy7ea" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm03.png" id="3_8jjhy"]
-[ext_resource type="Texture2D" uid="uid://ci8neokgu3u2i" path="res://animations/survivor_death_anim/survivor_04.png" id="4_1ftb1"]
-[ext_resource type="Texture2D" uid="uid://ds0pn0dvucpfj" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm04.png" id="4_k1yry"]
-[ext_resource type="Texture2D" uid="uid://bug2gdegnc0ni" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm05.png" id="5_80jhl"]
-[ext_resource type="Texture2D" uid="uid://b287j67066swa" path="res://animations/survivor_death_anim/survivor_05.png" id="5_hu8w3"]
-[ext_resource type="Texture2D" uid="uid://c2r1m63fr3r1" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm06.png" id="6_ccuer"]
-[ext_resource type="Texture2D" uid="uid://cdtomx587pdmw" path="res://animations/survivor_death_anim/survivor_06.png" id="6_pwss7"]
-[ext_resource type="Texture2D" uid="uid://co63dqpldc1nx" path="res://animations/survivor_necroplasm_collect/survivor_necroplasm07.png" id="7_1vil1"]
-[ext_resource type="Texture2D" uid="uid://ddew04dpooqt" path="res://animations/survivor_death_anim/survivor_07.png" id="7_uwma5"]
+[ext_resource type="Texture2D" uid="uid://b7k21cklkoymt" path="res://animations/survivor_01_necroplasm_collect/survivor2_necro1.png" id="2_b3eoa"]
+[ext_resource type="Texture2D" uid="uid://da0u7vdu0mma1" path="res://animations/survivor_01_necroplasm_collect/survivor2_necro2.png" id="3_3iyew"]
+[ext_resource type="Texture2D" uid="uid://bcfphvl26qtrh" path="res://animations/survivor_01_necroplasm_collect/survivor2_necro3.png" id="4_ec7fs"]
+[ext_resource type="Texture2D" uid="uid://3thxp5fw35cy" path="res://animations/survivor_01_necroplasm_collect/survivor2_necro4.png" id="5_uye77"]
+[ext_resource type="Texture2D" uid="uid://d0vg3byykeli8" path="res://animations/survivor_01_death_anim/survivor2_death1.png" id="8_1u5ye"]
 [ext_resource type="Script" path="res://scenes/dead_survivor.gd" id="8_7ju65"]
+[ext_resource type="Texture2D" uid="uid://udosidj2yhmr" path="res://animations/survivor_01_death_anim/survivor2_death2.png" id="9_upood"]
+[ext_resource type="Texture2D" uid="uid://pnp0uvd0cyt3" path="res://animations/survivor_01_death_anim/survivor2_death3.png" id="10_hsurt"]
+[ext_resource type="Texture2D" uid="uid://dvthyrclfld46" path="res://animations/survivor_01_death_anim/survivor2_death4.png" id="11_w7tj2"]
+[ext_resource type="Texture2D" uid="uid://wf4iqk7w55qh" path="res://animations/survivor_01_death_anim/survivor2_death5.png" id="12_kpb8u"]
+[ext_resource type="Texture2D" uid="uid://cq7jsfle2i42g" path="res://animations/survivor_01_death_anim/survivor2_death6.png" id="13_2bf5p"]
+[ext_resource type="Texture2D" uid="uid://cip8lccbvxtsk" path="res://animations/survivor_01_death_anim/survivor2_death7.png" id="14_0pbvb"]
+[ext_resource type="Texture2D" uid="uid://c3y545k3c1s2i" path="res://animations/survivor_01_death_anim/survivor2_death8.png" id="15_3ici2"]
+[ext_resource type="Texture2D" uid="uid://43chx5f7vaqj" path="res://animations/survivor_01_death_anim/survivor2_death9.png" id="16_j4nss"]
 [ext_resource type="Texture2D" uid="uid://bo7ruxwefacp7" path="res://textures/necro_orb.png" id="16_jr0qx"]
 [ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="17_a2wgx"]
 
@@ -22,88 +21,78 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_d3je1")
+"texture": ExtResource("16_j4nss")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_cv6pb")
+"texture": ExtResource("2_b3eoa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_8jjhy")
+"texture": ExtResource("3_3iyew")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_k1yry")
+"texture": ExtResource("4_ec7fs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_80jhl")
+"texture": ExtResource("3_3iyew")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_ccuer")
+"texture": ExtResource("2_b3eoa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_80jhl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_k1yry")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_8jjhy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_cv6pb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("1_d3je1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_1vil1")
+"texture": ExtResource("5_uye77")
 }],
 "loop": false,
 "name": &"collect",
-"speed": 60.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_2naib")
+"texture": ExtResource("8_1u5ye")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_jvrpl")
+"texture": ExtResource("9_upood")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_2xfid")
+"texture": ExtResource("10_hsurt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1ftb1")
+"texture": ExtResource("11_w7tj2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_hu8w3")
+"texture": ExtResource("12_kpb8u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_pwss7")
+"texture": ExtResource("13_2bf5p")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_uwma5")
+"texture": ExtResource("14_0pbvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3ici2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_j4nss")
 }],
 "loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_if6e1"]
-size = Vector2(116.316, 54.0702)
+[sub_resource type="Curve" id="Curve_hwtbh"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="dead_survivor" type="AnimatedSprite2D"]
 z_index = 2
-scale = Vector2(3.8, 3.8)
+position = Vector2(0, -128)
+scale = Vector2(1.49413, 1.49413)
 sprite_frames = SubResource("SpriteFrames_772ai")
 animation = &"collect"
 autoplay = "default"
+frame = 6
+frame_progress = 1.0
 script = ExtResource("8_7ju65")
-
-[node name="necroplasm_area" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="necroplasm_area"]
-position = Vector2(-0.263158, 16.5088)
-shape = SubResource("RectangleShape2D_if6e1")
 
 [node name="collection_timer" type="Timer" parent="."]
 wait_time = 2.778
@@ -119,16 +108,39 @@ offset_bottom = 40.0
 [node name="Button" type="Button" parent="Control"]
 modulate = Color(0.0546875, 1, 0, 1)
 layout_mode = 0
-offset_left = -24.0
-offset_top = -70.0
-offset_right = 95.0
-offset_bottom = 41.0
-scale = Vector2(0.436098, 0.436098)
+offset_left = -40.8263
+offset_top = -91.6919
+offset_right = 78.1737
+offset_bottom = 19.3081
+scale = Vector2(0.673737, 0.673737)
 icon = ExtResource("16_jr0qx")
 flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_a2wgx")
+
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(-18.74, -35.4721)
+emitting = false
+amount = 505
+lifetime = 0.5
+one_shot = true
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.75
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.869141, 0, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_hwtbh")
 
 [connection signal="timeout" from="collection_timer" to="." method="_on_collection_timer_timeout"]
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

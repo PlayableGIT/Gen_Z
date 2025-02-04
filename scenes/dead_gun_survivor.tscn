@@ -44,8 +44,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhbq6"]
-size = Vector2(116.316, 54.0702)
+[sub_resource type="Curve" id="Curve_h77jt"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="dead_gun_survivor" type="AnimatedSprite2D"]
 z_index = 2
@@ -53,12 +55,6 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_yhdwr")
 autoplay = "default"
 script = ExtResource("9_rb602")
-
-[node name="necroplasm_area" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="necroplasm_area"]
-position = Vector2(-0.263158, 16.5088)
-shape = SubResource("RectangleShape2D_xhbq6")
 
 [node name="collection_timer" type="Timer" parent="."]
 wait_time = 2.778
@@ -84,6 +80,29 @@ flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_n851o")
+
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(-18.74, -35.4721)
+emitting = false
+amount = 505
+lifetime = 0.5
+one_shot = true
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.75
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.869141, 0, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_h77jt")
 
 [connection signal="timeout" from="collection_timer" to="." method="_on_collection_timer_timeout"]
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
