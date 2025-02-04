@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=59 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://b3fckuhu35yu0" path="res://textures/tree1.png" id="39_jxeot"]
 [ext_resource type="AudioStream" uid="uid://cnmlbhwxxhvdw" path="res://audio/10 Minutes of Rain and Thunderstorm Sounds For Focus, Relaxing and Sleep  Epidemic ASMR.mp3" id="40_xtq4f"]
 [ext_resource type="AudioStream" uid="uid://tp7ow7ww8j8i" path="res://audio/thunder.mp3" id="41_4o0ni"]
+[ext_resource type="PackedScene" uid="uid://c21cxagqion13" path="res://Screens/pause_menu.tscn" id="42_gs6qq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -1099,6 +1100,10 @@ volume_db = -9.772
 
 [node name="lightning_timer" type="Timer" parent="."]
 wait_time = 2.045
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("42_gs6qq")]
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

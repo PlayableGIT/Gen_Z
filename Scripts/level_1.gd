@@ -18,6 +18,8 @@ signal level_complete
 @export var tank_zombie: PackedScene
 @export var runner_zombie: PackedScene
 @export var survivor: PackedScene
+@onready var pause_menu: = $PauseMenu
+var paused = false
 var nekro_stat = StatsAutoload.nekroplazma
 var nekro_cost = 0
 var zombie_count = 0
@@ -158,7 +160,9 @@ func _process(delta):
 		var new_survivor = survivor.instantiate()
 		add_child(new_survivor)
 		new_survivor.position = get_global_mouse_position()
-
+	if Input.is_action_just_pressed("escape"):
+		pauseMenu()
+		
 func zombie_spawn_sound(a):
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
 	var sound_position = Vector2(a)
@@ -309,3 +313,13 @@ func _on_zombie_respawn_2_timeout() -> void:
 
 func _on_lightning_timer_timeout() -> void:
 	lightning()
+
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+		
+	paused = !paused
