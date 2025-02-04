@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=56 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -36,6 +36,9 @@
 [ext_resource type="PackedScene" uid="uid://ycpgoo8l5i2h" path="res://fog.tscn" id="34_4p8qo"]
 [ext_resource type="Texture2D" uid="uid://cv5bykrx5g8m1" path="res://textures/mouse_prog.png" id="35_xqsi0"]
 [ext_resource type="PackedScene" uid="uid://byhd1tr5ytrow" path="res://scenes/basic_melee_survivor.tscn" id="36_7b64p"]
+[ext_resource type="Texture2D" uid="uid://bdng51h743e73" path="res://textures/NW_sign.png" id="37_45a0v"]
+[ext_resource type="Texture2D" uid="uid://o5gk1fd5o3mm" path="res://textures/bench.png" id="38_1fck7"]
+[ext_resource type="Texture2D" uid="uid://b3fckuhu35yu0" path="res://textures/tree1.png" id="39_jxeot"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -973,13 +976,8 @@ occluder = SubResource("OccluderPolygon2D_orywe")
 occluder = SubResource("OccluderPolygon2D_qgmf0")
 
 [node name="fog" parent="." instance=ExtResource("34_4p8qo")]
-position = Vector2(11, -2958)
-
-[node name="fog2" parent="." instance=ExtResource("34_4p8qo")]
-position = Vector2(4169, -4141)
-
-[node name="fog3" parent="." instance=ExtResource("34_4p8qo")]
-position = Vector2(8326, -3001)
+position = Vector2(4450.75, -2958)
+scale = Vector2(3.13604, 1)
 
 [node name="respawn_bar" type="TextureProgressBar" parent="."]
 z_index = 105
@@ -1016,6 +1014,73 @@ position = Vector2(4848, -307)
 
 [node name="Basic_Melee_Survivor6" parent="." instance=ExtResource("36_7b64p")]
 position = Vector2(5270, -301)
+
+[node name="NwSign" type="Sprite2D" parent="."]
+self_modulate = Color(0.714783, 0.763242, 0.765625, 1)
+z_index = 1
+position = Vector2(1457, -249)
+rotation = -0.0410357
+scale = Vector2(1.03676, 1.03676)
+texture = ExtResource("37_45a0v")
+
+[node name="NwSign2" type="Sprite2D" parent="."]
+self_modulate = Color(0.714783, 0.763242, 0.765625, 1)
+z_index = 1
+position = Vector2(6086, -249)
+rotation = 0.0484919
+scale = Vector2(1.03676, 1.03676)
+texture = ExtResource("37_45a0v")
+
+[node name="Bench" type="Sprite2D" parent="."]
+position = Vector2(-606, -86)
+scale = Vector2(0.699488, 0.699488)
+texture = ExtResource("38_1fck7")
+
+[node name="Bench2" type="Sprite2D" parent="."]
+position = Vector2(432, -86)
+scale = Vector2(0.699488, 0.699488)
+texture = ExtResource("38_1fck7")
+
+[node name="Tree1" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -2
+position = Vector2(-54, -371)
+scale = Vector2(7.10656, 7.10656)
+texture = ExtResource("39_jxeot")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -2
+position = Vector2(1492, -472)
+scale = Vector2(7.42656, 9.50657)
+texture = ExtResource("39_jxeot")
+
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(3563, -2667)
+amount = 100000
+lifetime = 44.79
+preprocess = 17.52
+speed_scale = 0.5
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(5000, 1)
+gravity = Vector2(-300, 980)
+scale_amount_min = 3.3
+scale_amount_max = 7.75
+color = Color(0.00257874, 0, 0.330078, 1)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-158, -3)
+amount = 898
+lifetime = 0.25
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(2000, 1)
+gravity = Vector2(0, -50)
+scale_amount_min = 1.9
+scale_amount_max = 5.0
+color = Color(0, 0.0214844, 0.25, 1)
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
