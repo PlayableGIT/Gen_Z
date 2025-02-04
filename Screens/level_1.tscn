@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=58 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -39,6 +39,8 @@
 [ext_resource type="Texture2D" uid="uid://bdng51h743e73" path="res://textures/NW_sign.png" id="37_45a0v"]
 [ext_resource type="Texture2D" uid="uid://o5gk1fd5o3mm" path="res://textures/bench.png" id="38_1fck7"]
 [ext_resource type="Texture2D" uid="uid://b3fckuhu35yu0" path="res://textures/tree1.png" id="39_jxeot"]
+[ext_resource type="AudioStream" uid="uid://cnmlbhwxxhvdw" path="res://audio/10 Minutes of Rain and Thunderstorm Sounds For Focus, Relaxing and Sleep  Epidemic ASMR.mp3" id="40_xtq4f"]
+[ext_resource type="AudioStream" uid="uid://tp7ow7ww8j8i" path="res://audio/thunder.mp3" id="41_4o0ni"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -696,46 +698,6 @@ position = Vector2(3502.5, -447.5)
 shape = SubResource("RectangleShape2D_rdkxy")
 debug_color = Color(0.587891, 0.7, 0, 0.42)
 
-[node name="Bullet" type="Sprite2D" parent="."]
-modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(2047, -1071)
-rotation = 2.06015
-scale = Vector2(4.92539, 11.1778)
-texture = ExtResource("32_80kg8")
-
-[node name="Bullet2" type="Sprite2D" parent="."]
-modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(959, -1032)
-rotation = 1.57079
-scale = Vector2(1.83513, 8.59758)
-texture = ExtResource("32_80kg8")
-
-[node name="Bullet3" type="Sprite2D" parent="."]
-modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(435, -1032)
-rotation = 1.57079
-scale = Vector2(1.83513, 8.59758)
-texture = ExtResource("32_80kg8")
-
-[node name="Bullet4" type="Sprite2D" parent="."]
-modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-86.0001, -1032)
-rotation = 1.57079
-scale = Vector2(1.83513, 8.59758)
-texture = ExtResource("32_80kg8")
-
-[node name="Bullet5" type="Sprite2D" parent="."]
-modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
-self_modulate = Color(0, 0, 0, 1)
-position = Vector2(-604, -1032)
-rotation = 1.57079
-scale = Vector2(1.83513, 8.59758)
-texture = ExtResource("32_80kg8")
-
 [node name="Node" type="Node" parent="."]
 
 [node name="PointLight2D5" type="PointLight2D" parent="Node"]
@@ -931,7 +893,7 @@ shadow_item_cull_mask = 7
 texture = ExtResource("31_kqha0")
 
 [node name="PointLight2D23" type="PointLight2D" parent="Node"]
-position = Vector2(-91.9999, -304)
+position = Vector2(-1513.57, -304)
 rotation = 3.14159
 scale = Vector2(0.75447, 3.52682)
 energy = 1.45
@@ -942,16 +904,6 @@ texture = ExtResource("31_kqha0")
 
 [node name="PointLight2D25" type="PointLight2D" parent="Node"]
 position = Vector2(-605, -304)
-rotation = 3.14159
-scale = Vector2(0.75447, 3.52682)
-energy = 1.45
-shadow_enabled = true
-shadow_filter = 2
-shadow_item_cull_mask = 7
-texture = ExtResource("31_kqha0")
-
-[node name="PointLight2D26" type="PointLight2D" parent="Node"]
-position = Vector2(945, -304)
 rotation = 3.14159
 scale = Vector2(0.75447, 3.52682)
 energy = 1.45
@@ -1082,9 +1034,76 @@ scale_amount_min = 1.9
 scale_amount_max = 5.0
 color = Color(0, 0.0214844, 0.25, 1)
 
+[node name="Bullet" type="Sprite2D" parent="."]
+modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(2047, -1071)
+rotation = 2.06015
+scale = Vector2(4.92539, 11.1778)
+texture = ExtResource("32_80kg8")
+
+[node name="Bullet3" type="Sprite2D" parent="."]
+modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(443, -1032)
+rotation = 1.57079
+scale = Vector2(1.83513, 8.59758)
+texture = ExtResource("32_80kg8")
+
+[node name="Bullet4" type="Sprite2D" parent="."]
+modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-1500, -1032)
+rotation = 1.57079
+scale = Vector2(1.83513, 8.59758)
+texture = ExtResource("32_80kg8")
+
+[node name="Bullet5" type="Sprite2D" parent="."]
+modulate = Color(0.0195313, 0.0195313, 0.0195313, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-592, -1032)
+rotation = 1.57079
+scale = Vector2(1.83513, 8.59758)
+texture = ExtResource("32_80kg8")
+
+[node name="Road6" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -2
+position = Vector2(433, -524)
+scale = Vector2(0.255806, 6.67258)
+texture = ExtResource("14_faspa")
+
+[node name="Road7" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -2
+position = Vector2(-1511.57, -524)
+scale = Vector2(0.255806, 6.67258)
+texture = ExtResource("14_faspa")
+
+[node name="Road8" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -2
+position = Vector2(-604, -524)
+scale = Vector2(0.255806, 6.67258)
+texture = ExtResource("14_faspa")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("40_xtq4f")
+volume_db = -21.638
+autoplay = true
+bus = &"Ambient"
+
+[node name="lightning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("41_4o0ni")
+volume_db = -9.772
+
+[node name="lightning_timer" type="Timer" parent="."]
+wait_time = 2.045
+
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="timeout" from="zombie_respawn" to="." method="_on_zombie_respawn_timeout"]
 [connection signal="timeout" from="zombie_respawn2" to="." method="_on_zombie_respawn_2_timeout"]
 [connection signal="mouse_entered" from="spawn_restriction" to="." method="_on_spawn_restriction_mouse_entered"]
 [connection signal="mouse_exited" from="spawn_restriction" to="." method="_on_spawn_restriction_mouse_exited"]
+[connection signal="timeout" from="lightning_timer" to="." method="_on_lightning_timer_timeout"]

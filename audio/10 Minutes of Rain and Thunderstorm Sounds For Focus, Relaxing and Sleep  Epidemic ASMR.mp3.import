@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnmlbhwxxhvdw"
+path="res://.godot/imported/10 Minutes of Rain and Thunderstorm Sounds For Focus, Relaxing and Sleep  Epidemic ASMR.mp3-5ab4b49850fd778f1133901f0c21cfa5.mp3str"
+
+[deps]
+
+source_file="res://audio/10 Minutes of Rain and Thunderstorm Sounds For Focus, Relaxing and Sleep  Epidemic ASMR.mp3"
+dest_files=["res://.godot/imported/10 Minutes of Rain and Thunderstorm Sounds For Focus, Relaxing and Sleep  Epidemic ASMR.mp3-5ab4b49850fd778f1133901f0c21cfa5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
