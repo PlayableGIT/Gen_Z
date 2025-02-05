@@ -20,8 +20,8 @@ StatsAutoload="*res://Scripts/stats_autoload.gd"
 
 [display]
 
-window/size/viewport_width=1080
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
@@ -32,6 +32,8 @@ zombie=""
 necroplasm=""
 left=""
 right=""
+casual_zombie=""
+cheerleader_zombie=""
 
 [input]
 

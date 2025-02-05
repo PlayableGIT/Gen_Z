@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=70 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://camera_2d.tscn" id="11_mkyb8"]
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="12_iv56h"]
 [ext_resource type="Script" path="res://Scripts/camera_2d_level1.gd" id="12_yvlgm"]
+[ext_resource type="PackedScene" uid="uid://dglkeu878k08s" path="res://UI.tscn" id="13_mcrwt"]
 [ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="13_u5mh3"]
 [ext_resource type="Texture2D" uid="uid://nlv0xu716042" path="res://textures/road5.png" id="14_faspa"]
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="15_1qycn"]
@@ -512,6 +513,7 @@ point_count = 2
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_yb6vr")
+ui = ExtResource("13_mcrwt")
 destroyed_door = ExtResource("2_0yjbc")
 dead_survivor = ExtResource("3_unjmq")
 dead_zombie = ExtResource("4_myh5r")
@@ -524,11 +526,13 @@ survivor = ExtResource("10_ybt86")
 
 [node name="Camera2D" parent="." instance=ExtResource("11_mkyb8")]
 z_index = 75
-position = Vector2(827, -542)
+position = Vector2(369, -1108)
 script = ExtResource("12_yvlgm")
 MOVE_SPEED = 1500
 left_limit = 0.0
 right_limit = 8000.0
+
+[node name="HUD" parent="Camera2D" instance=ExtResource("13_mcrwt")]
 
 [node name="Ground" type="Node2D" parent="."]
 scale = Vector2(1.5, 1.5)

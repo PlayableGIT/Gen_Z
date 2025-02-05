@@ -11,8 +11,7 @@ extends Camera2D
 var otoczenie = AudioServer.get_bus_index("Environment")
 
 func _ready() -> void:
-	$level_complete.visible = false
-
+	pass
 func _process(delta):
 	# Wydrukuj bieżącą pozycję
 	#print(global_position)

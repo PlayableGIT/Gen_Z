@@ -9,6 +9,7 @@ signal zombie_death(a: Vector2)
 signal zombie_tank_death(a: Vector2)
 signal survivor_death(a: Vector2)
 signal level_complete
+@export var ui: PackedScene
 @export var destroyed_door: PackedScene
 @export var dead_survivor: PackedScene
 @export var dead_zombie: PackedScene
@@ -36,8 +37,8 @@ func _ready() -> void:
 	$respawn_bar.value = 0
 	$respawn_bar.visible = false
 	var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
-	$Camera2D/stats.text = string
-	$Camera2D/level_complete.modulate.a = 0
+	$Camera2D/HUD/stats_cont/stats.text = string
+	$Camera2D/HUD/LC_cont/level_complete.modulate.a = 0
 	$Ambient.play()
 	door_boom.connect(door_destro)
 	zombie_spawn.connect(zombie_spawn_sound)
@@ -50,6 +51,23 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	lightning()
 func _process(delta):
+	
+	if $Camera2D.is_in_group("casual_zombie"):
+		#print("Casual Zombie, Necroplasm Cost: 2")
+		nekro_cost = 2
+		await get_tree().create_timer(0.1).timeout
+		zombie_1 = true
+		zombie_2 = false
+		zombie_3 = false
+		zombie_4 = false
+	if $Camera2D.is_in_group("cheerleader_zombie"):
+		#print("Casual Zombie, Necroplasm Cost: 2")
+		nekro_cost = 2
+		await get_tree().create_timer(0.1).timeout
+		zombie_1 = false
+		zombie_2 = true
+		zombie_3 = false
+		zombie_4 = false
 	$respawn_bar.global_position = get_global_mouse_position()
 	var czas = $zombie_respawn2.wait_time - $zombie_respawn2.time_left
 	#if Input.is_action_just_released("left_mouse"):
@@ -57,10 +75,10 @@ func _process(delta):
 	#print(czas)
 	$respawn_bar.value = czas
 	var string1 = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
-	$Camera2D/stats.text = string1
+	$Camera2D/HUD/stats_cont/stats.text = string1
 	if level_fade == true:
-		$Camera2D/level_complete.modulate.a += 1 * delta
-		if $Camera2D/level_complete.modulate.a >= 1:
+		$Camera2D/HUD/LC_cont/level_complete.modulate.a += 1 * delta
+		if $Camera2D/HUD/LC_cont/level_complete.modulate.a >= 1:
 			level_fade = false
 	var survivors = get_tree().get_nodes_in_group("survivor")
 	var gun_survivors = get_tree().get_nodes_in_group("survivor_gun")
@@ -68,20 +86,6 @@ func _process(delta):
 		print("No zombie selected.")
 		zombie_1 = false
 		zombie_2 = false
-		zombie_3 = false
-		zombie_4 = false
-	if Input.is_action_just_released("1"):
-		print("Casual Zombie, Necroplasm Cost: 2")
-		nekro_cost = 2
-		zombie_1 = true
-		zombie_2 = false
-		zombie_3 = false
-		zombie_4 = false
-	if Input.is_action_just_released("2"):
-		print("Cheerleader Zombie, Necroplasm Cost: 4")
-		nekro_cost = 4
-		zombie_1 = false
-		zombie_2 = true
 		zombie_3 = false
 		zombie_4 = false
 	if Input.is_action_just_released("3"):
@@ -109,7 +113,7 @@ func _process(delta):
 		zombie_count += 1
 		nekro_stat -= 2
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
-		$Camera2D/stats.text = string
+		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = zombie.instantiate()
@@ -121,7 +125,7 @@ func _process(delta):
 		zombie_count += 1
 		nekro_stat -= 4
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
-		$Camera2D/stats.text = string
+		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = cheerleader_zombie.instantiate()
@@ -133,7 +137,7 @@ func _process(delta):
 		zombie_count += 1
 		nekro_stat -= 4
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
-		$Camera2D/stats.text = string
+		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = runner_zombie.instantiate()
@@ -145,7 +149,7 @@ func _process(delta):
 		zombie_count += 1
 		nekro_stat -= 8
 		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
-		$Camera2D/stats.text = string
+		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
 		var new_zombie = tank_zombie.instantiate()
@@ -277,9 +281,9 @@ func _on_child_exiting_tree(node: Node) -> void:
 
 
 func level_comp():
-	$Camera2D/level_complete.visible = true
+	$Camera2D/HUD/LC_cont/level_complete.visible = true
 	level_fade = true
-	$Camera2D/level_complete_sound.play()
+	$Camera2D/HUD/level_complete_sound.play()
 	print("level comp")
 
 func _on_ambient_finished() -> void:
