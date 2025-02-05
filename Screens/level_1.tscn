@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=69 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -46,6 +46,10 @@
 [ext_resource type="Texture2D" uid="uid://7uvbrkw3ooia" path="res://textures/table.png" id="44_ipnnx"]
 [ext_resource type="Texture2D" uid="uid://cf1o8docrhyrh" path="res://textures/radio.png" id="45_x67v3"]
 [ext_resource type="Texture2D" uid="uid://chqhov2fbsmdo" path="res://textures/fence.png" id="46_8225v"]
+[ext_resource type="Texture2D" uid="uid://xitghpkddh7n" path="res://textures/can1.png" id="47_cw5y7"]
+[ext_resource type="Texture2D" uid="uid://b61e0isx22acl" path="res://textures/can2.png" id="48_w5nle"]
+[ext_resource type="Texture2D" uid="uid://cllju4n8b48kb" path="res://textures/trash1.png" id="49_c01ay"]
+[ext_resource type="Texture2D" uid="uid://ct0sin4trqqqy" path="res://textures/trash2.png" id="50_ggimi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -1188,6 +1192,48 @@ z_index = -1
 position = Vector2(1641, -280)
 scale = Vector2(3.41352, 3.89352)
 texture = ExtResource("46_8225v")
+
+[node name="Can3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-787, -20)
+rotation = -0.114959
+texture = ExtResource("47_cw5y7")
+
+[node name="Can4" type="Sprite2D" parent="."]
+position = Vector2(1793, -17)
+rotation = -0.145292
+texture = ExtResource("48_w5nle")
+
+[node name="Can5" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(233, -17)
+rotation = -0.145292
+texture = ExtResource("48_w5nle")
+
+[node name="Trash1" type="Sprite2D" parent="."]
+position = Vector2(1447, -13)
+rotation = -0.275587
+texture = ExtResource("49_c01ay")
+
+[node name="Trash2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(605, -17)
+rotation = -0.275587
+scale = Vector2(1.49315, 1.87488)
+texture = ExtResource("49_c01ay")
+
+[node name="Trash3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-182, -17)
+rotation = 0.193507
+scale = Vector2(1.07882, 1.4998)
+texture = ExtResource("49_c01ay")
+
+[node name="Trash4" type="Sprite2D" parent="."]
+modulate = Color(0.310547, 0.310547, 0.310547, 1)
+position = Vector2(651, -12)
+rotation = 0.120255
+texture = ExtResource("50_ggimi")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
