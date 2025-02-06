@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c21cxagqion13"]
+[gd_scene load_steps=5 format=3 uid="uid://c21cxagqion13"]
 
 [ext_resource type="Script" path="res://Screens/pause_menu.gd" id="1_dyaef"]
+[ext_resource type="AudioStream" uid="uid://dslu3bcl2y3ux" path="res://audio/UI/button_click.wav" id="2_hq06p"]
 
 [sub_resource type="SystemFont" id="SystemFont_mpw5p"]
 font_names = PackedStringArray("RBNo3.1")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_h1hhx"]
 font = SubResource("SystemFont_mpw5p")
@@ -62,6 +64,10 @@ text = "Restart"
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Button_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hq06p")
+volume_db = -10.0
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

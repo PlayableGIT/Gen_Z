@@ -1,5 +1,6 @@
 extends Control
 
+@onready var main = $"../../"
 
 func resume():
 	get_tree().paused = false
@@ -15,12 +16,15 @@ func testEsc():
 
 
 func _on_resume_pressed() -> void:
-	resume()
+	$Button_Sound.play()
+	main.pauseMenu()
 
 
 func _on_restart_pressed() -> void:
+	$Button_Sound.play()
 	get_tree().reload_current_scene()
 
 
 func _on_quit_pressed() -> void:
+	$Button_Sound.play()
 	get_tree().quit()
