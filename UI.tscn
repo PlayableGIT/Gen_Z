@@ -34,11 +34,13 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_l1ot6"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
+subpixel_positioning = 0
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_da5ce")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+visible = false
 light_mask = 0
 z_index = -3
 offset_top = 669.0
@@ -47,9 +49,11 @@ offset_bottom = 1491.0
 scale = Vector2(0.500008, 0.500008)
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("9_5ypd5")
 
 [node name="LC_cont" type="AspectRatioContainer" parent="."]

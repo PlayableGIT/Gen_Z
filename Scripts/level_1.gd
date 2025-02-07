@@ -160,9 +160,14 @@ func _process(delta):
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat < nekro_cost and (zombie_1 == true or zombie_2 == true or zombie_3 == true or zombie_4 == true):
 		print("Insufficient Necroplasm!")
 	if Input.is_action_just_released("right_mouse"):
-		var new_survivor = survivor.instantiate()
-		new_survivor.position = get_global_mouse_position()
-		add_child(new_survivor)
+		print("No zombie selected.")
+		zombie_1 = false
+		zombie_2 = false
+		zombie_3 = false
+		zombie_4 = false
+		#var new_survivor = survivor.instantiate()
+		#new_survivor.position = get_global_mouse_position()
+		#add_child(new_survivor)
 
 func zombie_spawn_sound(a):
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
