@@ -100,6 +100,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = false
 	if body.has_method("survivor_gun"):
+		surv_in_range_gun = false
 		survivor_in_range = false
 		
 func survivor_attack():
@@ -122,7 +123,7 @@ func survivor_attack():
 		$zombie_hurt.stop()
 		$zombie_hurt.play()
 		blood_splatter()
-	if survivor_in_range == false:
+	if survivor_in_range == false and surv_in_range_gun == false:
 		$Zombie03.animation = "walk"
 		
 

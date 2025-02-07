@@ -2,10 +2,6 @@ extends Control
 
 @onready var main = $"../../"
 
-func _process(delta: float) -> void:
-	print(get_tree().paused)
-	
-
 func resume():
 	get_tree().paused = false
 
@@ -14,7 +10,6 @@ func pause():
 
 func testEsc():
 	if Input.is_action_just_released("pause") and get_tree().paused == false:
-		print("dupa")
 		pause()
 	elif Input.is_action_just_pressed("pause") and get_tree().paused == true:
 		resume()
