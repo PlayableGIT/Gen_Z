@@ -315,7 +315,7 @@ func _on_lightning_timer_timeout() -> void:
 	lightning()
 
 func pauseMenu():
-	if paused == false: 
+	if paused: 
 		pause_menu.hide()
 		Engine.time_scale = 1
 	else:
