@@ -1241,6 +1241,7 @@ texture = ExtResource("50_ggimi")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="ui_mouse_lock" from="Camera2D/HUD" to="." method="_on_hud_ui_mouse_lock"]
 [connection signal="timeout" from="zombie_respawn" to="." method="_on_zombie_respawn_timeout"]
 [connection signal="timeout" from="zombie_respawn2" to="." method="_on_zombie_respawn_2_timeout"]
 [connection signal="mouse_entered" from="spawn_restriction" to="." method="_on_spawn_restriction_mouse_entered"]

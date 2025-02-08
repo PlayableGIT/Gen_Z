@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dglkeu878k08s"]
+[gd_scene load_steps=19 format=3 uid="uid://dglkeu878k08s"]
 
 [ext_resource type="Texture2D" uid="uid://dxs5jt0gs3rns" path="res://audio/UI/zombie_choice_button.png" id="1_52moy"]
 [ext_resource type="Script" path="res://ui.gd" id="1_da5ce"]
@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cj06lm3mt4sip" path="res://audio/UI/skill_tree_button_hover.png" id="7_opn0r"]
 [ext_resource type="Texture2D" uid="uid://b2rbt30ka5qxv" path="res://audio/UI/HUD_outline.png" id="9_5ypd5"]
 [ext_resource type="Theme" uid="uid://dur8rnt6mmf6j" path="res://UI_theme.tres" id="10_kj782"]
-[ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="11_2iur6"]
-[ext_resource type="Texture2D" uid="uid://b115hcw8svk27" path="res://textures/cheerleader_zombie_blocked.png" id="12_popf6"]
+[ext_resource type="Texture2D" uid="uid://dnf7d1jmsvc0u" path="res://textures/casual_zombie_icon.png" id="11_3q0e2"]
+[ext_resource type="Texture2D" uid="uid://bofbf7qeeklkt" path="res://textures/cheerleader_zombie_icon.png" id="12_y35yt"]
 
 [sub_resource type="SystemFont" id="SystemFont_plpnl"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
@@ -30,6 +30,16 @@ shadow_color = Color(0, 0, 0, 0.156863)
 [sub_resource type="LabelSettings" id="LabelSettings_pm06a"]
 font_size = 36
 outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uklbc"]
+font_size = 81
+outline_size = 30
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kxpki"]
+font_size = 56
+outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_l1ot6"]
@@ -133,20 +143,20 @@ stream = ExtResource("3_t54s5")
 [node name="PanelContainer" type="PanelContainer" parent="."]
 offset_left = 67.0
 offset_top = 120.0
-offset_right = 404.0
-offset_bottom = 508.0
-scale = Vector2(0.638121, 0.638121)
+offset_right = 1441.0
+offset_bottom = 415.0
+scale = Vector2(0.472448, 0.472448)
 theme = ExtResource("10_kj782")
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 60
 theme_override_constants/v_separation = 0
-columns = 2
+columns = 3
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("11_2iur6")
+texture = ExtResource("11_3q0e2")
 expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/GridContainer"]
@@ -162,7 +172,9 @@ layout_mode = 2
 theme = ExtResource("10_kj782")
 text = "CASUAL ZOMBIE
 "
+label_settings = SubResource("LabelSettings_uklbc")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="PanelContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
@@ -170,42 +182,27 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "DMG: Medium
-Health: Medium
-Speed: Medium
-Cost: 2 Necroplasm   
+text = "Cost: 2 Necroplasm   
 "
+label_settings = SubResource("LabelSettings_kxpki")
+horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="PanelContainer/GridContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label5" type="Label" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 
 [node name="Button" type="Button" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
 theme_type_variation = &"FlatButton"
-theme_override_constants/outline_size = 19
+theme_override_constants/outline_size = 44
 theme_override_fonts/font = SubResource("SystemFont_l1ot6")
-theme_override_font_sizes/font_size = 62
+theme_override_font_sizes/font_size = 137
 text = "CHOOSE"
-
-[node name="Label7" type="Label" parent="PanelContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Label8" type="Label" parent="PanelContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Label9" type="Label" parent="PanelContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Label10" type="Label" parent="PanelContainer/GridContainer"]
-layout_mode = 2
 
 [node name="TextureRect2" type="TextureRect" parent="PanelContainer/GridContainer"]
 layout_mode = 2
-texture = ExtResource("12_popf6")
+texture = ExtResource("12_y35yt")
+expand_mode = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/GridContainer"]
 layout_mode = 2
@@ -218,9 +215,11 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "LOCKED ZOMBIE
+text = "CHEERLEADER
 "
+label_settings = SubResource("LabelSettings_uklbc")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
@@ -228,35 +227,22 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "DMG: ???
-Health: ???
-Speed: ???
-Cost: ???
+text = "Cost: 4 Necroplasm   
 "
+label_settings = SubResource("LabelSettings_kxpki")
+horizontal_alignment = 1
 
-[node name="Label11" type="Label" parent="PanelContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Label6" type="Label" parent="PanelContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Label12" type="Label" parent="PanelContainer/GridContainer"]
+[node name="Label5" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 
 [node name="Button2" type="Button" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
 theme_type_variation = &"FlatButton"
-theme_override_constants/outline_size = 19
+theme_override_constants/outline_size = 44
 theme_override_fonts/font = SubResource("SystemFont_l1ot6")
-theme_override_font_sizes/font_size = 62
+theme_override_font_sizes/font_size = 137
 text = "CHOOSE"
-
-[node name="Label13" type="Label" parent="PanelContainer/GridContainer"]
-layout_mode = 2
-
-[node name="Label14" type="Label" parent="PanelContainer/GridContainer"]
-layout_mode = 2
 
 [connection signal="pressed" from="zombie_choice/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="PanelContainer/GridContainer/Button" to="." method="_on_button_pressed"]

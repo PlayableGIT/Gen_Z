@@ -51,7 +51,9 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	lightning()
 func _process(delta):
-	
+	print(zombie_1)
+	print($Camera2D.is_in_group("casual_zombie"))
+	print($Camera2D.is_in_group("cheerleader_zombie"))
 	if $Camera2D.is_in_group("casual_zombie"):
 		#print("Casual Zombie, Necroplasm Cost: 2")
 		nekro_cost = 2
@@ -60,6 +62,8 @@ func _process(delta):
 		zombie_2 = false
 		zombie_3 = false
 		zombie_4 = false
+	if $Camera2D.is_in_group("casual_zombie") != true:
+		zombie_1 = false
 	if $Camera2D.is_in_group("cheerleader_zombie"):
 		#print("Casual Zombie, Necroplasm Cost: 2")
 		nekro_cost = 2
@@ -68,11 +72,11 @@ func _process(delta):
 		zombie_2 = true
 		zombie_3 = false
 		zombie_4 = false
+	if $Camera2D.is_in_group("cheerleader_zombie") != true:
+		zombie_2 = false
+		
 	$respawn_bar.global_position = get_global_mouse_position()
 	var czas = $zombie_respawn2.wait_time - $zombie_respawn2.time_left
-	#if Input.is_action_just_released("left_mouse"):
-		#$zombie_respawn2.start()
-	#print(czas)
 	$respawn_bar.value = czas
 	var string1 = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
 	$Camera2D/HUD/stats_cont/stats.text = string1
@@ -161,6 +165,8 @@ func _process(delta):
 		print("Insufficient Necroplasm!")
 	if Input.is_action_just_released("right_mouse"):
 		print("No zombie selected.")
+		$Camera2D.remove_from_group("casual_zombie")
+		$Camera2D.remove_from_group("cheerleader_zombie")
 		zombie_1 = false
 		zombie_2 = false
 		zombie_3 = false
@@ -319,3 +325,9 @@ func _on_zombie_respawn_2_timeout() -> void:
 
 func _on_lightning_timer_timeout() -> void:
 	lightning()
+
+
+func _on_hud_ui_mouse_lock(a: bool) -> void:
+	mouse_lock = a
+	await get_tree().create_timer(0.229).timeout
+	mouse_lock = false

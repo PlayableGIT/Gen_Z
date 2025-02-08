@@ -123,6 +123,7 @@ offset_left = -41.0
 offset_top = -36.0
 scale = Vector2(0.673737, 0.673737)
 icon = ExtResource("16_jr0qx")
+flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_a2wgx")
