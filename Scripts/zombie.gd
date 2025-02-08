@@ -8,7 +8,7 @@ var survivor_attack_cooldown = true
 # Zmienne drzwi
 var door_in_range = false
 # Statystyki zombie
-@export var speed = 150.0
+@export var speed = 250
 @export var health = 25
 var zombie_alive = true
 var zombie_damage: int = 5

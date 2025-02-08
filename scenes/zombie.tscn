@@ -114,7 +114,6 @@ gradient = SubResource("Gradient_aj5bm")
 z_index = 3
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_nufbr")
-speed = 200.0
 
 [node name="Zombie03" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.33333, -2)
