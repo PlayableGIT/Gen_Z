@@ -275,31 +275,30 @@ func _on_child_exiting_tree(node: Node) -> void:
 				zombie_death.emit(node.global_position)
 	if node.has_method("survivor"):
 		if node.is_in_group("left"):
+			survivor_death.emit(node.global_position)
 			var death_survivor = dead_survivor.instantiate()
 			add_child.call_deferred(death_survivor)
 			death_survivor.position = node.position + rng_dead_spawn
 			death_survivor.flip_h = true
-			survivor_death.emit(node.global_position)
 		elif node.is_in_group("right"):
+			survivor_death.emit(node.global_position)
 			var death_survivor = dead_survivor.instantiate()
 			add_child.call_deferred(death_survivor)
 			death_survivor.position = node.position + rng_dead_spawn
 			death_survivor.flip_h = false
-			survivor_death.emit(node.global_position)
 	if node.has_method("door"):
+		door_boom.emit(node.global_position)
 		print("skibidibi")
 		var destroy_door = destroyed_door.instantiate()
 		add_child.call_deferred(destroy_door)
 		destroy_door.position = node.position
-		door_boom.emit(node.global_position)
 	
 	if node.has_method("survivor_gun"):
+		survivor_death.emit(node.global_position)
 		print("labadaba")
 		var destroy_survivor_gun = dead_gun_survivor.instantiate()
 		add_child.call_deferred(destroy_survivor_gun)
 		destroy_survivor_gun.position = node.position
-		survivor_death.emit(node.global_position)
-
 
 func level_comp():
 	$Camera2D/HUD/LC_cont/level_complete.visible = true
