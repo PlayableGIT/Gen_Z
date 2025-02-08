@@ -51,9 +51,6 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	lightning()
 func _process(delta):
-	print(zombie_1)
-	print($Camera2D.is_in_group("casual_zombie"))
-	print($Camera2D.is_in_group("cheerleader_zombie"))
 	if $Camera2D.is_in_group("casual_zombie"):
 		#print("Casual Zombie, Necroplasm Cost: 2")
 		nekro_cost = 2

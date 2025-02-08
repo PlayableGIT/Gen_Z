@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://dxs5jt0gs3rns" path="res://audio/UI/zombie_choice_button.png" id="1_52moy"]
 [ext_resource type="Script" path="res://ui.gd" id="1_da5ce"]
+[ext_resource type="Texture2D" uid="uid://4no3y0ejkqpa" path="res://audio/UI/HUD_outline4.png" id="2_3jwin"]
 [ext_resource type="Texture2D" uid="uid://b6x0jvqit4ful" path="res://audio/UI/zombie_choice_button_mouse.png" id="3_rwim7"]
 [ext_resource type="AudioStream" uid="uid://dlu85kmrkc657" path="res://audio/UI/level_complete.mp3" id="3_t54s5"]
 [ext_resource type="Texture2D" uid="uid://pktte8jbwj34" path="res://audio/UI/zombie_choice_button_pressed.png" id="4_cowri"]
 [ext_resource type="Texture2D" uid="uid://b10fkfr4fq3bv" path="res://audio/UI/skill_tree_button.png" id="5_se324"]
 [ext_resource type="Texture2D" uid="uid://kpxgejul63tx" path="res://audio/UI/skill_tree_button_pressed.png" id="6_wp1dr"]
 [ext_resource type="Texture2D" uid="uid://cj06lm3mt4sip" path="res://audio/UI/skill_tree_button_hover.png" id="7_opn0r"]
-[ext_resource type="Texture2D" uid="uid://b2rbt30ka5qxv" path="res://audio/UI/HUD_outline.png" id="9_5ypd5"]
 [ext_resource type="Theme" uid="uid://dur8rnt6mmf6j" path="res://UI_theme.tres" id="10_kj782"]
 [ext_resource type="Texture2D" uid="uid://dnf7d1jmsvc0u" path="res://textures/casual_zombie_icon.png" id="11_3q0e2"]
 [ext_resource type="Texture2D" uid="uid://bofbf7qeeklkt" path="res://textures/cheerleader_zombie_icon.png" id="12_y35yt"]
@@ -68,7 +68,7 @@ mouse_filter = 2
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer"]
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("9_5ypd5")
+texture = ExtResource("2_3jwin")
 
 [node name="LC_cont" type="AspectRatioContainer" parent="."]
 anchors_preset = 8
@@ -113,11 +113,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="zombie_choice" type="AspectRatioContainer" parent="."]
-offset_left = 174.0
-offset_top = 914.0
-offset_right = 519.0
-offset_bottom = 1259.0
-scale = Vector2(0.445304, 0.445304)
+offset_left = 171.0
+offset_top = 919.0
+offset_right = 516.0
+offset_bottom = 1264.0
+scale = Vector2(0.426137, 0.426137)
 
 [node name="TextureButton" type="TextureButton" parent="zombie_choice"]
 z_index = 2
@@ -128,9 +128,9 @@ texture_hover = ExtResource("4_cowri")
 
 [node name="skill_tree" type="AspectRatioContainer" parent="."]
 offset_left = 14.0
-offset_top = 846.0
+offset_top = 841.33
 offset_right = 359.0
-offset_bottom = 1191.0
+offset_bottom = 1186.33
 scale = Vector2(0.443124, 0.443124)
 
 [node name="TextureButton" type="TextureButton" parent="skill_tree"]
@@ -252,10 +252,10 @@ stream = ExtResource("13_i625s")
 pitch_scale = 1.5
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-offset_left = 1612.0
-offset_top = 765.0
-offset_right = 2246.0
-offset_bottom = 1399.0
+offset_left = 1621.0
+offset_top = 783.0
+offset_right = 2255.0
+offset_bottom = 1417.0
 scale = Vector2(0.419156, 0.419156)
 mouse_filter = 2
 

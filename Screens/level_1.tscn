@@ -530,7 +530,7 @@ position = Vector2(369, -1108)
 script = ExtResource("12_yvlgm")
 MOVE_SPEED = 1500
 left_limit = 0.0
-right_limit = 8000.0
+right_limit = 6000.0
 
 [node name="HUD" parent="Camera2D" instance=ExtResource("13_mcrwt")]
 

@@ -3,7 +3,7 @@ extends Camera2D
 @export var MOVE_SPEED = 1500
 @export var SCROLL_SPEED = 3
 @export var left_limit = 0.0
-@export var right_limit = 8000.0
+@export var right_limit = 6000.0
 @export var up_limit = -900.0
 @export var down_limit = -250.0
 @export var level_done = false
