@@ -37,10 +37,12 @@ font_names = PackedStringArray("8-bit Limit (BRK)")
 subpixel_positioning = 0
 
 [node name="HUD" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_da5ce")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-visible = false
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer"]
 light_mask = 0
 z_index = -3
 offset_top = 669.0
@@ -51,7 +53,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer"]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("9_5ypd5")
