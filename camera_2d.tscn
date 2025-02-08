@@ -1,26 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc7r0e0mkxam4"]
+[gd_scene load_steps=2 format=3 uid="uid://dc7r0e0mkxam4"]
 
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="1_4aji0"]
-[ext_resource type="AudioStream" uid="uid://dlu85kmrkc657" path="res://audio/UI/level_complete.mp3" id="2_h2nr0"]
-
-[sub_resource type="SystemFont" id="SystemFont_plpnl"]
-font_names = PackedStringArray("8-bit Limit (BRK)")
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_n4mfe"]
-line_spacing = 1.0
-font = SubResource("SystemFont_plpnl")
-font_size = 126
-font_color = Color(1, 0, 0, 1)
-outline_size = 35
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 56
-shadow_color = Color(0, 0, 0, 0.156863)
-
-[sub_resource type="LabelSettings" id="LabelSettings_dd43e"]
-font_size = 36
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D"]
 position = Vector2(898, -289)
@@ -28,33 +8,3 @@ scale = Vector2(1.5, 1.5)
 zoom = Vector2(0.645, 0.645)
 script = ExtResource("1_4aji0")
 MOVE_SPEED = 2000
-
-[node name="level_complete" type="Label" parent="."]
-visible = false
-light_mask = 16
-visibility_layer = 16
-z_index = 10
-offset_left = -441.333
-offset_top = -76.0
-offset_right = 456.667
-offset_bottom = 59.0
-text = "LEVEL COMPLETE!"
-label_settings = SubResource("LabelSettings_n4mfe")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="level_complete_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_h2nr0")
-
-[node name="stats" type="Label" parent="."]
-z_index = 60
-offset_left = -543.333
-offset_top = -362.0
-offset_right = -291.333
-offset_bottom = -312.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-text = "Nekroplazma: "
-label_settings = SubResource("LabelSettings_dd43e")
-horizontal_alignment = 1
-vertical_alignment = 1

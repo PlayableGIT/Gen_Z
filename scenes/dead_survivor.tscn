@@ -100,18 +100,27 @@ one_shot = true
 autostart = true
 
 [node name="Control" type="Control" parent="."]
+z_index = 10
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -152.37
+offset_right = -130.0
+offset_bottom = -152.37
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Button" type="Button" parent="Control"]
 modulate = Color(0.0546875, 1, 0, 1)
-layout_mode = 0
-offset_left = -40.8263
-offset_top = -91.6919
-offset_right = 78.1737
-offset_bottom = 19.3081
+z_index = 5
+layout_mode = 1
+anchors_preset = -1
+offset_left = -41.0
+offset_top = -36.0
 scale = Vector2(0.673737, 0.673737)
 icon = ExtResource("16_jr0qx")
 flat = true
