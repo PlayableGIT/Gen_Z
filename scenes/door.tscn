@@ -84,7 +84,7 @@ angle_max = 38.0
 scale_amount_min = 10.0
 scale_amount_max = 30.0
 scale_amount_curve = SubResource("Curve_5qkdj")
-color = Color(0.294922, 0.140318, 0.0138245, 1)
+color = Color(0.21875, 0.100317, 0.00341797, 1)
 hue_variation_min = -0.09
 hue_variation_max = 0.03
 

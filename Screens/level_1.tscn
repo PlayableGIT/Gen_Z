@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=59 format=4 uid="uid://5ob1gavue2c6"]
+
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -41,7 +43,19 @@
 [ext_resource type="Texture2D" uid="uid://b3fckuhu35yu0" path="res://textures/tree1.png" id="39_jxeot"]
 [ext_resource type="AudioStream" uid="uid://cnmlbhwxxhvdw" path="res://audio/10 Minutes of Rain and Thunderstorm Sounds For Focus, Relaxing and Sleep  Epidemic ASMR.mp3" id="40_xtq4f"]
 [ext_resource type="AudioStream" uid="uid://tp7ow7ww8j8i" path="res://audio/thunder.mp3" id="41_4o0ni"]
+
 [ext_resource type="PackedScene" uid="uid://c21cxagqion13" path="res://Screens/pause_menu.tscn" id="42_gs6qq"]
+
+[ext_resource type="Texture2D" uid="uid://xm6vjjrsioh0" path="res://textures/map.png" id="42_8gijt"]
+[ext_resource type="Texture2D" uid="uid://ltsmrurhwge2" path="res://textures/bed.png" id="43_xisgc"]
+[ext_resource type="Texture2D" uid="uid://7uvbrkw3ooia" path="res://textures/table.png" id="44_ipnnx"]
+[ext_resource type="Texture2D" uid="uid://cf1o8docrhyrh" path="res://textures/radio.png" id="45_x67v3"]
+[ext_resource type="Texture2D" uid="uid://chqhov2fbsmdo" path="res://textures/fence.png" id="46_8225v"]
+[ext_resource type="Texture2D" uid="uid://xitghpkddh7n" path="res://textures/can1.png" id="47_cw5y7"]
+[ext_resource type="Texture2D" uid="uid://b61e0isx22acl" path="res://textures/can2.png" id="48_w5nle"]
+[ext_resource type="Texture2D" uid="uid://cllju4n8b48kb" path="res://textures/trash1.png" id="49_c01ay"]
+[ext_resource type="Texture2D" uid="uid://ct0sin4trqqqy" path="res://textures/trash2.png" id="50_ggimi"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -495,6 +509,13 @@ polygon = PackedVector2Array(1826, 0, 1826, -23, 1922, -24, 1923, -71, 5761, -57
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qgmf0"]
 polygon = PackedVector2Array(-1918, 2, 11040, 1, 11047, 644, -1925, 644)
 
+[sub_resource type="Gradient" id="Gradient_1luko"]
+
+[sub_resource type="Curve" id="Curve_h7toh"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_yb6vr")
 destroyed_door = ExtResource("2_0yjbc")
@@ -613,7 +634,6 @@ scale = Vector2(1.005, 1.005)
 position = Vector2(1636, -249)
 
 [node name="survivor_gun" parent="." instance=ExtResource("18_blxfq")]
-z_index = 2
 position = Vector2(3611, -285)
 
 [node name="STATS_AUTOLOAD" type="Node" parent="."]
@@ -669,21 +689,14 @@ one_shot = true
 [node name="spawn_restriction" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_restriction"]
-position = Vector2(3139.5, -1800)
-scale = Vector2(1.25, 0.995)
+position = Vector2(2585, -1800)
+scale = Vector2(1.415, 0.995)
 shape = SubResource("RectangleShape2D_piy5k")
 debug_color = Color(0.587891, 0.7, 0, 0.42)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="spawn_restriction"]
-position = Vector2(3187.17, 877)
-scale = Vector2(1.25, 1)
-shape = SubResource("RectangleShape2D_piy5k")
-debug_color = Color(0.587891, 0.7, 0, 0.42)
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="spawn_restriction"]
-position = Vector2(-1411, -368)
-rotation = 1.5708
-scale = Vector2(0.74, 0.575)
+position = Vector2(2632.67, 877)
+scale = Vector2(1.415, 1)
 shape = SubResource("RectangleShape2D_piy5k")
 debug_color = Color(0.587891, 0.7, 0, 0.42)
 
@@ -933,7 +946,10 @@ position = Vector2(4450.75, -2958)
 scale = Vector2(3.13604, 1)
 
 [node name="respawn_bar" type="TextureProgressBar" parent="."]
-z_index = 105
+top_level = true
+light_mask = 1023
+visibility_layer = 1023
+z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1011,8 +1027,8 @@ texture = ExtResource("39_jxeot")
 [node name="GPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 1
 position = Vector2(3563, -2667)
-amount = 100000
-lifetime = 44.79
+amount = 10000
+lifetime = 3.0
 preprocess = 17.52
 speed_scale = 0.5
 randomness = 1.0
@@ -1022,6 +1038,9 @@ gravity = Vector2(-300, 980)
 scale_amount_min = 3.3
 scale_amount_max = 7.75
 color = Color(0.00257874, 0, 0.330078, 1)
+color_ramp = SubResource("Gradient_1luko")
+hue_variation_min = -0.01
+hue_variation_curve = SubResource("Curve_h7toh")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-158, -3)
@@ -1030,6 +1049,30 @@ lifetime = 0.25
 randomness = 1.0
 emission_shape = 3
 emission_rect_extents = Vector2(2000, 1)
+gravity = Vector2(0, -50)
+scale_amount_min = 1.9
+scale_amount_max = 5.0
+color = Color(0, 0.0214844, 0.25, 1)
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(7780, -3)
+amount = 898
+lifetime = 0.25
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(2000, 1)
+gravity = Vector2(0, -50)
+scale_amount_min = 1.9
+scale_amount_max = 5.0
+color = Color(0, 0.0214844, 0.25, 1)
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+position = Vector2(3934, -1175)
+amount = 813
+lifetime = 0.25
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1822.35, 1)
 gravity = Vector2(0, -50)
 scale_amount_min = 1.9
 scale_amount_max = 5.0
@@ -1101,9 +1144,108 @@ volume_db = -9.772
 [node name="lightning_timer" type="Timer" parent="."]
 wait_time = 2.045
 
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("42_gs6qq")]
+
+[node name="Map" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(4119, -500)
+rotation = -0.0472381
+scale = Vector2(0.730606, 0.730606)
+texture = ExtResource("42_8gijt")
+
+[node name="Bed" type="Sprite2D" parent="."]
+modulate = Color(0.488281, 0.488281, 0.488281, 1)
+z_index = 2
+position = Vector2(2473, -231)
+scale = Vector2(2.32692, 2.23793)
+texture = ExtResource("43_xisgc")
+
+[node name="Bed2" type="Sprite2D" parent="."]
+modulate = Color(0.488281, 0.488281, 0.488281, 1)
+z_index = 2
+position = Vector2(2897, -231)
+scale = Vector2(2.32692, 2.23793)
+texture = ExtResource("43_xisgc")
+
+[node name="Table" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(3747, -114)
+scale = Vector2(1.87352, 1)
+texture = ExtResource("44_ipnnx")
+
+[node name="Radio" type="Sprite2D" parent="."]
+modulate = Color(0.623047, 0.623047, 0.623047, 1)
+z_index = 2
+position = Vector2(3778, -245)
+scale = Vector2(0.697384, 0.697384)
+texture = ExtResource("45_x67v3")
+
+[node name="Radio2" type="Sprite2D" parent="."]
+modulate = Color(0.623047, 0.623047, 0.623047, 1)
+z_index = 2
+position = Vector2(3584, -245)
+scale = Vector2(0.697384, 0.697384)
+texture = ExtResource("45_x67v3")
+flip_h = true
+
+[node name="Radio3" type="Sprite2D" parent="."]
+modulate = Color(0.623047, 0.623047, 0.623047, 1)
+z_index = 2
+position = Vector2(3668, -316)
+scale = Vector2(0.697384, 0.697384)
+texture = ExtResource("45_x67v3")
+
+[node name="Fence" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1641, -280)
+scale = Vector2(3.41352, 3.89352)
+texture = ExtResource("46_8225v")
+
+[node name="Can3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-787, -20)
+rotation = -0.114959
+texture = ExtResource("47_cw5y7")
+
+[node name="Can4" type="Sprite2D" parent="."]
+position = Vector2(1793, -17)
+rotation = -0.145292
+texture = ExtResource("48_w5nle")
+
+[node name="Can5" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(233, -17)
+rotation = -0.145292
+texture = ExtResource("48_w5nle")
+
+[node name="Trash1" type="Sprite2D" parent="."]
+position = Vector2(1447, -13)
+rotation = -0.275587
+texture = ExtResource("49_c01ay")
+
+[node name="Trash2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(605, -17)
+rotation = -0.275587
+scale = Vector2(1.49315, 1.87488)
+texture = ExtResource("49_c01ay")
+
+[node name="Trash3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-182, -17)
+rotation = 0.193507
+scale = Vector2(1.07882, 1.4998)
+texture = ExtResource("49_c01ay")
+
+[node name="Trash4" type="Sprite2D" parent="."]
+modulate = Color(0.310547, 0.310547, 0.310547, 1)
+position = Vector2(651, -12)
+rotation = 0.120255
+texture = ExtResource("50_ggimi")
+
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
