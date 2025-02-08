@@ -263,6 +263,18 @@ mouse_filter = 2
 layout_mode = 2
 texture = ExtResource("14_uokjo")
 
+[connection signal="mouse_entered" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_exited"]
 [connection signal="pressed" from="zombie_choice/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="mouse_entered" from="skill_tree/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="skill_tree/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/GridContainer" to="." method="_on_grid_container_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/GridContainer" to="." method="_on_grid_container_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/GridContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/GridContainer/Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/GridContainer/Button2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/GridContainer/Button2" to="." method="_on_button_2_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="mouse_entered" from="AspectRatioContainer/TextureRect" to="." method="_on_texture_rect_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer/TextureRect" to="." method="_on_texture_rect_mouse_exited"]

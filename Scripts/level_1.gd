@@ -53,6 +53,13 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	lightning()
 func _process(delta):
+	if $Camera2D.is_in_group("mouse_lock"):
+		print("jest")
+		mouse_lock = true
+	if $Camera2D.is_in_group("mouse_lock") != true:
+		print("nie jest")
+		mouse_lock = false
+	
 	if $Camera2D.is_in_group("casual_zombie"):
 		#print("Casual Zombie, Necroplasm Cost: 2")
 		nekro_cost = 2
@@ -347,4 +354,3 @@ func pauseMenu():
 		Engine.time_scale = 0
 		
 	paused = !paused
-

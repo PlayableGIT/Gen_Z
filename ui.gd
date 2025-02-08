@@ -1,10 +1,10 @@
 extends CanvasLayer
-signal ui_mouse_lock(a: bool)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$PanelContainer.visible = false
-	ui_mouse_lock.connect(mouse_lock)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,7 +24,6 @@ func _on_texture_button_pressed() -> void:
 	else:
 		$PanelContainer.visible = false
 	$button_sound.play()
-	ui_mouse_lock.emit(true)
 
 func mouse_lock(_a):
 	pass
@@ -42,7 +41,7 @@ func _on_button_pressed() -> void:
 	$AspectRatioContainer/TextureRect.texture = load("res://textures/casual_zombie_icon.png")
 	if $"..".is_in_group("cheerleader_zombie"):
 		$"..".remove_from_group("cheerleader_zombie")
-	ui_mouse_lock.emit(true)
+
 
 
 func _on_button_2_pressed() -> void:
@@ -57,4 +56,44 @@ func _on_button_2_pressed() -> void:
 	$AspectRatioContainer/TextureRect.texture = load("res://textures/cheerleader_zombie_icon.png")
 	if $"..".is_in_group("casual_zombie"):
 		$"..".remove_from_group("casual_zombie")
-	ui_mouse_lock.emit(true)
+
+
+
+func _on_grid_container_mouse_entered() -> void:
+	$"..".add_to_group("mouse_lock")
+
+
+func _on_grid_container_mouse_exited() -> void:
+	$"..".remove_from_group("mouse_lock")
+
+
+func _on_button_mouse_entered() -> void:
+	$"..".add_to_group("mouse_lock")
+
+
+func _on_button_mouse_exited() -> void:
+	$"..".remove_from_group("mouse_lock")
+
+
+func _on_button_2_mouse_entered() -> void:
+	$"..".add_to_group("mouse_lock")
+
+
+func _on_button_2_mouse_exited() -> void:
+	$"..".remove_from_group("mouse_lock")
+
+
+func _on_texture_button_mouse_entered() -> void:
+	$"..".add_to_group("mouse_lock")
+
+
+func _on_texture_button_mouse_exited() -> void:
+	$"..".remove_from_group("mouse_lock")
+
+
+func _on_texture_rect_mouse_entered() -> void:
+	$"..".add_to_group("mouse_lock")
+
+
+func _on_texture_rect_mouse_exited() -> void:
+	$"..".remove_from_group("mouse_lock")
