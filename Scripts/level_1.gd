@@ -54,10 +54,8 @@ func _ready() -> void:
 	lightning()
 func _process(delta):
 	if $Camera2D.is_in_group("mouse_lock"):
-		print("jest")
 		mouse_lock = true
 	if $Camera2D.is_in_group("mouse_lock") != true:
-		print("nie jest")
 		mouse_lock = false
 	
 	if $Camera2D.is_in_group("casual_zombie"):
@@ -318,10 +316,12 @@ func _on_zombie_respawn_timeout() -> void:
 
 
 func _on_spawn_restriction_mouse_entered() -> void:
+	$Camera2D.add_to_group("mouse_lock")
 	mouse_lock = true
 
 
 func _on_spawn_restriction_mouse_exited() -> void:
+	$Camera2D.remove_from_group("mouse_lock")
 	mouse_lock = false
 
 
@@ -338,12 +338,6 @@ func _on_zombie_respawn_2_timeout() -> void:
 func _on_lightning_timer_timeout() -> void:
 	lightning()
 
-
-
-func _on_hud_ui_mouse_lock(a: bool) -> void:
-	mouse_lock = a
-	await get_tree().create_timer(0.229).timeout
-	mouse_lock = false
 
 func pauseMenu():
 	if paused: 
