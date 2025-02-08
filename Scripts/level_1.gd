@@ -19,6 +19,8 @@ signal level_complete
 @export var tank_zombie: PackedScene
 @export var runner_zombie: PackedScene
 @export var survivor: PackedScene
+@onready var pause_menu: = $CanvasLayer/PauseMenu
+var paused = false
 var nekro_stat = StatsAutoload.nekroplazma
 var nekro_cost = 0
 var zombie_count = 0
@@ -172,6 +174,10 @@ func _process(delta):
 		#new_survivor.position = get_global_mouse_position()
 		#add_child(new_survivor)
 
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+		
+
 func zombie_spawn_sound(a):
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
 	var sound_position = Vector2(a)
@@ -196,14 +202,16 @@ func zombie_tank_spawn_sound(a):
 func surv_death(a):
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
 	var sound_position = Vector2(a)
-	$Survivor_Death.global_position = sound_position
-	$Survivor_Death.pitch_scale = rng_pitch_number
-	$Survivor_Death.play()
+	if $Survivor_Death != null:
+		$Survivor_Death.global_position = sound_position
+		$Survivor_Death.pitch_scale = rng_pitch_number
+		$Survivor_Death.play()
 
 func door_destro(a):
 	var sound_position = Vector2(a)
-	$Door_Destro.global_position = sound_position
-	$Door_Destro.play()
+	if $Door_Destro != null:
+		$Door_Destro.global_position = sound_position
+		$Door_Destro.play()
 	
 func zomb_death(a):
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
@@ -324,7 +332,19 @@ func _on_lightning_timer_timeout() -> void:
 	lightning()
 
 
+
 func _on_hud_ui_mouse_lock(a: bool) -> void:
 	mouse_lock = a
 	await get_tree().create_timer(0.229).timeout
 	mouse_lock = false
+
+func pauseMenu():
+	if paused: 
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+		
+	paused = !paused
+

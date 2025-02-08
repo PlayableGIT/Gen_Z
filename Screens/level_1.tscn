@@ -43,6 +43,7 @@
 [ext_resource type="AudioStream" uid="uid://cnmlbhwxxhvdw" path="res://audio/10 Minutes of Rain and Thunderstorm Sounds For Focus, Relaxing and Sleep  Epidemic ASMR.mp3" id="40_xtq4f"]
 [ext_resource type="AudioStream" uid="uid://tp7ow7ww8j8i" path="res://audio/thunder.mp3" id="41_4o0ni"]
 [ext_resource type="Texture2D" uid="uid://xm6vjjrsioh0" path="res://textures/map.png" id="42_8gijt"]
+[ext_resource type="PackedScene" uid="uid://c21cxagqion13" path="res://Screens/pause_menu.tscn" id="42_gs6qq"]
 [ext_resource type="Texture2D" uid="uid://ltsmrurhwge2" path="res://textures/bed.png" id="43_xisgc"]
 [ext_resource type="Texture2D" uid="uid://7uvbrkw3ooia" path="res://textures/table.png" id="44_ipnnx"]
 [ext_resource type="Texture2D" uid="uid://cf1o8docrhyrh" path="res://textures/radio.png" id="45_x67v3"]
@@ -1141,6 +1142,10 @@ volume_db = -9.772
 
 [node name="lightning_timer" type="Timer" parent="."]
 wait_time = 2.045
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("42_gs6qq")]
 
 [node name="Map" type="Sprite2D" parent="."]
 z_index = 2
