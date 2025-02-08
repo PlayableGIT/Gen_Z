@@ -89,15 +89,18 @@ func blood_splatter():
 func zombie():
 	pass
 
+var surv_in_range_gun = false
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = true
 	if body.has_method("survivor_gun"):
 		survivor_in_range = false
+		surv_in_range_gun = true
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		survivor_in_range = false
 	if body.has_method("survivor_gun"):
+		surv_in_range_gun = false
 		survivor_in_range = false
 		
 func survivor_attack():
@@ -112,8 +115,17 @@ func survivor_attack():
 		$zombie_hurt.play()
 		blood_splatter()
 		print("Zombie took ", damage, " damage! Health: ", health)
-	if survivor_in_range == false:
+	if surv_in_range_gun and survivor_attack_cooldown:
+		survivor_attack_cooldown = false
+		$Zombie03.animation = "attack"
+		$zombie_attack.play()
+		$attack_cooldown.start()
+		$zombie_hurt.stop()
+		$zombie_hurt.play()
+		blood_splatter()
+	if survivor_in_range == false and surv_in_range_gun == false:
 		$Zombie03.animation = "walk"
+		
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
