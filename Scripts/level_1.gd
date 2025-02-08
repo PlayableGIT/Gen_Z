@@ -187,14 +187,16 @@ func zombie_tank_spawn_sound(a):
 func surv_death(a):
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
 	var sound_position = Vector2(a)
-	$Survivor_Death.global_position = sound_position
-	$Survivor_Death.pitch_scale = rng_pitch_number
-	$Survivor_Death.play()
+	if $Survivor_Death != null:
+		$Survivor_Death.global_position = sound_position
+		$Survivor_Death.pitch_scale = rng_pitch_number
+		$Survivor_Death.play()
 
 func door_destro(a):
 	var sound_position = Vector2(a)
-	$Door_Destro.global_position = sound_position
-	$Door_Destro.play()
+	if $Door_Destro != null:
+		$Door_Destro.global_position = sound_position
+		$Door_Destro.play()
 	
 func zomb_death(a):
 	var rng_pitch_number = rng.randf_range(0.8, 1.1)
@@ -323,3 +325,4 @@ func pauseMenu():
 		Engine.time_scale = 0
 		
 	paused = !paused
+	get_tree().paused = paused
