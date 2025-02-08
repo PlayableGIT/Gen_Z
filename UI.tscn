@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dglkeu878k08s"]
+[gd_scene load_steps=21 format=3 uid="uid://dglkeu878k08s"]
 
 [ext_resource type="Texture2D" uid="uid://dxs5jt0gs3rns" path="res://audio/UI/zombie_choice_button.png" id="1_52moy"]
 [ext_resource type="Script" path="res://ui.gd" id="1_da5ce"]
@@ -12,6 +12,8 @@
 [ext_resource type="Theme" uid="uid://dur8rnt6mmf6j" path="res://UI_theme.tres" id="10_kj782"]
 [ext_resource type="Texture2D" uid="uid://dnf7d1jmsvc0u" path="res://textures/casual_zombie_icon.png" id="11_3q0e2"]
 [ext_resource type="Texture2D" uid="uid://bofbf7qeeklkt" path="res://textures/cheerleader_zombie_icon.png" id="12_y35yt"]
+[ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="13_i625s"]
+[ext_resource type="Texture2D" uid="uid://1bybxc7krbwj" path="res://textures/no_zombie_icon.png" id="14_uokjo"]
 
 [sub_resource type="SystemFont" id="SystemFont_plpnl"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
@@ -81,6 +83,7 @@ offset_bottom = 67.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.39866, 1.39866)
+mouse_filter = 2
 
 [node name="level_complete" type="Label" parent="LC_cont"]
 visible = false
@@ -243,6 +246,22 @@ theme_override_constants/outline_size = 44
 theme_override_fonts/font = SubResource("SystemFont_l1ot6")
 theme_override_font_sizes/font_size = 137
 text = "CHOOSE"
+
+[node name="button_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_i625s")
+pitch_scale = 1.5
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+offset_left = 1612.0
+offset_top = 765.0
+offset_right = 2246.0
+offset_bottom = 1399.0
+scale = Vector2(0.419156, 0.419156)
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("14_uokjo")
 
 [connection signal="pressed" from="zombie_choice/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="PanelContainer/GridContainer/Button" to="." method="_on_button_pressed"]
