@@ -160,7 +160,7 @@ func _process(delta):
 	if Input.is_action_just_released("right_mouse"):
 		var new_survivor = survivor.instantiate()
 		new_survivor.position = get_global_mouse_position()
-    add_child(new_survivor)
+		add_child(new_survivor)
 
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()

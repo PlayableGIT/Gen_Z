@@ -2,9 +2,6 @@ extends Control
 
 @onready var main = $"../../"
 
-func _process(delta: float) -> void:
-	print(get_tree().paused)
-
 func _ready():
 	$".".visible = false
 	get_tree().paused = false  # Reset na starcie
