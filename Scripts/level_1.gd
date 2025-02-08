@@ -287,7 +287,7 @@ func _on_child_exiting_tree(node: Node) -> void:
 			death_survivor.flip_h = false
 			survivor_death.emit(node.global_position)
 	if node.has_method("door"):
-		print("halo alo")
+		print("skibidibi")
 		var destroy_door = destroyed_door.instantiate()
 		add_child.call_deferred(destroy_door)
 		destroy_door.position = node.position
