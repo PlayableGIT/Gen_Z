@@ -34,7 +34,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#grawitacja
 	var survivor = get_tree().get_nodes_in_group("survivor")
-	
 	if $Zombie03.flip_h == true:
 		add_to_group("left")
 		remove_from_group("right")
@@ -173,4 +172,5 @@ func _on_button_pressed() -> void:
 
 
 func _on_texture_button_pressed() -> void:
+	$".".add_to_group("mutation")
 	print("mutacja")

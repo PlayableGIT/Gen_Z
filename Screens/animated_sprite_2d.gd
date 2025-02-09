@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	$".".global_position = get_global_mouse_position()
 	if $"../Camera2D".is_in_group("mouse_lock") and $"../Camera2D".is_in_group("casual_zombie") != true or $"../Camera2D".is_in_group("cheerleader_zombie") != true:
 		$".".visible = false

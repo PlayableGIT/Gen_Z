@@ -53,6 +53,16 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	lightning()
 func _process(delta):
+	
+	var mutation_array = get_tree().get_nodes_in_group("mutation")
+	print(get_tree().get_nodes_in_group("mutation"))
+	
+	if mutation_array.size() == 2:
+		var mut1 = mutation_array[0]
+		var mut2 = mutation_array[1]
+		mut1.queue_free()
+		mut2.queue_free()
+	
 	if $Camera2D.is_in_group("mouse_lock"):
 		mouse_lock = true
 	if $Camera2D.is_in_group("mouse_lock") != true:
