@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6x0jvqit4ful"
-path="res://.godot/imported/zombie_choice_button_mouse.png-ae68f723834ee528e3ed5ff2613c14aa.ctex"
+uid="uid://wvkism4s3khh"
+path="res://.godot/imported/HUD_outline3.png-622858b406b8cc70ba98faa196a4b368.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/UI/zombie_choice_button_mouse.png"
-dest_files=["res://.godot/imported/zombie_choice_button_mouse.png-ae68f723834ee528e3ed5ff2613c14aa.ctex"]
+source_file="res://textures/ui/HUD_outline3.png"
+dest_files=["res://.godot/imported/HUD_outline3.png-622858b406b8cc70ba98faa196a4b368.ctex"]
 
 [params]
 

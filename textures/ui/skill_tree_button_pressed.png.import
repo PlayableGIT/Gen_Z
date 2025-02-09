@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wvkism4s3khh"
-path="res://.godot/imported/HUD_outline3.png-e6884fdbcf9450a0e0d18af93c7a047b.ctex"
+uid="uid://kpxgejul63tx"
+path="res://.godot/imported/skill_tree_button_pressed.png-6a3e8c63d5570b2d987b7f22b3a6184d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/UI/HUD_outline3.png"
-dest_files=["res://.godot/imported/HUD_outline3.png-e6884fdbcf9450a0e0d18af93c7a047b.ctex"]
+source_file="res://textures/ui/skill_tree_button_pressed.png"
+dest_files=["res://.godot/imported/skill_tree_button_pressed.png-6a3e8c63d5570b2d987b7f22b3a6184d.ctex"]
 
 [params]
 

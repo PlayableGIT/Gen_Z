@@ -1,15 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://dglkeu878k08s"]
+[gd_scene load_steps=26 format=3 uid="uid://dglkeu878k08s"]
 
-[ext_resource type="Texture2D" uid="uid://dxs5jt0gs3rns" path="res://audio/UI/zombie_choice_button.png" id="1_52moy"]
-[ext_resource type="Script" path="res://ui.gd" id="1_da5ce"]
-[ext_resource type="Texture2D" uid="uid://4no3y0ejkqpa" path="res://audio/UI/HUD_outline4.png" id="2_3jwin"]
-[ext_resource type="Texture2D" uid="uid://b6x0jvqit4ful" path="res://audio/UI/zombie_choice_button_mouse.png" id="3_rwim7"]
+[ext_resource type="Texture2D" uid="uid://dxs5jt0gs3rns" path="res://textures/ui/zombie_choice_button.png" id="1_52moy"]
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_da5ce"]
+[ext_resource type="Texture2D" uid="uid://4no3y0ejkqpa" path="res://textures/ui/HUD_outline4.png" id="2_3jwin"]
+[ext_resource type="Texture2D" uid="uid://b6x0jvqit4ful" path="res://textures/ui/zombie_choice_button_mouse.png" id="3_rwim7"]
 [ext_resource type="AudioStream" uid="uid://dlu85kmrkc657" path="res://audio/UI/level_complete.mp3" id="3_t54s5"]
-[ext_resource type="Texture2D" uid="uid://pktte8jbwj34" path="res://audio/UI/zombie_choice_button_pressed.png" id="4_cowri"]
-[ext_resource type="Texture2D" uid="uid://b10fkfr4fq3bv" path="res://audio/UI/skill_tree_button.png" id="5_se324"]
-[ext_resource type="Texture2D" uid="uid://kpxgejul63tx" path="res://audio/UI/skill_tree_button_pressed.png" id="6_wp1dr"]
-[ext_resource type="Texture2D" uid="uid://cj06lm3mt4sip" path="res://audio/UI/skill_tree_button_hover.png" id="7_opn0r"]
-[ext_resource type="Theme" uid="uid://dur8rnt6mmf6j" path="res://UI_theme.tres" id="10_kj782"]
+[ext_resource type="Texture2D" uid="uid://pktte8jbwj34" path="res://textures/ui/zombie_choice_button_pressed.png" id="4_cowri"]
+[ext_resource type="Texture2D" uid="uid://b10fkfr4fq3bv" path="res://textures/ui/skill_tree_button.png" id="5_se324"]
+[ext_resource type="Texture2D" uid="uid://kpxgejul63tx" path="res://textures/ui/skill_tree_button_pressed.png" id="6_wp1dr"]
+[ext_resource type="Texture2D" uid="uid://cj06lm3mt4sip" path="res://textures/ui/skill_tree_button_hover.png" id="7_opn0r"]
+[ext_resource type="Theme" uid="uid://dur8rnt6mmf6j" path="res://textures/UI_theme.tres" id="10_kj782"]
 [ext_resource type="Texture2D" uid="uid://dnf7d1jmsvc0u" path="res://textures/casual_zombie_icon.png" id="11_3q0e2"]
 [ext_resource type="Texture2D" uid="uid://bofbf7qeeklkt" path="res://textures/cheerleader_zombie_icon.png" id="12_y35yt"]
 [ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="13_i625s"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://cqccivd55f7ip" path="res://textures/pause_icon.png" id="15_r8mbt"]
 [ext_resource type="Texture2D" uid="uid://kintf24t2chq" path="res://textures/play_icon.png" id="16_n2nnr"]
 [ext_resource type="Texture2D" uid="uid://buc5qkyedyvt0" path="res://textures/slow_icon.png" id="17_dsecx"]
+[ext_resource type="AudioStream" uid="uid://7ivqetgggtkk" path="res://audio/UI/slow.mp3" id="18_8uuik"]
+[ext_resource type="AudioStream" uid="uid://by66t8g1evkhk" path="res://audio/UI/slow_to_play.mp3" id="19_neiul"]
 
 [sub_resource type="SystemFont" id="SystemFont_plpnl"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
@@ -301,6 +303,12 @@ scale = Vector2(0.770141, 0.770141)
 layout_mode = 2
 icon = ExtResource("17_dsecx")
 flat = true
+
+[node name="slow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_8uuik")
+
+[node name="slow_to_play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_neiul")
 
 [connection signal="mouse_entered" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_exited"]

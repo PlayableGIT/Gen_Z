@@ -22,7 +22,7 @@ func _on_collection_timer_timeout() -> void:
 func _on_button_pressed() -> void:
 	print("jajebe")
 	if necroplasm_collected == false and can_collect == true:
-		var new_node = preload("res://necroplasm.tscn").instantiate()
+		var new_node = preload("res://scenes/necroplasm.tscn").instantiate()
 		get_tree().current_scene.add_child(new_node)
 		$".".play("collect")
 		$AudioStreamPlayer.play()

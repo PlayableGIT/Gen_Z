@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bmp706pm7hqqk"]
 
-[ext_resource type="Script" path="res://scenes/zombie_cheerleader.gd" id="1_6h8yu"]
+[ext_resource type="Script" path="res://Scripts/zombie_cheerleader.gd" id="1_6h8yu"]
 [ext_resource type="Texture2D" uid="uid://bwf6iuqcoqa4w" path="res://textures/cheerleader_zombie.png" id="2_6wpsq"]
 [ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="3_kgj5i"]
 [ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="4_giynu"]

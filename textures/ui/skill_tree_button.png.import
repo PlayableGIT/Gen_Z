@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b10fkfr4fq3bv"
-path="res://.godot/imported/skill_tree_button.png-826f1e7881bc8dcf8eaddc8f5c3b6613.ctex"
+path="res://.godot/imported/skill_tree_button.png-5b2bd4b5807fd9e4c1776db39d513e98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/UI/skill_tree_button.png"
-dest_files=["res://.godot/imported/skill_tree_button.png-826f1e7881bc8dcf8eaddc8f5c3b6613.ctex"]
+source_file="res://textures/ui/skill_tree_button.png"
+dest_files=["res://.godot/imported/skill_tree_button.png-5b2bd4b5807fd9e4c1776db39d513e98.ctex"]
 
 [params]
 

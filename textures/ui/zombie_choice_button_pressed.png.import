@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2rbt30ka5qxv"
-path="res://.godot/imported/HUD_outline.png-abd10c70d8348925f35753f38cd55fbb.ctex"
+uid="uid://pktte8jbwj34"
+path="res://.godot/imported/zombie_choice_button_pressed.png-23f78dbb119e28c4b040323f9bdbae02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/UI/HUD_outline.png"
-dest_files=["res://.godot/imported/HUD_outline.png-abd10c70d8348925f35753f38cd55fbb.ctex"]
+source_file="res://textures/ui/zombie_choice_button_pressed.png"
+dest_files=["res://.godot/imported/zombie_choice_button_pressed.png-23f78dbb119e28c4b040323f9bdbae02.ctex"]
 
 [params]
 

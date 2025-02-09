@@ -32,7 +32,7 @@ var zombie_1 = false
 var zombie_2 = false
 var zombie_3 = false
 var zombie_4 = false
-
+var mutation_array: Array[Node2D] = []
 var rng = RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
@@ -55,13 +55,33 @@ func _ready() -> void:
 func _process(delta):
 	
 	var mutation_array = get_tree().get_nodes_in_group("mutation")
-	print(get_tree().get_nodes_in_group("mutation"))
-	
+	#print(get_tree().get_nodes_in_group("mutation"))
 	if mutation_array.size() == 2:
+		for node in mutation_array:
+			var global_pos = node.global_position
+			print(global_pos)
 		var mut1 = mutation_array[0]
 		var mut2 = mutation_array[1]
-		mut1.queue_free()
-		mut2.queue_free()
+		var pos1 = mut1.global_position.x
+		var pos2 = mut2.global_position.x
+		print(pos1, pos2)
+		var closer_pos = 0
+		var furt_pos = 0
+		if pos1 > pos2:
+			closer_pos = pos1
+			furt_pos = pos2
+		if pos2 > pos1:
+			closer_pos = pos2
+			furt_pos = pos1
+		var dist_mut = furt_pos - closer_pos
+		var dist_mut_abs = abs(dist_mut)
+		print(dist_mut_abs)
+		if dist_mut_abs <= 250:
+			mut1.queue_free()
+			mut2.queue_free()
+			print("MUTTTACJA")
+		if dist_mut_abs >= 250:
+			print("ZA DALEKO KRUWA")
 	
 	if $Camera2D.is_in_group("mouse_lock"):
 		mouse_lock = true
@@ -315,6 +335,13 @@ func level_comp():
 	level_fade = true
 	$Camera2D/HUD/level_complete_sound.play()
 	print("level comp")
+
+func get_node_global_position(index: int) -> Vector2:
+	if index >= 0 and index < mutation_array.size():
+		return mutation_array[index].global_position
+	else:
+		return Vector2.ZERO
+
 
 func _on_ambient_finished() -> void:
 	$Ambient.play()

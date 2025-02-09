@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bwf6643qtry27" path="res://animations/zombie_death_anim/zombie1_death_anim3.png" id="2_6vr8t"]
 [ext_resource type="Texture2D" uid="uid://dl46261ftbo0k" path="res://animations/zombie_death_anim/zombie1_death_anim4.png" id="3_8jna4"]
 [ext_resource type="Texture2D" uid="uid://bhcg2u76brcsl" path="res://animations/zombie_death_anim/zombie1_death_anim5.png" id="4_33yc4"]
-[ext_resource type="Script" path="res://scenes/dead_zombie.gd" id="5_iwv0i"]
+[ext_resource type="Script" path="res://Scripts/dead_zombie.gd" id="5_iwv0i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mnxia"]
 animations = [{

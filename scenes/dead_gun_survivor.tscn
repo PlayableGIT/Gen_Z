@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dllh8dc543ncn" path="res://animations/survivor_gun_death_anim/survivor2_death_anim6.png" id="6_2bvsk"]
 [ext_resource type="Texture2D" uid="uid://c6lswgmml275t" path="res://animations/survivor_gun_death_anim/survivor2_death_anim7.png" id="7_pajbl"]
 [ext_resource type="Texture2D" uid="uid://cth5brnj3gsn" path="res://animations/survivor_gun_death_anim/survivor2_death_anim8.png" id="8_bub6j"]
-[ext_resource type="Script" path="res://scenes/dead_gun_survivor.gd" id="9_rb602"]
+[ext_resource type="Script" path="res://Scripts/dead_gun_survivor.gd" id="9_rb602"]
 [ext_resource type="Texture2D" uid="uid://bo7ruxwefacp7" path="res://textures/necro_orb.png" id="10_fuo73"]
 [ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="11_n851o"]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj06lm3mt4sip"
-path="res://.godot/imported/skill_tree_button_hover.png-0b2491869fde050a35ae5a22f851f169.ctex"
+uid="uid://dxs5jt0gs3rns"
+path="res://.godot/imported/zombie_choice_button.png-31cf45e7bdd6bb94c9c5cfa3b2d758ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/UI/skill_tree_button_hover.png"
-dest_files=["res://.godot/imported/skill_tree_button_hover.png-0b2491869fde050a35ae5a22f851f169.ctex"]
+source_file="res://textures/ui/zombie_choice_button.png"
+dest_files=["res://.godot/imported/zombie_choice_button.png-31cf45e7bdd6bb94c9c5cfa3b2d758ab.ctex"]
 
 [params]
 
