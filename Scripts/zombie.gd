@@ -18,6 +18,8 @@ var xd = false
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	$PointLight2D3.visible = false
+	$Control2/TextureButton.visible = false
 	add_to_group("zombie")
 	var total_dice_sides = 7
 	$Zombie03.frame = randi() % total_dice_sides
@@ -160,8 +162,15 @@ func set_Health_bar() -> void:
 	$HealthBar.value = health
 
 
-func _on_area_2d_mouse_shape_entered(_shape_idx) -> void:
-	$PointLight2D3.visible = true
+func _on_button_pressed() -> void:
+	print("toggle")
+	if $Control2/TextureButton.visible == false:
+		$Control2/TextureButton.visible = true
+		$PointLight2D3.visible = true
+	else:
+		$Control2/TextureButton.visible = false
+		$PointLight2D3.visible = false
 
-func _on_area_2d_mouse_shape_exited(_shape_idx) -> void:
-	$PointLight2D3.visible = false
+
+func _on_texture_button_pressed() -> void:
+	print("mutacja")

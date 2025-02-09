@@ -9,10 +9,11 @@ var survivor_attack_cooldown = true
 var door_in_range = false
 # Statystyki zombie
 @export var speed = 250.0
-@export var health = 10
+@export var health = 20
 var zombie_alive = true
 var zombie_damage: int = 5
 var ground_hit = true
+var surv_in_range_gun = false
 
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
@@ -66,21 +67,37 @@ func survivor_attack():
 		var damage = StatsAutoload.survivor_damage
 		survivor_attack_cooldown = false
 		#$Zombie03.animation = "attack"
-		#$zombie_attack.play()
+		$zombie_attack.play()
 		$attack_cooldown.start()
 		health = health - damage
-		#$zombie_hurt.stop()
-		#$zombie_hurt.play()
-		#blood_splatter()
+		$zombie_hurt.stop()
+		$zombie_hurt.play()
+		blood_splatter()
 		print("Zombie took ", damage, " damage! Health: ", health)
-		set_Health_bar()
+	if surv_in_range_gun and survivor_attack_cooldown:
+		survivor_attack_cooldown = false
+		#$Zombie03.animation = "attack"
+		$zombie_attack.play()
+		$attack_cooldown.start()
+		$zombie_hurt.stop()
+		$zombie_hurt.play()
+		blood_splatter()
 		
-	if survivor_in_range == false:
+	if survivor_in_range == false and surv_in_range_gun == false:
 		pass
 		#$Zombie03.animation = "walk"
 
 func zombie():
 	pass
+
+func blood_splatter():
+	var splat_x = rng.randf_range(-50.0, 50.0)
+	var splat_y = rng.randf_range(-50.0, 50.0)
+	var splatter_position = Vector2(splat_x, splat_y)
+	$blood_splatter.position = splatter_position
+	$blood_splatter.visible = true
+	$blood_splatter.one_shot = true
+	$blood_splatter.emitting = true
 
 func get_closest_player_or_null():
 	var all_players = get_tree().get_nodes_in_group("survivor")
@@ -101,8 +118,30 @@ func _on_bullet_zone_area_entered(area: Area2D) -> void:
 		health -= StatsAutoload.survivor_gun_damage
 		$zombie_hurt.stop()
 		$zombie_hurt.play()
-		#blood_splatter()
+		blood_splatter()
 		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)
 
 func set_Health_bar() -> void:
 	$HealthBar.value = health
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_method("survivor"):
+		print("1")
+		survivor_in_range = true
+	if body.has_method("survivor_gun"):
+		print("2")
+		survivor_in_range = true
+		surv_in_range_gun = true
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.has_method("survivor"):
+		survivor_in_range = false
+	if body.has_method("survivor_gun"):
+		survivor_in_range = false
+		surv_in_range_gun = false
+
+
+func _on_attack_cooldown_timeout() -> void:
+	survivor_attack_cooldown = true

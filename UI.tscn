@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dglkeu878k08s"]
+[gd_scene load_steps=23 format=3 uid="uid://dglkeu878k08s"]
 
 [ext_resource type="Texture2D" uid="uid://dxs5jt0gs3rns" path="res://audio/UI/zombie_choice_button.png" id="1_52moy"]
 [ext_resource type="Script" path="res://ui.gd" id="1_da5ce"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bofbf7qeeklkt" path="res://textures/cheerleader_zombie_icon.png" id="12_y35yt"]
 [ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="13_i625s"]
 [ext_resource type="Texture2D" uid="uid://1bybxc7krbwj" path="res://textures/no_zombie_icon.png" id="14_uokjo"]
+[ext_resource type="Texture2D" uid="uid://cqccivd55f7ip" path="res://textures/pause_icon.png" id="15_r8mbt"]
+[ext_resource type="Texture2D" uid="uid://kintf24t2chq" path="res://textures/play_icon.png" id="16_n2nnr"]
 
 [sub_resource type="SystemFont" id="SystemFont_plpnl"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
@@ -263,6 +265,30 @@ mouse_filter = 2
 layout_mode = 2
 texture = ExtResource("14_uokjo")
 
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
+offset_left = 833.0
+offset_top = 18.0
+offset_right = 931.0
+offset_bottom = 136.0
+scale = Vector2(0.710885, 0.710885)
+
+[node name="pause_button" type="Button" parent="AspectRatioContainer2"]
+layout_mode = 2
+icon = ExtResource("15_r8mbt")
+flat = true
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="."]
+offset_left = 947.0
+offset_top = 18.0
+offset_right = 1047.0
+offset_bottom = 136.0
+scale = Vector2(0.710885, 0.710885)
+
+[node name="play_button" type="Button" parent="AspectRatioContainer3"]
+layout_mode = 2
+icon = ExtResource("16_n2nnr")
+flat = true
+
 [connection signal="mouse_entered" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_exited"]
 [connection signal="pressed" from="zombie_choice/TextureButton" to="." method="_on_texture_button_pressed"]
@@ -278,3 +304,9 @@ texture = ExtResource("14_uokjo")
 [connection signal="pressed" from="PanelContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="mouse_entered" from="AspectRatioContainer/TextureRect" to="." method="_on_texture_rect_mouse_entered"]
 [connection signal="mouse_exited" from="AspectRatioContainer/TextureRect" to="." method="_on_texture_rect_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer2/pause_button" to="." method="_on_pause_button_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer2/pause_button" to="." method="_on_pause_button_mouse_exited"]
+[connection signal="pressed" from="AspectRatioContainer2/pause_button" to="." method="_on_pause_button_pressed"]
+[connection signal="mouse_entered" from="AspectRatioContainer3/play_button" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer3/play_button" to="." method="_on_play_button_mouse_exited"]
+[connection signal="pressed" from="AspectRatioContainer3/play_button" to="." method="_on_play_button_pressed"]

@@ -100,3 +100,35 @@ func _on_texture_rect_mouse_entered() -> void:
 
 func _on_texture_rect_mouse_exited() -> void:
 	$"..".remove_from_group("mouse_lock")
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
+
+
+func _on_pause_button_pressed() -> void:
+	Engine.time_scale = 0.1
+
+
+
+func _on_play_button_pressed() -> void:
+	Engine.time_scale = 1
+
+
+func _on_pause_button_mouse_entered() -> void:
+	$"..".add_to_group("mouse_lock")
+
+
+func _on_pause_button_mouse_exited() -> void:
+	$"..".remove_from_group("mouse_lock")
+
+
+func _on_play_button_mouse_entered() -> void:
+	$"..".add_to_group("mouse_lock")
+
+
+func _on_play_button_mouse_exited() -> void:
+	$"..".remove_from_group("mouse_lock")
