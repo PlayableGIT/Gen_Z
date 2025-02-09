@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dglkeu878k08s"]
+[gd_scene load_steps=29 format=3 uid="uid://dglkeu878k08s"]
 
 [ext_resource type="Texture2D" uid="uid://dxs5jt0gs3rns" path="res://textures/ui/zombie_choice_button.png" id="1_52moy"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_da5ce"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://buc5qkyedyvt0" path="res://textures/slow_icon.png" id="17_dsecx"]
 [ext_resource type="AudioStream" uid="uid://7ivqetgggtkk" path="res://audio/UI/slow.mp3" id="18_8uuik"]
 [ext_resource type="AudioStream" uid="uid://by66t8g1evkhk" path="res://audio/UI/slow_to_play.mp3" id="19_neiul"]
+[ext_resource type="AudioStream" uid="uid://irpgkw28seyi" path="res://audio/UI/buzz.mp3" id="20_krwel"]
 
 [sub_resource type="SystemFont" id="SystemFont_plpnl"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
@@ -45,13 +46,17 @@ outline_size = 30
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kxpki"]
-font_size = 56
+font_size = 71
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_l1ot6"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
 subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uy8f6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vyrfg"]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 2
@@ -149,22 +154,27 @@ texture_hover = ExtResource("7_opn0r")
 stream = ExtResource("3_t54s5")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = 67.0
-offset_top = 120.0
-offset_right = 1441.0
-offset_bottom = 415.0
-scale = Vector2(0.472448, 0.472448)
+offset_left = 463.0
+offset_top = 21.0
+offset_right = 1517.0
+offset_bottom = 988.0
+scale = Vector2(0.256841, 0.256841)
 theme = ExtResource("10_kj782")
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 60
 theme_override_constants/v_separation = 0
-columns = 3
+columns = 2
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("11_3q0e2")
+expand_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("12_y35yt")
 expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/GridContainer"]
@@ -190,27 +200,13 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "Cost: 2 Necroplasm   
+text = "Cost: 2 Necro
 "
 label_settings = SubResource("LabelSettings_kxpki")
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="PanelContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Button" type="Button" parent="PanelContainer/GridContainer"]
-layout_mode = 2
-theme = ExtResource("10_kj782")
-theme_type_variation = &"FlatButton"
-theme_override_constants/outline_size = 44
-theme_override_fonts/font = SubResource("SystemFont_l1ot6")
-theme_override_font_sizes/font_size = 137
-text = "CHOOSE"
-
-[node name="TextureRect2" type="TextureRect" parent="PanelContainer/GridContainer"]
-layout_mode = 2
-texture = ExtResource("12_y35yt")
-expand_mode = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/GridContainer"]
 layout_mode = 2
@@ -235,7 +231,7 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "Cost: 4 Necroplasm   
+text = "Cost: 4 Necro  
 "
 label_settings = SubResource("LabelSettings_kxpki")
 horizontal_alignment = 1
@@ -243,14 +239,28 @@ horizontal_alignment = 1
 [node name="Label5" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 
+[node name="Button" type="Button" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("10_kj782")
+theme_type_variation = &"FlatButton"
+theme_override_constants/outline_size = 44
+theme_override_fonts/font = SubResource("SystemFont_l1ot6")
+theme_override_font_sizes/font_size = 97
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uy8f6")
+text = "CHOOSE"
+
 [node name="Button2" type="Button" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
 theme_type_variation = &"FlatButton"
 theme_override_constants/outline_size = 44
 theme_override_fonts/font = SubResource("SystemFont_l1ot6")
-theme_override_font_sizes/font_size = 137
+theme_override_font_sizes/font_size = 97
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vyrfg")
 text = "CHOOSE"
+
+[node name="Label6" type="Label" parent="PanelContainer/GridContainer"]
+layout_mode = 2
 
 [node name="button_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_i625s")
@@ -269,9 +279,9 @@ layout_mode = 2
 texture = ExtResource("14_uokjo")
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
-offset_left = 785.0
+offset_left = 1577.0
 offset_top = 18.0
-offset_right = 883.0
+offset_right = 1675.0
 offset_bottom = 136.0
 scale = Vector2(0.710885, 0.710885)
 
@@ -281,9 +291,9 @@ icon = ExtResource("15_r8mbt")
 flat = true
 
 [node name="AspectRatioContainer3" type="AspectRatioContainer" parent="."]
-offset_left = 1015.0
+offset_left = 1807.0
 offset_top = 18.0
-offset_right = 1115.0
+offset_right = 1907.0
 offset_bottom = 136.0
 scale = Vector2(0.710885, 0.710885)
 
@@ -293,9 +303,9 @@ icon = ExtResource("16_n2nnr")
 flat = true
 
 [node name="AspectRatioContainer4" type="AspectRatioContainer" parent="."]
-offset_left = 894.0
+offset_left = 1686.0
 offset_top = 15.0
-offset_right = 994.0
+offset_right = 1786.0
 offset_bottom = 133.0
 scale = Vector2(0.770141, 0.770141)
 
@@ -309,6 +319,11 @@ stream = ExtResource("18_8uuik")
 
 [node name="slow_to_play" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_neiul")
+
+[node name="buzz" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_krwel")
+volume_db = -8.376
+pitch_scale = 1.48
 
 [connection signal="mouse_entered" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_exited"]

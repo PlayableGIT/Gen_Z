@@ -38,7 +38,7 @@ var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	$respawn_bar.value = 0
 	$respawn_bar.visible = false
-	var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+	var string = "Nekroplazma: " + str(nekro_stat)
 	$Camera2D/HUD/stats_cont/stats.text = string
 	$Camera2D/HUD/LC_cont/level_complete.modulate.a = 0
 	$Ambient.play()
@@ -53,7 +53,6 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	lightning()
 func _process(delta):
-	
 	var mutation_array = get_tree().get_nodes_in_group("mutation")
 	#print(get_tree().get_nodes_in_group("mutation"))
 	if mutation_array.size() == 2:
@@ -117,7 +116,7 @@ func _process(delta):
 	$respawn_bar.global_position = get_global_mouse_position()
 	var czas = $zombie_respawn2.wait_time - $zombie_respawn2.time_left
 	$respawn_bar.value = czas
-	var string1 = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+	var string1 = "Nekroplazma: " + str(nekro_stat)
 	$Camera2D/HUD/stats_cont/stats.text = string1
 	if level_fade == true:
 		$Camera2D/HUD/LC_cont/level_complete.modulate.a += 1 * delta
@@ -155,7 +154,7 @@ func _process(delta):
 		$respawn_bar.visible = true
 		zombie_count += 1
 		nekro_stat -= 2
-		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
@@ -167,7 +166,7 @@ func _process(delta):
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_2 == true:
 		zombie_count += 1
 		nekro_stat -= 4
-		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
@@ -179,7 +178,7 @@ func _process(delta):
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_3 == true:
 		zombie_count += 1
 		nekro_stat -= 4
-		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
@@ -191,7 +190,7 @@ func _process(delta):
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_4 == true:
 		zombie_count += 1
 		nekro_stat -= 8
-		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()

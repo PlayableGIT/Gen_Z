@@ -10,6 +10,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
 	if Input.is_action_just_released("right_mouse"):
+		$buzz.play()
 		$AspectRatioContainer/TextureRect.texture = load("res://textures/no_zombie_icon1_anim.png")
 		await get_tree().create_timer(0.1).timeout
 		$AspectRatioContainer/TextureRect.texture = load("res://textures/no_zombie_icon2_anim.png")
@@ -34,6 +35,7 @@ func _on_button_pressed() -> void:
 	if $"..".is_in_group("casual_zombie"):
 		pass
 	else:
+		$buzz.play()
 		$"..".add_to_group("casual_zombie")
 		$AspectRatioContainer/TextureRect.texture = load("res://textures/no_zombie_icon1_anim.png")
 		await get_tree().create_timer(0.1).timeout
@@ -50,6 +52,7 @@ func _on_button_pressed() -> void:
 func _on_button_2_pressed() -> void:
 	$button_sound.play()
 	$"..".add_to_group("cheerleader_zombie")
+	$buzz.play()
 	$AspectRatioContainer/TextureRect.texture = load("res://textures/no_zombie_icon1_anim.png")
 	await get_tree().create_timer(0.1).timeout
 	$AspectRatioContainer/TextureRect.texture = load("res://textures/no_zombie_icon2_anim.png")
