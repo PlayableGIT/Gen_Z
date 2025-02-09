@@ -92,7 +92,7 @@ func survivor_gun():
 	pass
 
 var teksty: = ["NEED BACKUP!", "THIS IS NOTHING LIKE THE SIMULATIONS!","", "ENEMY CLOSE!"]
-var x = 0
+var x = -1
 
 func zombie_attack():
 	if zombie_in_range and zombie_attack_cooldown:
