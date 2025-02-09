@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=75 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -52,6 +52,9 @@
 [ext_resource type="Texture2D" uid="uid://b61e0isx22acl" path="res://textures/can2.png" id="48_w5nle"]
 [ext_resource type="Texture2D" uid="uid://cllju4n8b48kb" path="res://textures/trash1.png" id="49_c01ay"]
 [ext_resource type="Texture2D" uid="uid://ct0sin4trqqqy" path="res://textures/trash2.png" id="50_ggimi"]
+[ext_resource type="Texture2D" uid="uid://b7xyp2fo4vr4s" path="res://textures/spawn_line2.png" id="53_bko3y"]
+[ext_resource type="Texture2D" uid="uid://dbk3v4elc3tmj" path="res://textures/spawn_line.png" id="53_tdm1r"]
+[ext_resource type="Script" path="res://Screens/animated_sprite_2d.gd" id="55_bqy5u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -511,6 +514,20 @@ polygon = PackedVector2Array(-1918, 2, 11040, 1, 11047, 644, -1925, 644)
 min_value = -1.0
 _data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uylwc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("53_bko3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_tdm1r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_yb6vr")
@@ -1243,6 +1260,16 @@ modulate = Color(0.310547, 0.310547, 0.310547, 1)
 position = Vector2(651, -12)
 rotation = 0.120255
 texture = ExtResource("50_ggimi")
+
+[node name="spawn_line" type="AnimatedSprite2D" parent="."]
+position = Vector2(300, -909)
+scale = Vector2(2.41082, 9.53082)
+sprite_frames = SubResource("SpriteFrames_uylwc")
+autoplay = "default"
+frame = 1
+frame_progress = 0.0191383
+offset = Vector2(0, 50)
+script = ExtResource("55_bqy5u")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

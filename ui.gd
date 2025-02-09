@@ -110,9 +110,10 @@ func _on_check_button_toggled(toggled_on: bool) -> void:
 
 
 func _on_pause_button_pressed() -> void:
+	Engine.time_scale = 0.00001
+
+func _on_slow_button_pressed() -> void:
 	Engine.time_scale = 0.1
-
-
 
 func _on_play_button_pressed() -> void:
 	Engine.time_scale = 1
