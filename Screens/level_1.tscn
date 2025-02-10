@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=77 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://Screens/camera_2d.tscn" id="11_mkyb8"]
 [ext_resource type="PackedScene" uid="uid://b4hkoudud0uol" path="res://scenes/mutation.tscn" id="12_au2uv"]
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="12_iv56h"]
+[ext_resource type="PackedScene" uid="uid://djy6hn27us52n" path="res://scenes/mutated_zombie.tscn" id="12_lebb7"]
 [ext_resource type="Script" path="res://Scripts/camera_2d_level1.gd" id="12_yvlgm"]
 [ext_resource type="PackedScene" uid="uid://dglkeu878k08s" path="res://scenes/UI.tscn" id="13_mcrwt"]
 [ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="13_u5mh3"]
@@ -542,6 +543,7 @@ cheerleader_zombie = ExtResource("7_cb087")
 tank_zombie = ExtResource("8_gnoq2")
 runner_zombie = ExtResource("9_6melg")
 survivor = ExtResource("10_ybt86")
+mutated_casual_zombie = ExtResource("12_lebb7")
 mutation = ExtResource("12_au2uv")
 
 [node name="Camera2D" parent="." instance=ExtResource("11_mkyb8")]

@@ -1,43 +1,43 @@
-[gd_scene load_steps=31 format=3 uid="uid://dlnfoe38vgqp"]
+[gd_scene load_steps=31 format=3 uid="uid://djy6hn27us52n"]
 
-[ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
-[ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
-[ext_resource type="Texture2D" uid="uid://cqk37qyu6nmpi" path="res://animations/zombie1_anim/zombie1_anim2.png" id="3_5mong"]
-[ext_resource type="Texture2D" uid="uid://c00ttn4dcf4q7" path="res://animations/zombie1_anim/zombie1_anim3.png" id="4_dnhn5"]
-[ext_resource type="Texture2D" uid="uid://dtr0i7duttcpx" path="res://animations/zombie1_anim/zombie1_anim4.png" id="5_m6qqn"]
-[ext_resource type="Texture2D" uid="uid://cn4q366721di" path="res://animations/zombie1_attack/zombie_attack4.png" id="5_tgf1r"]
-[ext_resource type="Texture2D" uid="uid://p5u6t0t3l6hj" path="res://animations/zombie1_attack/zombie_attack5.png" id="6_gn0ud"]
-[ext_resource type="Texture2D" uid="uid://jyqhpmhwhsj7" path="res://animations/zombie1_anim/zombie1_anim5.png" id="6_y01m2"]
-[ext_resource type="Texture2D" uid="uid://b4ti8wiuowku7" path="res://animations/zombie1_attack/zombie_attack6.png" id="7_c5mho"]
-[ext_resource type="Texture2D" uid="uid://bry3usdvkvc4p" path="res://animations/zombie1_anim/zombie1_anim6.png" id="7_ypa4v"]
-[ext_resource type="Texture2D" uid="uid://cy446at4m57xd" path="res://animations/zombie1_attack/zombie_attack7.png" id="8_8nddg"]
-[ext_resource type="Texture2D" uid="uid://dj1rb0nphoskk" path="res://animations/zombie1_anim/zombie1_anim7.png" id="8_qkqcm"]
-[ext_resource type="Texture2D" uid="uid://cloeilsxd0225" path="res://animations/zombie1_attack/zombie_attack8.png" id="9_5awjk"]
-[ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="14_q3xsd"]
-[ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="15_tijjp"]
-[ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="16_v51ls"]
-[ext_resource type="Texture2D" uid="uid://lpdeovgcmrcl" path="res://textures/light2.png" id="17_l56oj"]
-[ext_resource type="Texture2D" uid="uid://r51kilfopumw" path="res://textures/ui/mutation_icon1.png" id="18_78jj1"]
-[ext_resource type="Texture2D" uid="uid://w60pc6pe8qvp" path="res://textures/ui/mutation_icon3.png" id="19_elnpd"]
-[ext_resource type="Texture2D" uid="uid://cecosvvtpix5n" path="res://textures/ui/mutation_icon2.png" id="20_xcpny"]
+[ext_resource type="Script" path="res://mutated_zombie.gd" id="1_xutb3"]
+[ext_resource type="Texture2D" uid="uid://b4ti8wiuowku7" path="res://animations/zombie1_attack/zombie_attack6.png" id="2_ynbdr"]
+[ext_resource type="Texture2D" uid="uid://cy446at4m57xd" path="res://animations/zombie1_attack/zombie_attack7.png" id="3_n8iaf"]
+[ext_resource type="Texture2D" uid="uid://cloeilsxd0225" path="res://animations/zombie1_attack/zombie_attack8.png" id="4_bl5hc"]
+[ext_resource type="Texture2D" uid="uid://cn4q366721di" path="res://animations/zombie1_attack/zombie_attack4.png" id="5_2b5oq"]
+[ext_resource type="Texture2D" uid="uid://p5u6t0t3l6hj" path="res://animations/zombie1_attack/zombie_attack5.png" id="6_atk2v"]
+[ext_resource type="Texture2D" uid="uid://cqk37qyu6nmpi" path="res://animations/zombie1_anim/zombie1_anim2.png" id="7_x75qm"]
+[ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="8_3qbe2"]
+[ext_resource type="Texture2D" uid="uid://c00ttn4dcf4q7" path="res://animations/zombie1_anim/zombie1_anim3.png" id="9_7a6cs"]
+[ext_resource type="Texture2D" uid="uid://dtr0i7duttcpx" path="res://animations/zombie1_anim/zombie1_anim4.png" id="10_5ld3n"]
+[ext_resource type="Texture2D" uid="uid://jyqhpmhwhsj7" path="res://animations/zombie1_anim/zombie1_anim5.png" id="11_nchhr"]
+[ext_resource type="Texture2D" uid="uid://bry3usdvkvc4p" path="res://animations/zombie1_anim/zombie1_anim6.png" id="12_4y23x"]
+[ext_resource type="Texture2D" uid="uid://dj1rb0nphoskk" path="res://animations/zombie1_anim/zombie1_anim7.png" id="13_odmr4"]
+[ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="14_kirya"]
+[ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="15_j8e0b"]
+[ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="16_by4ti"]
+[ext_resource type="Texture2D" uid="uid://lpdeovgcmrcl" path="res://textures/light2.png" id="17_ap627"]
+[ext_resource type="Texture2D" uid="uid://r51kilfopumw" path="res://textures/ui/mutation_icon1.png" id="18_pwas3"]
+[ext_resource type="Texture2D" uid="uid://w60pc6pe8qvp" path="res://textures/ui/mutation_icon3.png" id="19_0bffs"]
+[ext_resource type="Texture2D" uid="uid://cecosvvtpix5n" path="res://textures/ui/mutation_icon2.png" id="20_moeu4"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_il1rs"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_23mal"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_c5mho")
+"texture": ExtResource("2_ynbdr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_8nddg")
+"texture": ExtResource("3_n8iaf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_5awjk")
+"texture": ExtResource("4_bl5hc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_tgf1r")
+"texture": ExtResource("5_2b5oq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_gn0ud")
+"texture": ExtResource("6_atk2v")
 }],
 "loop": true,
 "name": &"attack",
@@ -45,16 +45,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_5mong")
+"texture": ExtResource("7_x75qm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_rrkpq")
+"texture": ExtResource("8_3qbe2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dnhn5")
+"texture": ExtResource("9_7a6cs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5mong")
+"texture": ExtResource("7_x75qm")
 }],
 "loop": true,
 "name": &"idle",
@@ -62,83 +62,83 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_rrkpq")
+"texture": ExtResource("8_3qbe2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5mong")
+"texture": ExtResource("7_x75qm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_dnhn5")
+"texture": ExtResource("9_7a6cs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_m6qqn")
+"texture": ExtResource("10_5ld3n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_y01m2")
+"texture": ExtResource("11_nchhr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_ypa4v")
+"texture": ExtResource("12_4y23x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_qkqcm")
+"texture": ExtResource("13_odmr4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_y01m2")
+"texture": ExtResource("11_nchhr")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 3.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyf3b"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isef0"]
 radius = 71.1667
 height = 211.333
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgub"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5dq6"]
 size = Vector2(207, 212)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xa0h1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg5bs"]
 size = Vector2(57.3333, 210.667)
 
-[sub_resource type="Curve" id="Curve_pm5k0"]
+[sub_resource type="Curve" id="Curve_tf80p"]
 min_value = -1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj756"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anly1"]
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
-[sub_resource type="Gradient" id="Gradient_wg8ny"]
+[sub_resource type="Gradient" id="Gradient_aj5bm"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vavqd"]
-gradient = SubResource("Gradient_wg8ny")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b5a76"]
+gradient = SubResource("Gradient_aj5bm")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14k1d"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jygkr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i0li"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5l3h5"]
 size = Vector2(105.333, 213.333)
 
-[node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
+[node name="Mutated_Zombie" type="CharacterBody2D"]
 z_index = 3
-scale = Vector2(1.5, 1.5)
-script = ExtResource("1_nufbr")
+scale = Vector2(1.67659, 1.67659)
+script = ExtResource("1_xutb3")
 
 [node name="Zombie03" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.33333, -2)
-sprite_frames = SubResource("SpriteFrames_il1rs")
+sprite_frames = SubResource("SpriteFrames_23mal")
 animation = &"attack"
 autoplay = "walk"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -1)
-shape = SubResource("CapsuleShape2D_kyf3b")
+shape = SubResource("CapsuleShape2D_isef0")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.705, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1.5, -1)
-shape = SubResource("RectangleShape2D_xlgub")
+shape = SubResource("RectangleShape2D_c5dq6")
 debug_color = Color(0.996896, 0, 0.318943, 0.42)
 
 [node name="attack_cooldown" type="Timer" parent="."]
@@ -149,21 +149,21 @@ wait_time = 1.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletZone"]
 position = Vector2(-0.666668, -0.666667)
 scale = Vector2(2.69, 1)
-shape = SubResource("RectangleShape2D_xa0h1")
+shape = SubResource("RectangleShape2D_dg5bs")
 
 [node name="zombie_walk" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_q3xsd")
+stream = ExtResource("14_kirya")
 volume_db = -5.845
 max_distance = 800.0
 bus = &"Environment"
 
 [node name="zombie_hurt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("15_tijjp")
+stream = ExtResource("15_j8e0b")
 volume_db = -10.182
 bus = &"Environment"
 
 [node name="zombie_attack" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("16_v51ls")
+stream = ExtResource("16_by4ti")
 bus = &"Environment"
 
 [node name="ground_hit" type="CPUParticles2D" parent="."]
@@ -225,15 +225,16 @@ scale_amount_max = 8.3
 color = Color(0.183655, 0.691406, 0, 1)
 hue_variation_min = -0.05
 hue_variation_max = 0.05
-hue_variation_curve = SubResource("Curve_pm5k0")
+hue_variation_curve = SubResource("Curve_tf80p")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 3
 offset_left = -55.0
 offset_top = -124.0
 offset_right = 55.0
 offset_bottom = -107.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_nj756")
-max_value = 25.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_anly1")
+max_value = 90.0
 step = 1.0
 show_percentage = false
 
@@ -241,14 +242,14 @@ show_percentage = false
 position = Vector2(38.558, -71.82)
 color = Color(0, 1, 0.0273438, 1)
 energy = 1.5
-texture = ExtResource("17_l56oj")
+texture = ExtResource("17_ap627")
 texture_scale = 0.05
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(60.6667, -72)
 color = Color(0, 1, 0.0273438, 1)
 energy = 1.5
-texture = ExtResource("17_l56oj")
+texture = ExtResource("17_ap627")
 texture_scale = 0.05
 
 [node name="PointLight2D3" type="PointLight2D" parent="."]
@@ -259,7 +260,7 @@ scale = Vector2(4.74903, 6.81979)
 color = Color(0.0429688, 1, 0, 1)
 energy = 2.0
 range_layer_min = -2
-texture = SubResource("GradientTexture2D_vavqd")
+texture = SubResource("GradientTexture2D_b5a76")
 texture_scale = 0.33
 
 [node name="Control" type="Control" parent="."]
@@ -275,7 +276,7 @@ offset_top = -111.0
 offset_right = -58.0
 offset_bottom = -81.0
 scale = Vector2(7.45589, 7.15616)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_14k1d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jygkr")
 flat = true
 
 [node name="Control2" type="Control" parent="."]
@@ -292,9 +293,9 @@ scale = Vector2(0.136084, 0.136084)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture_normal = ExtResource("18_78jj1")
-texture_pressed = ExtResource("19_elnpd")
-texture_hover = ExtResource("20_xcpny")
+texture_normal = ExtResource("18_pwas3")
+texture_pressed = ExtResource("19_0bffs")
+texture_hover = ExtResource("20_moeu4")
 
 [node name="Control3" type="Control" parent="."]
 z_index = 6
@@ -310,22 +311,22 @@ scale = Vector2(0.136084, 0.136084)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture_normal = ExtResource("18_78jj1")
-texture_pressed = ExtResource("19_elnpd")
-texture_hover = ExtResource("20_xcpny")
+texture_normal = ExtResource("18_pwas3")
+texture_pressed = ExtResource("19_0bffs")
+texture_hover = ExtResource("20_moeu4")
 
 [node name="right_skillzone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_skillzone"]
 position = Vector2(130, -1.33333)
-shape = SubResource("RectangleShape2D_1i0li")
+shape = SubResource("RectangleShape2D_5l3h5")
 debug_color = Color(0.7, 0, 0, 0.42)
 
 [node name="left_skillzone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_skillzone"]
 position = Vector2(-131.333, -1.33333)
-shape = SubResource("RectangleShape2D_1i0li")
+shape = SubResource("RectangleShape2D_5l3h5")
 debug_color = Color(0.7, 0, 0, 0.42)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

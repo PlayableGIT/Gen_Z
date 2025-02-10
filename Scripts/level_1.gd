@@ -19,6 +19,7 @@ signal level_complete
 @export var tank_zombie: PackedScene
 @export var runner_zombie: PackedScene
 @export var survivor: PackedScene
+@export var mutated_casual_zombie: PackedScene
 @export var mutation: PackedScene
 @onready var pause_menu: = $CanvasLayer/PauseMenu
 var paused = false
@@ -80,10 +81,11 @@ func _process(delta):
 			mut1.queue_free()
 			mut2.queue_free()
 			await get_tree().create_timer(1.0).timeout
-			var new_zombie = tank_zombie.instantiate()
-			new_zombie.position = glo_pos1 + Vector2(100, 0)
+			var new_zombie = mutated_casual_zombie.instantiate()
+			new_zombie.position = glo_pos1 + Vector2(50, 0)
 			add_child(new_zombie)
 			zombie_spawn.emit(new_zombie.global_position)
+			nekro_stat -= 2
 			print("MUTTTACJA")
 		if dist_mut_abs >= 350:
 			print("ZA DALEKO KRUWA")
