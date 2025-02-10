@@ -19,6 +19,7 @@ signal level_complete
 @export var tank_zombie: PackedScene
 @export var runner_zombie: PackedScene
 @export var survivor: PackedScene
+@export var mutation: PackedScene
 @onready var pause_menu: = $CanvasLayer/PauseMenu
 var paused = false
 var nekro_stat = StatsAutoload.nekroplazma
@@ -78,6 +79,7 @@ func _process(delta):
 		if dist_mut_abs <= 350:
 			mut1.queue_free()
 			mut2.queue_free()
+			await get_tree().create_timer(1.0).timeout
 			var new_zombie = tank_zombie.instantiate()
 			new_zombie.position = glo_pos1 + Vector2(100, 0)
 			add_child(new_zombie)
@@ -278,8 +280,6 @@ func _on_child_exiting_tree(node: Node) -> void:
 	var rng_x = rng.randf_range(-50.0, 50.0)
 	var rng_dead_spawn = Vector2(rng_x, 0)
 	if node.has_method("zombie"):
-		if node.is_in_group("mutation"):
-			print("hajuduuin")
 		if node.has_method("tank"):
 			var death_zombie = dead_zombie.instantiate()
 			add_child.call_deferred(death_zombie)
@@ -288,17 +288,25 @@ func _on_child_exiting_tree(node: Node) -> void:
 			#print("usunieto zombie")
 		else:
 			if node.is_in_group("left"):
+				print("1")
 				var death_zombie = dead_zombie.instantiate()
 				add_child.call_deferred(death_zombie)
 				death_zombie.position = node.position + rng_dead_spawn
 				death_zombie.flip_h = true
 				zombie_death.emit(node.global_position)
 			elif node.is_in_group("right"):
-				var death_zombie = dead_zombie.instantiate()
-				add_child.call_deferred(death_zombie)
-				death_zombie.position = node.position + rng_dead_spawn
-				death_zombie.flip_h = false
-				zombie_death.emit(node.global_position)
+				print("2")
+				if node.is_in_group("mutation"):
+					print("hajuduuin")
+					var mutation_spawn = mutation.instantiate()
+					add_child.call_deferred(mutation_spawn)
+					mutation_spawn.position = node.position
+				else:
+					var death_zombie = dead_zombie.instantiate()
+					add_child.call_deferred(death_zombie)
+					death_zombie.position = node.position + rng_dead_spawn
+					death_zombie.flip_h = false
+					zombie_death.emit(node.global_position)
 	if node.has_method("survivor"):
 		if node.is_in_group("left"):
 			survivor_death.emit(node.global_position)

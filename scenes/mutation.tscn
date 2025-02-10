@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4hkoudud0uol"]
+
+[ext_resource type="Texture2D" uid="uid://b10lxels15eqs" path="res://animations/mutation_anim/mutation_anim1.png" id="1_mlciw"]
+[ext_resource type="Texture2D" uid="uid://b2eucbxfig7ld" path="res://animations/mutation_anim/mutation_anim2.png" id="2_5olwu"]
+[ext_resource type="Texture2D" uid="uid://ckdwcxxwh3yur" path="res://animations/mutation_anim/mutation_anim3.png" id="3_8o1c0"]
+[ext_resource type="Texture2D" uid="uid://cgwb2uxihfhjf" path="res://animations/mutation_anim/mutation_anim4.png" id="4_aqpkj"]
+[ext_resource type="Texture2D" uid="uid://cihpjmsbwouw2" path="res://animations/mutation_anim/mutation_anim5.png" id="5_78vth"]
+[ext_resource type="Texture2D" uid="uid://chielop2t071a" path="res://animations/mutation_anim/mutation_anim6.png" id="6_30l83"]
+[ext_resource type="Script" path="res://mutation_animated.gd" id="7_loebv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vqqqt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mlciw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5olwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8o1c0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aqpkj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_78vth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_30l83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_78vth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aqpkj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8o1c0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5olwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_mlciw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Mutation" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vqqqt")
+autoplay = "default"
+script = ExtResource("7_loebv")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
