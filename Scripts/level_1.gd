@@ -23,7 +23,6 @@ signal level_complete
 var paused = false
 var nekro_stat = StatsAutoload.nekroplazma
 var nekro_cost = 0
-var zombie_count = 0
 var zombie_respawn = true
 var level_accomp = false
 var level_fade = false
@@ -152,7 +151,6 @@ func _process(delta):
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_1 == true:
 		$zombie_respawn2.start()
 		$respawn_bar.visible = true
-		zombie_count += 1
 		nekro_stat -= 2
 		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
@@ -164,7 +162,6 @@ func _process(delta):
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_2 == true:
-		zombie_count += 1
 		nekro_stat -= 4
 		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
@@ -176,7 +173,7 @@ func _process(delta):
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_3 == true:
-		zombie_count += 1
+
 		nekro_stat -= 4
 		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
@@ -188,7 +185,6 @@ func _process(delta):
 		zombie_runner_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_4 == true:
-		zombie_count += 1
 		nekro_stat -= 8
 		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
@@ -282,9 +278,9 @@ func _on_child_exiting_tree(node: Node) -> void:
 	var rng_x = rng.randf_range(-50.0, 50.0)
 	var rng_dead_spawn = Vector2(rng_x, 0)
 	if node.has_method("zombie"):
+		if node.is_in_group("mutation"):
+			print("hajuduuin")
 		if node.has_method("tank"):
-			zombie_count -=1
-			print(zombie_count)
 			var death_zombie = dead_zombie.instantiate()
 			add_child.call_deferred(death_zombie)
 			death_zombie.position = node.position + rng_dead_spawn
@@ -292,16 +288,12 @@ func _on_child_exiting_tree(node: Node) -> void:
 			#print("usunieto zombie")
 		else:
 			if node.is_in_group("left"):
-				zombie_count -=1
-				print(zombie_count)
 				var death_zombie = dead_zombie.instantiate()
 				add_child.call_deferred(death_zombie)
 				death_zombie.position = node.position + rng_dead_spawn
 				death_zombie.flip_h = true
 				zombie_death.emit(node.global_position)
 			elif node.is_in_group("right"):
-				zombie_count -=1
-				print(zombie_count)
 				var death_zombie = dead_zombie.instantiate()
 				add_child.call_deferred(death_zombie)
 				death_zombie.position = node.position + rng_dead_spawn
