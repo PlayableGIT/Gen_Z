@@ -32,7 +32,7 @@ var zombie_1 = false
 var zombie_2 = false
 var zombie_3 = false
 var zombie_4 = false
-var mutation_array: Array[Node2D] = []
+var mutation_array: Array[Node] = []
 var rng = RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
@@ -53,7 +53,7 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	lightning()
 func _process(delta):
-	var mutation_array = get_tree().get_nodes_in_group("mutation")
+	mutation_array = get_tree().get_nodes_in_group("mutation")
 	#print(get_tree().get_nodes_in_group("mutation"))
 	if mutation_array.size() == 2:
 		for node in mutation_array:

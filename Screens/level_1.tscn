@@ -723,6 +723,13 @@ scale = Vector2(0.74, 0.725)
 shape = SubResource("RectangleShape2D_piy5k")
 debug_color = Color(0.587891, 0.7, 0, 0.42)
 
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="spawn_restriction"]
+position = Vector2(-3086, -350.125)
+rotation = 1.5708
+scale = Vector2(0.74, 1.205)
+shape = SubResource("RectangleShape2D_piy5k")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="spawn_restriction"]
 position = Vector2(3502.5, -447.5)
 shape = SubResource("RectangleShape2D_rdkxy")
