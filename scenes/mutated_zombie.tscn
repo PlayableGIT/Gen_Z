@@ -240,14 +240,14 @@ show_percentage = false
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(38.558, -71.82)
-color = Color(0, 1, 0.0273438, 1)
+color = Color(1, 0.5625, 0, 1)
 energy = 1.5
 texture = ExtResource("17_ap627")
 texture_scale = 0.05
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(60.6667, -72)
-color = Color(0, 1, 0.0273438, 1)
+color = Color(1, 0.560784, 0, 1)
 energy = 1.5
 texture = ExtResource("17_ap627")
 texture_scale = 0.05
@@ -328,6 +328,18 @@ debug_color = Color(0.7, 0, 0, 0.42)
 position = Vector2(-131.333, -1.33333)
 shape = SubResource("RectangleShape2D_5l3h5")
 debug_color = Color(0.7, 0, 0, 0.42)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-25.6473, 103.782)
+amount = 78
+lifetime = 2.8
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(66.82, 1)
+gravity = Vector2(0, -100)
+scale_amount_min = 4.85
+scale_amount_max = 4.85
+color = Color(0.671875, 0.503906, 0, 1)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

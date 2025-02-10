@@ -8,7 +8,7 @@ var survivor_attack_cooldown = true
 # Zmienne drzwi
 var door_in_range = false
 # Statystyki zombie
-@export var speed = 200
+@export var speed = 100
 @export var health = 30
 var zombie_alive = true
 var zombie_damage: int = 5
@@ -86,6 +86,7 @@ func moveCharacter():
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
+	velocity = Vector2(velocity.x, 0)
 	if direction.normalized() <= Vector2(0, 0):
 		$Zombie03.set_flip_h(true)
 	elif direction.normalized() >= Vector2(0, 0):

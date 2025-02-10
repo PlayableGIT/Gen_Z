@@ -57,6 +57,7 @@ func moveCharacter():
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
+	velocity = Vector2(velocity.x, 0)
 	if direction.normalized() <= Vector2(0, 0):
 		$Sprite2D.set_flip_h(true)
 	elif direction.normalized() >= Vector2(0, 0):

@@ -12,3 +12,7 @@ func _on_exit_pressed() -> void:
 	$Button_Sound.play()
 	await get_tree().create_timer(0.229).timeout
 	get_tree().quit()
+
+
+func _on_menu_ambient_finished() -> void:
+	$Menu_Ambient.play()

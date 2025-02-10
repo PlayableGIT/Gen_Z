@@ -91,7 +91,7 @@ func blood_splatter():
 func survivor_gun():
 	pass
 
-var teksty: = ["NEED BACKUP!", "THIS IS NOTHING LIKE THE SIMULATIONS!","", "ENEMY CLOSE!"]
+var teksty: = ["NEED BACKUP!","", "THIS IS NOTHING LIKE THE SIMULATIONS!","", "ENEMY CLOSE!"]
 var x = -1
 
 func zombie_attack():
@@ -122,6 +122,8 @@ func get_closest_player_or_null():
 func _on_attack_cooldown_timeout() -> void:
 	zombie_attack_cooldown = true
 	x += 1
+	if x == 4:
+		x=0
 	$Label.visible = false
 
 func _on_survivor_gun_animation_looped() -> void:
@@ -147,7 +149,7 @@ func rayCastException() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if x >= 1:
-		x=-2
+		x=0
 	if body.has_method("zombie"):
 		zombie_in_range = true
 
