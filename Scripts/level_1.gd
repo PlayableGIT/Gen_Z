@@ -76,15 +76,15 @@ func _process(delta):
 		var dist_mut = furt_pos - closer_pos
 		var dist_mut_abs = abs(dist_mut)
 		print(dist_mut_abs)
-		if dist_mut_abs <= 300:
+		if dist_mut_abs <= 350:
 			mut1.queue_free()
 			mut2.queue_free()
 			var new_zombie = tank_zombie.instantiate()
-			new_zombie.position = glo_pos1 + Vector2(50, 0)
+			new_zombie.position = glo_pos1 + Vector2(100, 0)
 			add_child(new_zombie)
 			zombie_spawn.emit(new_zombie.global_position)
 			print("MUTTTACJA")
-		if dist_mut_abs >= 300:
+		if dist_mut_abs >= 350:
 			print("ZA DALEKO KRUWA")
 	
 	if $Camera2D.is_in_group("mouse_lock"):

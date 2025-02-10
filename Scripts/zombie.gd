@@ -34,8 +34,8 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	#grawitacja
-	print($".", "right: ", mut_cand_right.size())
-	print($".", "left: ", mut_cand_left.size())
+	#print($".", "right: ", mut_cand_right.size())
+	#print($".", "left: ", mut_cand_left.size())
 	
 	if mut_cand_right.size() == 1 and mut_cand_left.size() == 0 and $Control2/TextureButton.visible == true:
 		$Control2/TextureButton.visible = true
@@ -193,13 +193,19 @@ func _on_button_pressed() -> void:
 
 func _on_texture_button_pressed() -> void:
 	$".".add_to_group("mutation")
-	mut_cand_right[0].add_to_group("mutation")
-	print("mutacja")
+	if mut_cand_right[0] == null:
+		pass
+	else:
+		mut_cand_right[0].add_to_group("mutation")
+		print("mutacja")
 
 func _on_left_mutation_pressed() -> void:
 	$".".add_to_group("mutation")
-	mut_cand_left[0].add_to_group("mutation")
-	print("mutacja")
+	if mut_cand_left[0] == null:
+		pass
+	else:
+		mut_cand_left[0].add_to_group("mutation")
+		print("mutacja")
 
 var mut_cand_left: = []
 var mut_cand_right: = []

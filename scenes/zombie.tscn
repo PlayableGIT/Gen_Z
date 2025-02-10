@@ -17,9 +17,9 @@
 [ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="15_tijjp"]
 [ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="16_v51ls"]
 [ext_resource type="Texture2D" uid="uid://lpdeovgcmrcl" path="res://textures/light2.png" id="17_l56oj"]
-[ext_resource type="Texture2D" uid="uid://dnf7d1jmsvc0u" path="res://textures/casual_zombie_icon.png" id="18_mak7b"]
-[ext_resource type="Texture2D" uid="uid://1bybxc7krbwj" path="res://textures/no_zombie_icon.png" id="19_uw5jw"]
-[ext_resource type="Texture2D" uid="uid://03fiusk1dt7i" path="res://textures/no_zombie_icon3_anim.png" id="20_84gow"]
+[ext_resource type="Texture2D" uid="uid://r51kilfopumw" path="res://textures/ui/mutation_icon1.png" id="18_78jj1"]
+[ext_resource type="Texture2D" uid="uid://w60pc6pe8qvp" path="res://textures/ui/mutation_icon3.png" id="19_elnpd"]
+[ext_resource type="Texture2D" uid="uid://cecosvvtpix5n" path="res://textures/ui/mutation_icon2.png" id="20_xcpny"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_il1rs"]
 animations = [{
@@ -282,9 +282,9 @@ flat = true
 z_index = 6
 layout_mode = 3
 anchors_preset = 0
-offset_left = 50.0
+offset_left = 11.3333
 offset_top = -227.333
-offset_right = 688.0
+offset_right = 649.333
 offset_bottom = 416.667
 scale = Vector2(0.136084, 0.136084)
 
@@ -292,17 +292,17 @@ scale = Vector2(0.136084, 0.136084)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture_normal = ExtResource("18_mak7b")
-texture_pressed = ExtResource("19_uw5jw")
-texture_hover = ExtResource("20_84gow")
+texture_normal = ExtResource("18_78jj1")
+texture_pressed = ExtResource("19_elnpd")
+texture_hover = ExtResource("20_xcpny")
 
 [node name="Control3" type="Control" parent="."]
 z_index = 6
 layout_mode = 3
 anchors_preset = 0
-offset_left = -150.0
+offset_left = -96.6667
 offset_top = -227.333
-offset_right = 488.0
+offset_right = 541.333
 offset_bottom = 416.667
 scale = Vector2(0.136084, 0.136084)
 
@@ -310,9 +310,9 @@ scale = Vector2(0.136084, 0.136084)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture_normal = ExtResource("18_mak7b")
-texture_pressed = ExtResource("19_uw5jw")
-texture_hover = ExtResource("20_84gow")
+texture_normal = ExtResource("18_78jj1")
+texture_pressed = ExtResource("19_elnpd")
+texture_hover = ExtResource("20_xcpny")
 
 [node name="right_skillzone" type="Area2D" parent="."]
 
