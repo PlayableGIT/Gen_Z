@@ -77,7 +77,7 @@ func _process(delta):
 		var dist_mut = furt_pos - closer_pos
 		var dist_mut_abs = abs(dist_mut)
 		print(dist_mut_abs)
-		if dist_mut_abs <= 350:
+		if dist_mut_abs <= 380:
 			mut1.queue_free()
 			mut2.queue_free()
 			await get_tree().create_timer(1.0).timeout
@@ -87,7 +87,7 @@ func _process(delta):
 			zombie_spawn.emit(new_zombie.global_position)
 			nekro_stat -= 2
 			print("MUTTTACJA")
-		if dist_mut_abs >= 350:
+		if dist_mut_abs >= 380:
 			print("ZA DALEKO KRUWA")
 	
 	if $Camera2D.is_in_group("mouse_lock"):
@@ -291,11 +291,17 @@ func _on_child_exiting_tree(node: Node) -> void:
 		else:
 			if node.is_in_group("left"):
 				print("1")
-				var death_zombie = dead_zombie.instantiate()
-				add_child.call_deferred(death_zombie)
-				death_zombie.position = node.position + rng_dead_spawn
-				death_zombie.flip_h = true
-				zombie_death.emit(node.global_position)
+				if node.is_in_group("mutation"):
+					print("hajuduuin")
+					var mutation_spawn = mutation.instantiate()
+					add_child.call_deferred(mutation_spawn)
+					mutation_spawn.position = node.position
+				else:
+					var death_zombie = dead_zombie.instantiate()
+					add_child.call_deferred(death_zombie)
+					death_zombie.position = node.position + rng_dead_spawn
+					death_zombie.flip_h = true
+					zombie_death.emit(node.global_position)
 			elif node.is_in_group("right"):
 				print("2")
 				if node.is_in_group("mutation"):

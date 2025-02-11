@@ -18,6 +18,9 @@ var xd = false
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	$mutation_burst.emitting = true
+	await get_tree().create_timer(0.1).timeout
+	$mutation_burst_sound.play()
 	$PointLight2D3.visible = false
 	$Control2/TextureButton.visible = false
 	$Control3/left_mutation.visible = false
