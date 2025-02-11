@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://djy6hn27us52n"]
+[gd_scene load_steps=27 format=3 uid="uid://djy6hn27us52n"]
 
 [ext_resource type="Script" path="res://mutated_zombie.gd" id="1_xutb3"]
 [ext_resource type="Texture2D" uid="uid://b4ti8wiuowku7" path="res://animations/zombie1_attack/zombie_attack6.png" id="2_ynbdr"]
@@ -17,9 +17,6 @@
 [ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="15_j8e0b"]
 [ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="16_by4ti"]
 [ext_resource type="Texture2D" uid="uid://lpdeovgcmrcl" path="res://textures/light2.png" id="17_ap627"]
-[ext_resource type="Texture2D" uid="uid://r51kilfopumw" path="res://textures/ui/mutation_icon1.png" id="18_pwas3"]
-[ext_resource type="Texture2D" uid="uid://w60pc6pe8qvp" path="res://textures/ui/mutation_icon3.png" id="19_0bffs"]
-[ext_resource type="Texture2D" uid="uid://cecosvvtpix5n" path="res://textures/ui/mutation_icon2.png" id="20_moeu4"]
 [ext_resource type="AudioStream" uid="uid://cex37fk42mf1i" path="res://audio/zombie/mutation_burst_sound.mp3" id="21_8qwjx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_23mal"]
@@ -113,11 +110,6 @@ bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_b5a76"]
 gradient = SubResource("Gradient_aj5bm")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jygkr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5l3h5"]
-size = Vector2(105.333, 213.333)
 
 [node name="Mutated_Zombie" type="CharacterBody2D"]
 z_index = 3
@@ -285,72 +277,6 @@ range_layer_min = -2
 texture = SubResource("GradientTexture2D_b5a76")
 texture_scale = 0.33
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Button" type="Button" parent="Control"]
-layout_mode = 0
-offset_left = -78.0
-offset_top = -111.0
-offset_right = -58.0
-offset_bottom = -81.0
-scale = Vector2(7.45589, 7.15616)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_jygkr")
-flat = true
-
-[node name="Control2" type="Control" parent="."]
-z_index = 6
-layout_mode = 3
-anchors_preset = 0
-offset_left = 11.3333
-offset_top = -227.333
-offset_right = 649.333
-offset_bottom = 416.667
-scale = Vector2(0.136084, 0.136084)
-
-[node name="TextureButton" type="TextureButton" parent="Control2"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("18_pwas3")
-texture_pressed = ExtResource("19_0bffs")
-texture_hover = ExtResource("20_moeu4")
-
-[node name="Control3" type="Control" parent="."]
-z_index = 6
-layout_mode = 3
-anchors_preset = 0
-offset_left = -96.6667
-offset_top = -227.333
-offset_right = 541.333
-offset_bottom = 416.667
-scale = Vector2(0.136084, 0.136084)
-
-[node name="left_mutation" type="TextureButton" parent="Control3"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("18_pwas3")
-texture_pressed = ExtResource("19_0bffs")
-texture_hover = ExtResource("20_moeu4")
-
-[node name="right_skillzone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="right_skillzone"]
-position = Vector2(130, -1.33333)
-shape = SubResource("RectangleShape2D_5l3h5")
-debug_color = Color(0.7, 0, 0, 0.42)
-
-[node name="left_skillzone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="left_skillzone"]
-position = Vector2(-131.333, -1.33333)
-shape = SubResource("RectangleShape2D_5l3h5")
-debug_color = Color(0.7, 0, 0, 0.42)
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-25.6473, 103.782)
 amount = 78
@@ -372,10 +298,3 @@ volume_db = -5.091
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]
 [connection signal="finished" from="zombie_walk" to="." method="_on_zombie_walk_finished"]
-[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Control2/TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="Control3/left_mutation" to="." method="_on_left_mutation_pressed"]
-[connection signal="body_entered" from="right_skillzone" to="." method="_on_right_skillzone_body_entered"]
-[connection signal="body_exited" from="right_skillzone" to="." method="_on_right_skillzone_body_exited"]
-[connection signal="body_entered" from="left_skillzone" to="." method="_on_left_skillzone_body_entered"]
-[connection signal="body_exited" from="left_skillzone" to="." method="_on_left_skillzone_body_exited"]
