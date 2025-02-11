@@ -116,13 +116,19 @@ func _on_pause_button_pressed() -> void:
 	Engine.time_scale = 0.00001
 
 func _on_slow_button_pressed() -> void:
-	$slow.play()
-	Engine.time_scale = 0.1
+	if Engine.time_scale == 0.1:
+		pass
+	elif Engine.time_scale == 0.00001:
+		Engine.time_scale = 0.1
+	else:
+		$slow.play()
+		Engine.time_scale = 0.1
 
 func _on_play_button_pressed() -> void:
 	if Engine.time_scale == 0.1:
 		$slow_to_play.play()
-	
+	if Engine.time_scale == 0.00001:
+		$slow_to_play.play()
 	Engine.time_scale = 1
 
 
