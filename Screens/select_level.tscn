@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtqyimi6x4qnp"]
+
+[ext_resource type="Script" path="res://Screens/select_level.gd" id="1_pe2hw"]
+[ext_resource type="AudioStream" uid="uid://bpwxuhd54dhwe" path="res://audio/ambient/Echoes of Desolation.mp3" id="2_20bkb"]
+[ext_resource type="AudioStream" uid="uid://dslu3bcl2y3ux" path="res://audio/UI/button_click.wav" id="3_m3tem"]
+[ext_resource type="VideoStream" path="res://audio/genz_menu.ogv" id="4_b8q4m"]
+
+[sub_resource type="SystemFont" id="SystemFont_mpw5p"]
+font_names = PackedStringArray("RBNo3.1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_evfee"]
+font = SubResource("SystemFont_mpw5p")
+font_size = 71
+font_color = Color(0.855469, 0, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 31
+shadow_color = Color(0, 0, 0, 0.627451)
+
+[node name="Select_level" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pe2hw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -261.0
+offset_right = 252.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+text = "Select Level"
+label_settings = SubResource("LabelSettings_evfee")
+
+[node name="Tutorial" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Tutorial"
+vertical_icon_alignment = 2
+
+[node name="Level 1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 1 "
+vertical_icon_alignment = 2
+
+[node name="Level 2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 2"
+vertical_icon_alignment = 2
+
+[node name="Menu_Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_20bkb")
+volume_db = -15.0
+autoplay = true
+
+[node name="Button_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_m3tem")
+volume_db = -10.0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="AspectRatioContainer"]
+z_index = 1
+layout_mode = 2
+stream = ExtResource("4_b8q4m")
+autoplay = true
+expand = true
+loop = true
