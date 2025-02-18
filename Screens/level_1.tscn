@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=71 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
