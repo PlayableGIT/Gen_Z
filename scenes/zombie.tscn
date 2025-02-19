@@ -276,6 +276,7 @@ offset_right = -58.0
 offset_bottom = -81.0
 scale = Vector2(7.45589, 7.15616)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_14k1d")
+disabled = true
 flat = true
 
 [node name="Control2" type="Control" parent="."]
