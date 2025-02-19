@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c60yxpyucdsfe"]
 
-[ext_resource type="Script" path="res://scenes/zombie_tank.gd" id="1_02cu4"]
+[ext_resource type="Script" path="res://Scripts/zombie_tank.gd" id="1_02cu4"]
 [ext_resource type="Texture2D" uid="uid://cvs7bc0xc7fku" path="res://textures/zombie_tank.png" id="1_nsyt4"]
 [ext_resource type="AudioStream" uid="uid://cqoase678jw0n" path="res://audio/zombie_tank/zombie_tank_walk.mp3" id="3_1pl13"]
 [ext_resource type="AudioStream" uid="uid://dsou7ina8jn0g" path="res://audio/zombie_tank/zombie_tank_hurt.mp3" id="4_iofl7"]

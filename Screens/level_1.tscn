@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=77 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -10,10 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://c60yxpyucdsfe" path="res://scenes/zombie_tank.tscn" id="8_gnoq2"]
 [ext_resource type="PackedScene" uid="uid://g330a3qiglye" path="res://scenes/zombie_runner.tscn" id="9_6melg"]
 [ext_resource type="PackedScene" uid="uid://bn8vnivdwoql7" path="res://scenes/survivor.tscn" id="10_ybt86"]
-[ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://camera_2d.tscn" id="11_mkyb8"]
+[ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://Screens/camera_2d.tscn" id="11_mkyb8"]
+[ext_resource type="PackedScene" uid="uid://b4hkoudud0uol" path="res://scenes/mutation.tscn" id="12_au2uv"]
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="12_iv56h"]
+[ext_resource type="PackedScene" uid="uid://djy6hn27us52n" path="res://scenes/mutated_zombie.tscn" id="12_lebb7"]
 [ext_resource type="Script" path="res://Scripts/camera_2d_level1.gd" id="12_yvlgm"]
-[ext_resource type="PackedScene" uid="uid://dglkeu878k08s" path="res://UI.tscn" id="13_mcrwt"]
+[ext_resource type="PackedScene" uid="uid://dglkeu878k08s" path="res://scenes/UI.tscn" id="13_mcrwt"]
 [ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="13_u5mh3"]
 [ext_resource type="Texture2D" uid="uid://nlv0xu716042" path="res://textures/road5.png" id="14_faspa"]
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="15_1qycn"]
@@ -34,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bkap1hmfbbqlw" path="res://textures/light3.png" id="31_kqha0"]
 [ext_resource type="Texture2D" uid="uid://bn2lth8dob2ud" path="res://textures/bullet.png" id="32_80kg8"]
 [ext_resource type="Script" path="res://Screens/point_light_2d_4.gd" id="33_t7m8t"]
-[ext_resource type="PackedScene" uid="uid://ycpgoo8l5i2h" path="res://fog.tscn" id="34_4p8qo"]
+[ext_resource type="PackedScene" uid="uid://ycpgoo8l5i2h" path="res://scenes/fog.tscn" id="34_4p8qo"]
 [ext_resource type="Texture2D" uid="uid://cv5bykrx5g8m1" path="res://textures/mouse_prog.png" id="35_xqsi0"]
 [ext_resource type="PackedScene" uid="uid://byhd1tr5ytrow" path="res://scenes/basic_melee_survivor.tscn" id="36_7b64p"]
 [ext_resource type="Texture2D" uid="uid://bdng51h743e73" path="res://textures/NW_sign.png" id="37_45a0v"]
@@ -52,6 +54,9 @@
 [ext_resource type="Texture2D" uid="uid://b61e0isx22acl" path="res://textures/can2.png" id="48_w5nle"]
 [ext_resource type="Texture2D" uid="uid://cllju4n8b48kb" path="res://textures/trash1.png" id="49_c01ay"]
 [ext_resource type="Texture2D" uid="uid://ct0sin4trqqqy" path="res://textures/trash2.png" id="50_ggimi"]
+[ext_resource type="Texture2D" uid="uid://b7xyp2fo4vr4s" path="res://textures/spawn_line2.png" id="53_bko3y"]
+[ext_resource type="Texture2D" uid="uid://dbk3v4elc3tmj" path="res://textures/spawn_line.png" id="53_tdm1r"]
+[ext_resource type="Script" path="res://Screens/animated_sprite_2d.gd" id="55_bqy5u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -512,6 +517,20 @@ min_value = -1.0
 _data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_uylwc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("53_bko3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_tdm1r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [node name="level_1" type="Node2D"]
 script = ExtResource("1_yb6vr")
 ui = ExtResource("13_mcrwt")
@@ -524,6 +543,8 @@ cheerleader_zombie = ExtResource("7_cb087")
 tank_zombie = ExtResource("8_gnoq2")
 runner_zombie = ExtResource("9_6melg")
 survivor = ExtResource("10_ybt86")
+mutated_casual_zombie = ExtResource("12_lebb7")
+mutation = ExtResource("12_au2uv")
 
 [node name="Camera2D" parent="." instance=ExtResource("11_mkyb8")]
 z_index = 75
@@ -703,6 +724,13 @@ debug_color = Color(0.587891, 0.7, 0, 0.42)
 position = Vector2(7889.06, -350.125)
 rotation = 1.5708
 scale = Vector2(0.74, 0.725)
+shape = SubResource("RectangleShape2D_piy5k")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="spawn_restriction"]
+position = Vector2(-3086, -350.125)
+rotation = 1.5708
+scale = Vector2(0.74, 1.205)
 shape = SubResource("RectangleShape2D_piy5k")
 debug_color = Color(0.587891, 0.7, 0, 0.42)
 
@@ -1243,6 +1271,16 @@ modulate = Color(0.310547, 0.310547, 0.310547, 1)
 position = Vector2(651, -12)
 rotation = 0.120255
 texture = ExtResource("50_ggimi")
+
+[node name="spawn_line" type="AnimatedSprite2D" parent="."]
+position = Vector2(300, -909)
+scale = Vector2(2.41082, 9.53082)
+sprite_frames = SubResource("SpriteFrames_uylwc")
+autoplay = "default"
+frame = 1
+frame_progress = 0.0191383
+offset = Vector2(0, 50)
+script = ExtResource("55_bqy5u")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

@@ -92,3 +92,4 @@ loop = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="finished" from="Menu_Ambient" to="." method="_on_menu_ambient_finished"]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bcfphvl26qtrh" path="res://animations/survivor_01_necroplasm_collect/survivor2_necro3.png" id="4_ec7fs"]
 [ext_resource type="Texture2D" uid="uid://3thxp5fw35cy" path="res://animations/survivor_01_necroplasm_collect/survivor2_necro4.png" id="5_uye77"]
 [ext_resource type="Texture2D" uid="uid://d0vg3byykeli8" path="res://animations/survivor_01_death_anim/survivor2_death1.png" id="8_1u5ye"]
-[ext_resource type="Script" path="res://scenes/dead_survivor.gd" id="8_7ju65"]
+[ext_resource type="Script" path="res://Scripts/dead_survivor.gd" id="8_7ju65"]
 [ext_resource type="Texture2D" uid="uid://udosidj2yhmr" path="res://animations/survivor_01_death_anim/survivor2_death2.png" id="9_upood"]
 [ext_resource type="Texture2D" uid="uid://pnp0uvd0cyt3" path="res://animations/survivor_01_death_anim/survivor2_death3.png" id="10_hsurt"]
 [ext_resource type="Texture2D" uid="uid://dvthyrclfld46" path="res://animations/survivor_01_death_anim/survivor2_death4.png" id="11_w7tj2"]
