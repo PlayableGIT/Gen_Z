@@ -1,25 +1,28 @@
-[gd_scene load_steps=29 format=3 uid="uid://dglkeu878k08s"]
+[gd_scene load_steps=21 format=3 uid="uid://dglkeu878k08s"]
 
-[ext_resource type="Texture2D" uid="uid://dxs5jt0gs3rns" path="res://textures/ui/zombie_choice_button.png" id="1_52moy"]
+[ext_resource type="Texture2D" uid="uid://dxs5jt0gs3rns" path="res://audio/UI/zombie_choice_button.png" id="1_52moy"]
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_da5ce"]
-[ext_resource type="Texture2D" uid="uid://4no3y0ejkqpa" path="res://textures/ui/HUD_outline4.png" id="2_3jwin"]
-[ext_resource type="Texture2D" uid="uid://b6x0jvqit4ful" path="res://textures/ui/zombie_choice_button_mouse.png" id="3_rwim7"]
+[ext_resource type="Texture2D" uid="uid://4no3y0ejkqpa" path="res://audio/UI/HUD_outline4.png" id="2_3jwin"]
+[ext_resource type="Texture2D" uid="uid://b6x0jvqit4ful" path="res://audio/UI/zombie_choice_button_mouse.png" id="3_rwim7"]
 [ext_resource type="AudioStream" uid="uid://dlu85kmrkc657" path="res://audio/UI/level_complete.mp3" id="3_t54s5"]
-[ext_resource type="Texture2D" uid="uid://pktte8jbwj34" path="res://textures/ui/zombie_choice_button_pressed.png" id="4_cowri"]
-[ext_resource type="Texture2D" uid="uid://b10fkfr4fq3bv" path="res://textures/ui/skill_tree_button.png" id="5_se324"]
-[ext_resource type="Texture2D" uid="uid://kpxgejul63tx" path="res://textures/ui/skill_tree_button_pressed.png" id="6_wp1dr"]
-[ext_resource type="Texture2D" uid="uid://cj06lm3mt4sip" path="res://textures/ui/skill_tree_button_hover.png" id="7_opn0r"]
+[ext_resource type="Texture2D" uid="uid://pktte8jbwj34" path="res://audio/UI/zombie_choice_button_pressed.png" id="4_cowri"]
+[ext_resource type="Texture2D" uid="uid://b10fkfr4fq3bv" path="res://audio/UI/skill_tree_button.png" id="5_se324"]
+[ext_resource type="Texture2D" uid="uid://kpxgejul63tx" path="res://audio/UI/skill_tree_button_pressed.png" id="6_wp1dr"]
+[ext_resource type="Texture2D" uid="uid://cj06lm3mt4sip" path="res://audio/UI/skill_tree_button_hover.png" id="7_opn0r"]
+
 [ext_resource type="Theme" uid="uid://dur8rnt6mmf6j" path="res://textures/UI_theme.tres" id="10_kj782"]
 [ext_resource type="Texture2D" uid="uid://dnf7d1jmsvc0u" path="res://textures/casual_zombie_icon.png" id="11_3q0e2"]
 [ext_resource type="Texture2D" uid="uid://bofbf7qeeklkt" path="res://textures/cheerleader_zombie_icon.png" id="12_y35yt"]
 [ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="13_i625s"]
 [ext_resource type="Texture2D" uid="uid://1bybxc7krbwj" path="res://textures/no_zombie_icon.png" id="14_uokjo"]
+
 [ext_resource type="Texture2D" uid="uid://cqccivd55f7ip" path="res://textures/pause_icon.png" id="15_r8mbt"]
 [ext_resource type="Texture2D" uid="uid://kintf24t2chq" path="res://textures/play_icon.png" id="16_n2nnr"]
 [ext_resource type="Texture2D" uid="uid://buc5qkyedyvt0" path="res://textures/slow_icon.png" id="17_dsecx"]
 [ext_resource type="AudioStream" uid="uid://7ivqetgggtkk" path="res://audio/UI/slow.mp3" id="18_8uuik"]
 [ext_resource type="AudioStream" uid="uid://by66t8g1evkhk" path="res://audio/UI/slow_to_play.mp3" id="19_neiul"]
 [ext_resource type="AudioStream" uid="uid://irpgkw28seyi" path="res://audio/UI/buzz.mp3" id="20_krwel"]
+
 
 [sub_resource type="SystemFont" id="SystemFont_plpnl"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
@@ -47,6 +50,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kxpki"]
 font_size = 71
+
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
@@ -167,6 +171,7 @@ theme_override_constants/h_separation = 60
 theme_override_constants/v_separation = 0
 columns = 2
 
+
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("11_3q0e2")
@@ -175,6 +180,7 @@ expand_mode = 4
 [node name="TextureRect2" type="TextureRect" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("12_y35yt")
+
 expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/GridContainer"]
@@ -200,13 +206,29 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "Cost: 2 Necro
-"
+
+text = "Cost: 2 Necro"
 label_settings = SubResource("LabelSettings_kxpki")
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="PanelContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
+
+
+[node name="Button" type="Button" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("10_kj782")
+theme_type_variation = &"FlatButton"
+theme_override_constants/outline_size = 44
+theme_override_fonts/font = SubResource("SystemFont_l1ot6")
+theme_override_font_sizes/font_size = 137
+text = "CHOOSE"
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("12_y35yt")
+expand_mode = 3
+
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/GridContainer"]
 layout_mode = 2
@@ -231,8 +253,8 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "Cost: 4 Necro  
-"
+
+text = "Cost: 4 Necroplasm"
 label_settings = SubResource("LabelSettings_kxpki")
 horizontal_alignment = 1
 
@@ -255,12 +277,14 @@ theme = ExtResource("10_kj782")
 theme_type_variation = &"FlatButton"
 theme_override_constants/outline_size = 44
 theme_override_fonts/font = SubResource("SystemFont_l1ot6")
+
 theme_override_font_sizes/font_size = 97
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vyrfg")
 text = "CHOOSE"
 
 [node name="Label6" type="Label" parent="PanelContainer/GridContainer"]
 layout_mode = 2
+
 
 [node name="button_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_i625s")
@@ -277,6 +301,11 @@ mouse_filter = 2
 [node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
 layout_mode = 2
 texture = ExtResource("14_uokjo")
+
+
+[connection signal="pressed" from="zombie_choice/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="PanelContainer/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PanelContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
 offset_left = 1577.0

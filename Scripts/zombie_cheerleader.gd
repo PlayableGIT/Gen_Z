@@ -9,11 +9,13 @@ var survivor_attack_cooldown = true
 var door_in_range = false
 # Statystyki zombie
 @export var speed = 250.0
+
 @export var health = 20
 var zombie_alive = true
 var zombie_damage: int = 5
 var ground_hit = true
 var surv_in_range_gun = false
+
 
 var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
@@ -57,6 +59,7 @@ func moveCharacter():
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
+
 	velocity = Vector2(velocity.x, 0)
 	if direction.normalized() <= Vector2(0, 0):
 		$Sprite2D.set_flip_h(true)
@@ -90,6 +93,7 @@ func survivor_attack():
 
 func zombie():
 	pass
+
 
 func blood_splatter():
 	var splat_x = rng.randf_range(-50.0, 50.0)
@@ -126,6 +130,7 @@ func set_Health_bar() -> void:
 	$HealthBar.value = health
 
 
+
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("survivor"):
 		print("1")
@@ -146,3 +151,4 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
+

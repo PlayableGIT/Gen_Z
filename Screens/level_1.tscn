@@ -1,5 +1,5 @@
-[gd_scene load_steps=77 format=4 uid="uid://5ob1gavue2c6"]
 
+[gd_scene load_steps=77 format=4 uid="uid://5ob1gavue2c6"]
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
 [ext_resource type="PackedScene" uid="uid://ctw0l4niaqlaf" path="res://scenes/dead_survivor.tscn" id="3_unjmq"]
@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://c60yxpyucdsfe" path="res://scenes/zombie_tank.tscn" id="8_gnoq2"]
 [ext_resource type="PackedScene" uid="uid://g330a3qiglye" path="res://scenes/zombie_runner.tscn" id="9_6melg"]
 [ext_resource type="PackedScene" uid="uid://bn8vnivdwoql7" path="res://scenes/survivor.tscn" id="10_ybt86"]
-[ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://Screens/camera_2d.tscn" id="11_mkyb8"]
+
+[ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://scenes/camera_2d.tscn" id="11_mkyb8"]
 [ext_resource type="PackedScene" uid="uid://b4hkoudud0uol" path="res://scenes/mutation.tscn" id="12_au2uv"]
+
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="12_iv56h"]
 [ext_resource type="PackedScene" uid="uid://djy6hn27us52n" path="res://scenes/mutated_zombie.tscn" id="12_lebb7"]
 [ext_resource type="Script" path="res://Scripts/camera_2d_level1.gd" id="12_yvlgm"]
