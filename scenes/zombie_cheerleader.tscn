@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmp706pm7hqqk"]
+[gd_scene load_steps=14 format=3 uid="uid://bmp706pm7hqqk"]
 
 [ext_resource type="Script" path="res://Scripts/zombie_cheerleader.gd" id="1_6h8yu"]
 [ext_resource type="Texture2D" uid="uid://bwf6iuqcoqa4w" path="res://textures/cheerleader_zombie.png" id="2_6wpsq"]
@@ -31,6 +31,11 @@ point_count = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xanv8"]
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
+[sub_resource type="Curve" id="Curve_irr72"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="ZombieCheerleader" type="CharacterBody2D" groups=["zombie"]]
 z_index = 2
 script = ExtResource("1_6h8yu")
@@ -42,16 +47,16 @@ texture = ExtResource("2_6wpsq")
 shape = SubResource("CapsuleShape2D_708ik")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 scale = Vector2(0.705, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1.5, -1)
+scale = Vector2(1.17, 1.54)
 shape = SubResource("RectangleShape2D_lm4jf")
 debug_color = Color(0.996896, 0, 0.318943, 0.42)
 
 [node name="BulletZone" type="Area2D" parent="."]
-visible = false
+scale = Vector2(1.395, 1.595)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulletZone"]
 position = Vector2(-0.666668, -0.666667)
@@ -139,8 +144,33 @@ offset_top = -196.0
 offset_right = 50.0
 offset_bottom = -169.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_xanv8")
-max_value = 10.0
+max_value = 20.0
 step = 1.0
 show_percentage = false
 
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(5.33333, -29.3333)
+emitting = false
+amount = 100
+lifetime = 0.3
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.75
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.183655, 0.691406, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_irr72")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

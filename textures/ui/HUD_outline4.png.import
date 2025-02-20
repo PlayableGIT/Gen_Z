@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2rbt30ka5qxv"
-path="res://.godot/imported/HUD_outline.png-abd10c70d8348925f35753f38cd55fbb.ctex"
+uid="uid://4no3y0ejkqpa"
+path="res://.godot/imported/HUD_outline4.png-1b3068fb68904eefbe8ef22b4ff9cd46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/UI/HUD_outline.png"
-dest_files=["res://.godot/imported/HUD_outline.png-abd10c70d8348925f35753f38cd55fbb.ctex"]
+source_file="res://textures/ui/HUD_outline4.png"
+dest_files=["res://.godot/imported/HUD_outline4.png-1b3068fb68904eefbe8ef22b4ff9cd46.ctex"]
 
 [params]
 

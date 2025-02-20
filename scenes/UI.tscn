@@ -9,11 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://b10fkfr4fq3bv" path="res://audio/UI/skill_tree_button.png" id="5_se324"]
 [ext_resource type="Texture2D" uid="uid://kpxgejul63tx" path="res://audio/UI/skill_tree_button_pressed.png" id="6_wp1dr"]
 [ext_resource type="Texture2D" uid="uid://cj06lm3mt4sip" path="res://audio/UI/skill_tree_button_hover.png" id="7_opn0r"]
+
 [ext_resource type="Theme" uid="uid://dur8rnt6mmf6j" path="res://textures/UI_theme.tres" id="10_kj782"]
 [ext_resource type="Texture2D" uid="uid://dnf7d1jmsvc0u" path="res://textures/casual_zombie_icon.png" id="11_3q0e2"]
 [ext_resource type="Texture2D" uid="uid://bofbf7qeeklkt" path="res://textures/cheerleader_zombie_icon.png" id="12_y35yt"]
 [ext_resource type="AudioStream" uid="uid://3wo8bw8sspmy" path="res://audio/hitHurt.wav" id="13_i625s"]
 [ext_resource type="Texture2D" uid="uid://1bybxc7krbwj" path="res://textures/no_zombie_icon.png" id="14_uokjo"]
+
+[ext_resource type="Texture2D" uid="uid://cqccivd55f7ip" path="res://textures/pause_icon.png" id="15_r8mbt"]
+[ext_resource type="Texture2D" uid="uid://kintf24t2chq" path="res://textures/play_icon.png" id="16_n2nnr"]
+[ext_resource type="Texture2D" uid="uid://buc5qkyedyvt0" path="res://textures/slow_icon.png" id="17_dsecx"]
+[ext_resource type="AudioStream" uid="uid://7ivqetgggtkk" path="res://audio/UI/slow.mp3" id="18_8uuik"]
+[ext_resource type="AudioStream" uid="uid://by66t8g1evkhk" path="res://audio/UI/slow_to_play.mp3" id="19_neiul"]
+[ext_resource type="AudioStream" uid="uid://irpgkw28seyi" path="res://audio/UI/buzz.mp3" id="20_krwel"]
+
 
 [sub_resource type="SystemFont" id="SystemFont_plpnl"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
@@ -40,13 +49,18 @@ outline_size = 30
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kxpki"]
-font_size = 56
+font_size = 71
+
 outline_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_l1ot6"]
 font_names = PackedStringArray("8-bit Limit (BRK)")
 subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uy8f6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vyrfg"]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 2
@@ -144,22 +158,29 @@ texture_hover = ExtResource("7_opn0r")
 stream = ExtResource("3_t54s5")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = 67.0
-offset_top = 120.0
-offset_right = 1441.0
-offset_bottom = 415.0
-scale = Vector2(0.472448, 0.472448)
+offset_left = 463.0
+offset_top = 21.0
+offset_right = 1517.0
+offset_bottom = 988.0
+scale = Vector2(0.256841, 0.256841)
 theme = ExtResource("10_kj782")
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 60
 theme_override_constants/v_separation = 0
-columns = 3
+columns = 2
+
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/GridContainer"]
 layout_mode = 2
 texture = ExtResource("11_3q0e2")
+expand_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("12_y35yt")
+
 expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/GridContainer"]
@@ -185,13 +206,14 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "Cost: 2 Necroplasm   
-"
+
+text = "Cost: 2 Necro"
 label_settings = SubResource("LabelSettings_kxpki")
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="PanelContainer/GridContainer/VBoxContainer"]
 layout_mode = 2
+
 
 [node name="Button" type="Button" parent="PanelContainer/GridContainer"]
 layout_mode = 2
@@ -206,6 +228,7 @@ text = "CHOOSE"
 layout_mode = 2
 texture = ExtResource("12_y35yt")
 expand_mode = 3
+
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/GridContainer"]
 layout_mode = 2
@@ -230,13 +253,23 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "Cost: 4 Necroplasm   
-"
+
+text = "Cost: 4 Necroplasm"
 label_settings = SubResource("LabelSettings_kxpki")
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("10_kj782")
+theme_type_variation = &"FlatButton"
+theme_override_constants/outline_size = 44
+theme_override_fonts/font = SubResource("SystemFont_l1ot6")
+theme_override_font_sizes/font_size = 97
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uy8f6")
+text = "CHOOSE"
 
 [node name="Button2" type="Button" parent="PanelContainer/GridContainer"]
 layout_mode = 2
@@ -244,8 +277,14 @@ theme = ExtResource("10_kj782")
 theme_type_variation = &"FlatButton"
 theme_override_constants/outline_size = 44
 theme_override_fonts/font = SubResource("SystemFont_l1ot6")
-theme_override_font_sizes/font_size = 137
+
+theme_override_font_sizes/font_size = 97
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vyrfg")
 text = "CHOOSE"
+
+[node name="Label6" type="Label" parent="PanelContainer/GridContainer"]
+layout_mode = 2
+
 
 [node name="button_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_i625s")
@@ -263,6 +302,79 @@ mouse_filter = 2
 layout_mode = 2
 texture = ExtResource("14_uokjo")
 
+
 [connection signal="pressed" from="zombie_choice/TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="PanelContainer/GridContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
+offset_left = 1577.0
+offset_top = 18.0
+offset_right = 1675.0
+offset_bottom = 136.0
+scale = Vector2(0.710885, 0.710885)
+
+[node name="pause_button" type="Button" parent="AspectRatioContainer2"]
+layout_mode = 2
+icon = ExtResource("15_r8mbt")
+flat = true
+
+[node name="AspectRatioContainer3" type="AspectRatioContainer" parent="."]
+offset_left = 1807.0
+offset_top = 18.0
+offset_right = 1907.0
+offset_bottom = 136.0
+scale = Vector2(0.710885, 0.710885)
+
+[node name="play_button" type="Button" parent="AspectRatioContainer3"]
+layout_mode = 2
+icon = ExtResource("16_n2nnr")
+flat = true
+
+[node name="AspectRatioContainer4" type="AspectRatioContainer" parent="."]
+offset_left = 1686.0
+offset_top = 15.0
+offset_right = 1786.0
+offset_bottom = 133.0
+scale = Vector2(0.770141, 0.770141)
+
+[node name="slow_button" type="Button" parent="AspectRatioContainer4"]
+layout_mode = 2
+icon = ExtResource("17_dsecx")
+flat = true
+
+[node name="slow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_8uuik")
+
+[node name="slow_to_play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_neiul")
+
+[node name="buzz" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_krwel")
+volume_db = -8.376
+pitch_scale = 1.48
+
+[connection signal="mouse_entered" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="zombie_choice/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="zombie_choice/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="mouse_entered" from="skill_tree/TextureButton" to="." method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="skill_tree/TextureButton" to="." method="_on_texture_button_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/GridContainer" to="." method="_on_grid_container_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/GridContainer" to="." method="_on_grid_container_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/GridContainer/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/GridContainer/Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/GridContainer/Button2" to="." method="_on_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/GridContainer/Button2" to="." method="_on_button_2_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="mouse_entered" from="AspectRatioContainer/TextureRect" to="." method="_on_texture_rect_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer/TextureRect" to="." method="_on_texture_rect_mouse_exited"]
+[connection signal="mouse_entered" from="AspectRatioContainer2/pause_button" to="." method="_on_pause_button_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer2/pause_button" to="." method="_on_pause_button_mouse_exited"]
+[connection signal="pressed" from="AspectRatioContainer2/pause_button" to="." method="_on_pause_button_pressed"]
+[connection signal="mouse_entered" from="AspectRatioContainer3/play_button" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer3/play_button" to="." method="_on_play_button_mouse_exited"]
+[connection signal="pressed" from="AspectRatioContainer3/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="AspectRatioContainer4/slow_button" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_exited" from="AspectRatioContainer4/slow_button" to="." method="_on_play_button_mouse_exited"]
+[connection signal="pressed" from="AspectRatioContainer4/slow_button" to="." method="_on_slow_button_pressed"]

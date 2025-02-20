@@ -15,6 +15,15 @@ func _ready() -> void:
 func _process(delta):
 	# Wydrukuj bieżącą pozycję
 	#print(global_position)
+	if Engine.time_scale == 1:
+		MOVE_SPEED = 1500
+		SCROLL_SPEED = 3
+	if Engine.time_scale == 0.1:
+		MOVE_SPEED = 15000
+		SCROLL_SPEED = 30
+	if Engine.time_scale == 0.00001:
+		MOVE_SPEED = 150000000
+		SCROLL_SPEED = 300000
 
 	# Ruch w lewo
 	if Input.is_action_pressed("ui_left") and global_position.x > left_limit:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pktte8jbwj34"
-path="res://.godot/imported/zombie_choice_button_pressed.png-e168e981d0499583e7066019b82a08e6.ctex"
+uid="uid://cgwb2uxihfhjf"
+path="res://.godot/imported/mutation_anim4.png-95c6fbeebfc8bee0691789d220ef80ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/UI/zombie_choice_button_pressed.png"
-dest_files=["res://.godot/imported/zombie_choice_button_pressed.png-e168e981d0499583e7066019b82a08e6.ctex"]
+source_file="res://animations/mutation_anim/mutation_anim4.png"
+dest_files=["res://.godot/imported/mutation_anim4.png-95c6fbeebfc8bee0691789d220ef80ab.ctex"]
 
 [params]
 

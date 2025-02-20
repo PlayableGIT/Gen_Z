@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kpxgejul63tx"
-path="res://.godot/imported/skill_tree_button_pressed.png-4b906954c1c8893c9df2ff4402777676.ctex"
+uid="uid://ckdwcxxwh3yur"
+path="res://.godot/imported/mutation_anim3.png-dc5846cd84d8cf33fe4f7f5bb299db08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://audio/UI/skill_tree_button_pressed.png"
-dest_files=["res://.godot/imported/skill_tree_button_pressed.png-4b906954c1c8893c9df2ff4402777676.ctex"]
+source_file="res://animations/mutation_anim/mutation_anim3.png"
+dest_files=["res://.godot/imported/mutation_anim3.png-dc5846cd84d8cf33fe4f7f5bb299db08.ctex"]
 
 [params]
 
