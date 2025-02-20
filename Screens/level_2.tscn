@@ -1,15 +1,25 @@
-[gd_scene load_steps=41 format=4 uid="uid://dss6t08a8xcjo"]
+[gd_scene load_steps=51 format=4 uid="uid://dss6t08a8xcjo"]
 
-[ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://camera_2d.tscn" id="1_por2h"]
+[ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_o1hf0"]
+[ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://scenes/camera_2d.tscn" id="1_por2h"]
 [ext_resource type="Script" path="res://Scripts/camera_2d_level1.gd" id="2_d4t0h"]
-[ext_resource type="PackedScene" uid="uid://dglkeu878k08s" path="res://UI.tscn" id="3_qu0ny"]
+[ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="3_efsyf"]
+[ext_resource type="PackedScene" uid="uid://dglkeu878k08s" path="res://scenes/UI.tscn" id="3_qu0ny"]
 [ext_resource type="Texture2D" uid="uid://b1tkpjn23ngcx" path="res://textures/background1.png" id="4_078tp"]
+[ext_resource type="PackedScene" uid="uid://ctw0l4niaqlaf" path="res://scenes/dead_survivor.tscn" id="4_rirhu"]
+[ext_resource type="PackedScene" uid="uid://begstf8t0rriu" path="res://scenes/dead_zombie.tscn" id="5_mcxws"]
 [ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="5_u4slh"]
+[ext_resource type="PackedScene" uid="uid://b08q3j65fuwlo" path="res://scenes/dead_gun_survivor.tscn" id="6_b3vxd"]
 [ext_resource type="Texture2D" uid="uid://nlv0xu716042" path="res://textures/road5.png" id="6_lx2h7"]
+[ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://scenes/zombie.tscn" id="7_cac01"]
 [ext_resource type="Texture2D" uid="uid://chw7omvssxsyq" path="res://textures/level_2/metro_tile1.png" id="7_cmqgn"]
 [ext_resource type="Texture2D" uid="uid://dmtgrfsc6dkm3" path="res://textures/wall_02.png" id="8_8oxvl"]
+[ext_resource type="PackedScene" uid="uid://bmp706pm7hqqk" path="res://scenes/zombie_cheerleader.tscn" id="8_bw7dl"]
 [ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_qbrxu"]
+[ext_resource type="PackedScene" uid="uid://c60yxpyucdsfe" path="res://scenes/zombie_tank.tscn" id="9_rqew5"]
 [ext_resource type="Texture2D" uid="uid://k886l7cr1baq" path="res://textures/level_2/metro_tile2.png" id="10_gd1ox"]
+[ext_resource type="PackedScene" uid="uid://g330a3qiglye" path="res://scenes/zombie_runner.tscn" id="10_ioyfq"]
+[ext_resource type="PackedScene" uid="uid://bn8vnivdwoql7" path="res://scenes/survivor.tscn" id="11_kvlph"]
 [ext_resource type="Texture2D" uid="uid://gue6d1ai1w1q" path="res://textures/level_2/train.png" id="11_uej0g"]
 [ext_resource type="Texture2D" uid="uid://dj0s3ajpyc7ld" path="res://textures/level_2/metro_understairs.png" id="12_oh8es"]
 [ext_resource type="Texture2D" uid="uid://cbma8q1lock3u" path="res://textures/level_2/metro_sign.png" id="13_cj7me"]
@@ -587,6 +597,17 @@ b = Vector2(58.3979, 22.6667)
 size = Vector2(6578.71, 1812.58)
 
 [node name="level_2" type="Node2D"]
+script = ExtResource("1_o1hf0")
+ui = ExtResource("3_qu0ny")
+destroyed_door = ExtResource("3_efsyf")
+dead_survivor = ExtResource("4_rirhu")
+dead_zombie = ExtResource("5_mcxws")
+dead_gun_survivor = ExtResource("6_b3vxd")
+zombie = ExtResource("7_cac01")
+cheerleader_zombie = ExtResource("8_bw7dl")
+tank_zombie = ExtResource("9_rqew5")
+runner_zombie = ExtResource("10_ioyfq")
+survivor = ExtResource("11_kvlph")
 
 [node name="Camera2D" parent="." instance=ExtResource("1_por2h")]
 z_index = 75
@@ -676,28 +697,16 @@ shape = SubResource("SegmentShape2D_2hm8i")
 position = Vector2(3500.78, -98)
 shape = SubResource("SegmentShape2D_au7v1")
 
-[node name="Train" type="Sprite2D" parent="Ground/Ground"]
-z_index = 1
-position = Vector2(2108.53, 439.333)
-scale = Vector2(2.16553, 2.16553)
-texture = ExtResource("11_uej0g")
-
 [node name="Train2" type="Sprite2D" parent="Ground/Ground"]
 z_index = 1
-position = Vector2(2119.9, 439.333)
-scale = Vector2(2.16553, 2.16553)
+position = Vector2(1730.23, 405.333)
+scale = Vector2(3.13117, 3.13117)
 texture = ExtResource("11_uej0g")
 
 [node name="Train3" type="Sprite2D" parent="Ground/Ground"]
 z_index = 1
-position = Vector2(3766.41, 439.333)
-scale = Vector2(2.16553, 2.16553)
-texture = ExtResource("11_uej0g")
-
-[node name="Train4" type="Sprite2D" parent="Ground/Ground"]
-z_index = 1
-position = Vector2(5407.75, 439.333)
-scale = Vector2(2.16553, 2.16553)
+position = Vector2(4095.61, 405.333)
+scale = Vector2(3.13117, 3.13117)
 texture = ExtResource("11_uej0g")
 
 [node name="MetroUnderstairs" type="Sprite2D" parent="Ground/Ground"]
@@ -715,8 +724,8 @@ flip_h = true
 
 [node name="MetroSign" type="Sprite2D" parent="Ground"]
 z_index = 2
-position = Vector2(3394, 219.333)
-scale = Vector2(3.81975, 3.81975)
+position = Vector2(3490, 83.3333)
+scale = Vector2(6.52568, 6.52568)
 texture = ExtResource("13_cj7me")
 
 [node name="STATS_AUTOLOAD" type="Node" parent="."]

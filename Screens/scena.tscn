@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://g330a3qiglye" path="res://scenes/zombie_runner.tscn" id="9_ivaxf"]
 [ext_resource type="Texture2D" uid="uid://bgr5bx5rpubye" path="res://textures/wall_back_01.png" id="9_yn6ji"]
 [ext_resource type="PackedScene" uid="uid://e2tuks0xkssw" path="res://scenes/door.tscn" id="10_32u3u"]
-[ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://camera_2d.tscn" id="11_5sajr"]
+[ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://scenes/camera_2d.tscn" id="11_5sajr"]
 [ext_resource type="Script" path="res://Screens/platform.gd" id="14_su7un"]
 [ext_resource type="PackedScene" uid="uid://ds6rqlj7kkbbm" path="res://scenes/survivor_gun.tscn" id="14_y5qxa"]
 [ext_resource type="Script" path="res://Scripts/stats_autoload.gd" id="15_mpmtg"]
