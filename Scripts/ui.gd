@@ -62,7 +62,7 @@ func _on_button_2_pressed() -> void:
 	$AspectRatioContainer/TextureRect.texture = load("res://textures/cheerleader_zombie_icon.png")
 	if $"..".is_in_group("casual_zombie"):
 		$"..".remove_from_group("casual_zombie")
-  ui_mouse_lock.emit(true)
+	ui_mouse_lock.emit(true)
 
 
 
