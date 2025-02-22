@@ -52,7 +52,7 @@ func _ready() -> void:
 	survivor_death.connect(surv_death)
 	level_complete.connect(level_comp)
 	await get_tree().create_timer(2.0).timeout
-	lightning()
+	#lightning()
 func _process(delta):
 	mutation_array = get_tree().get_nodes_in_group("mutation")
 	#print(get_tree().get_nodes_in_group("mutation"))
@@ -266,17 +266,6 @@ func zomb_tank_death(a):
 	$Zombie_Tank_Death.global_position = sound_position
 	$Zombie_Tank_Death.play()
 	
-func lightning():
-	$lightning_timer.wait_time = rng.randf_range(10.0, 20.0)
-	$lightning_timer.start()
-	$Node/DirectionalLight2D.energy = 0.2
-	$lightning.play()
-	await get_tree().create_timer(0.229).timeout
-	$Node/DirectionalLight2D.energy = 0.4
-	await get_tree().create_timer(0.1).timeout
-	$Node/DirectionalLight2D.energy = 0.25
-	await get_tree().create_timer(0.229).timeout
-	$Node/DirectionalLight2D.energy = 0.97
 	
 func _on_child_exiting_tree(node: Node) -> void:
 	var rng_x = rng.randf_range(-50.0, 50.0)
@@ -381,10 +370,6 @@ func _on_child_entered_tree(node: Node) -> void:
 
 func _on_zombie_respawn_2_timeout() -> void:
 	$respawn_bar.visible = false
-
-
-func _on_lightning_timer_timeout() -> void:
-	lightning()
 
 
 func pauseMenu():
