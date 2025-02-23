@@ -556,6 +556,26 @@ right_limit = 6000.0
 
 [node name="HUD" parent="Camera2D" instance=ExtResource("13_mcrwt")]
 
+[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="Camera2D/HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = 240.0
+offset_right = -72.9999
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.50391, 3.50391)
+size_flags_horizontal = 4
+
+[node name="Tutorial" type="Button" parent="Camera2D/HUD/AspectRatioContainer5"]
+layout_mode = 2
+text = "MAIN MENU"
+vertical_icon_alignment = 2
+
 [node name="Ground" type="Node2D" parent="."]
 scale = Vector2(1.5, 1.5)
 
@@ -1196,6 +1216,9 @@ position = Vector2(2897, -231)
 scale = Vector2(2.32692, 2.23793)
 texture = ExtResource("43_xisgc")
 
+[node name="lvl_complete_timer" type="Timer" parent="."]
+wait_time = 3.775
+
 [node name="Table" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(3747, -114)
@@ -1284,8 +1307,11 @@ script = ExtResource("55_bqy5u")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="button_down" from="Camera2D/HUD/AspectRatioContainer5/Tutorial" to="STATS_AUTOLOAD" method="_on_tutorial_button_down"]
+[connection signal="pressed" from="Camera2D/HUD/AspectRatioContainer5/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="timeout" from="zombie_respawn" to="." method="_on_zombie_respawn_timeout"]
 [connection signal="timeout" from="zombie_respawn2" to="." method="_on_zombie_respawn_2_timeout"]
 [connection signal="mouse_entered" from="spawn_restriction" to="." method="_on_spawn_restriction_mouse_entered"]
 [connection signal="mouse_exited" from="spawn_restriction" to="." method="_on_spawn_restriction_mouse_exited"]
 [connection signal="timeout" from="lightning_timer" to="." method="_on_lightning_timer_timeout"]
+[connection signal="timeout" from="lvl_complete_timer" to="." method="_on_lvl_complete_timer_timeout"]

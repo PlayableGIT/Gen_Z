@@ -343,6 +343,7 @@ func _on_child_exiting_tree(node: Node) -> void:
 		destroy_survivor_gun.position = node.position
 
 func level_comp():
+	$lvl_complete_timer.start()
 	$Camera2D/HUD/LC_cont/level_complete.visible = true
 	level_fade = true
 	$Camera2D/HUD/level_complete_sound.play()
@@ -396,3 +397,12 @@ func pauseMenu():
 		Engine.time_scale = 0
 		
 	paused = !paused
+
+
+func _on_lvl_complete_timer_timeout() -> void:
+	$Camera2D/HUD/AspectRatioContainer5/Tutorial.visible = true
+
+
+func _on_tutorial_pressed() -> void:
+	get_tree().change_scene_to_file("res://Screens/Main_menu.tscn")
+	
