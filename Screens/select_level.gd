@@ -7,20 +7,19 @@ func _ready() -> void:
 	pass
 
 
-#func _on_tutorial_pressed() -> void:
-	pass # Replace with function body.
-
-
 func _on_level_1_pressed() -> void:
 	$Button_Sound.play()
 	await get_tree().create_timer(0.229).timeout
 	Loader.change_level("res://Screens/level_1.tscn")
-	
-#func _on_level_2_pressed() -> void:
-	pass # Replace with function body.
 
+func _on_level_2_pressed() -> void:
+	$Button_Sound.play()
+	await get_tree().create_timer(0.229).timeout
+	Loader.change_level("res://Screens/level_2.tscn")
 
 func _on_back_pressed() -> void:
 	$Button_Sound.play()
 	await get_tree().create_timer(0.229).timeout
-	get_tree().change_scene_to_file("res://Screens/Main_menu.tscn")
+	#get_tree().change_scene_to_file("res://Screens/Main_menu.tscn")
+	$".".visible = false
+	$"../VBoxContainer".visible = true

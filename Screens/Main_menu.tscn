@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsb00t0lfytl"]
+[gd_scene load_steps=8 format=3 uid="uid://dsb00t0lfytl"]
 
 [ext_resource type="Script" path="res://Screens/main_menu.gd" id="1_13ad3"]
 [ext_resource type="AudioStream" uid="uid://bpwxuhd54dhwe" path="res://audio/ambient/Echoes of Desolation.mp3" id="2_d5k2u"]
 [ext_resource type="AudioStream" uid="uid://dslu3bcl2y3ux" path="res://audio/UI/button_click.wav" id="3_a6ibg"]
 [ext_resource type="VideoStream" path="res://audio/genz_menu.ogv" id="4_qgdlf"]
+[ext_resource type="PackedScene" uid="uid://dtqyimi6x4qnp" path="res://Screens/select_level.tscn" id="5_mojxu"]
 
 [sub_resource type="SystemFont" id="SystemFont_mpw5p"]
 font_names = PackedStringArray("RBNo3.1")
@@ -90,5 +91,15 @@ autoplay = true
 expand = true
 loop = true
 
+[node name="Select_level" parent="." instance=ExtResource("5_mojxu")]
+visible = false
+layout_mode = 1
+offset_left = -517.0
+offset_top = -86.0
+offset_right = -517.0
+offset_bottom = -86.0
+scale = Vector2(1.58092, 1.58092)
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="finished" from="Menu_Ambient" to="." method="_on_menu_ambient_finished"]

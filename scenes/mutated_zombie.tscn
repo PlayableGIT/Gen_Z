@@ -1,0 +1,300 @@
+[gd_scene load_steps=27 format=3 uid="uid://djy6hn27us52n"]
+
+[ext_resource type="Script" path="res://mutated_zombie.gd" id="1_xutb3"]
+[ext_resource type="Texture2D" uid="uid://b4ti8wiuowku7" path="res://animations/zombie1_attack/zombie_attack6.png" id="2_ynbdr"]
+[ext_resource type="Texture2D" uid="uid://cy446at4m57xd" path="res://animations/zombie1_attack/zombie_attack7.png" id="3_n8iaf"]
+[ext_resource type="Texture2D" uid="uid://cloeilsxd0225" path="res://animations/zombie1_attack/zombie_attack8.png" id="4_bl5hc"]
+[ext_resource type="Texture2D" uid="uid://cn4q366721di" path="res://animations/zombie1_attack/zombie_attack4.png" id="5_2b5oq"]
+[ext_resource type="Texture2D" uid="uid://p5u6t0t3l6hj" path="res://animations/zombie1_attack/zombie_attack5.png" id="6_atk2v"]
+[ext_resource type="Texture2D" uid="uid://cqk37qyu6nmpi" path="res://animations/zombie1_anim/zombie1_anim2.png" id="7_x75qm"]
+[ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="8_3qbe2"]
+[ext_resource type="Texture2D" uid="uid://c00ttn4dcf4q7" path="res://animations/zombie1_anim/zombie1_anim3.png" id="9_7a6cs"]
+[ext_resource type="Texture2D" uid="uid://dtr0i7duttcpx" path="res://animations/zombie1_anim/zombie1_anim4.png" id="10_5ld3n"]
+[ext_resource type="Texture2D" uid="uid://jyqhpmhwhsj7" path="res://animations/zombie1_anim/zombie1_anim5.png" id="11_nchhr"]
+[ext_resource type="Texture2D" uid="uid://bry3usdvkvc4p" path="res://animations/zombie1_anim/zombie1_anim6.png" id="12_4y23x"]
+[ext_resource type="Texture2D" uid="uid://dj1rb0nphoskk" path="res://animations/zombie1_anim/zombie1_anim7.png" id="13_odmr4"]
+[ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="14_kirya"]
+[ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="15_j8e0b"]
+[ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="16_by4ti"]
+[ext_resource type="Texture2D" uid="uid://lpdeovgcmrcl" path="res://textures/light2.png" id="17_ap627"]
+[ext_resource type="AudioStream" uid="uid://cex37fk42mf1i" path="res://audio/zombie/mutation_burst_sound.mp3" id="21_8qwjx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_23mal"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ynbdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n8iaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bl5hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2b5oq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_atk2v")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_x75qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3qbe2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7a6cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x75qm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3qbe2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x75qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7a6cs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5ld3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nchhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4y23x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_odmr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nchhr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isef0"]
+radius = 71.1667
+height = 211.333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5dq6"]
+size = Vector2(207, 212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg5bs"]
+size = Vector2(57.3333, 210.667)
+
+[sub_resource type="Curve" id="Curve_tf80p"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anly1"]
+bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
+
+[sub_resource type="Gradient" id="Gradient_aj5bm"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b5a76"]
+gradient = SubResource("Gradient_aj5bm")
+
+[node name="Mutated_Zombie" type="CharacterBody2D"]
+z_index = 3
+scale = Vector2(1.67659, 1.67659)
+script = ExtResource("1_xutb3")
+
+[node name="Zombie03" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.33333, -2)
+sprite_frames = SubResource("SpriteFrames_23mal")
+animation = &"attack"
+autoplay = "walk"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("CapsuleShape2D_isef0")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.705, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, -1)
+shape = SubResource("RectangleShape2D_c5dq6")
+debug_color = Color(0.996896, 0, 0.318943, 0.42)
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="BulletZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletZone"]
+position = Vector2(-0.666668, -0.666667)
+scale = Vector2(2.69, 1)
+shape = SubResource("RectangleShape2D_dg5bs")
+
+[node name="zombie_walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_kirya")
+volume_db = -5.845
+pitch_scale = 0.92
+max_distance = 800.0
+bus = &"Environment"
+
+[node name="zombie_hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_j8e0b")
+volume_db = -10.182
+bus = &"Environment"
+
+[node name="zombie_attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_by4ti")
+bus = &"Environment"
+
+[node name="ground_hit" type="CPUParticles2D" parent="."]
+position = Vector2(-10, 103.333)
+emitting = false
+amount = 181
+lifetime = 0.3
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.78
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(85.435, 1)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+scale_amount_min = 4.0
+scale_amount_max = 10.0
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-10, 103.333)
+amount = 300
+lifetime = 0.15
+speed_scale = 0.5
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(58.68, 13.7)
+direction = Vector2(13.415, 0)
+spread = 165.45
+gravity = Vector2(0, -980)
+initial_velocity_max = 120.28
+radial_accel_min = -1.25
+radial_accel_max = 21.15
+tangential_accel_max = 100.0
+scale_amount_max = 4.0
+
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(5.33333, -29.3333)
+emitting = false
+amount = 100
+lifetime = 0.3
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.75
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.183655, 0.691406, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_tf80p")
+
+[node name="mutation_burst" type="CPUParticles2D" parent="."]
+z_index = -2
+position = Vector2(5.33333, -29.3333)
+emitting = false
+amount = 3335
+lifetime = 0.5
+one_shot = true
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 85.03
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 284.67
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.0189209, 0.605469, 0, 1)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 3
+offset_left = -55.0
+offset_top = -124.0
+offset_right = 55.0
+offset_bottom = -107.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_anly1")
+max_value = 90.0
+step = 1.0
+show_percentage = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(38.558, -71.82)
+color = Color(1, 0.5625, 0, 1)
+energy = 1.5
+texture = ExtResource("17_ap627")
+texture_scale = 0.05
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(60.6667, -72)
+color = Color(1, 0.560784, 0, 1)
+energy = 1.5
+texture = ExtResource("17_ap627")
+texture_scale = 0.05
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+z_index = 1
+position = Vector2(0, 54.6667)
+rotation = 1.57079
+scale = Vector2(4.74903, 6.81979)
+color = Color(0.0429688, 1, 0, 1)
+energy = 2.0
+range_layer_min = -2
+texture = SubResource("GradientTexture2D_b5a76")
+texture_scale = 0.33
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-25.6473, 103.782)
+amount = 78
+lifetime = 2.8
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(66.82, 1)
+gravity = Vector2(0, -100)
+scale_amount_min = 4.85
+scale_amount_max = 4.85
+color = Color(0.671875, 0.503906, 0, 1)
+
+[node name="mutation_burst_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_8qwjx")
+volume_db = -5.091
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]
+[connection signal="finished" from="zombie_walk" to="." method="_on_zombie_walk_finished"]

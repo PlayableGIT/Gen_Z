@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://depkc7imbq01r"]
+
+[ext_resource type="Script" path="res://Scripts/necroplasm.gd" id="1_yuye1"]
+
+[node name="necroplasm" type="Node" groups=["necroplasm"]]
+script = ExtResource("1_yuye1")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://g330a3qiglye"]
 
-[ext_resource type="Script" path="res://scenes/zombie_runner.gd" id="1_ol277"]
+[ext_resource type="Script" path="res://Scripts/zombie_runner.gd" id="1_ol277"]
 [ext_resource type="Texture2D" uid="uid://cdt0md1qoh0my" path="res://textures/zombie_runner.png" id="1_wrkf6"]
 [ext_resource type="AudioStream" uid="uid://clwib4omk4xvt" path="res://audio/zombie_runner/zombie_runner_walk.mp3" id="3_4ccts"]
 [ext_resource type="AudioStream" uid="uid://hx5e24a7cf5t" path="res://audio/zombie_runner/zombie_runner_hurt.mp3" id="4_g5ql8"]

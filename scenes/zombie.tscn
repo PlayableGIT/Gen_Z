@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dlnfoe38vgqp"]
+[gd_scene load_steps=31 format=3 uid="uid://dlnfoe38vgqp"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_nufbr"]
 [ext_resource type="Texture2D" uid="uid://b8pq6qidjnu7s" path="res://animations/zombie1_anim/zombie1_anim1.png" id="2_rrkpq"]
@@ -17,6 +17,9 @@
 [ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="15_tijjp"]
 [ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="16_v51ls"]
 [ext_resource type="Texture2D" uid="uid://lpdeovgcmrcl" path="res://textures/light2.png" id="17_l56oj"]
+[ext_resource type="Texture2D" uid="uid://r51kilfopumw" path="res://textures/ui/mutation_icon1.png" id="18_78jj1"]
+[ext_resource type="Texture2D" uid="uid://w60pc6pe8qvp" path="res://textures/ui/mutation_icon3.png" id="19_elnpd"]
+[ext_resource type="Texture2D" uid="uid://cecosvvtpix5n" path="res://textures/ui/mutation_icon2.png" id="20_xcpny"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_il1rs"]
 animations = [{
@@ -105,10 +108,15 @@ point_count = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj756"]
 bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 
-[sub_resource type="Gradient" id="Gradient_aj5bm"]
+[sub_resource type="Gradient" id="Gradient_wg8ny"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vavqd"]
-gradient = SubResource("Gradient_aj5bm")
+gradient = SubResource("Gradient_wg8ny")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_14k1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1i0li"]
+size = Vector2(105.333, 213.333)
 
 [node name="Zombie" type="CharacterBody2D" groups=["zombie"]]
 z_index = 3
@@ -254,10 +262,82 @@ range_layer_min = -2
 texture = SubResource("GradientTexture2D_vavqd")
 texture_scale = 0.33
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -78.0
+offset_top = -111.0
+offset_right = -58.0
+offset_bottom = -81.0
+scale = Vector2(7.45589, 7.15616)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_14k1d")
+disabled = true
+flat = true
+
+[node name="Control2" type="Control" parent="."]
+z_index = 6
+layout_mode = 3
+anchors_preset = 0
+offset_left = 11.3333
+offset_top = -227.333
+offset_right = 649.333
+offset_bottom = 416.667
+scale = Vector2(0.136084, 0.136084)
+
+[node name="TextureButton" type="TextureButton" parent="Control2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("18_78jj1")
+texture_pressed = ExtResource("19_elnpd")
+texture_hover = ExtResource("20_xcpny")
+
+[node name="Control3" type="Control" parent="."]
+z_index = 6
+layout_mode = 3
+anchors_preset = 0
+offset_left = -96.6667
+offset_top = -227.333
+offset_right = 541.333
+offset_bottom = 416.667
+scale = Vector2(0.136084, 0.136084)
+
+[node name="left_mutation" type="TextureButton" parent="Control3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("18_78jj1")
+texture_pressed = ExtResource("19_elnpd")
+texture_hover = ExtResource("20_xcpny")
+
+[node name="right_skillzone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_skillzone"]
+position = Vector2(130, -1.33333)
+shape = SubResource("RectangleShape2D_1i0li")
+debug_color = Color(0.7, 0, 0, 0.42)
+
+[node name="left_skillzone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_skillzone"]
+position = Vector2(-131.333, -1.33333)
+shape = SubResource("RectangleShape2D_1i0li")
+debug_color = Color(0.7, 0, 0, 0.42)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="mouse_shape_entered" from="Area2D" to="." method="_on_area_2d_mouse_shape_entered"]
-[connection signal="mouse_shape_exited" from="Area2D" to="." method="_on_area_2d_mouse_shape_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]
 [connection signal="finished" from="zombie_walk" to="." method="_on_zombie_walk_finished"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control2/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Control3/left_mutation" to="." method="_on_left_mutation_pressed"]
+[connection signal="body_entered" from="right_skillzone" to="." method="_on_right_skillzone_body_entered"]
+[connection signal="body_exited" from="right_skillzone" to="." method="_on_right_skillzone_body_exited"]
+[connection signal="body_entered" from="left_skillzone" to="." method="_on_left_skillzone_body_entered"]
+[connection signal="body_exited" from="left_skillzone" to="." method="_on_left_skillzone_body_exited"]

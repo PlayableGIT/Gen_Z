@@ -8,8 +8,8 @@ var survivor_attack_cooldown = true
 # Zmienne drzwi
 var door_in_range = false
 # Statystyki zombie
-@export var speed = 250
-@export var health = 25
+@export var speed = 100
+@export var health = 30
 var zombie_alive = true
 var zombie_damage: int = 5
 var ground_hit = true
@@ -18,6 +18,9 @@ var xd = false
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	$PointLight2D3.visible = false
+	$Control2/TextureButton.visible = false
+	$Control3/left_mutation.visible = false
 	add_to_group("zombie")
 	var total_dice_sides = 7
 	$Zombie03.frame = randi() % total_dice_sides
@@ -31,8 +34,19 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	#grawitacja
-	var survivor = get_tree().get_nodes_in_group("survivor")
+	#print($".", "right: ", mut_cand_right.size())
+	#print($".", "left: ", mut_cand_left.size())
 	
+	if mut_cand_right.size() == 1 and mut_cand_left.size() == 0 and $Control2/TextureButton.visible == true:
+		$Control2/TextureButton.visible = true
+	else:
+		pass
+	if mut_cand_left.size() == 1 and mut_cand_right.size() == 0 and $Control2/TextureButton.visible == true:
+		$Control3/left_mutation.visible = true 
+	else:
+		pass
+
+	var survivor = get_tree().get_nodes_in_group("survivor")
 	if $Zombie03.flip_h == true:
 		add_to_group("left")
 		remove_from_group("right")
@@ -72,6 +86,7 @@ func moveCharacter():
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
+	velocity = Vector2(velocity.x, 0)
 	if direction.normalized() <= Vector2(0, 0):
 		$Zombie03.set_flip_h(true)
 	elif direction.normalized() >= Vector2(0, 0):
@@ -160,8 +175,62 @@ func set_Health_bar() -> void:
 	$HealthBar.value = health
 
 
-func _on_area_2d_mouse_shape_entered(_shape_idx) -> void:
-	$PointLight2D3.visible = true
+func _on_button_pressed() -> void:
+	print("toggle")
+	if $Control2/TextureButton.visible == false and mut_cand_right.size() > 0:
+		$Control2/TextureButton.visible = true
+		$PointLight2D3.visible = true
+	else:
+		$Control2/TextureButton.visible = false
+		$PointLight2D3.visible = false
+		
+	if $Control3/left_mutation.visible == false and mut_cand_left.size() > 0:
+		$Control3/left_mutation.visible = true
+		$PointLight2D3.visible = true
+	else:
+		$Control3/left_mutation.visible = false
+		$PointLight2D3.visible = false
 
-func _on_area_2d_mouse_shape_exited(_shape_idx) -> void:
-	$PointLight2D3.visible = false
+
+func _on_texture_button_pressed() -> void:
+	$".".add_to_group("mutation")
+	if mut_cand_right.size() > 0:
+		if mut_cand_right[0] != null:
+			mut_cand_right[0].add_to_group("mutation")
+			print("mutacja")
+
+func _on_left_mutation_pressed() -> void:
+	$".".add_to_group("mutation")
+	if mut_cand_left.size() > 0:
+		if mut_cand_left[0] != null:
+			mut_cand_left[0].add_to_group("mutation")
+			print("mutacja")
+
+var mut_cand_left: = []
+var mut_cand_right: = []
+func _on_right_skillzone_body_entered(body: Node2D) -> void:
+	if body.has_method("zombie"):
+		mut_cand_right.append(body)
+		print(body)
+		print("Prawa mutacja kandydat wszedł")
+
+
+func _on_right_skillzone_body_exited(body: Node2D) -> void:
+	if body.has_method("zombie"):
+		mut_cand_right.erase(body)
+		print(body)
+		print("Prawa mutacja kandydat wyszedł")
+
+
+func _on_left_skillzone_body_entered(body: Node2D) -> void:
+	if body.has_method("zombie"):
+		mut_cand_left.append(body)
+		print(body)
+		print("Lewa mutacja kandydat wszedł")
+
+
+func _on_left_skillzone_body_exited(body: Node2D) -> void:
+	if body.has_method("zombie"):
+		mut_cand_left.erase(body)
+		print(body)
+		print("Lewa mutacja kandydat wyszedł")

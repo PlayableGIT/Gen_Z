@@ -33,7 +33,7 @@ func _process(delta):
 	if Input.is_action_pressed("ui_down") and global_position.y < down_limit:
 		global_position.y += MOVE_SPEED * delta
 	
-	if Input.is_action_just_released("scroll_up") and $".".zoom.x < 1.5:
+	if Input.is_action_just_released("scroll_up") and $".".zoom.x < 1.1:
 		$".".zoom.x += delta*SCROLL_SPEED
 		$".".zoom.y += delta*SCROLL_SPEED
 	else:

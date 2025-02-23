@@ -7,6 +7,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_mpw5p"]
 font_names = PackedStringArray("RBNo3.1")
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_evfee"]
 font = SubResource("SystemFont_mpw5p")

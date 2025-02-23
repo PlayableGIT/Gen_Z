@@ -19,11 +19,12 @@ signal level_complete
 @export var tank_zombie: PackedScene
 @export var runner_zombie: PackedScene
 @export var survivor: PackedScene
+@export var mutated_casual_zombie: PackedScene
+@export var mutation: PackedScene
 @onready var pause_menu: = $CanvasLayer/PauseMenu
 var paused = false
 var nekro_stat = StatsAutoload.nekroplazma
 var nekro_cost = 0
-var zombie_count = 0
 var zombie_respawn = true
 var level_accomp = false
 var level_fade = false
@@ -32,13 +33,13 @@ var zombie_1 = false
 var zombie_2 = false
 var zombie_3 = false
 var zombie_4 = false
-
+var mutation_array: Array[Node] = []
 var rng = RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
 	$respawn_bar.value = 0
 	$respawn_bar.visible = false
-	var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+	var string = "Nekroplazma: " + str(nekro_stat)
 	$Camera2D/HUD/stats_cont/stats.text = string
 	$Camera2D/HUD/LC_cont/level_complete.modulate.a = 0
 	$Ambient.play()
@@ -53,6 +54,42 @@ func _ready() -> void:
 	await get_tree().create_timer(2.0).timeout
 	lightning()
 func _process(delta):
+	mutation_array = get_tree().get_nodes_in_group("mutation")
+	#print(get_tree().get_nodes_in_group("mutation"))
+	if mutation_array.size() == 2:
+		for node in mutation_array:
+			var global_pos = node.global_position
+			print(global_pos)
+		var mut1 = mutation_array[0]
+		var mut2 = mutation_array[1]
+		var pos1 = mut1.global_position.x
+		var pos2 = mut2.global_position.x
+		var glo_pos1 = mut1.global_position
+		print(pos1, pos2)
+		var closer_pos = 0
+		var furt_pos = 0
+		if pos1 > pos2:
+			closer_pos = pos1
+			furt_pos = pos2
+		if pos2 > pos1:
+			closer_pos = pos2
+			furt_pos = pos1
+		var dist_mut = furt_pos - closer_pos
+		var dist_mut_abs = abs(dist_mut)
+		print(dist_mut_abs)
+		if dist_mut_abs <= 380:
+			mut1.queue_free()
+			mut2.queue_free()
+			await get_tree().create_timer(1.0).timeout
+			var new_zombie = mutated_casual_zombie.instantiate()
+			new_zombie.position = glo_pos1 + Vector2(50, 0)
+			add_child(new_zombie)
+			zombie_spawn.emit(new_zombie.global_position)
+			nekro_stat -= 2
+			print("MUTTTACJA")
+		if dist_mut_abs >= 380:
+			print("ZA DALEKO KRUWA")
+	
 	if $Camera2D.is_in_group("mouse_lock"):
 		mouse_lock = true
 	if $Camera2D.is_in_group("mouse_lock") != true:
@@ -82,7 +119,7 @@ func _process(delta):
 	$respawn_bar.global_position = get_global_mouse_position()
 	var czas = $zombie_respawn2.wait_time - $zombie_respawn2.time_left
 	$respawn_bar.value = czas
-	var string1 = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+	var string1 = "Nekroplazma: " + str(nekro_stat)
 	$Camera2D/HUD/stats_cont/stats.text = string1
 	if level_fade == true:
 		$Camera2D/HUD/LC_cont/level_complete.modulate.a += 1 * delta
@@ -118,9 +155,8 @@ func _process(delta):
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_1 == true:
 		$zombie_respawn2.start()
 		$respawn_bar.visible = true
-		zombie_count += 1
 		nekro_stat -= 2
-		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
@@ -130,9 +166,8 @@ func _process(delta):
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_2 == true:
-		zombie_count += 1
 		nekro_stat -= 4
-		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
@@ -142,9 +177,9 @@ func _process(delta):
 		zombie_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_3 == true:
-		zombie_count += 1
+
 		nekro_stat -= 4
-		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
@@ -154,9 +189,8 @@ func _process(delta):
 		zombie_runner_spawn.emit(new_zombie.global_position)
 		$Zombie_Spawn.play()
 	if Input.is_action_just_released("left_mouse") and zombie_respawn == true and mouse_lock == false and nekro_stat >= nekro_cost and zombie_4 == true:
-		zombie_count += 1
 		nekro_stat -= 8
-		var string = "Nekroplazma: " + str(nekro_stat) + "   Zombies: " + str(zombie_count)
+		var string = "Nekroplazma: " + str(nekro_stat)
 		$Camera2D/HUD/stats_cont/stats.text = string
 		zombie_respawn = false
 		$zombie_respawn.start()
@@ -249,8 +283,6 @@ func _on_child_exiting_tree(node: Node) -> void:
 	var rng_dead_spawn = Vector2(rng_x, 0)
 	if node.has_method("zombie"):
 		if node.has_method("tank"):
-			zombie_count -=1
-			print(zombie_count)
 			var death_zombie = dead_zombie.instantiate()
 			add_child.call_deferred(death_zombie)
 			death_zombie.position = node.position + rng_dead_spawn
@@ -258,21 +290,31 @@ func _on_child_exiting_tree(node: Node) -> void:
 			#print("usunieto zombie")
 		else:
 			if node.is_in_group("left"):
-				zombie_count -=1
-				print(zombie_count)
-				var death_zombie = dead_zombie.instantiate()
-				add_child.call_deferred(death_zombie)
-				death_zombie.position = node.position + rng_dead_spawn
-				death_zombie.flip_h = true
-				zombie_death.emit(node.global_position)
+				print("1")
+				if node.is_in_group("mutation"):
+					print("hajuduuin")
+					var mutation_spawn = mutation.instantiate()
+					add_child.call_deferred(mutation_spawn)
+					mutation_spawn.position = node.position
+				else:
+					var death_zombie = dead_zombie.instantiate()
+					add_child.call_deferred(death_zombie)
+					death_zombie.position = node.position + rng_dead_spawn
+					death_zombie.flip_h = true
+					zombie_death.emit(node.global_position)
 			elif node.is_in_group("right"):
-				zombie_count -=1
-				print(zombie_count)
-				var death_zombie = dead_zombie.instantiate()
-				add_child.call_deferred(death_zombie)
-				death_zombie.position = node.position + rng_dead_spawn
-				death_zombie.flip_h = false
-				zombie_death.emit(node.global_position)
+				print("2")
+				if node.is_in_group("mutation"):
+					print("hajuduuin")
+					var mutation_spawn = mutation.instantiate()
+					add_child.call_deferred(mutation_spawn)
+					mutation_spawn.position = node.position
+				else:
+					var death_zombie = dead_zombie.instantiate()
+					add_child.call_deferred(death_zombie)
+					death_zombie.position = node.position + rng_dead_spawn
+					death_zombie.flip_h = false
+					zombie_death.emit(node.global_position)
 	if node.has_method("survivor"):
 		if node.is_in_group("left"):
 			survivor_death.emit(node.global_position)
@@ -306,6 +348,13 @@ func level_comp():
 	$Camera2D/HUD/level_complete_sound.play()
 	print("level comp")
 
+func get_node_global_position(index: int) -> Vector2:
+	if index >= 0 and index < mutation_array.size():
+		return mutation_array[index].global_position
+	else:
+		return Vector2.ZERO
+
+
 func _on_ambient_finished() -> void:
 	$Ambient.play()
 
@@ -326,7 +375,7 @@ func _on_spawn_restriction_mouse_exited() -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node.has_method("necroplasm"):
-		nekro_stat += 5
+		nekro_stat += 10
 		print("5 Necroplasm collected!")
 
 
