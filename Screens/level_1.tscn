@@ -572,6 +572,7 @@ scale = Vector2(3.50391, 3.50391)
 size_flags_horizontal = 4
 
 [node name="Tutorial" type="Button" parent="Camera2D/HUD/AspectRatioContainer5"]
+visible = false
 layout_mode = 2
 text = "MAIN MENU"
 vertical_icon_alignment = 2

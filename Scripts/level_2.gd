@@ -23,7 +23,7 @@ signal level_complete
 @export var mutation: PackedScene
 @onready var pause_menu: = $CanvasLayer/PauseMenu
 var paused = false
-var nekro_stat = StatsAutoload.nekroplazma
+var nekro_stat = StatsAutoload.nekroplazma + 40
 var nekro_cost = 0
 var zombie_respawn = true
 var level_accomp = false
@@ -352,12 +352,12 @@ func _on_zombie_respawn_timeout() -> void:
 	zombie_respawn = true
 
 
-func _on_spawn_restriction_mouse_entered() -> void:
+func _on_spawn_restriction_2_mouse_entered() -> void:
 	$Camera2D.add_to_group("mouse_lock")
 	mouse_lock = true
 
 
-func _on_spawn_restriction_mouse_exited() -> void:
+func _on_spawn_restriction_2_mouse_exited() -> void:
 	$Camera2D.remove_from_group("mouse_lock")
 	mouse_lock = false
 

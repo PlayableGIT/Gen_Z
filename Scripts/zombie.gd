@@ -159,10 +159,12 @@ func get_closest_player_or_null():
 	return closest_player
 
 func _on_bullet_zone_area_entered(area: Area2D) -> void:
+	var hurt_rng = rng.randf_range(0.9, 1.1)
 	if area.has_method("bullet"):
 		print("bang")
 		health -= StatsAutoload.survivor_gun_damage
 		$zombie_hurt.stop()
+		$zombie_hurt.pitch_scale = hurt_rng
 		$zombie_hurt.play()
 		blood_splatter()
 		print("Zombie took ", StatsAutoload.survivor_gun_damage, " damage! Health: ", health)

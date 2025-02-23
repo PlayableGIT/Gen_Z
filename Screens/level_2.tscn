@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=4 uid="uid://dss6t08a8xcjo"]
+[gd_scene load_steps=87 format=4 uid="uid://dss6t08a8xcjo"]
 
 [ext_resource type="Script" path="res://Scripts/level_2.gd" id="1_a51nd"]
 [ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://Screens/camera_2d.tscn" id="1_por2h"]
@@ -1130,6 +1130,12 @@ animations = [{
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hdoxe"]
 polygon = PackedVector2Array(-165.514, 27.6648, -191.297, -11.3121, -218.142, -8.20564, -190.867, -11.7224, -165.972, 26.7856)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5qu8"]
+size = Vector2(8706.71, 2055.03)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q71o"]
+size = Vector2(4671, 895)
+
 [node name="level_2" type="Node2D"]
 script = ExtResource("1_a51nd")
 ui = ExtResource("3_qu0ny")
@@ -1653,8 +1659,63 @@ position = Vector2(-1208, -106)
 scale = Vector2(0.489901, 0.489901)
 texture = ExtResource("58_d2a42")
 
+[node name="spawn_restriction2" type="Area2D" parent="."]
+z_index = 175
+scale = Vector2(1, 1.01651)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_restriction2"]
+position = Vector2(6068, -562)
+scale = Vector2(1.39739, 5.51574)
+shape = SubResource("RectangleShape2D_i5qu8")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="spawn_restriction2"]
+position = Vector2(15865, -350.125)
+rotation = 1.5708
+scale = Vector2(1.51719, 1.48643)
+shape = SubResource("RectangleShape2D_i5qu8")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="spawn_restriction2"]
+position = Vector2(-3940, -350.125)
+rotation = 1.5708
+scale = Vector2(1.3138, -1.56904)
+shape = SubResource("RectangleShape2D_i5qu8")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="spawn_restriction2"]
+position = Vector2(-1112, -3417.57)
+scale = Vector2(0.276971, -2.34819)
+shape = SubResource("RectangleShape2D_i5qu8")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="spawn_restriction2"]
+position = Vector2(13187, -3517.91)
+scale = Vector2(0.276971, -2.34819)
+shape = SubResource("RectangleShape2D_i5qu8")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="spawn_restriction2"]
+position = Vector2(-1112, 2020.64)
+scale = Vector2(0.276971, -2.03339)
+shape = SubResource("RectangleShape2D_i5qu8")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="spawn_restriction2"]
+position = Vector2(13238, 2020.64)
+scale = Vector2(0.276971, -2.03339)
+shape = SubResource("RectangleShape2D_i5qu8")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="spawn_restriction2"]
+position = Vector2(3502.5, -447.5)
+shape = SubResource("RectangleShape2D_8q71o")
+debug_color = Color(0.587891, 0.7, 0, 0.42)
+
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="finished" from="Ambient" to="." method="_on_ambient_finished"]
 [connection signal="timeout" from="zombie_respawn" to="." method="_on_zombie_respawn_timeout"]
 [connection signal="timeout" from="zombie_respawn2" to="." method="_on_zombie_respawn_2_timeout"]
+[connection signal="mouse_entered" from="spawn_restriction2" to="." method="_on_spawn_restriction_2_mouse_entered"]
+[connection signal="mouse_exited" from="spawn_restriction2" to="." method="_on_spawn_restriction_2_mouse_exited"]
