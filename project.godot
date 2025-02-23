@@ -21,6 +21,7 @@ buses/default_bus_layout="res://audio/default_bus_layout.tres"
 [autoload]
 
 StatsAutoload="*res://Scripts/stats_autoload.gd"
+Loader="*res://Scripts/Loader.gd"
 
 [display]
 
