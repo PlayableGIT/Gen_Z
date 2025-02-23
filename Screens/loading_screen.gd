@@ -3,27 +3,26 @@ extends Control
 @export var loading_bar : ProgressBar
 
 
-var Scene_path : String
+var scene_path : String
 var progress : Array
 
 var update : float = 0.0
 
 func _ready():
-	Scene_path = "res://Screens/level_1.tscn"
-	ResourceLoader.load_threaded_request(Scene_path)
+	scene_path = Loader.scene_path 
+	ResourceLoader.load_threaded_request(scene_path)
 	
 
 func _process(delta):
-	ResourceLoader.load_threaded_get_status(Scene_path, progress)
+	ResourceLoader.load_threaded_get_status(scene_path, progress)
 	
 	if progress[0] > update:
 		update = progress[0]
 	
 	if loading_bar.value >= 1.0:
 		if update >= 1.0:
-			get_tree().change_scene_to_packed(
-			ResourceLoader.load_threaded_get(Scene_path)
-			)
+			get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(scene_path))
+	
 
 	if loading_bar.value < update:
 		loading_bar.value = lerp(loading_bar.value, update, delta)

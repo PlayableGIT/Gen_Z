@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 [autoload]
 
 StatsAutoload="*res://Scripts/stats_autoload.gd"
+Loader="*res://Scripts/Loader.gd"
 
 [display]
 

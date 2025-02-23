@@ -28,7 +28,6 @@ func _on_restart_pressed() -> void:
 	await get_tree().create_timer(0.1).timeout
 	get_tree().reload_current_scene()
 
-
 func _on_quit_pressed() -> void:
 	$Button_Sound.play()
 	get_tree().quit()
