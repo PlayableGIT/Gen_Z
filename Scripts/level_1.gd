@@ -404,7 +404,7 @@ func _on_lvl_complete_timer_timeout() -> void:
 
 
 func _on_tutorial_pressed() -> void:
-	get_tree().change_scene_to_file("res://Screens/Main_menu.tscn")
+	get_tree().change_scene_to_file("res://Screens/level_2.tscn")
 	
 
 

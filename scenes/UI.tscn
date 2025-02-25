@@ -115,7 +115,7 @@ z_index = 60
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 2
-text = "Nekroplazma: "
+text = "Necroplasm: "
 label_settings = SubResource("LabelSettings_pm06a")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -228,7 +228,7 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="PanelContainer/GridContainer/VBoxContainer2"]
 layout_mode = 2
 theme = ExtResource("10_kj782")
-text = "Cost: 4 Necroplasm"
+text = "Cost: 4 Necro"
 label_settings = SubResource("LabelSettings_kxpki")
 horizontal_alignment = 1
 
