@@ -2388,6 +2388,9 @@ scale = Vector2(3.04353, 3.04353)
 texture = ExtResource("71_lmcvh")
 flip_h = true
 
+[node name="lvl_complete_timer" type="Timer" parent="."]
+wait_time = 3.775
+
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="button_down" from="Camera2D/HUD/AspectRatioContainer5/Tutorial" to="." method="_on_tutorial_button_down"]
@@ -2396,3 +2399,4 @@ flip_h = true
 [connection signal="timeout" from="zombie_respawn2" to="." method="_on_zombie_respawn_2_timeout"]
 [connection signal="mouse_entered" from="spawn_restriction2" to="." method="_on_spawn_restriction_2_mouse_entered"]
 [connection signal="mouse_exited" from="spawn_restriction2" to="." method="_on_spawn_restriction_2_mouse_exited"]
+[connection signal="timeout" from="lvl_complete_timer" to="." method="_on_lvl_complete_timer_timeout"]
