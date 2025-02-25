@@ -52,7 +52,7 @@ func _ready() -> void:
 	survivor_death.connect(surv_death)
 	level_complete.connect(level_comp)
 	await get_tree().create_timer(2.0).timeout
-	lightning()
+	#lightning()
 func _process(delta):
 	mutation_array = get_tree().get_nodes_in_group("mutation")
 	#print(get_tree().get_nodes_in_group("mutation"))
@@ -266,17 +266,6 @@ func zomb_tank_death(a):
 	$Zombie_Tank_Death.global_position = sound_position
 	$Zombie_Tank_Death.play()
 	
-func lightning():
-	$lightning_timer.wait_time = rng.randf_range(10.0, 20.0)
-	$lightning_timer.start()
-	$Node/DirectionalLight2D.energy = 0.2
-	$lightning.play()
-	await get_tree().create_timer(0.229).timeout
-	$Node/DirectionalLight2D.energy = 0.4
-	await get_tree().create_timer(0.1).timeout
-	$Node/DirectionalLight2D.energy = 0.25
-	await get_tree().create_timer(0.229).timeout
-	$Node/DirectionalLight2D.energy = 0.97
 	
 func _on_child_exiting_tree(node: Node) -> void:
 	var rng_x = rng.randf_range(-50.0, 50.0)
@@ -343,7 +332,6 @@ func _on_child_exiting_tree(node: Node) -> void:
 		destroy_survivor_gun.position = node.position
 
 func level_comp():
-	$lvl_complete_timer.start()
 	$Camera2D/HUD/LC_cont/level_complete.visible = true
 	level_fade = true
 	$Camera2D/HUD/level_complete_sound.play()
@@ -364,12 +352,12 @@ func _on_zombie_respawn_timeout() -> void:
 	zombie_respawn = true
 
 
-func _on_spawn_restriction_mouse_entered() -> void:
+func _on_spawn_restriction_2_mouse_entered() -> void:
 	$Camera2D.add_to_group("mouse_lock")
 	mouse_lock = true
 
 
-func _on_spawn_restriction_mouse_exited() -> void:
+func _on_spawn_restriction_2_mouse_exited() -> void:
 	$Camera2D.remove_from_group("mouse_lock")
 	mouse_lock = false
 
@@ -384,10 +372,6 @@ func _on_zombie_respawn_2_timeout() -> void:
 	$respawn_bar.visible = false
 
 
-func _on_lightning_timer_timeout() -> void:
-	lightning()
-
-
 func pauseMenu():
 	if paused: 
 		pause_menu.hide()
@@ -397,16 +381,3 @@ func pauseMenu():
 		Engine.time_scale = 0
 		
 	paused = !paused
-
-
-func _on_lvl_complete_timer_timeout() -> void:
-	$Camera2D/HUD/AspectRatioContainer5/Tutorial.visible = true
-
-
-func _on_tutorial_pressed() -> void:
-	get_tree().change_scene_to_file("res://Screens/level_2.tscn")
-	
-
-
-func _on_tutorial_button_down() -> void:
-	StatsAutoload.necro_balance(nekro_stat)

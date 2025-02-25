@@ -14,6 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta) -> void:
 	if Input.is_action_just_released("right_mouse"):
+		$buzz.play()
 		$AspectRatioContainer/TextureRect.texture = load("res://textures/no_zombie_icon1_anim.png")
 		await get_tree().create_timer(0.1).timeout
 		$AspectRatioContainer/TextureRect.texture = load("res://textures/no_zombie_icon2_anim.png")
@@ -21,6 +22,7 @@ func _process(_delta) -> void:
 		$AspectRatioContainer/TextureRect.texture = load("res://textures/no_zombie_icon3_anim.png")
 		await get_tree().create_timer(0.1).timeout
 		$AspectRatioContainer/TextureRect.texture = load("res://textures/no_zombie_icon.png")
+		
 
 func _on_texture_button_pressed() -> void:
 	if $PanelContainer.visible == false:
