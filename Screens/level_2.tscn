@@ -1330,6 +1330,27 @@ down_limit = 800.0
 
 [node name="HUD" parent="Camera2D" instance=ExtResource("3_qu0ny")]
 
+[node name="AspectRatioContainer5" type="AspectRatioContainer" parent="Camera2D/HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = 240.0
+offset_right = -72.9999
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.50391, 3.50391)
+size_flags_horizontal = 4
+
+[node name="Tutorial" type="Button" parent="Camera2D/HUD/AspectRatioContainer5"]
+visible = false
+layout_mode = 2
+text = "MAIN MENU"
+vertical_icon_alignment = 2
+
 [node name="Ground" type="Node2D" parent="."]
 scale = Vector2(1.5, 1.5)
 
@@ -1547,7 +1568,7 @@ scale = Vector2(0.500402, 0.648296)
 texture = ExtResource("12_oh8es")
 
 [node name="MetroUnderstairs2" type="Sprite2D" parent="Ground/Ground"]
-z_index = 3
+z_index = 4
 position = Vector2(5682.17, 168)
 scale = Vector2(0.500402, 0.648296)
 texture = ExtResource("12_oh8es")
@@ -2369,6 +2390,7 @@ flip_h = true
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="button_down" from="Camera2D/HUD/AspectRatioContainer5/Tutorial" to="." method="_on_tutorial_button_down"]
 [connection signal="finished" from="Ambient" to="." method="_on_ambient_finished"]
 [connection signal="timeout" from="zombie_respawn" to="." method="_on_zombie_respawn_timeout"]
 [connection signal="timeout" from="zombie_respawn2" to="." method="_on_zombie_respawn_2_timeout"]

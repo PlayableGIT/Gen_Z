@@ -364,7 +364,7 @@ func _on_spawn_restriction_2_mouse_exited() -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node.has_method("necroplasm"):
-		nekro_stat += 10
+		nekro_stat += 6
 		print("5 Necroplasm collected!")
 
 
@@ -381,3 +381,11 @@ func pauseMenu():
 		Engine.time_scale = 0
 		
 	paused = !paused
+
+
+func _on_tutorial_button_down() -> void:
+	Loader.change_level("res://Screens/Main_menu.tscn")
+
+
+func _on_lvl_complete_timer_timeout() -> void:
+	pass # Replace with function body.

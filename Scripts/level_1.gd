@@ -376,7 +376,7 @@ func _on_spawn_restriction_mouse_exited() -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node.has_method("necroplasm"):
-		nekro_stat += 10
+		nekro_stat += 6
 		print("5 Necroplasm collected!")
 
 
@@ -404,7 +404,7 @@ func _on_lvl_complete_timer_timeout() -> void:
 
 
 func _on_tutorial_pressed() -> void:
-	get_tree().change_scene_to_file("res://Screens/level_2.tscn")
+	Loader.change_level("res://Screens/level_2.tscn")
 	
 
 
