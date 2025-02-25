@@ -23,7 +23,7 @@ signal level_complete
 @export var mutation: PackedScene
 @onready var pause_menu: = $CanvasLayer/PauseMenu
 var paused = false
-var nekro_stat = StatsAutoload.nekroplazma + 40
+var nekro_stat = StatsAutoload.nekroplazma
 var nekro_cost = 0
 var zombie_respawn = true
 var level_accomp = false

@@ -574,7 +574,7 @@ size_flags_horizontal = 4
 [node name="Tutorial" type="Button" parent="Camera2D/HUD/AspectRatioContainer5"]
 visible = false
 layout_mode = 2
-text = "MAIN MENU"
+text = "NEXT LEVEL"
 vertical_icon_alignment = 2
 
 [node name="Ground" type="Node2D" parent="."]
@@ -1308,7 +1308,7 @@ script = ExtResource("55_bqy5u")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
-[connection signal="button_down" from="Camera2D/HUD/AspectRatioContainer5/Tutorial" to="STATS_AUTOLOAD" method="_on_tutorial_button_down"]
+[connection signal="button_down" from="Camera2D/HUD/AspectRatioContainer5/Tutorial" to="." method="_on_tutorial_button_down"]
 [connection signal="pressed" from="Camera2D/HUD/AspectRatioContainer5/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="timeout" from="zombie_respawn" to="." method="_on_zombie_respawn_timeout"]
 [connection signal="timeout" from="zombie_respawn2" to="." method="_on_zombie_respawn_2_timeout"]

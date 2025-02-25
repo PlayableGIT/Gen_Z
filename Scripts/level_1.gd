@@ -406,3 +406,7 @@ func _on_lvl_complete_timer_timeout() -> void:
 func _on_tutorial_pressed() -> void:
 	get_tree().change_scene_to_file("res://Screens/Main_menu.tscn")
 	
+
+
+func _on_tutorial_button_down() -> void:
+	StatsAutoload.necro_balance(nekro_stat)

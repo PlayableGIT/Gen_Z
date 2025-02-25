@@ -14,6 +14,8 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	pass
 
+func necro_balance(balance):
+	nekroplazma = balance
 
-func _on_tutorial_button_down() -> void:
-	nekroplazma = 70
+#func _on_tutorial_button_down() -> void:
+	#nekroplazma = 70
