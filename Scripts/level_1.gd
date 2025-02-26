@@ -347,6 +347,7 @@ func level_comp():
 	$Camera2D/HUD/LC_cont/level_complete.visible = true
 	level_fade = true
 	$Camera2D/HUD/level_complete_sound.play()
+	StatsAutoload.level_2 = true
 	print("level comp")
 
 func get_node_global_position(index: int) -> Vector2:

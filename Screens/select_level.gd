@@ -14,8 +14,11 @@ func _on_level_1_pressed() -> void:
 
 func _on_level_2_pressed() -> void:
 	$Button_Sound.play()
-	await get_tree().create_timer(0.229).timeout
-	Loader.change_level("res://Screens/level_2.tscn")
+	if StatsAutoload.level_2 == true:
+		await get_tree().create_timer(0.229).timeout
+		Loader.change_level("res://Screens/level_2.tscn")
+	else:
+		pass
 
 func _on_back_pressed() -> void:
 	$Button_Sound.play()
