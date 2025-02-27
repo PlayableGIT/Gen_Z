@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtqyimi6x4qnp"]
+[gd_scene load_steps=8 format=3 uid="uid://dtqyimi6x4qnp"]
 
 [ext_resource type="Script" path="res://Screens/select_level.gd" id="1_pe2hw"]
 [ext_resource type="AudioStream" uid="uid://bpwxuhd54dhwe" path="res://audio/ambient/Echoes of Desolation.mp3" id="2_20bkb"]
 [ext_resource type="AudioStream" uid="uid://dslu3bcl2y3ux" path="res://audio/UI/button_click.wav" id="3_m3tem"]
 [ext_resource type="VideoStream" path="res://audio/genz_menu.ogv" id="4_b8q4m"]
+[ext_resource type="Texture2D" uid="uid://dc2wf14gubyod" path="res://textures/tutorial.png" id="5_xb6ie"]
 
 [sub_resource type="SystemFont" id="SystemFont_mpw5p"]
 font_names = PackedStringArray("RBNo3.1")
@@ -99,7 +100,27 @@ autoplay = true
 stream = ExtResource("3_m3tem")
 volume_db = -10.0
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+visible = false
+z_index = 10
+layout_mode = 0
+offset_left = 902.0
+offset_top = 659.0
+offset_right = 964.0
+offset_bottom = 713.0
+
+[node name="Tutorial" type="Sprite2D" parent="VBoxContainer2"]
+position = Vector2(36, -282)
+scale = Vector2(0.507764, 0.507764)
+texture = ExtResource("5_xb6ie")
+
+[node name="Button" type="Button" parent="VBoxContainer2"]
+layout_mode = 2
+text = "  Back  "
+vertical_icon_alignment = 2
+
 [connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/Level 1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/Level 2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]

@@ -13,6 +13,7 @@ signal level_complete
 @export var destroyed_door: PackedScene
 @export var dead_survivor: PackedScene
 @export var dead_zombie: PackedScene
+@export var dead_cheerleader: PackedScene
 @export var dead_gun_survivor: PackedScene
 @export var zombie: PackedScene
 @export var cheerleader_zombie: PackedScene
@@ -276,7 +277,18 @@ func _on_child_exiting_tree(node: Node) -> void:
 			add_child.call_deferred(death_zombie)
 			death_zombie.position = node.position + rng_dead_spawn
 			zombie_tank_death.emit(node.global_position)
-			#print("usunieto zombie")
+		elif node.has_method("cheerleader"):
+			if node.is_in_group("left"):
+					var death_zombie = dead_cheerleader.instantiate()
+					add_child.call_deferred(death_zombie)
+					death_zombie.position = node.position + rng_dead_spawn
+					death_zombie.flip_h = true
+					zombie_death.emit(node.global_position)
+			if node.is_in_group("right"):
+					var death_zombie = dead_cheerleader.instantiate()
+					add_child.call_deferred(death_zombie)
+					death_zombie.position = node.position + rng_dead_spawn
+					zombie_death.emit(node.global_position)
 		else:
 			if node.is_in_group("left"):
 				print("1")

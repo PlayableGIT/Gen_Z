@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://5ob1gavue2c6"]
+[gd_scene load_steps=79 format=4 uid="uid://5ob1gavue2c6"]
 
 [ext_resource type="Script" path="res://Scripts/level_1.gd" id="1_yb6vr"]
 [ext_resource type="PackedScene" uid="uid://udplfsjxf5tr" path="res://scenes/door_destroyed.tscn" id="2_0yjbc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://begstf8t0rriu" path="res://scenes/dead_zombie.tscn" id="4_myh5r"]
 [ext_resource type="PackedScene" uid="uid://b08q3j65fuwlo" path="res://scenes/dead_gun_survivor.tscn" id="5_detde"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://scenes/zombie.tscn" id="6_hffsn"]
+[ext_resource type="PackedScene" uid="uid://c6q5i0m8py25u" path="res://scenes/dead_cheerleader.tscn" id="6_hwij7"]
 [ext_resource type="PackedScene" uid="uid://bmp706pm7hqqk" path="res://scenes/zombie_cheerleader.tscn" id="7_cb087"]
 [ext_resource type="PackedScene" uid="uid://c60yxpyucdsfe" path="res://scenes/zombie_tank.tscn" id="8_gnoq2"]
 [ext_resource type="PackedScene" uid="uid://g330a3qiglye" path="res://scenes/zombie_runner.tscn" id="9_6melg"]
@@ -46,7 +47,6 @@
 [ext_resource type="AudioStream" uid="uid://tp7ow7ww8j8i" path="res://audio/thunder.mp3" id="41_4o0ni"]
 [ext_resource type="Texture2D" uid="uid://xm6vjjrsioh0" path="res://textures/map.png" id="42_8gijt"]
 [ext_resource type="PackedScene" uid="uid://c21cxagqion13" path="res://Screens/pause_menu.tscn" id="42_gs6qq"]
-[ext_resource type="Texture2D" uid="uid://ltsmrurhwge2" path="res://textures/bed.png" id="43_xisgc"]
 [ext_resource type="Texture2D" uid="uid://7uvbrkw3ooia" path="res://textures/table.png" id="44_ipnnx"]
 [ext_resource type="Texture2D" uid="uid://cf1o8docrhyrh" path="res://textures/radio.png" id="45_x67v3"]
 [ext_resource type="Texture2D" uid="uid://chqhov2fbsmdo" path="res://textures/fence.png" id="46_8225v"]
@@ -57,6 +57,8 @@
 [ext_resource type="Texture2D" uid="uid://b7xyp2fo4vr4s" path="res://textures/spawn_line2.png" id="53_bko3y"]
 [ext_resource type="Texture2D" uid="uid://dbk3v4elc3tmj" path="res://textures/spawn_line.png" id="53_tdm1r"]
 [ext_resource type="Script" path="res://Screens/animated_sprite_2d.gd" id="55_bqy5u"]
+[ext_resource type="Texture2D" uid="uid://cu528ju7hdn27" path="res://textures/moon.png" id="58_iot4n"]
+[ext_resource type="Texture2D" uid="uid://lpdeovgcmrcl" path="res://textures/light2.png" id="59_015k8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1n3i"]
 texture = ExtResource("13_u5mh3")
@@ -537,6 +539,7 @@ ui = ExtResource("13_mcrwt")
 destroyed_door = ExtResource("2_0yjbc")
 dead_survivor = ExtResource("3_unjmq")
 dead_zombie = ExtResource("4_myh5r")
+dead_cheerleader = ExtResource("6_hwij7")
 dead_gun_survivor = ExtResource("5_detde")
 zombie = ExtResource("6_hffsn")
 cheerleader_zombie = ExtResource("7_cb087")
@@ -1203,20 +1206,6 @@ rotation = -0.0472381
 scale = Vector2(0.730606, 0.730606)
 texture = ExtResource("42_8gijt")
 
-[node name="Bed" type="Sprite2D" parent="."]
-modulate = Color(0.488281, 0.488281, 0.488281, 1)
-z_index = 2
-position = Vector2(2473, -231)
-scale = Vector2(2.32692, 2.23793)
-texture = ExtResource("43_xisgc")
-
-[node name="Bed2" type="Sprite2D" parent="."]
-modulate = Color(0.488281, 0.488281, 0.488281, 1)
-z_index = 2
-position = Vector2(2897, -231)
-scale = Vector2(2.32692, 2.23793)
-texture = ExtResource("43_xisgc")
-
 [node name="lvl_complete_timer" type="Timer" parent="."]
 wait_time = 3.775
 
@@ -1305,6 +1294,40 @@ frame = 1
 frame_progress = 0.0191383
 offset = Vector2(0, 50)
 script = ExtResource("55_bqy5u")
+
+[node name="Table2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+position = Vector2(2672, -927)
+rotation = 3.14159
+scale = Vector2(1.48, 0.851047)
+texture = ExtResource("44_ipnnx")
+
+[node name="Table3" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+position = Vector2(3864, -943)
+rotation = 3.14159
+scale = Vector2(2.44, 0.502)
+texture = ExtResource("44_ipnnx")
+
+[node name="Table4" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+position = Vector2(5094, -925)
+rotation = 3.14159
+scale = Vector2(1.56, 0.821995)
+texture = ExtResource("44_ipnnx")
+
+[node name="Moon" type="Sprite2D" parent="."]
+position = Vector2(-1183, -1705)
+scale = Vector2(1.58112, 1.58112)
+texture = ExtResource("58_iot4n")
+
+[node name="PointLight2D" type="PointLight2D" parent="Moon"]
+scale = Vector2(0.461806, 0.461806)
+energy = 2.5
+texture = ExtResource("59_015k8")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

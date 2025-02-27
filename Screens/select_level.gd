@@ -26,3 +26,11 @@ func _on_back_pressed() -> void:
 	#get_tree().change_scene_to_file("res://Screens/Main_menu.tscn")
 	$".".visible = false
 	$"../VBoxContainer".visible = true
+
+
+func _on_tutorial_pressed() -> void:
+	$VBoxContainer2.visible = true
+
+
+func _on_button_pressed() -> void:
+	$VBoxContainer2.visible = false

@@ -44,13 +44,20 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		moveCharacter()
 		survivor_attack()
-
+	
 	if health <= 0:
 		zombie_alive = false
 		health = 0
 		print("Zombie has been killed!")
 		self.queue_free()
 	set_Health_bar()
+	
+	if $Sprite2D.flip_h == true:
+		add_to_group("left")
+		remove_from_group("right")
+	if $Sprite2D.flip_h == false:
+		add_to_group("right")
+		remove_from_group("left")
 	
 func moveCharacter():
 	var closest = get_closest_player_or_null()
@@ -59,7 +66,6 @@ func moveCharacter():
 	
 	#predkosc w kierunku
 	velocity = direction.normalized() * speed
-
 	velocity = Vector2(velocity.x, 0)
 	if direction.normalized() <= Vector2(0, 0):
 		$Sprite2D.set_flip_h(true)

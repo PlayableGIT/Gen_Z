@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://dss6t08a8xcjo"]
+[gd_scene load_steps=104 format=4 uid="uid://dss6t08a8xcjo"]
 
 [ext_resource type="Script" path="res://Scripts/level_2.gd" id="1_a51nd"]
 [ext_resource type="PackedScene" uid="uid://dc7r0e0mkxam4" path="res://Screens/camera_2d.tscn" id="1_por2h"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ctw0l4niaqlaf" path="res://scenes/dead_survivor.tscn" id="4_rirhu"]
 [ext_resource type="PackedScene" uid="uid://begstf8t0rriu" path="res://scenes/dead_zombie.tscn" id="5_mcxws"]
 [ext_resource type="Texture2D" uid="uid://p0n2stdv8oky" path="res://textures/wall_01.png" id="5_u4slh"]
+[ext_resource type="PackedScene" uid="uid://c6q5i0m8py25u" path="res://scenes/dead_cheerleader.tscn" id="6_25iud"]
 [ext_resource type="PackedScene" uid="uid://b08q3j65fuwlo" path="res://scenes/dead_gun_survivor.tscn" id="6_b3vxd"]
 [ext_resource type="Texture2D" uid="uid://nlv0xu716042" path="res://textures/road5.png" id="6_lx2h7"]
 [ext_resource type="PackedScene" uid="uid://dlnfoe38vgqp" path="res://scenes/zombie.tscn" id="7_cac01"]
@@ -1298,6 +1299,7 @@ ui = ExtResource("3_qu0ny")
 destroyed_door = ExtResource("3_efsyf")
 dead_survivor = ExtResource("4_rirhu")
 dead_zombie = ExtResource("5_mcxws")
+dead_cheerleader = ExtResource("6_25iud")
 dead_gun_survivor = ExtResource("6_b3vxd")
 zombie = ExtResource("7_cac01")
 cheerleader_zombie = ExtResource("8_bw7dl")

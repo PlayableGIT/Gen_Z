@@ -1,10 +1,39 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmp706pm7hqqk"]
+[gd_scene load_steps=19 format=3 uid="uid://bmp706pm7hqqk"]
 
 [ext_resource type="Script" path="res://Scripts/zombie_cheerleader.gd" id="1_6h8yu"]
-[ext_resource type="Texture2D" uid="uid://bwf6iuqcoqa4w" path="res://textures/cheerleader_zombie.png" id="2_6wpsq"]
+[ext_resource type="Texture2D" uid="uid://d074bnnm1cyb5" path="res://animations/zombie_cheerleader_walk/cheerleader_zombie.png" id="2_5ka5b"]
 [ext_resource type="AudioStream" uid="uid://dxfxf1op5vcac" path="res://audio/zombie/zombie_walk.mp3" id="3_kgj5i"]
+[ext_resource type="Texture2D" uid="uid://eqphr5q41kjd" path="res://animations/zombie_cheerleader_walk/cheerleader_zombie1.png" id="3_vvh21"]
 [ext_resource type="AudioStream" uid="uid://l82nv4xxfb8m" path="res://audio/zombie/zombie_attack1.mp3" id="4_giynu"]
+[ext_resource type="Texture2D" uid="uid://di8dn82nstv26" path="res://animations/zombie_cheerleader_walk/cheerleader_zombie2.png" id="4_rrc0t"]
+[ext_resource type="Texture2D" uid="uid://m6lkh51065oy" path="res://animations/zombie_cheerleader_walk/cheerleader_zombie3.png" id="5_k562a"]
 [ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="5_rxv0p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sxtcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5ka5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vvh21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rrc0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k562a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rrc0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vvh21")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_708ik"]
 radius = 52.0
@@ -42,8 +71,11 @@ point_count = 2
 z_index = 2
 script = ExtResource("1_6h8yu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6wpsq")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sxtcu")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.0363431
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_708ik")

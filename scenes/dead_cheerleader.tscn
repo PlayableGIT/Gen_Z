@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6q5i0m8py25u"]
+
+[ext_resource type="Texture2D" uid="uid://b2bl154f2palm" path="res://animations/zombie_cheerleader_death/cheerleader_zombie_death1.png" id="1_85qc8"]
+[ext_resource type="Texture2D" uid="uid://cx0ab67ra3r25" path="res://animations/zombie_cheerleader_death/cheerleader_zombie_death2.png" id="2_yfak4"]
+[ext_resource type="Texture2D" uid="uid://c77pdroiy62st" path="res://animations/zombie_cheerleader_death/cheerleader_zombie_death3.png" id="3_v8a8k"]
+[ext_resource type="Texture2D" uid="uid://cjp6fborjauby" path="res://animations/zombie_cheerleader_death/cheerleader_zombie_death4.png" id="4_2y4yh"]
+[ext_resource type="Script" path="res://Scripts/dead_zombie.gd" id="5_j14ff"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gpjp5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_85qc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yfak4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v8a8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2y4yh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="Curve" id="Curve_g2exc"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="dead_cheerleader" type="AnimatedSprite2D"]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_gpjp5")
+autoplay = "default"
+script = ExtResource("5_j14ff")
+
+[node name="blood_splatter" type="CPUParticles2D" parent="."]
+position = Vector2(5.33333, -29.3333)
+emitting = false
+amount = 505
+lifetime = 0.5
+one_shot = true
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.75
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 29.2
+initial_velocity_max = 138.69
+scale_amount_min = 2.0
+scale_amount_max = 8.3
+color = Color(0.183655, 0.691406, 0, 1)
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+hue_variation_curve = SubResource("Curve_g2exc")
