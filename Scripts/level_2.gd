@@ -377,7 +377,7 @@ func _on_spawn_restriction_2_mouse_exited() -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node.has_method("necroplasm"):
-		nekro_stat += 6
+		nekro_stat += 4
 		print("5 Necroplasm collected!")
 
 

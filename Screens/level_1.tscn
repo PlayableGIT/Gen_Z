@@ -731,6 +731,7 @@ wait_time = 0.7
 one_shot = true
 
 [node name="spawn_restriction" type="Area2D" parent="."]
+z_index = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn_restriction"]
 position = Vector2(2585, -1800)
@@ -993,7 +994,7 @@ occluder = SubResource("OccluderPolygon2D_orywe")
 occluder = SubResource("OccluderPolygon2D_qgmf0")
 
 [node name="fog" parent="." instance=ExtResource("34_4p8qo")]
-position = Vector2(4450.75, -2958)
+position = Vector2(4450.75, -2959)
 scale = Vector2(3.13604, 1)
 
 [node name="respawn_bar" type="TextureProgressBar" parent="."]

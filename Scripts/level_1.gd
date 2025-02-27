@@ -54,6 +54,7 @@ func _ready() -> void:
 	level_complete.connect(level_comp)
 	await get_tree().create_timer(2.0).timeout
 	lightning()
+	
 func _process(delta):
 	mutation_array = get_tree().get_nodes_in_group("mutation")
 	#print(get_tree().get_nodes_in_group("mutation"))
@@ -390,7 +391,7 @@ func _on_spawn_restriction_mouse_exited() -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if node.has_method("necroplasm"):
-		nekro_stat += 6
+		nekro_stat += 4
 		print("5 Necroplasm collected!")
 
 
@@ -423,4 +424,4 @@ func _on_tutorial_pressed() -> void:
 
 
 func _on_tutorial_button_down() -> void:
-	StatsAutoload.necro_balance(nekro_stat)
+	StatsAutoload.necro_balance(nekro_stat+20)
