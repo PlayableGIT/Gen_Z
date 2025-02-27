@@ -42,6 +42,7 @@ mouse_lock=""
 mutation=""
 mut_right=""
 mut_left=""
+healing=""
 
 [input]
 

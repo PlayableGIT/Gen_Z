@@ -94,6 +94,8 @@ func survivor_attack():
 func zombie():
 	pass
 
+func cheerleader():
+	pass
 
 func blood_splatter():
 	var splat_x = rng.randf_range(-50.0, 50.0)
@@ -152,3 +154,16 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_attack_cooldown_timeout() -> void:
 	survivor_attack_cooldown = true
 
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body.has_method("zombie") and body.has_method("cheerleader") == false:
+		body.add_to_group("healing")
+		print("healing")
+	
+
+
+func _on_area_2d_2_body_exited(body: Node2D) -> void:
+	if body.has_method("zombie") and body.has_method("cheerleader") == false:
+		body.remove_from_group("healing")
+		print("wyszedl z healing")

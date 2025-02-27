@@ -36,6 +36,15 @@ func _physics_process(delta: float) -> void:
 	#grawitacja
 	#print($".", "right: ", mut_cand_right.size())
 	#print($".", "left: ", mut_cand_left.size())
+	if $".".is_in_group("healing"):
+		$healing_part.visible = true
+	if $".".is_in_group("healing") and health < 30:
+		health += delta*2
+		set_Health_bar()
+		print(health)
+	if $".".is_in_group("healing") == false:
+		$healing_part.visible = false
+	
 	
 	if mut_cand_right.size() == 1 and mut_cand_left.size() == 0 and $Control2/TextureButton.visible == true:
 		$Control2/TextureButton.visible = true

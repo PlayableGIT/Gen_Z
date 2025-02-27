@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmp706pm7hqqk"]
+[gd_scene load_steps=15 format=3 uid="uid://bmp706pm7hqqk"]
 
 [ext_resource type="Script" path="res://Scripts/zombie_cheerleader.gd" id="1_6h8yu"]
 [ext_resource type="Texture2D" uid="uid://bwf6iuqcoqa4w" path="res://textures/cheerleader_zombie.png" id="2_6wpsq"]
@@ -35,6 +35,8 @@ bg_color = Color(0.835294, 0.054902, 0.0509804, 1)
 min_value = -1.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsjtu"]
 
 [node name="ZombieCheerleader" type="CharacterBody2D" groups=["zombie"]]
 z_index = 2
@@ -170,7 +172,16 @@ hue_variation_min = -0.05
 hue_variation_max = 0.05
 hue_variation_curve = SubResource("Curve_irr72")
 
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+scale = Vector2(29.255, 16.91)
+shape = SubResource("RectangleShape2D_qsjtu")
+debug_color = Color(0.021875, 0.7, 0, 0.42)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="area_entered" from="BulletZone" to="." method="_on_bullet_zone_area_entered"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
