@@ -366,17 +366,10 @@ hue_variation_min = -0.08
 hue_variation_max = 0.15
 hue_variation_curve = SubResource("Curve_mwwac")
 
-[node name="Control4" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-
-[node name="Area2D2" type="Area2D" parent="Control4"]
+[node name="Area2D2" type="Area2D" parent="."]
 input_pickable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control4/Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2(0, -187.765)
 scale = Vector2(8.39, 29.77)
 shape = SubResource("RectangleShape2D_oem34")

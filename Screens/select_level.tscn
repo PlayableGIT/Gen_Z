@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtqyimi6x4qnp"]
+[gd_scene load_steps=16 format=3 uid="uid://dtqyimi6x4qnp"]
 
 [ext_resource type="Script" path="res://Screens/select_level.gd" id="1_pe2hw"]
 [ext_resource type="AudioStream" uid="uid://bpwxuhd54dhwe" path="res://audio/ambient/Echoes of Desolation.mp3" id="2_20bkb"]
 [ext_resource type="AudioStream" uid="uid://dslu3bcl2y3ux" path="res://audio/UI/button_click.wav" id="3_m3tem"]
+[ext_resource type="Texture2D" uid="uid://bk27vcwpplat6" path="res://textures/tutorial1.png" id="3_whub0"]
 [ext_resource type="VideoStream" path="res://audio/genz_menu.ogv" id="4_b8q4m"]
+[ext_resource type="Texture2D" uid="uid://c46olvq47fpyn" path="res://textures/tutorial2.png" id="4_gxein"]
+[ext_resource type="Texture2D" uid="uid://cabm04ssih4t3" path="res://textures/tutorial3.png" id="5_d3vku"]
 [ext_resource type="Texture2D" uid="uid://ox02m40sgcns" path="res://textures/tutorial.png" id="5_xb6ie"]
+[ext_resource type="Texture2D" uid="uid://baf8l4fer5odn" path="res://textures/tutorial4.png" id="6_436sx"]
+[ext_resource type="Texture2D" uid="uid://tu5x1k0q8wp6" path="res://textures/tutorial5.png" id="7_jqkms"]
+[ext_resource type="Texture2D" uid="uid://4gbf0skb66k1" path="res://textures/tutorial7.png" id="7_ro7um"]
+[ext_resource type="Texture2D" uid="uid://07jnoljpl21v" path="res://textures/tutorial6.png" id="8_m4bws"]
+[ext_resource type="Texture2D" uid="uid://byjj46mmtdr8i" path="res://textures/tutorial_7.png" id="9_f6exb"]
 
 [sub_resource type="SystemFont" id="SystemFont_mpw5p"]
 font_names = PackedStringArray("RBNo3.1")
@@ -28,6 +36,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pe2hw")
+text_1 = ExtResource("5_xb6ie")
+text_2 = ExtResource("3_whub0")
+text_3 = ExtResource("4_gxein")
+text_4 = ExtResource("5_d3vku")
+text_5 = ExtResource("6_436sx")
+text_55 = ExtResource("7_ro7um")
+text_6 = ExtResource("7_jqkms")
+text_7 = ExtResource("8_m4bws")
+text_8 = ExtResource("9_f6exb")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 z_index = -1
@@ -119,8 +136,38 @@ layout_mode = 2
 text = "  Back  "
 vertical_icon_alignment = 2
 
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = 974.0
+offset_top = 659.0
+offset_right = 1040.0
+offset_bottom = 713.0
+
+[node name="next" type="Button" parent="VBoxContainer3"]
+layout_mode = 2
+text = "      Next      "
+vertical_icon_alignment = 2
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="."]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = 799.0
+offset_top = 659.0
+offset_right = 891.0
+offset_bottom = 713.0
+
+[node name="prev" type="Button" parent="VBoxContainer4"]
+layout_mode = 2
+text = "  Previous  "
+vertical_icon_alignment = 2
+
 [connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="VBoxContainer/Level 1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="VBoxContainer/Level 2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer3/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="VBoxContainer4/prev" to="." method="_on_prev_pressed"]
