@@ -2224,7 +2224,7 @@ position = Vector2(8169, 684)
 position = Vector2(11539, -211)
 
 [node name="Basic_Melee_Survivor11" parent="." instance=ExtResource("12_yw5wg")]
-position = Vector2(12400, -204)
+position = Vector2(10904, -204)
 
 [node name="MetroMap" type="Sprite2D" parent="."]
 z_index = 2
@@ -2384,7 +2384,7 @@ scale = Vector2(3.04353, 3.04353)
 texture = ExtResource("71_lmcvh")
 
 [node name="Gate2" type="Sprite2D" parent="."]
-z_index = 3
+z_index = 10
 position = Vector2(11158, -222)
 scale = Vector2(3.04353, 3.04353)
 texture = ExtResource("71_lmcvh")
