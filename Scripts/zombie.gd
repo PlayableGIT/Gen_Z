@@ -16,8 +16,10 @@ var ground_hit = true
 var spawn_ready = false
 var xd = false
 var rng = RandomNumberGenerator.new()
+var heal_array
 
 func _ready() -> void:
+	heal_array = []
 	$PointLight2D3.visible = false
 	$Control2/TextureButton.visible = false
 	$Control3/left_mutation.visible = false
@@ -36,13 +38,13 @@ func _physics_process(delta: float) -> void:
 	#grawitacja
 	#print($".", "right: ", mut_cand_right.size())
 	#print($".", "left: ", mut_cand_left.size())
-	if $".".is_in_group("healing"):
+	if heal_array.size() > 0:
 		$healing_part.visible = true
-	if $".".is_in_group("healing") and health < 30:
+	if heal_array.size() > 0 and health < 30:
 		health += delta*2
 		set_Health_bar()
 		print(health)
-	if $".".is_in_group("healing") == false:
+	if heal_array.size() == 0:
 		$healing_part.visible = false
 	
 	
@@ -245,3 +247,15 @@ func _on_left_skillzone_body_exited(body: Node2D) -> void:
 		mut_cand_left.erase(body)
 		print(body)
 		print("Lewa mutacja kandydat wyszedł")
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.has_method("healer"):
+		heal_array.append(area)
+		print(heal_array)
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.has_method("healer"):
+		heal_array.erase(area)
+		print(heal_array)

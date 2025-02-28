@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bmp706pm7hqqk"]
+[gd_scene load_steps=20 format=3 uid="uid://bmp706pm7hqqk"]
 
 [ext_resource type="Script" path="res://Scripts/zombie_cheerleader.gd" id="1_6h8yu"]
 [ext_resource type="Texture2D" uid="uid://d074bnnm1cyb5" path="res://animations/zombie_cheerleader_walk/cheerleader_zombie.png" id="2_5ka5b"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://di8dn82nstv26" path="res://animations/zombie_cheerleader_walk/cheerleader_zombie2.png" id="4_rrc0t"]
 [ext_resource type="Texture2D" uid="uid://m6lkh51065oy" path="res://animations/zombie_cheerleader_walk/cheerleader_zombie3.png" id="5_k562a"]
 [ext_resource type="AudioStream" uid="uid://cvun8lh7arxtf" path="res://audio/zombie/zombie_attack2.mp3" id="5_rxv0p"]
+[ext_resource type="Script" path="res://scenes/area_2d_2.gd" id="9_fdn4o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sxtcu"]
 animations = [{
@@ -75,7 +76,7 @@ script = ExtResource("1_6h8yu")
 sprite_frames = SubResource("SpriteFrames_sxtcu")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.788545
+frame_progress = 0.739837
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_708ik")
@@ -205,6 +206,7 @@ hue_variation_max = 0.05
 hue_variation_curve = SubResource("Curve_irr72")
 
 [node name="Area2D2" type="Area2D" parent="."]
+script = ExtResource("9_fdn4o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 scale = Vector2(29.255, 16.91)

@@ -49,7 +49,7 @@ func _on_button_pressed() -> void:
 
 var x = 0
 func _on_next_pressed() -> void:
-	if x < 7:
+	if x < 8:
 		$VBoxContainer2/Tutorial.texture = tut_array[x+1]
 		print(tut_array[x+1])
 		print(x)
