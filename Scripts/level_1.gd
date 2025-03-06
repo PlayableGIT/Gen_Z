@@ -424,4 +424,4 @@ func _on_tutorial_pressed() -> void:
 
 
 func _on_tutorial_button_down() -> void:
-	StatsAutoload.necro_balance(nekro_stat+40)
+	StatsAutoload.necro_balance(nekro_stat+100)
